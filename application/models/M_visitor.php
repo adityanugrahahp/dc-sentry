@@ -71,6 +71,21 @@ class M_visitor extends CI_Model {
 		return ($this->db->affected_rows() != 1) ? false : true;
 	}
 
+	public function login($username,$password)
+	{
+		$this->db->where('username', $username);
+		$this->db->where('password', $password);
+		$query = $this->db->get('user_loket');
+		if($query->num_rows()>0)
+		{
+			return array('status'=>'success','status_message'=>'OK','data'=>$query->row_array());
+		}
+		else
+		{
+			return array('status'=>'error','invalid credential'=>'OK','data'=>array());
+		}
+	}
+
 	
 
 }

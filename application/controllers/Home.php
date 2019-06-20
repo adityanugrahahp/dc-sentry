@@ -14,10 +14,15 @@ class Home extends Management_Controller {
 	}
 
 	public function index(){
-		$data['extraJs'] 	= ["home.js", "capture.js"];
-		$data['page_title'] = "Register Visitor";
-		$data['page_view'] 	= "home/V_index";
-		$this->load->view('layouts/V_master', $data);
+		if(isset($_SESSION['userID'])){
+			$data['extraJs'] 	= ["home.js", "capture.js"];
+			$data['page_title'] = "Register Visitor";
+			$data['page_view'] 	= "home/V_index";
+			$this->load->view('layouts/V_master', $data);
+		}else{
+			redirect('/login');
+		}
+		
 	}
 
 	function ajax_new_visitor(){
