@@ -27,6 +27,7 @@ $(document).on('click', '.btn-save', function (){
 			$('#form-visitor').trigger("reset");
 			$('#visitor-new').modal('hide');
 			refreshVisitor();
+			$('.btn-save').attr('disabled', 'disabled');
 		}
 		console.log(e);
 	}).fail(function(e){
@@ -58,33 +59,6 @@ var table = $('#table-visitor').DataTable({
         {"className": "text-center", "targets": [0, 2, 3, 6]},
     ]
 });
-
-function tableHistory(){
-	table_history = $('#table-visitor-history').DataTable({
-		"bSort" : false,
-		"bLengthChange": false,
-		"processing": true,
-		"serverSide": true,
-		"ajax": {
-			"type": "POST",
-			"url": base_url + "home/ajax_get_visitor_history",
-			"data": { "tggl": $('#history-filter').val() }
-		},
-		"columns": [
-			{"data": "foto"},
-			{"data": "nama"},
-			{"data": "no_hp"},
-			{"data": "register_time"},
-			{"data": "tujuan"},
-			{"data": "keperluan"},
-			{"data": "id_visitor_card"},
-			{"data": "last_seen"},
-		],
-		"columnDefs": [
-			{"className": "text-center", "targets": [0, 2, 3, 6, 7]},
-		]
-	});
-}
 
 $(document).on('change', '#history-filter', function (){
 	$('#history-date').text($(this).val());
@@ -130,6 +104,55 @@ $(document).on('click', '.btn-change', function(){
 	$('#visitor-history').toggle();
 	$('#visitor-current').toggle();
 });
+
+$(document).on('keypress', 'input[name="id_visitor_card"]', function(e){
+	if(e.which == 13) {
+		url 	= base_url + 'home/ajax_get_card';
+		data 	= {id: $(this).val()};
+
+		$.post(url, data).done(function(e){
+			if(e.status){
+				$('#visitor-card-res').text(e.name);
+				$('#visitor-card-res').addClass('text-success');
+				$('#visitor-card-res').removeClass('text-danger');
+				$('.btn-save').removeAttr('disabled');
+			}else{
+				$('#visitor-card-res').text('ERROR: '+ e.name);
+				$('#visitor-card-res').addClass('text-danger');
+				$('#visitor-card-res').removeClass('text-success');
+				$('.btn-save').attr('disabled', 'disabled');
+			}
+		});
+
+    }
+});
+
+function tableHistory(){
+	table_history = $('#table-visitor-history').DataTable({
+		"bSort" : false,
+		"bLengthChange": false,
+		"processing": true,
+		"serverSide": true,
+		"ajax": {
+			"type": "POST",
+			"url": base_url + "home/ajax_get_visitor_history",
+			"data": { "tggl": $('#history-filter').val() }
+		},
+		"columns": [
+			{"data": "foto"},
+			{"data": "nama"},
+			{"data": "no_hp"},
+			{"data": "register_time"},
+			{"data": "tujuan"},
+			{"data": "keperluan"},
+			{"data": "id_visitor_card"},
+			{"data": "last_seen"},
+		],
+		"columnDefs": [
+			{"className": "text-center", "targets": [0, 2, 3, 6, 7]},
+		]
+	});
+}
 
 function refreshVisitor(){
 	url = base_url + 'home/ajax_get_current_visitor';

@@ -204,6 +204,20 @@ class Home extends Management_Controller {
 		$this->output->set_content_type('application/json')->set_output(json_encode(['jumlah' => $jumlah]));
 	}
 
+	function ajax_get_card(){
+		if($this->input->method(FALSE) == 'post'){
+			$status = false;
+			$result = 'Tidak Ditemukan';
+			$db = $this->M_visitor->get_visitor_card(['no_kartu' => $this->input->post('id')]);
+			if($db){
+				$status = true;
+				$result = $db[0]->nama_kartu;
+			}
+
+			$this->output->set_content_type('application/json')->set_output(json_encode(['status' => $status, 'name' => $result]));
+		}
+	}
+
 	function _durasi_waktu($date1 = null, $date2 = null){
 		$output = 0;
 		$raw_durasi = abs((new \DateTime($date1))->getTimestamp() - (new \DateTime($date2))->getTimestamp());

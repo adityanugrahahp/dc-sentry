@@ -100,13 +100,10 @@
 								</div>
 								<div class="col-lg-12">
 									<b>PETUNJUK:</b>
-									<ul class="list-styled">
-										<li>
-											asas
-										</li>
-										<li>
-											asasas
-										</li>
+									<ul class="list-styled" style="margin-left: -25px;">
+										<li>Silakan lengkapi identitas tamu pada form di bawah ini.</li>
+										<li>Scan kartu akses yang akan diberikan kepada tamu pada textbox yang tersedia.</li>
+										<li>Pastikan kartu akses yang di scan telah sesuai.</li>
 									</ul>
 								</div>
 								<div class="col-md-6">
@@ -180,6 +177,12 @@
 										<input required type="text" class="form-control" name="id_visitor_card" />
 									</div> 
 								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Identifikasi Kartu Akses:</label>
+										<label class="clearfix" id="visitor-card-res" style="margin-top: 5px;">Scan Kartu Terlebih Dahulu</label>										
+									</div> 
+								</div>
 							</div>
 						</div>
 						<!-- Col untuk Camera -->
@@ -202,7 +205,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-				<button type="button" class="btn btn-primary btn-save">Simpan</button>
+				<button type="button" class="btn btn-primary btn-save" disabled>Simpan</button>
 			</div>
 		</div>
 	</div>
