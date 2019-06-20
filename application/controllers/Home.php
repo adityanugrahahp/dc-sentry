@@ -154,9 +154,13 @@ class Home extends Management_Controller {
 		$start 		= $this->input->post("start");
 		$length 	= $this->input->post("length");
 
-		$where 	= [
-			'date(register_time)' => ($this->input->post('tggl')) ? $this->input->post('tggl') : date('Y-m-d'),
-		];
+		$ex1 = explode('-', $this->input->post('tggl1'));
+		$ex2 = explode('-', $this->input->post('tggl2'));
+
+		$tggl_awal 	= (count($ex1) > 1) ? join('-', [$ex1[2], $ex1[0], $ex1[1]]) : date('Y-m-d');
+		$tggl_akhir	= (count($ex2) > 1) ? join('-', [$ex2[2], $ex2[0], $ex2[1]]) : date('Y-m-d');
+
+		$where 	= "date(register_time) >= date('{$tggl_awal}') and date(register_time) <= date('{$tggl_akhir}')";
 
 		// data total
 		$jum_total = count($this->M_visitor->get_new_visitor($where));
@@ -214,7 +218,14 @@ class Home extends Management_Controller {
 	}
 
 	function ajax_get_history_visitor(){
-		$where 	= ['date(register_time)' => ($this->input->get('tggl')) ? $this->input->get('tggl') : date('Y-m-d')];
+		$ex1 = explode('-', $this->input->post('tggl1'));
+		$ex2 = explode('-', $this->input->post('tggl2'));
+
+		$tggl_awal 	= (count($ex1) > 1) ? join('-', [$ex1[2], $ex1[0], $ex1[1]]) : date('Y-m-d');
+		$tggl_akhir	= (count($ex2) > 1) ? join('-', [$ex2[2], $ex2[0], $ex2[1]]) : date('Y-m-d');
+
+		$where 	= "date(register_time) >= date('{$tggl_awal}') and date(register_time) <= date('{$tggl_akhir}')";
+
 		$db 	= $this->M_visitor->get_new_visitor($where);
 		$jumlah	= str_pad(count($db), 3, 0, STR_PAD_LEFT);
 

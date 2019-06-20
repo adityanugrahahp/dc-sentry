@@ -44,16 +44,21 @@
 					</div>
 					<div class="col-lg-12" id="visitor-history">
 						<div class="row">
-							<div class="col-lg-9">
-								<h5><strong><i class="fa fa-users fa-fw"></i> PENGUNJUNG TANGGAL <span id="history-date">N/A</span>:</strong> <span id="visitor-history-jumlah">N/A</span> Orang</h5>
+							<div class="col-lg-8">
+								<h5><strong><i class="fa fa-users fa-fw"></i> PENGUNJUNG TANGGAL <span id="history-date"><?php echo date('m-d-Y') ?> s/d <?php echo date('m-d-Y') ?></span>:</strong> <span id="visitor-history-jumlah">N/A</span> Orang</h5>
 							</div>
-							<div class="col-lg-3">
-								<div class="form-group">
-									<div class="input-group date">
-										<div class="input-group-addon">
-											<i class="fa fa-calendar"></i>
-										</div>
-										<input type="text" class="form-control pull-right datepicker" id="history-filter">
+							<div class="col-lg-4" style="padding-bottom: 30px;">
+								<div class="input-group datepicker-range">
+									<div class="input-group-addon">
+										<i class="fa fa-calendar"></i>
+									</div>
+									<input type="text" class="form-control" id="history-filter-start" value="<?php echo date('m-d-Y') ?>">
+									<div class="input-group-addon">s/d</div>
+									<input type="text" class="form-control" id="history-filter-end" value="<?php echo date('m-d-Y') ?>">
+									<div class="input-group-btn">
+										<button class="btn btn-default btn-filter">
+											<i class="glyphicon glyphicon-search"></i>
+										</button>
 									</div>
 								</div>
 							</div>

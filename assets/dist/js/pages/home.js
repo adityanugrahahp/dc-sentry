@@ -8,11 +8,16 @@ $(document).ready(function () {
 		autoclose: true
 	});
 
+	$('.datepicker-range input').each(function() {
+		$(this).datepicker({
+			format: 'mm-dd-yyyy',
+			todayHighlight: true,
+			autoclose: true
+		});
+	});
+
 	refreshVisitor();
 	$('#visitor-history').hide();
-
-	var d = new Date();
-	$('#history-date').text(d.getDate()+'-'+d.getMonth()+'-'+d.getFullYear());
 });
 
 $(document).on('click', '.btn-save', function (){
@@ -59,9 +64,9 @@ var table = $('#table-visitor').DataTable({
     ]
 });
 
-$(document).on('change', '#history-filter', function (){
-	$('#history-date').text($(this).val());
-	refreshVisitorHistory($(this).val());
+$(document).on('click', '.btn-filter', function (){
+	$('#history-date').text($('#history-filter-start').val()+ " s/d " +$('#history-filter-end').val());
+	refreshVisitorHistory($('#history-filter-start').val(), $('#history-filter-end').val());
 });
 
 $(document).on('click', '.btn-delete', function (){
@@ -135,7 +140,10 @@ function tableHistory(){
 		"ajax": {
 			"type": "POST",
 			"url": base_url + "home/ajax_get_visitor_history",
-			"data": { "tggl": $('#history-filter').val() }
+			"data": { 
+				"tggl1": $('#history-filter-start').val(),
+				"tggl2": $('#history-filter-end').val()
+			}
 		},
 		"columns": [
 			{"data": "foto"},
@@ -161,9 +169,9 @@ function refreshVisitor(){
 	});
 }
 
-function refreshVisitorHistory(str_date){
+function refreshVisitorHistory(str_date_start = null, str_date_end = null){
 	url = base_url + 'home/ajax_get_history_visitor';
-	$.get(url, {tggl: str_date}).done(function(e){ 
+	$.get(url, {tggl1: str_date_start, tggl2: str_date_end}).done(function(e){ 
 		$('#visitor-history-jumlah').text(e.jumlah); 
 		if($.fn.DataTable.isDataTable('#table-visitor-history')) {
 			table_history.destroy();
