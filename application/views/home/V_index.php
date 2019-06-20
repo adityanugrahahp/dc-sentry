@@ -1,0 +1,194 @@
+<div class="row" style="padding-top: 5px;">
+	<div class="col-lg-10 col-lg-offset-1">
+		<div class="box">
+			<div class="box-header">
+				<h3 class="box-title">PT. PELNI (Persero) - <b>Kantor Pusat</b></h3>
+				<h3 class="box-title pull-right">Tanggal: <b><span><?php echo date('d/m/Y');?></span></b></h3>
+			</div>
+			<div class="box-body" style="border-bottom: 1px solid #EEE">
+				<div class="btn-group pull-left">
+					<button class="btn btn-default btn-sm btn-refresh">
+						<i class="fa fa-refresh fa-fw"></i> RESFRESH
+					</button>
+				</div>
+				<div class="pull-right">
+					<button class="btn btn-primary btn-sm btn-change">
+						<i class="fa fa-list fa-fw"></i> RIWAYAT TAMU
+					</button>
+					<button class="btn btn-success btn-sm" data-toggle="modal" data-target="#visitor-new">
+						<i class="fa fa-user-plus fa-fw"></i> TAMU BARU
+					</button>
+				</div>
+			</div>
+			<div class="box-body">
+				<div class="row">
+					<div class="col-lg-12" id="visitor-current">
+						<h5><strong><i class="fa fa-users fa-fw"></i> PENGUNJUNG SAAT INI: </strong> <span id="visitor-jumlah"></span> Orang</h5>
+						<table id="table-visitor" class="table table-bordered table-striped">
+							<thead>
+								<tr>
+									<th>Foto</th>
+									<th>Nama Tamu</th>
+									<th>No.HP</th>
+									<th>Waktu Masuk</th>
+									<th>Tujuan</th>
+									<th>Keperluan</th>
+									<th>ID Card</th>
+									<th>Aksi</th>
+								</tr>
+							</thead>
+							<tbody></tbody>
+						</table>	
+					</div>
+					<div class="col-lg-12" id="visitor-history">
+						<div class="row">
+							<div class="col-lg-9">
+								<h5><strong><i class="fa fa-users fa-fw"></i> PENGUNJUNG TANGGAL <span id="history-date">N/A</span>:</strong> <span id="visitor-history-jumlah">N/A</span> Orang</h5>
+							</div>
+							<div class="col-lg-3">
+								<div class="form-group">
+									<div class="input-group date">
+										<div class="input-group-addon">
+											<i class="fa fa-calendar"></i>
+										</div>
+										<input type="text" class="form-control pull-right datepicker" id="history-filter">
+									</div>
+								</div>
+							</div>
+						</div>
+						<table id="table-visitor-history" class="table table-bordered table-striped">
+							<thead>
+								<tr>
+									<th>Foto</th>
+									<th>Nama Tamu</th>
+									<th>No.HP</th>
+									<th>Waktu Masuk</th>
+									<th>Tujuan</th>
+									<th>Keperluan</th>
+									<th>ID Card</th>
+									<th>Waktu Keluar</th>
+								</tr>
+							</thead>
+							<tbody></tbody>
+						</table>	
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- new visitor modal -->
+<div id="visitor-new" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title"><i class="fa fa-user-plus fa-fw"></i> Pengunjung Baru</h4>
+			</div>
+			<div class="modal-body">
+				<form id="form-visitor">
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="row">
+								<div class="col-lg-12">
+									<span class="form-error text-danger"></span>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>NIK<span style="color:red">*</span></label>
+										<input type="text" name="nik" required class="form-control" />
+									</div> 
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Nama<span style="color:red">*</span></label>
+										<input type="text" required class="form-control" name="nama" />
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Jenis Kelamin<span style="color:red">*</span></label>
+										<select required class="form-control" name="jenis_kelamin">
+											<option value="L">Laki-laki</option>
+											<option value="P">Perempuan</option>
+										</select>
+									</div> 
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Tanggal Lahir</label>
+										<div class="input-group date">
+											<div class="input-group-addon">
+												<i class="fa fa-calendar"></i>
+											</div>
+											<input type="text" class="form-control pull-right datepicker" name="tgl_lahir">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>No HP<span style="color:red">*</span></label>
+										<input required type="text" class="form-control" name="no_hp" />
+									</div> 
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Alamat<span style="color:red">*</span></label>
+										<textarea required class="form-control" name="alamat"></textarea>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Tujuan<span style="color:red">*</span></label>
+										<input required type="text" class="form-control" name="tujuan" />
+									</div> 
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Keperluan<span style="color:red">*</span></label>
+										<input required type="text" class="form-control" name="keperluan" />
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Visitor Card ID<span style="color:red">*</span></label>
+										<input required type="text" class="form-control" name="id_visitor_card" />
+									</div> 
+								</div>
+							</div>
+						</div>
+						<!-- Col untuk Camera -->
+						<div class="col-lg-6">
+							<div class="camera">
+								<video id="video">Video stream not available.</video>
+								<button id="startbutton">Take photo</button> 
+							</div>
+							<canvas id="canvas">
+							</canvas>
+							<div class="output">
+								<img id="photo" alt="The screen capture will appear in this box.">
+								<div class="form-group">
+									<input type="hidden" class="form-control" id="foto" name="foto" /> 
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+				<button type="button" class="btn btn-primary btn-save">Simpan</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- end new visitor modal -->
