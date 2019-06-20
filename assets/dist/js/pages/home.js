@@ -5,6 +5,7 @@ $(document).ready(function () {
 	$(".datepicker").datepicker({
 		format: 'mm-dd-yyyy',
 		todayHighlight: true,
+		autoclose: true
 	});
 
 	refreshVisitor();

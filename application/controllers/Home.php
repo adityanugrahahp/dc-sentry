@@ -122,7 +122,7 @@ class Home extends Management_Controller {
 			$data[] = [
 				'foto' 				=> $foto,
 				'nama' 				=> "<b>{$v->nama}</b><small class='clearfix'>NIK: {$v->nik}</small>",
-				'no_hp'				=> $v->id,
+				'no_hp'				=> $v->no_hp,
 				'register_time' 	=> "<b>".date('d/M/Y, H:i', strtotime($v->register_time))."</b><span class='clearfix' title='Durasi waktu dalam gedung'><i class='fa fa-clock-o fa-fw'></i> {$durasi}</span>",
 				'tujuan' 			=> $v->tujuan,
 				'keperluan' 		=> $v->keperluan,
