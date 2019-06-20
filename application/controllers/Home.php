@@ -14,10 +14,15 @@ class Home extends Management_Controller {
 	}
 
 	public function index(){
-		$data['extraJs'] 	= ["home.js", "capture.js"];
-		$data['page_title'] = "Register Visitor";
-		$data['page_view'] 	= "home/V_index";
-		$this->load->view('layouts/V_master', $data);
+		if(isset($_SESSION['userID'])){
+			$data['extraJs'] 	= ["home.js", "capture.js"];
+			$data['page_title'] = "Register Visitor";
+			$data['page_view'] 	= "home/V_index";
+			$this->load->view('layouts/V_master', $data);
+		}else{
+			redirect('/login');
+		}
+		
 	}
 
 	function ajax_new_visitor(){
@@ -39,7 +44,7 @@ class Home extends Management_Controller {
 				$data = [
 					'register_time' => date('Y-m-d H:i:s'),
 					'lokasi'		=> 'KANTOR PUSAT',
-					'created_by'	=> 'Receptionist 1',
+					'created_by'	=> $_SESSION['userID'],
 					'status'		=> 1
 				];
 
@@ -179,7 +184,7 @@ class Home extends Management_Controller {
 		$status = true;
 		$error 	= null;
 
-		$db = $this->M_visitor->update_visitor(['id' => $this->input->post('id')], ['status' => 0, 'last_seen' => date('Y-m-d H:i:s')]);
+		$db = $this->M_visitor->update_visitor(['id' => $this->input->post('id')], ['status' => 0, 'last_seen' => date('Y-m-d H:i:s'), 'checked_out_by' => $_SESION['userID']]);
 		if(! $db){ 
 			$status = false;
 			$error 	= "Gagal Menghapus Entri";
