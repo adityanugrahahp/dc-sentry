@@ -24,10 +24,9 @@ $(document).on('click', '.btn-save', function (){
 			$('.form-error').html(e.msg);
 		}else{
 			alert("Pengunjung Berhasil Didaftarkan!");
-			$('#form-visitor').trigger("reset");
+			formReset();
 			$('#visitor-new').modal('hide');
 			refreshVisitor();
-			$('.btn-save').attr('disabled', 'disabled');
 		}
 		console.log(e);
 	}).fail(function(e){
@@ -171,4 +170,12 @@ function refreshVisitorHistory(str_date){
 		}
 		tableHistory();
 	});
+}
+
+function formReset(){
+	$('#form-visitor').trigger("reset");
+	$('.btn-save').attr('disabled', 'disabled');
+	$('#visitor-card-res').removeClass('text-danger');
+	$('#visitor-card-res').removeClass('text-success');
+	$('#visitor-card-res').text('Scan Kartu Terlebih Dahulu');
 }

@@ -15,11 +15,16 @@ class M_visitor extends CI_Model {
 		return ($query) ? true : false;
 	}
 
-	function get_new_visitor($where = [], $like = []){
+	function get_new_visitor($where = [], $like = null, $limit = null, $offset = null){
 		$this->db->select('*');
 		$this->db->join('visitor_cards', 'visitor_registration.id_visitor_card = visitor_cards.id_kartu', 'left');
 		$this->db->where($where);
-		$this->db->like($like);
+		
+		if($like){
+			$this->db->like($like);
+		}
+
+		$this->db->limit($limit, $offset);
 		$this->db->order_by('register_time', 'desc');
 		$query = $this->db->get('visitor_registration');
 

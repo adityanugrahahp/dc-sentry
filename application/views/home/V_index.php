@@ -180,7 +180,7 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<label>Identifikasi Kartu Akses:</label>
-										<label class="clearfix" id="visitor-card-res" style="margin-top: 5px;">Scan Kartu Terlebih Dahulu</label>										
+										<label class="clearfix" id="visitor-card-res" style="margin-top: 5px;">Scan Kartu Terlebih Dahulu</label>
 									</div> 
 								</div>
 							</div>

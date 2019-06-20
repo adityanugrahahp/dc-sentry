@@ -91,12 +91,17 @@ class Home extends Management_Controller {
 		$data 	= [];
 		$like 	= [];
 
-		$keyword = $this->input->post("search")['value'];
+		$keyword 	= $this->input->post("search")['value'];
+		$start 		= $this->input->post("start");
+		$length 	= $this->input->post("length");
 
 		$where 	= [
 			'date(register_time)' 	=> date('Y-m-d'),
 			'status'				=> 1
 		];
+
+		// data total
+		$jum_total = count($this->M_visitor->get_new_visitor($where));
 
 		// bila user mencari menggunakan keyword
 		if($keyword){
@@ -107,7 +112,8 @@ class Home extends Management_Controller {
 			}
 		}
 
-		$db = $this->M_visitor->get_new_visitor($where, $like);
+
+		$db = $this->M_visitor->get_new_visitor($where, $like, $length, $start);
 		foreach ($db as $v) {
 			// hitung durasi waktu
 			$durasi = 0;
@@ -133,8 +139,8 @@ class Home extends Management_Controller {
 
 		$output = [
 			'draw'				=> $this->input->post('draw'),
-			'recordsTotal'		=> 100,
-			'recordsFiltered'	=> count($db),
+			'recordsTotal'		=> $jum_total,
+			'recordsFiltered'	=> $jum_total,
 			'data'				=> $data
 		];
 
@@ -145,11 +151,17 @@ class Home extends Management_Controller {
 		// get data visitor
 		$data 	= [];
 
+		$start 		= $this->input->post("start");
+		$length 	= $this->input->post("length");
+
 		$where 	= [
 			'date(register_time)' => ($this->input->post('tggl')) ? $this->input->post('tggl') : date('Y-m-d'),
 		];
 
-		$db = $this->M_visitor->get_new_visitor($where);
+		// data total
+		$jum_total = count($this->M_visitor->get_new_visitor($where));
+
+		$db = $this->M_visitor->get_new_visitor($where, null, $length, $start);
 		foreach ($db as $v) {
 			// hitung berapa lama tamu berada di dalam gedung
 			$durasi = 0;
@@ -172,8 +184,8 @@ class Home extends Management_Controller {
 
 		$output = [
 			'draw'				=> $this->input->post('draw'),
-			'recordsTotal'		=> 100,
-			'recordsFiltered'	=> count($db),
+			'recordsTotal'		=> $jum_total,
+			'recordsFiltered'	=> $jum_total,
 			'data'				=> $data
 		];
 
