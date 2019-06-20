@@ -8,7 +8,7 @@
 			<div class="box-body" style="border-bottom: 1px solid #EEE">
 				<div class="btn-group pull-left">
 					<button class="btn btn-default btn-sm btn-refresh">
-						<i class="fa fa-refresh fa-fw"></i> RESFRESH
+						<i class="fa fa-refresh fa-fw"></i> REFRESH
 					</button>
 				</div>
 				<div class="pull-right">
@@ -24,21 +24,23 @@
 				<div class="row">
 					<div class="col-lg-12" id="visitor-current">
 						<h5><strong><i class="fa fa-users fa-fw"></i> PENGUNJUNG SAAT INI: </strong> <span id="visitor-jumlah"></span> Orang</h5>
-						<table id="table-visitor" class="table table-bordered table-striped">
-							<thead>
-								<tr>
-									<th>Foto</th>
-									<th>Nama Tamu</th>
-									<th>No.HP</th>
-									<th>Waktu Masuk</th>
-									<th>Tujuan</th>
-									<th>Keperluan</th>
-									<th>ID Card</th>
-									<th>Aksi</th>
-								</tr>
-							</thead>
-							<tbody></tbody>
-						</table>	
+						<div class="table-responsive">
+							<table id="table-visitor" class="table table-bordered table-striped">
+								<thead>
+									<tr>
+										<th>Foto</th>
+										<th>Nama Tamu</th>
+										<th>No.HP</th>
+										<th>Waktu Masuk</th>
+										<th>Tujuan</th>
+										<th>Keperluan</th>
+										<th>ID Card</th>
+										<th>Aksi</th>
+									</tr>
+								</thead>
+								<tbody></tbody>
+							</table>	
+						</div>
 					</div>
 					<div class="col-lg-12" id="visitor-history">
 						<div class="row">
@@ -56,21 +58,23 @@
 								</div>
 							</div>
 						</div>
-						<table id="table-visitor-history" class="table table-bordered table-striped">
-							<thead>
-								<tr>
-									<th>Foto</th>
-									<th>Nama Tamu</th>
-									<th>No.HP</th>
-									<th>Waktu Masuk</th>
-									<th>Tujuan</th>
-									<th>Keperluan</th>
-									<th>ID Card</th>
-									<th>Waktu Keluar</th>
-								</tr>
-							</thead>
-							<tbody></tbody>
-						</table>	
+						<div class="table-responsive">
+							<table id="table-visitor-history" class="table table-bordered table-striped">
+								<thead>
+									<tr>
+										<th>Foto</th>
+										<th>Nama Tamu</th>
+										<th>No.HP</th>
+										<th>Waktu Masuk</th>
+										<th>Tujuan</th>
+										<th>Keperluan</th>
+										<th>ID Card</th>
+										<th>Waktu Keluar</th>
+									</tr>
+								</thead>
+								<tbody></tbody>
+							</table>
+						</div>	
 					</div>
 				</div>
 			</div>
@@ -93,6 +97,17 @@
 							<div class="row">
 								<div class="col-lg-12">
 									<span class="form-error text-danger"></span>
+								</div>
+								<div class="col-lg-12">
+									<b>PETUNJUK:</b>
+									<ul class="list-styled">
+										<li>
+											asas
+										</li>
+										<li>
+											asasas
+										</li>
+									</ul>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
@@ -158,6 +173,7 @@
 								</div>
 							</div>
 							<div class="row">
+								<div class="col-lg-12"><hr></div>
 								<div class="col-md-6">
 									<div class="form-group">
 										<label>Visitor Card ID<span style="color:red">*</span></label>
@@ -167,7 +183,7 @@
 							</div>
 						</div>
 						<!-- Col untuk Camera -->
-						<div class="col-lg-6">
+						<div class="col-lg-6 text-center">
 							<div class="camera">
 								<video id="video">Video stream not available.</video>
 								<button id="startbutton">Take photo</button> 
