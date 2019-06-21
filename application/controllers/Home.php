@@ -234,8 +234,9 @@ class Home extends Management_Controller {
 
 	function ajax_get_card(){
 		if($this->input->method(FALSE) == 'post'){
-			$status = false;
-			$result = 'Tidak Ditemukan';
+			// TODO: STATUS UBAH JADI FALSE
+			$status = true;
+			$result = 'Kartu Baru - N/A'; 
 			$db = $this->M_visitor->get_visitor_card(['no_kartu' => $this->input->post('id')]);
 			if($db){
 				$status = true;
