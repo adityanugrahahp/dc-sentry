@@ -164,7 +164,8 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<label>Tujuan<span style="color:red">*</span></label>
-										<input required type="text" class="form-control" name="tujuan" />
+										<?php echo form_dropdown('tujuan', $tujuan, null, 'class="form-control"') ?>
+										<!-- <input required type="text" class="form-control" name="tujuan" /> -->
 									</div> 
 								</div>
 								<div class="col-md-6">

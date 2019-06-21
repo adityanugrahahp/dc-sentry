@@ -15,6 +15,13 @@ class Home extends Management_Controller {
 
 	public function index(){
 		if(isset($_SESSION['userID'])){
+			$opt = [];
+			// daftar nama lantai
+			for($i = 1;$i <= 11; $i++){
+				$opt['Lantai '.$i] = 'Lantai '.$i;
+			}
+
+			$data['tujuan'] 	= $opt;
 			$data['extraJs'] 	= ["home.js", "capture.js"];
 			$data['page_title'] = "Register Visitor";
 			$data['page_view'] 	= "home/V_index";
