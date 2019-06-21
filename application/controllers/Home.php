@@ -56,21 +56,27 @@ class Home extends Management_Controller {
 				];
 
 				// cek apakah nomor kartu visitor valid
-				$is_valid = $this->M_visitor->get_visitor_card(['no_kartu' => $this->input->post('id_visitor_card')]);
+				// $is_valid = $this->M_visitor->get_visitor_card(['no_kartu' => $this->input->post('id_visitor_card')]);
 				// if($is_valid){
 				if(true){
 					foreach ($this->input->post() as $i => $v) {
 						if($i == 'tgl_lahir'){ if(empty($v)){ continue; } }
 						if($i == 'id_visitor_card'){ 
 							// TODO: DISABLE INI BILA KARTU AKSES SUDAH CUKUP
-							// $data[$i] = $is_valid[0]->id_kartu;
-							// bila kartu tidak ada maka insert dulu sebegai kartu testing
-							$data_kartu = [
-								'no_kartu' 		=> $v,
-								'nama_kartu'	=> "VISITOR {$v}"
-							];
-							$db_card = $this->M_visitor->insert_new_card($data_kartu);
-							if($db_card){ $data[$i] = $db_card[0]; }
+							$is_valid = $this->M_visitor->get_visitor_card(['no_kartu' => $this->input->post('id_visitor_card')]);
+							if($is_valid){
+								// kartu sudah terdaftar
+								$data[$i] = $is_valid[0]->id_kartu;
+							}else{
+								// kartu baru dan belum terdaftar
+								// bila kartu tidak ada maka insert dulu sebegai kartu testing
+								$data_kartu = [
+									'no_kartu' 		=> $v,
+									'nama_kartu'	=> "VISITOR {$v}"
+								];
+								$db_card = $this->M_visitor->insert_new_card($data_kartu);
+								if($db_card){ $data[$i] = $db_card[0]; }
+							}
 							continue; 
 						}
 						$data[$i] = $v;
