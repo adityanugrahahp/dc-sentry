@@ -58,7 +58,7 @@ class M_visitor extends CI_Model {
 		$data['id_kartu'] = $id;
 		$query = $this->db->insert('visitor_cards', $data);
 
-		return ($query) ? $this->db->insert_id() : false;
+		return ($query) ? $id : false;
 	}
 
 	// end add new code DM

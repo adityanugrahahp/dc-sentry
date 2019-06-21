@@ -75,7 +75,7 @@ class Home extends Management_Controller {
 									'nama_kartu'	=> "VISITOR {$v}"
 								];
 								$db_card = $this->M_visitor->insert_new_card($data_kartu);
-								if($db_card){ $data[$i] = $db_card[0]; }
+								if($db_card){ $data[$i] = $db_card; }
 							}
 							continue; 
 						}
