@@ -11,7 +11,10 @@
 						<i class="fa fa-refresh fa-fw"></i> REFRESH
 					</button>
 				</div>
-				<div class="pull-right">
+				<div class="btn-group pull-right">
+					<a href="<?php echo base_url('kartu') ?>" class="btn btn-default btn-sm">
+						<i class="fa fa-credit-card fa-fw"></i> KARTU AKSES
+					</a>
 					<button class="btn btn-primary btn-sm btn-change">
 						<i class="fa fa-list fa-fw"></i> RIWAYAT TAMU
 					</button>
