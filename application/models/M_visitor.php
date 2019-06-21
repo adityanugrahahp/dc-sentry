@@ -38,8 +38,33 @@ class M_visitor extends CI_Model {
 		return ($query) ? true : false;
 	}
 
-	function get_visitor_card($where = []){
+	function update_card($where = [], $data = []){
+		if(! $where){ return false; }
+
 		$this->db->where($where);
+		$query = $this->db->update('visitor_cards', $data);
+
+		return ($query) ? true : false;
+	}
+
+	function delete_card($id = null){
+		if(! $id){ return false; }
+
+		$this->db->where(['id_kartu' => $id]);
+		$query = $this->db->delete('visitor_cards');
+
+		return ($query) ? true : false;
+	}
+
+	function get_visitor_card($where = [], $like = null, $limit = null, $offset = null){
+		if($where){ $this->db->where($where); }
+		if($like){ $this->db->like($like); }
+		if($limit || $offset){
+			$this->db->limit($limit, $offset); 
+		}
+		// $this->db->limit($limit, $offset);
+
+		$this->db->order_by('nama_kartu', 'asc');
 		$query = $this->db->get('visitor_cards');
 
 		return ($query) ? $query->result() : false;
@@ -60,7 +85,6 @@ class M_visitor extends CI_Model {
 
 		return ($query) ? $id : false;
 	}
-
 	// end add new code DM
 
 	public function insert_visitor($data)
@@ -107,9 +131,6 @@ class M_visitor extends CI_Model {
 			return array('status'=>'error','invalid credential'=>'OK','data'=>array());
 		}
 	}
-
-	
-
 }
 
 /* End of file mantrian.php */

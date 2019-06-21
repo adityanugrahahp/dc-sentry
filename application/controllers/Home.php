@@ -29,7 +29,6 @@ class Home extends Management_Controller {
 		}else{
 			redirect('/login');
 		}
-		
 	}
 
 	function ajax_new_visitor(){
