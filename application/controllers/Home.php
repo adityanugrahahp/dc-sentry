@@ -53,7 +53,17 @@ class Home extends Management_Controller {
 				if($is_valid){
 					foreach ($this->input->post() as $i => $v) {
 						if($i == 'tgl_lahir'){ if(empty($v)){ continue; } }
-						if($i == 'id_visitor_card'){ $data[$i] = $is_valid[0]->id_kartu; continue; }
+						if($i == 'id_visitor_card'){ 
+							$data[$i] = $is_valid[0]->id_kartu;
+							// bila kartu tidak ada maka insert dulu sebegai kartu testing
+							// $data_kartu = [
+							// 	'no_kartu' 		=> $v,
+							// 	'nama_kartu'	=> "VISITOR {$v}"
+							// ];
+							// $db_card = $this->M_visitor->insert_new_card($data_kartu);
+							// if($db_card){ $data[$i] = $db_card[0]; }
+							continue; 
+						}
 						$data[$i] = $v;
 					}
 					
@@ -65,7 +75,6 @@ class Home extends Management_Controller {
 					$file_path = 'assets/image/photos/'.date('YmdHis').$data['nik'].'.jpg';
 					file_put_contents($file_path, $data_foto);
 					$data['foto'] = $file_path;
-	
 	
 					// insert to DB
 					$db = $this->M_visitor->insert_new_visitor($data);
@@ -200,7 +209,7 @@ class Home extends Management_Controller {
 		$status = true;
 		$error 	= null;
 
-		$db = $this->M_visitor->update_visitor(['id' => $this->input->post('id')], ['status' => 0, 'last_seen' => date('Y-m-d H:i:s'), 'checked_out_by' => $_SESION['userID']]);
+		$db = $this->M_visitor->update_visitor(['id' => $this->input->post('id')], ['status' => 0, 'last_seen' => date('Y-m-d H:i:s'), 'checked_out_by' => $_SESSION['userID']]);
 		if(! $db){ 
 			$status = false;
 			$error 	= "Gagal Menghapus Entri";
@@ -234,9 +243,8 @@ class Home extends Management_Controller {
 
 	function ajax_get_card(){
 		if($this->input->method(FALSE) == 'post'){
-			// TODO: STATUS UBAH JADI FALSE
-			$status = true;
-			$result = 'Kartu Baru - N/A'; 
+			$status = false;
+			$result = 'Tidak Terdaftar'; 
 			$db = $this->M_visitor->get_visitor_card(['no_kartu' => $this->input->post('id')]);
 			if($db){
 				$status = true;
