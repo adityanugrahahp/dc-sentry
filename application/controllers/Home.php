@@ -57,18 +57,20 @@ class Home extends Management_Controller {
 
 				// cek apakah nomor kartu visitor valid
 				$is_valid = $this->M_visitor->get_visitor_card(['no_kartu' => $this->input->post('id_visitor_card')]);
-				if($is_valid){
+				// if($is_valid){
+				if(true){
 					foreach ($this->input->post() as $i => $v) {
 						if($i == 'tgl_lahir'){ if(empty($v)){ continue; } }
 						if($i == 'id_visitor_card'){ 
-							$data[$i] = $is_valid[0]->id_kartu;
+							// TODO: DISABLE INI BILA KARTU AKSES SUDAH CUKUP
+							// $data[$i] = $is_valid[0]->id_kartu;
 							// bila kartu tidak ada maka insert dulu sebegai kartu testing
-							// $data_kartu = [
-							// 	'no_kartu' 		=> $v,
-							// 	'nama_kartu'	=> "VISITOR {$v}"
-							// ];
-							// $db_card = $this->M_visitor->insert_new_card($data_kartu);
-							// if($db_card){ $data[$i] = $db_card[0]; }
+							$data_kartu = [
+								'no_kartu' 		=> $v,
+								'nama_kartu'	=> "VISITOR {$v}"
+							];
+							$db_card = $this->M_visitor->insert_new_card($data_kartu);
+							if($db_card){ $data[$i] = $db_card[0]; }
 							continue; 
 						}
 						$data[$i] = $v;
@@ -250,8 +252,11 @@ class Home extends Management_Controller {
 
 	function ajax_get_card(){
 		if($this->input->method(FALSE) == 'post'){
-			$status = false;
-			$result = 'Tidak Terdaftar'; 
+			// TODO: SET FALSE BISA KARTU SUDAH CUKUP
+			// $status = false;
+			// $result = 'Tidak Terdaftar'; 
+			$status = true;
+			$result = 'Kartu Baru - ('.$this->input->post('id').')'; 
 			$db = $this->M_visitor->get_visitor_card(['no_kartu' => $this->input->post('id')]);
 			if($db){
 				$status = true;

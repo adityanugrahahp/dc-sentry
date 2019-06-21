@@ -46,6 +46,16 @@ class M_visitor extends CI_Model {
 	}
 
 	function insert_new_card($data){
+		$id = 1;
+		$this->db->select('id_kartu');
+		$this->db->order_by('id_kartu', 'desc');
+		$this->db->limit(1);
+		$query_current = $this->db->get('visitor_cards');
+		if($query_current){ 
+			$id = $query_current->result()[0]->id_kartu + 1;
+		}
+
+		$data['id_kartu'] = $id;
 		$query = $this->db->insert('visitor_cards', $data);
 
 		return ($query) ? $this->db->insert_id() : false;
