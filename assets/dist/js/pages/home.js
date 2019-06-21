@@ -86,6 +86,24 @@ $(document).on('click', '.btn-delete', function (){
 	}
 });
 
+$(document).on('click', '.btn-delete-past', function (){
+	$("#visitor-checkout").modal();
+	res = confirm('Apakah Anda yakin dengan aksi ini?');
+	if(res){
+		data_id = $(this).data('id');
+		url 	= base_url + 'home/ajax_checkout';
+		data 	= {id: data_id};
+
+		$.post(url, data).done(function(e){
+			if(e.status){ refreshVisitor(); }
+			console.log(e);
+		}).fail(function(e){
+			console.log(e);
+			alert("Oops.. Terjadi Kesalahan.");
+		});
+	}
+});
+
 $(document).on('click', '.btn-refresh', function(){
 	refreshVisitor();
 	refreshVisitorHistory();
@@ -154,6 +172,7 @@ function tableHistory(){
 			{"data": "keperluan"},
 			{"data": "id_visitor_card"},
 			{"data": "last_seen"},
+			{"data": "action"},
 		],
 		"columnDefs": [
 			{"className": "text-center", "targets": [0, 2, 3, 6, 7]},

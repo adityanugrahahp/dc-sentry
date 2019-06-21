@@ -75,6 +75,7 @@
 										<th>Keperluan</th>
 										<th>ID Card</th>
 										<th>Waktu Keluar</th>
+										<th>Aksi</th>
 									</tr>
 								</thead>
 								<tbody></tbody>
@@ -217,3 +218,15 @@
 	</div>
 </div>
 <!-- end new visitor modal -->
+
+<!-- Date and timepicker modal -->
+<div id="visitor-checkout" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title"><i class="fa fa-user-plus fa-fw"></i> Checkout Visitor</h4>
+			</div>
+		</div>
+	</div>
+</div>
