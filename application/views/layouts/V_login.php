@@ -8,18 +8,21 @@
 		<div class="login-box">
 			<div class="login-box-body">
 				<h4 class="login-logo" style="margin: 0px;">
-					<a href="<?php echo base_url() ?>">LOGO PELNI</a>
+					<a href="<?php echo base_url() ?>">
+						<img src="<?php echo base_url('assets/image/logopelni.png') ?>" alt="Logo Pelni" height="70">
+					</a>
 				</h4>
-				<p class="login-box-msg"><?php echo APP_NAME ?></p>
+				<p class="login-box-msg text-bold text-uppercase" style="padding:20px 0;"><?php echo APP_NAME ?></p>
 				<?php 
-				$message = $this->session->flashdata('message');
-				if($message!=null):?>
-				<div class="alert alert-danger alert-dismissible">
-					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-					<h4><i class="icon fa fa-ban"></i> Error!</h4>
-					<?php echo $message;?>
-				</div>
-		<?php endif;?>
+					$message = $this->session->flashdata('message');
+					if($message!=null):?>
+					<div class="alert alert-danger alert-dismissible">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+						<h4><i class="icon fa fa-ban"></i> Error!</h4>
+						<?php echo $message;?>
+					</div>
+				<?php endif;?>
+
 				<form method="POST" action="<?php echo base_url().'Login/login_action' ?>">
 					<div class="form-group">
 						<input name="username" class="form-control" placeholder="Username">
