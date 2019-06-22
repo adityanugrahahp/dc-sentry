@@ -151,7 +151,7 @@ class Home extends Management_Controller {
 				'<a href="#" class="btn btn-danger btn-xs btn-delete" data-id="'.$v->id.'" title="Checkout Tamu"><i class="fa fa-sign-out fa-fw"></i></a>'
 			];
 
-			$foto = (! empty($v->foto)) ? '<img src="'.$v->foto.'" alt="Foto Tamu" height="100" />' : 'N/A';
+			$foto = (! empty($v->foto) && is_file($v->foto)) ? '<img src="'.$v->foto.'" alt="Foto Tamu" height="100" />' : 'N/A';
 
 			$data[] = [
 				'foto' 				=> $foto,
@@ -203,7 +203,7 @@ class Home extends Management_Controller {
 			}
 
 			$action = [];
-			if($v->status == 1){
+			if($v->status == 1 && date('Y-m-d', strtotime($v->register_time)) != date('Y-m-d')){
 				$action = [
 					'<a href="#" class="btn btn-danger btn-xs btn-delete-past" data-id="'.$v->id.'" title="Checkout Tamu"><i class="fa fa-sign-out fa-fw"></i></a>'
 				];
@@ -239,11 +239,17 @@ class Home extends Management_Controller {
 	function ajax_checkout(){
 		$status = true;
 		$error 	= null;
+
 		$last_seen = date('Y-m-d H:i:s');
-		if($this->input->post('last_seen') != null){
-			
+		
+		// bila last_seen ada, maka ini checkout diluar tanggal normal
+		if($ls = $this->input->post('last_seen')){
+			$ex 	= explode(' ', $ls);
+			$ex_d 	= explode('-', $ex[0]);
+			$last_seen = date('Y-m-d H:i:s', strtotime($ex_d[2].'-'.$ex_d[0].'-'.$ex_d[1].' '.$ex[1]));
 		}
-		$db = $this->M_visitor->update_visitor(['id' => $this->input->post('id')], ['status' => 0, 'last_seen' => date('Y-m-d H:i:s'), 'checked_out_by' => $_SESSION['userID']]);
+
+		$db = $this->M_visitor->update_visitor(['id' => $this->input->post('id')], ['status' => 0, 'last_seen' => $last_seen, 'checked_out_by' => $_SESSION['userID']]);
 		if(! $db){ 
 			$status = false;
 			$error 	= "Gagal Menghapus Entri";

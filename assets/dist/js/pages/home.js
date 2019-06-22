@@ -2,19 +2,10 @@ var menu_history 	= 0;
 var table_history 	= null;
 
 $(document).ready(function () {
-	$(".datepicker").datepicker({
-		format: 'mm-dd-yyyy',
-		todayHighlight: true,
-		autoclose: true
-	});
-
-	$('.datepicker-range input').each(function() {
-		$(this).datepicker({
-			format: 'mm-dd-yyyy',
-			todayHighlight: true,
-			autoclose: true
-		});
-	});
+	// datetimepicker initialization
+	$(".datepicker").datetimepicker({ format: 'MM-DD-YYYY' });
+	$(".datepickertime").datetimepicker({ maxDate: new Date(), format: 'MM-DD-YYYY HH:mm' });
+	$('.datepicker-range input').each(function() { $(this).datetimepicker({ format: 'MM-DD-YYYY' }); });
 
 	refreshVisitor();
 	$('#visitor-history').hide();
@@ -22,8 +13,8 @@ $(document).ready(function () {
 	// cek tamu belum checkout selain hari ini
 	$.post(base_url + 'home/ajax_get_not_checkout').done(function(e){
 		if(e.status){
-			alert("PERHATIAN!\nAnda memiliki "+ e.total +" tamu yang BELUM CHECKOUT sejak tanggal "+ e.since 
-			+ ".\nSilakan klik RIWAYAT TAMU untuk CHECKOUT dengan memilih TANGGAL tersebut s/d HARI INI.");
+			alert("PERHATIAN!\nAnda memiliki "+ e.total +" tamu yang BELUM CHECKOUT sejak "+ e.since 
+			+ ".\nKlik RIWAYAT TAMU untuk CHECKOUT dengan memilih TANGGAL "+ e.since +" s/d HARI INI.");
 		}
 	});
 });
@@ -78,15 +69,29 @@ $(document).on('click', '.btn-filter', function (){
 });
 
 $(document).on('click', '.btn-delete', function (){
+	data_id = $(this).data('id');
+
+	if($('input[name="last_seen"]').val() == '' && data_id == undefined){
+		alert("Tanggal Checkout Belum Dipilih!");
+		return false;
+	}
+
 	res = confirm('Apakah Anda yakin dengan aksi ini?');
 	if(res){
-		data_id = $(this).data('id');
 		url 	= base_url + 'home/ajax_checkout';
 		data 	= {id: data_id};
 
+		// bila data-id kosong send data dari form
+		if(data_id == undefined){
+			data = $('#form-checkout').serialize();
+		}
+
 		$.post(url, data).done(function(e){
-			if(e.status){ refreshVisitor(); }
-			console.log(e);
+			if(e.status){ 
+				refreshVisitor(); 
+				$('#form-checkout').trigger('reset');
+				$("#visitor-checkout").modal('hide');
+			}
 		}).fail(function(e){
 			console.log(e);
 			alert("Oops.. Terjadi Kesalahan.");
@@ -95,21 +100,9 @@ $(document).on('click', '.btn-delete', function (){
 });
 
 $(document).on('click', '.btn-delete-past', function (){
-	$("#visitor-checkout").modal();
-	res = confirm('Apakah Anda yakin dengan aksi ini?');
-	if(res){
-		data_id = $(this).data('id');
-		url 	= base_url + 'home/ajax_checkout';
-		data 	= {id: data_id};
-
-		$.post(url, data).done(function(e){
-			if(e.status){ refreshVisitor(); }
-			console.log(e);
-		}).fail(function(e){
-			console.log(e);
-			alert("Oops.. Terjadi Kesalahan.");
-		});
-	}
+	$("#visitor-checkout").modal('show');
+	$('#form-checkout').trigger('reset');
+	$('input[name="id"]').val($(this).data('id'));
 });
 
 $(document).on('click', '.btn-refresh', function(){

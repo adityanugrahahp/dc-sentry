@@ -40,7 +40,7 @@
             <!-- FOOTER -->
             <footer class="main-footer">
                 <div class="pull-right hidden-xs">
-                    DIVISI TI - <b>Version</b> <?php echo APP_VERSION ?>
+                    Made with 💖 by DIVISI TI - <b>Version</b> <?php echo APP_VERSION ?>
                 </div>
                 <strong>&copy; <?php echo date('Y') ?> - <a href="http://pelni.co.id"><?php echo APP_COMPANY ?></a></strong>
             </footer>
