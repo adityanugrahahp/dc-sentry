@@ -18,6 +18,14 @@ $(document).ready(function () {
 
 	refreshVisitor();
 	$('#visitor-history').hide();
+
+	// cek tamu belum checkout selain hari ini
+	$.post(base_url + 'home/ajax_get_not_checkout').done(function(e){
+		if(e.status){
+			alert("PERHATIAN!\nAnda memiliki "+ e.total +" tamu yang BELUM CHECKOUT sejak tanggal "+ e.since 
+			+ ".\nSilakan klik RIWAYAT TAMU untuk CHECKOUT dengan memilih TANGGAL tersebut s/d HARI INI.");
+		}
+	});
 });
 
 $(document).on('click', '.btn-save', function (){
@@ -175,7 +183,7 @@ function tableHistory(){
 			{"data": "action"},
 		],
 		"columnDefs": [
-			{"className": "text-center", "targets": [0, 2, 3, 6, 7]},
+			{"className": "text-center", "targets": [0, 2, 3, 6, 7, 8]},
 		]
 	});
 }

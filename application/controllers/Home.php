@@ -13,6 +13,7 @@ class Home extends Management_Controller {
 		$this->load->library('form_validation');
 	}
 
+	// tampilan halaman utama
 	public function index(){
 		if(isset($_SESSION['userID'])){
 			$opt = [];
@@ -30,7 +31,8 @@ class Home extends Management_Controller {
 			redirect('/login');
 		}
 	}
-
+	
+	// untuk mendaftarkan tamu yang masuk ke dalam gedung
 	function ajax_new_visitor(){
 		// post only method
 		if($this->input->method(FALSE) == 'post'){
@@ -55,19 +57,17 @@ class Home extends Management_Controller {
 				];
 
 				// cek apakah nomor kartu visitor valid
-				// $is_valid = $this->M_visitor->get_visitor_card(['no_kartu' => $this->input->post('id_visitor_card')]);
-				// if($is_valid){
-				if(true){
+				$is_valid = $this->M_visitor->get_visitor_card(['no_kartu' => $this->input->post('id_visitor_card')]);
+				
+				// bila auto new card
+				if(AUTO_NEW_CARD){ $is_valid = true; }
+
+				if($is_valid){
 					foreach ($this->input->post() as $i => $v) {
 						if($i == 'tgl_lahir'){ if(empty($v)){ continue; } }
 						if($i == 'id_visitor_card'){ 
-							// TODO: DISABLE INI BILA KARTU AKSES SUDAH CUKUP
-							$is_valid = $this->M_visitor->get_visitor_card(['no_kartu' => $this->input->post('id_visitor_card')]);
-							if($is_valid){
-								// kartu sudah terdaftar
-								$data[$i] = $is_valid[0]->id_kartu;
-							}else{
-								// kartu baru dan belum terdaftar
+							// bila auto new card
+							if(AUTO_NEW_CARD){
 								// bila kartu tidak ada maka insert dulu sebegai kartu testing
 								$data_kartu = [
 									'no_kartu' 		=> $v,
@@ -75,7 +75,11 @@ class Home extends Management_Controller {
 								];
 								$db_card = $this->M_visitor->insert_new_card($data_kartu);
 								if($db_card){ $data[$i] = $db_card; }
+							}else{
+								// pengecekan kartu akses yang sudah ada saja
+								$data[$i] = $is_valid[0]->id_kartu;
 							}
+
 							continue; 
 						}
 						$data[$i] = $v;
@@ -109,6 +113,7 @@ class Home extends Management_Controller {
 		}
 	}
 
+	// table untuk tamu yang saat ini sedang berada dalam gedung (hari ini)
 	function ajax_get_visitor(){
 		// get data visitor
 		$data 	= [];
@@ -170,6 +175,7 @@ class Home extends Management_Controller {
 		$this->output->set_content_type('application/json')->set_output(json_encode($output));
 	}
 
+	// tabel untuk riwayat tamu sesuai tanggal
 	function ajax_get_visitor_history(){
 		// get data visitor
 		$data 	= [];
@@ -188,22 +194,24 @@ class Home extends Management_Controller {
 		// data total
 		$jum_total = count($this->M_visitor->get_new_visitor($where));
 
-		$db = $this->M_visitor->get_new_visitor($where, null, $length, $start);
+		$db = $this->M_visitor->get_new_visitor($where, null, $length, $start, 'last_seen');
 		foreach ($db as $v) {
 			// hitung berapa lama tamu berada di dalam gedung
 			$durasi = 0;
 			if(! empty($v->last_seen)){
 				$durasi = $this->_durasi_waktu($v->last_seen, $v->register_time);
 			}
-			$action = [''];
+
+			$action = [];
 			if($v->status == 1){
 				$action = [
 					'<a href="#" class="btn btn-danger btn-xs btn-delete-past" data-id="'.$v->id.'" title="Checkout Tamu"><i class="fa fa-sign-out fa-fw"></i></a>'
 				];
 			}
 			
+			// cek apakah foto ada atau tidak di penyimpanan
+			$foto = (! empty($v->foto) && is_file($v->foto)) ? '<img src="'.$v->foto.'" alt="Foto Tamu" height="100" />' : 'N/A';
 
-			$foto = (! empty($v->foto)) ? '<img src="'.$v->foto.'" alt="Foto Tamu" height="100" />' : 'N/A';
 			$data[] = [
 				'foto' 				=> $foto,
 				'nama' 				=> "<b>{$v->nama}</b><small class='clearfix'>NIK: {$v->nik}</small>",
@@ -227,6 +235,7 @@ class Home extends Management_Controller {
 		$this->output->set_content_type('application/json')->set_output(json_encode($output));
 	}
 
+	// tamu checkout dari gedung
 	function ajax_checkout(){
 		$status = true;
 		$error 	= null;
@@ -243,6 +252,7 @@ class Home extends Management_Controller {
 		$this->output->set_content_type('application/json')->set_output(json_encode(['status' => $status, 'msg' => $error]));
 	}
 
+	// jumlah untuk tamu yang saat ini sedang berada dalam gedung (hari ini)
 	function ajax_get_current_visitor(){
 		$where 	= ['date(register_time)' => date('Y-m-d'), 'status' => 1];
 		$db 	= $this->M_visitor->get_new_visitor($where);
@@ -251,6 +261,7 @@ class Home extends Management_Controller {
 		$this->output->set_content_type('application/json')->set_output(json_encode(['jumlah' => $jumlah]));
 	}
 
+	// jumlah untuk riwayat tamu sesuai tanggal
 	function ajax_get_history_visitor(){
 		$ex1 = explode('-', $this->input->post('tggl1'));
 		$ex2 = explode('-', $this->input->post('tggl2'));
@@ -266,13 +277,18 @@ class Home extends Management_Controller {
 		$this->output->set_content_type('application/json')->set_output(json_encode(['jumlah' => $jumlah]));
 	}
 
+	// untuk memvalidasi apakah kartu akses adalah benar
 	function ajax_get_card(){
 		if($this->input->method(FALSE) == 'post'){
-			// TODO: SET FALSE BISA KARTU SUDAH CUKUP
-			// $status = false;
-			// $result = 'Tidak Terdaftar'; 
-			$status = true;
-			$result = 'Kartu Baru - ('.$this->input->post('id').')'; 
+			$status = false;
+			$result = 'Tidak Terdaftar'; 
+
+			// bila auto new card
+			if(AUTO_NEW_CARD){
+				$status = true;
+				$result = 'Kartu Baru - ('.$this->input->post('id').')'; 
+			}
+			
 			$db = $this->M_visitor->get_visitor_card(['no_kartu' => $this->input->post('id')]);
 			if($db){
 				$status = true;
@@ -283,6 +299,36 @@ class Home extends Management_Controller {
 		}
 	}
 
+	// untuk mendapatkan berapa banyak tamu yang belum checkout di database
+	function ajax_get_not_checkout(){
+		$result = 0; 
+		$status = false;
+		$since 	= null;
+		
+		// hanya post saja
+		if($this->input->method(FALSE) == 'post'){
+			$where 	= [
+				'date(register_time) !='	=> date('Y-m-d'),
+				'status'					=> 1
+			];
+	
+			// data total
+			$db = $this->M_visitor->get_new_visitor($where, null, null, null, 'register_time', 'asc');
+			if($db){
+				$status = true;
+
+				// tanggal awal belum checkoutnya itu
+				$since 	= date('d-m-Y', strtotime($db[0]->register_time));
+			}
+
+			// jumlah tamu belum checkout
+			$result = count($db);
+		}
+
+		$this->output->set_content_type('application/json')->set_output(json_encode(['status' => $status, 'total' => $result, 'since' => $since]));
+	}
+
+	// fungsi untuk menghitung durasi antara 2 waktu
 	function _durasi_waktu($date1 = null, $date2 = null){
 		$output = 0;
 		$raw_durasi = abs((new \DateTime($date1))->getTimestamp() - (new \DateTime($date2))->getTimestamp());

@@ -15,7 +15,7 @@ class M_visitor extends CI_Model {
 		return ($query) ? true : false;
 	}
 
-	function get_new_visitor($where = [], $like = null, $limit = null, $offset = null){
+	function get_new_visitor($where = [], $like = null, $limit = null, $offset = null, $order_by = 'register_time', $sort = 'desc'){
 		$this->db->select('*');
 		$this->db->join('visitor_cards', 'visitor_registration.id_visitor_card = visitor_cards.id_kartu', 'left');
 		$this->db->where($where);
@@ -25,7 +25,7 @@ class M_visitor extends CI_Model {
 		}
 
 		$this->db->limit($limit, $offset);
-		$this->db->order_by('register_time', 'desc');
+		$this->db->order_by($order_by, $sort);
 		$query = $this->db->get('visitor_registration');
 
 		return ($query) ? $query->result() : false;

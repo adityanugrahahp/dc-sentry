@@ -1,8 +1,6 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
 <title><?php echo (isset($page_title)) ? $page_title.' - '.APP_NAME : APP_NAME ?></title>
-
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <link rel="icon" href="<?php echo base_url(THEME_PATH) ?>favicon.ico">
 <link rel="stylesheet" href="<?php echo base_url();?>assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
