@@ -40,11 +40,11 @@ class Login extends CI_Controller {
 
 				redirect('/');
 			}else{
-				$this->session->set_flashdata('message', $result_login['status_message']);
+				$this->session->set_flashdata('message', "Username & Email Tidak Cocok");
 				redirect('Login');
 			}
 		}else{
-			$this->session->set_flashdata('message', 'username dan password tidak boleh kosong');
+			$this->session->set_flashdata('message', validation_errors());
 			redirect('Login');
 		}
 	}
