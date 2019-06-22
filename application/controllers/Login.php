@@ -26,6 +26,12 @@ class Login extends CI_Controller {
 			if($result_login['status']=='success'){
 				$data = $result_login['data'];
 
+				// bila role tidak sesuai
+				if($data['role'] != 4){
+					$this->session->set_flashdata('message', 'User ini tidak terdaftar untuk aplikasi ini');
+					redirect('Login');
+				}
+
 				$_SESSION['userID'] 	= $data['id_user'];
 				$_SESSION['userName'] 	= $data['username'];
 				$_SESSION['locationID'] = $data['location_id'];
