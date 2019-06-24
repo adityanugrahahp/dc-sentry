@@ -205,7 +205,7 @@ class Home extends Management_Controller {
 		$like = null;
 		if($keyword){
 			if(is_numeric($keyword)){
-				$where .= ' and no_kartu="'.$keyword.'"';
+				$where .= " and visitor_cards.no_kartu = '{$keyword}'";
 			}else{
 				$like = ['lower(nama_kartu)' => strtolower($keyword)];
 			}
