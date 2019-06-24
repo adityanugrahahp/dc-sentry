@@ -69,12 +69,17 @@ class Home extends Management_Controller {
 							// bila auto new card
 							if(AUTO_NEW_CARD){
 								// bila kartu tidak ada maka insert dulu sebegai kartu testing
-								$data_kartu = [
-									'no_kartu' 		=> $v,
-									'nama_kartu'	=> "VISITOR {$v}"
-								];
-								$db_card = $this->M_visitor->insert_new_card($data_kartu);
-								if($db_card){ $data[$i] = $db_card; }
+								$is_valid = $this->M_visitor->get_visitor_card(['no_kartu' => $this->input->post('id_visitor_card')]);
+								if(! $is_valid){
+									$data_kartu = [
+										'no_kartu' 		=> $v,
+										'nama_kartu'	=> "VISITOR {$v}"
+									];
+									$db_card = $this->M_visitor->insert_new_card($data_kartu);
+									if($db_card){ $data[$i] = $db_card; }
+								}else{
+									$data[$i] = $is_valid[0]->id_kartu;	
+								}
 							}else{
 								// pengecekan kartu akses yang sudah ada saja
 								$data[$i] = $is_valid[0]->id_kartu;
