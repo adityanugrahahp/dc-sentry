@@ -202,6 +202,7 @@ class Home extends Management_Controller {
 		$jum_total = count($this->M_visitor->get_new_visitor($where));
 
 		// bila user mencari menggunakan keyword
+		$like = null;
 		if($keyword){
 			if(is_numeric($keyword)){
 				$where .= ' and no_kartu="'.$keyword.'"';
