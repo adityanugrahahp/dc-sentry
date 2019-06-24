@@ -65,6 +65,7 @@ class Home extends Management_Controller {
 				if($is_valid){
 					foreach ($this->input->post() as $i => $v) {
 						if($i == 'tgl_lahir'){ if(empty($v)){ continue; } }
+						if($i == 'nama'){ $data[$i] = strtoupper($v); continue; }
 						if($i == 'id_visitor_card'){ 
 							// bila auto new card
 							if(AUTO_NEW_CARD){
@@ -187,6 +188,7 @@ class Home extends Management_Controller {
 
 		$start 		= $this->input->post("start");
 		$length 	= $this->input->post("length");
+		$keyword 	= $this->input->post("search")['value'];
 
 		$ex1 = explode('-', $this->input->post('tggl1'));
 		$ex2 = explode('-', $this->input->post('tggl2'));
@@ -199,7 +201,16 @@ class Home extends Management_Controller {
 		// data total
 		$jum_total = count($this->M_visitor->get_new_visitor($where));
 
-		$db = $this->M_visitor->get_new_visitor($where, null, $length, $start, 'last_seen');
+		// bila user mencari menggunakan keyword
+		if($keyword){
+			if(is_numeric($keyword)){
+				$where .= ' and no_kartu="'.$keyword.'"';
+			}else{
+				$like = ['lower(nama_kartu)' => strtolower($keyword)];
+			}
+		}
+
+		$db = $this->M_visitor->get_new_visitor($where, $like, $length, $start, 'last_seen');
 		foreach ($db as $v) {
 			// hitung berapa lama tamu berada di dalam gedung
 			$durasi = 0;
