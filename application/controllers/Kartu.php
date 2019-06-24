@@ -58,7 +58,7 @@ class Kartu extends Management_Controller {
 
 			$data[] = [
 				'no' 				=> ++$i,
-				'kode' 				=> $v->kode_akses,
+				'kode' 				=> $v->no_kartu,
 				'nama'				=> $v->nama_kartu,
 				'created_at' 		=> (! empty($v->created_at)) ? date('d/M/Y, H:i', strtotime($v->created_at)) : 'Tidak Ada Data',
 				'action'			=> join(" ", $action)
