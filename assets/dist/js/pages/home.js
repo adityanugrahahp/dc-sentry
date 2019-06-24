@@ -88,9 +88,12 @@ $(document).on('click', '.btn-delete', function (){
 
 		$.post(url, data).done(function(e){
 			if(e.status){ 
-				refreshVisitor(); 
+				refreshVisitor();
+				refreshVisitorHistory();
 				$('#form-checkout').trigger('reset');
 				$("#visitor-checkout").modal('hide');
+				
+				alert('Tamu Berhasil Checkout');
 			}
 		}).fail(function(e){
 			console.log(e);
