@@ -46,7 +46,7 @@ class Home extends Management_Controller {
             $this->form_validation->set_rules('keperluan', 'Keperluan', 'required|trim');
             $this->form_validation->set_rules('alamat', 'Alamat', 'trim');
 			$this->form_validation->set_rules('id_visitor_card', 'Visitor Card ID', 'numeric|trim');
-			$this->form_validation->set_rules('foto', 'Photo', 'required');
+			// $this->form_validation->set_rules('foto', 'Photo', 'required');
 			
 			if($this->form_validation->run() != FALSE){
 				$data = [
@@ -99,12 +99,25 @@ class Home extends Management_Controller {
 					$file_path = 'assets/image/photos/'.date('YmdHis').$data['nik'].'.jpg';
 					file_put_contents($file_path, $data_foto);
 					$data['foto'] = $file_path;
-	
-					// insert to DB
-					$db = $this->M_visitor->insert_new_visitor($data);
-					if(! $db){
+					
+					// cek apakah nik, id_card, register_time dan status = 1 sdh ada ditabel?
+					if($this->M_visitor->get_new_visitor(
+						[
+							'nik' 				=> $data['nik'],
+							'nama' 				=> $data['nama'],
+							'id_visitor_card' 	=> $data['id_visitor_card'],
+							'status' 			=> 1
+						]
+					)){
 						$status = false;
-						$error 	= 'Cannot save data.';
+						$error 	= 'Data Sudah Ada.';
+					}else{
+						// insert to DB
+						$db = $this->M_visitor->insert_new_visitor($data);
+						if(! $db){
+							$status = false;
+							$error 	= 'Cannot save data.';
+						}
 					}
 				}else{
 					$status = false;
