@@ -182,7 +182,7 @@
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<label>Suhu Tubuh<span style="color:red">*</span></label>
+										<label>Suhu Tubuh</label>
 										<input type="text" class="form-control" name="suhu" />
 									</div>
 								</div>
