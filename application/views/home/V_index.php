@@ -38,6 +38,7 @@
 										<th>Tujuan</th>
 										<th>Keperluan</th>
 										<th>ID Card</th>
+										<th>Suhu</th>
 										<th>Aksi</th>
 									</tr>
 								</thead>
@@ -78,6 +79,7 @@
 										<th>Keperluan</th>
 										<th>ID Card</th>
 										<th>Waktu Keluar</th>
+										<th>Suhu</th>
 										<th>Aksi</th>
 									</tr>
 								</thead>
