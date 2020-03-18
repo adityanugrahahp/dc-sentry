@@ -177,6 +177,7 @@ function tableHistory(){
 			{"data": "keperluan"},
 			{"data": "id_visitor_card"},
 			{"data": "last_seen"},
+			{"data": "suhu"},
 			{"data": "action"},
 		],
 		"columnDefs": [
