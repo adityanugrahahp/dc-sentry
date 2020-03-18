@@ -180,6 +180,7 @@ class Home extends Management_Controller {
 				'tujuan' 			=> $v->tujuan,
 				'keperluan' 		=> $v->keperluan,
 				'id_visitor_card'	=> $v->nama_kartu,
+				'suhu'              => $v->suhu,
 				'action'			=> join(" ", $action)
 			];
 		}
@@ -250,6 +251,7 @@ class Home extends Management_Controller {
 				'tujuan' 			=> $v->tujuan,
 				'keperluan' 		=> $v->keperluan,
 				'id_visitor_card'	=> $v->nama_kartu,
+				'suhu'              => $v->suhu,
 				'last_seen' 		=> (! empty($v->last_seen)) ? "<b>".date('d/M/Y, H:i', strtotime($v->last_seen))."</b><span class='clearfix' title='Lama dalam gedung.'><i class='fa fa-clock-o fa-fw'></i>{$durasi}</span>" : '<b class="text-danger">TAMU BELUM CHECKOUT</b>',
 				'action'			=> join(" ", $action)
 			];
