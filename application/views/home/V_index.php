@@ -151,13 +151,7 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-6">
-									<div class="form-group">
-										<label>No HP<span style="color:red">*</span></label>
-										<input required type="text" class="form-control" name="no_hp" />
-									</div> 
-								</div>
-								<div class="col-md-6">
+								<div class="col-md-12">
 									<div class="form-group">
 										<label>Alamat<span style="color:red">*</span></label>
 										<textarea required class="form-control" name="alamat"></textarea>
@@ -165,6 +159,12 @@
 								</div>
 							</div>
 							<div class="row">
+							    <div class="col-md-6">
+									<div class="form-group">
+										<label>No HP<span style="color:red">*</span></label>
+										<input required type="text" class="form-control" name="no_hp" />
+									</div> 
+								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 										<label>Tujuan<span style="color:red">*</span></label>
@@ -172,10 +172,18 @@
 										<!-- <input required type="text" class="form-control" name="tujuan" /> -->
 									</div> 
 								</div>
+							</div>
+							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
 										<label>Keperluan<span style="color:red">*</span></label>
 										<input required type="text" class="form-control" name="keperluan" />
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Suhu Tubuh<span style="color:red">*</span></label>
+										<input type="text" class="form-control" name="suhu" />
 									</div>
 								</div>
 							</div>
