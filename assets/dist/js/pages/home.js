@@ -55,6 +55,7 @@ var table = $('#table-visitor').DataTable({
         {"data": "tujuan"},
         {"data": "keperluan"},
         {"data": "id_visitor_card"},
+        {"data": "suhu"},
         {"data": "action"},
 	],
 	"columnDefs": [
