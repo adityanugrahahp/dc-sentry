@@ -17,6 +17,11 @@ $(document).ready(function () {
 			+ ".\nKlik RIWAYAT TAMU untuk CHECKOUT dengan memilih TANGGAL "+ e.since +" s/d HARI INI.");
 		}
 	});
+	$(document).on('keypress', 'inpu[name="nik"]',function (e) {
+		if(e.which == 13) {
+			alert('You pressed enter!');
+		}
+	});
 });
 
 $(document).on('click', '.btn-save', function (){
