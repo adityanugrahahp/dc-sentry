@@ -131,6 +131,23 @@ class M_visitor extends CI_Model {
 			return array('status'=>'error','invalid credential'=>'OK','data'=>array());
 		}
 	}
+
+	public function get_pegawai($nrp)
+	{
+		$this->db->select('pslh_nama,pslh_tgl_lhr,pslh_kelamin,pslh_alamat,pslh_hp');
+		$this->db->where('pslh_nrp', $nrp);
+		$query = $this->db->get('psl_h');
+		if($query->num_rows()>0)
+		{
+			return $query->row_array();
+		}
+		else
+		{
+			return FALSE;
+		}
+		
+		
+	}
 }
 
 /* End of file mantrian.php */

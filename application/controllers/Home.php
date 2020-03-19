@@ -378,4 +378,25 @@ class Home extends Management_Controller {
 		
 		return $output;
 	}
+
+	public function ajax_get_pegawai()
+	{
+		$nrp = $this->input->post('nrp');
+		$data_raw = $this->M_visitor->get_pegawai($nrp);
+		$response = array();
+		if($data_raw!=FALSE)
+		{
+			$response['status'] = "success";
+			$response['message'] = "";
+			$response['data'] = $data_raw;
+		}
+		else
+		{
+			$response['status'] = "error";
+			$response['message'] = "Pegawai tidak ditemukan";
+			$response['data'] = [];
+		}
+		$this->output->set_content_type('application/json')->set_output(json_encode($response));
+		
+	}
 }
