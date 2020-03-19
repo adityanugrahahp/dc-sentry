@@ -17,9 +17,26 @@ $(document).ready(function () {
 			+ ".\nKlik RIWAYAT TAMU untuk CHECKOUT dengan memilih TANGGAL "+ e.since +" s/d HARI INI.");
 		}
 	});
-	$(document).on('keypress', 'inpu[name="nik"]',function (e) {
+	$(document).on('keypress', 'input[name="nik"]',function (e) {
+		var nrp_inp = $(this).val();
 		if(e.which == 13) {
-			alert('You pressed enter!');
+			$.ajax({
+				type: "post",
+				url: base_url+"home/ajax_get_pegawai",
+				data: {"nrp":nrp_inp},
+				dataType: "json",
+				success: function (response) {
+					if(response.status=="success")
+					{
+						var data = response.data;
+						$('input[name="nama"]').val(data.pslh_nama);
+						$('select[name="jenis_kelamin"]').val(data.pslh_kelamin);
+						$('input[name="tgl_lahir"]').val(data.pslh_tgl_lhr);
+						$('textarea[name="alamat"]').val(data.pslh_alamat);
+						$('input[name="no_hp"]').val(data.pslh_hp);
+					}
+				}
+			});
 		}
 	});
 });
