@@ -35,10 +35,35 @@ $(document).ready(function () {
 						$('textarea[name="alamat"]').val(data.pslh_alamat);
 						$('input[name="no_hp"]').val(data.pslh_hp);
 					}
+					else
+					{
+						get_existing_visitor(nrp_inp)
+					}
 				}
 			});
 		}
 	});
+
+	function get_existing_visitor(nik_inp)
+	{
+		$.ajax({
+			type: "post",
+			url: base_url+"home/get_existing_visitor",
+			data: {"nik":nik_inp},
+			dataType: "json",
+			success: function (response) {
+				if(response.status=="success")
+				{
+					var data = response.data;
+					$('input[name="nama"]').val(data.nama);
+					$('select[name="jenis_kelamin"]').val(data.jenis_kelamin);
+					$('input[name="tgl_lahir"]').val(data.pslh_tgl_lhr);
+					$('textarea[name="alamat"]').val(data.alamat);
+					$('input[name="no_hp"]').val(data.no_hp);
+				}
+			}
+		});
+	}
 });
 
 $(document).on('click', '.btn-save', function (){

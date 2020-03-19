@@ -386,6 +386,7 @@ class Home extends Management_Controller {
 		$response = array();
 		if($data_raw!=FALSE)
 		{
+			$data_raw['pslh_tgl_lhr'] = DateTime::createFromFormat('Y-m-d', $data_raw['pslh_tgl_lhr'])->format('m-d-Y');
 			$response['status'] = "success";
 			$response['message'] = "";
 			$response['data'] = $data_raw;
@@ -398,5 +399,25 @@ class Home extends Management_Controller {
 		}
 		$this->output->set_content_type('application/json')->set_output(json_encode($response));
 		
+	}
+
+	public function get_existing_visitor()
+	{
+		$nik = $this->input->post('nik');
+		$data_raw = $this->M_visitor->get_existing_visitor($nik);
+		$response = array();
+		if($data_raw!=FALSE)
+		{
+			$response['status'] = "success";
+			$response['message'] = "";
+			$response['data'] = $data_raw;
+		}
+		else
+		{
+			$response['status'] = "error";
+			$response['message'] = "Visitor tidak ditemukan";
+			$response['data'] = [];
+		}
+		$this->output->set_content_type('application/json')->set_output(json_encode($response));
 	}
 }

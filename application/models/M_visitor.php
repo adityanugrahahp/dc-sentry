@@ -145,8 +145,21 @@ class M_visitor extends CI_Model {
 		{
 			return FALSE;
 		}
-		
-		
+	}
+
+	public function get_existing_visitor($nik)
+	{
+		$this->db->where('nik', $nik);
+		$this->db->select('nik,nama,jenis_kelamin,alamat,tgl_lahir,no_hp');
+		$query = $this->db->get('visitor_registration');
+		if($query->num_rows()>0)
+		{
+			return $query->row_array();
+		}
+		else
+		{
+			return FALSE;
+		}	
 	}
 }
 
