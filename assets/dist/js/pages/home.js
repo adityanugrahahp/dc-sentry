@@ -85,24 +85,6 @@ $(document).on('click', '.btn-save', function (){
 	});
 });
 
-$(document).on('click', '.btn-download', function (){
-	// download laporan periode
-	var base_doc 	= 'https://devel.pelni.co.id/jrio/rest_v2/reports/VisitorReports/Reports/VisitorHistory.pdf';
-	var tgl_awal 	= $('#history-filter-start').val().split('-');
-	var tgl_akhir 	= $('#history-filter-end').val().split('-');
-
-	if(tgl_awal && tgl_akhir){
-		tgl_awal 	= [tgl_awal[2], tgl_awal[0], tgl_awal[1]];
-		tgl_akhir 	= [tgl_akhir[2], tgl_akhir[0], tgl_akhir[1]];
-
-		base_doc += "?tgl_awal="+ tgl_awal.join('-') +"&tgl_akhir="+ tgl_akhir.join('-');
-		
-		document.location.href = base_doc;
-	}else{
-		alert('Silakan Pilih Tanggal Awal dan Akhir.');
-	}
-});
-
 var table = $('#table-visitor').DataTable({
 	"bSort" : false,
 	"bLengthChange": false,

@@ -63,9 +63,6 @@
 										<button class="btn btn-default btn-filter">
 											<i class="glyphicon glyphicon-search"></i>
 										</button>
-										<a href="javascript:void(0)" class="btn btn-primary btn-download" title="Download Laporan">
-											<i class="glyphicon glyphicon-download"></i>
-										</a>
 									</div>
 								</div>
 							</div>
