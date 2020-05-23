@@ -150,7 +150,7 @@
 						</h5></div>
 					<div class="row">
 						<div class="col align-self-center">
-							<center><img src="<?= base_url(''); ?>assets/images/qr-code.PNG" alt="Image" class="img-fluid" width="55%"></center></div>
+							<center><img src="<?= base_url(''); ?>assets/images/qr-code.png" alt="Image" class="img-fluid" width="55%"></center></div>
 						</div>
 					</div>
 					
