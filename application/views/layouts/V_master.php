@@ -4,16 +4,12 @@
 	<head>
 		<?php $this->load->view('layouts/_header') ?>
 	</head>
-	<body class="hold-transition skin-blue sidebar-mini">
+	<body class="hold-transition skin-blue layout-top-nav">
 		<div class="wrapper">
             <!-- TOPBAR -->
-			<?php $this->load->view('layouts/_topbar') ?>            
+			<?php $this->load->view('layouts/_topbar') ?>
             <!-- END TOPBAR -->
             
-            <!-- SIDEBAR -->
-			<!-- <?php $this->load->view('layouts/_sidebar') ?> -->
-            <!-- END SIDEBAR -->
-
             <!-- MAIN WRAPPER -->
             <div class="content-wrapper">
 				<!-- CONTENT TITLE -->

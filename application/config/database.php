@@ -5,10 +5,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
+	'hostname' => '10.1.0.110',
 	'username' => 'dashboard',
 	'password' => 's1mp3ln1',
-	'database' => 'dashboard_prod_rw',
+	'database' => 'dashboard',
 	'dbdriver' => 'postgre',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

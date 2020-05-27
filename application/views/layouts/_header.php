@@ -14,4 +14,10 @@
 <!-- require online -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-<style>table.table-bordered.dataTable tbody td { vertical-align: middle; }</style>
+<style>
+    table.table-bordered.dataTable tbody td { vertical-align: middle; }
+
+    .skin-blue .main-header .navbar .dropdown-menu li a {
+        color: #000!important;
+    }
+</style>
