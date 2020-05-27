@@ -144,7 +144,7 @@ class Absenqr extends MY_Controller {
 			
 			// bila token display tidak ada, maka tambahkan
 			if($post['token_layar'] == ''){
-				$data['token_layar'] = base64_encode(uniqid());
+				$data['token_layar'] = $this->_random_string();
 			}
 
             if(! $post['id']) {
@@ -193,6 +193,18 @@ class Absenqr extends MY_Controller {
 			// redirect ke halaman login
 			redirect('/login');
 		}
+	}
+
+	function _random_string($length = 35) {
+		$characters 		= '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		$charactersLength 	= strlen($characters);
+		$randomString 		= '';
+
+		for($i = 0; $i < $length; $i++){
+			$randomString .= $characters[rand(0, $charactersLength - 1)];
+		}
+
+		return $randomString;
 	}
 	// END PRIVATE FUNCTIONS
 }

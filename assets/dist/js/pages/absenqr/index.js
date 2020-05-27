@@ -80,3 +80,19 @@ $(document).on('click', '.btn-edit', function (){
 		alert(e.responseText);
 	});
 });
+
+$(document).on('click', '.btn-random', function (){
+	$('input[name="token_layar"]').val(_randomStr(35));
+});
+
+function _randomStr(length) {
+	var result           = '';
+	var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+	var charactersLength = characters.length;
+	
+	for(i = 0; i < length; i++){
+	   result += characters.charAt(Math.floor(Math.random() * charactersLength));
+	}
+
+	return result;
+}

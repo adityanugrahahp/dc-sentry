@@ -42,7 +42,7 @@
 								<a href="javascript:void(0)" class="btn btn-primary btn-new-screen btn-sm"><i class="fa fa-plus fa-fw"></i> Tambah Layar</a>
 							</div>
 						</div>
-						<div class="row" style="margin-top: 30px;">
+						<div class="row" style="margin-top: 10px;">
 							<div class="col-lg-12">
 								<div class="table-responsive">
 									<table id="table-display" class="table table-bordered table-condensed table-striped">
@@ -105,7 +105,12 @@
 					</div>
 					<div class="form-group">
 						<label>Custom Kode Akses</label>
-						<input type="text" name="token_layar" class="form-control"/>
+						<div class="input-group">
+							<input type="text" name="token_layar" class="form-control" placeholder="Masukkan Data">
+							<span class="input-group-btn">
+								<button class="btn btn-primary btn-random" type="button"><i class="fa fa-refresh fa-fw"></i></button>
+							</span>
+						</div>
 						<small class="clearfix"><b>Catatan:</b> Kosongkan bila tidak ada kode akses custom untuk display ini.</small>
 					</div>
 				</form>
