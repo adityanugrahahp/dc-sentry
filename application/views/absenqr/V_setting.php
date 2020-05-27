@@ -3,15 +3,105 @@
 		<div class="box box-primary">
 			<div class="box-header with-border">
 				<h3 class="box-title text-bold">
-					<i class="fa fa-cogs fa-fw text-primary"></i> Pengaturan Absensi QR 
+					<i class="fa fa-qrcode fa-fw text-primary"></i> Absensi QR
 				</h3>
 			</div>
 			<div class="box-body">
-				<b>PETUNJUK:</b>
+				<div class="row">
+					<div class="col-lg-9">
+						<div class="row" style="margin-top: 30px;">
+							<div class="col-lg-2 col-lg-offset-2">
+								<center>
+									<i class="fa fa-male fa-2x fa-fw"></i>
+									<span class="clearfix">Pegawai Scan QR</span>
+								</center>
+							</div>
+							<div class="col-lg-2">
+								<center>
+									<i class="fa fa-desktop fa-2x fa-fw text-primary"></i>
+									<span class="clearfix text-primary text-bold">QR Pada Display</span>
+									<span class="clearfix"><span class="label label-success">Anda Di sini</span></span>
+								</center>
+							</div>
+							<div class="col-lg-1">
+								<center style="padding-top:5px">
+									<i class="fa fa-arrow-right fa-2x fa-fw"></i>
+								</center>
+							</div>
+							<div class="col-lg-3">
+								<center>
+									<i class="fa fa-cloud fa-2x fa-fw"></i>
+									<i class="fa fa-list-alt fa-2x fa-fw"></i>
+									<span class="clearfix">Pencatatan Absensi</span>
+								</center>
+							</div>
+							<div class="col-lg-12"><hr></div>
+						</div>
+						<div class="row">
+							<div class="col-lg-12 text-right">
+								<a href="javascript:void(0)" class="btn btn-primary btn-sm"><i class="fa fa-plus fa-fw"></i> Tambah Layar</a>
+							</div>
+						</div>
+						<div class="row" style="margin-top: 30px;">
+							<div class="col-lg-12">
+								<div class="table-responsive">
+									<table id="table-display" class="table table-bordered table-condensed table-striped">
+										<thead>
+											<tr>
+												<th>Nama Display</th>
+												<th class="text-center">Lokasi</th>
+												<th class="text-center">Jumlah Scan</th>
+												<th class="text-center">Aksi</th>
+											</tr>
+										</thead>
+										<tbody></tbody>
+									</table>	
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<b>PETUNJUK:</b>
+						<p>Berikut ini berisi daftar layar yang menampilkan QR Code yang dapat discan oleh para pegawai untuk absensi mereka.</p>
+						<p>Pastikan Anda menampilkan layar sesuai dengan lokasi yang Anda Tentukan.</p>
+						<b>ALUR ABSENSI:</b>
+						<ul class="list-unstyled">
+							<li>- Pegawai mengakses QR Scanner melalui halaman PORTAL PELNI.</li>
+							<li>- Pegawai melakukan scanning QR pada layar monitor.</li>
+							<li>- Pesan berhasil absen akan muncul setelah pegawai melakukan scan QR.</li>
+						</ul>
+					</div>
+				</div>
 			</div>
 			<div class="box-footer">
-				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis at soluta, dolorum minima non temporibus dicta sed sit veniam impedit, maxime reprehenderit exercitationem est a molestiae quae nam rem! Quos?</p>
+				<div class="btn-group pull-right">
+					<a href="#" class="btn btn-primary">Save</a>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
+<!-- MODAL FOR ADD DISPLAY -->
+<div id="display-new" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title"><i class="fa fa-plus fa-fw"></i> Display QR Baru</h4>
+			</div>
+			<div class="modal-body">
+				<form id="form-display">
+					
+				</form>
+			</div>
+			<div class="modal-footer">
+				<div class="btn-group">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+					<button type="button" class="btn btn-primary btn-save" disabled>Simpan</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- MODAL FOR ADD DISPLAY -->
