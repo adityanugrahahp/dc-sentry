@@ -1,12 +1,15 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Absenqr extends CI_Controller {
+class Absenqr extends MY_Controller {
 
 	function __construct(){
 		parent::__construct();
 
 		// load library
-		$this->load->library('user_agent');
+		$this->load->library(['user_agent']);
+
+		// load models
+		$this->load->model('M_absenqr');
 	}
 
 	public function index(){
@@ -20,7 +23,21 @@ class Absenqr extends CI_Controller {
 		$this->load->view('layouts/V_master', $data);
 	}
 
-	public function screen($access_key = null){
+	public function screen($screen_id = null, $screen_name = null, $access = null){
+		
+		$is_valid = false;
+
+		// validasi id, nama dan akses layarnya
+		if($screen_id && $screen_name && $access){
+			$db = $this->M_absenqr->get(null, ['id' => $screen_id, 'token_layar' => $access]);
+			if($db){
+				// cek apakah judulnya benar?
+				if(url_title($db[0]->nama_layar_qr, '-', true) == $screen_name){
+					$is_valid = true;
+				}
+			}
+		}
+
 		// tidak perlu pengecekan session
 		$this->load->view('absenqr/index');
 	}
@@ -57,59 +74,119 @@ class Absenqr extends CI_Controller {
 		$start 		= $this->input->post("start");
 		$length 	= $this->input->post("length");
 
-		$where 	= [
-			'date(register_time)' 	=> date('Y-m-d'),
-			'status'				=> 1
-		];
+		$where = ['lokasi' => 'KANTOR PUSAT'];
 
-		// data total
-		$jum_total = count($this->M_visitor->get_new_visitor($where));
-
-		// bila user mencari menggunakan keyword
-		if($keyword){
-			if(is_numeric($keyword)){
-				$where['no_kartu'] = $keyword;
-			}else{
-				$like = ['lower(nama_kartu)' => strtolower($keyword)];
-			}
+		// bila search
+		if($keyword != ''){
+			$like = ['lower(nama_layar_qr)' => strpos($keyword)];
 		}
 
+		$db = $this->M_absenqr->get(null, $where, null, null, ['created_at' => 'desc'], $length, $start, $like);
+		foreach($db as $v){
 
-		$db = $this->M_visitor->get_new_visitor($where, $like, $length, $start);
-		foreach ($db as $v) {
-			// hitung durasi waktu
-			$durasi = 0;
-			$durasi = $this->_durasi_waktu($v->register_time, date('Y-m-d H:i:s'));
-
-			$action = [
-				'<a href="#" class="btn btn-danger btn-xs btn-delete" data-id="'.$v->id.'" title="Checkout Tamu"><i class="fa fa-sign-out fa-fw"></i></a>'
+			$aksi = [
+				'<a href="'.base_url('absenqr/screen/'.$v->id.'/'.url_title($v->nama_layar_qr, '-', true).'/'.$v->token_layar).'" target="_blank" class="btn btn-xs btn-default" data-id="'.$v->id.'"><i class="fa fa-share fa-fw"></i></a>',
+				'<a href="javascript:void(0)" class="btn btn-xs btn-primary btn-edit" data-id="'.$v->id.'"><i class="fa fa-edit fa-fw"></i></a>',
+				'<a href="javascript:void(0)" class="btn btn-xs btn-danger btn-delete" data-id="'.$v->id.'"><i class="fa fa-trash fa-fw"></i></a>'
 			];
 
-			$foto = (! empty($v->foto) && is_file($v->foto)) ? '<img src="'.$v->foto.'" alt="Foto Tamu" height="100" />' : 'N/A';
-
 			$data[] = [
-				'foto' 				=> $foto,
-				'nama' 				=> "<b>{$v->nama}</b><small class='clearfix'>NIK: {$v->nik}</small>",
-				'no_hp'				=> $v->no_hp,
-				'register_time' 	=> "<b>".date('d/M/Y, H:i', strtotime($v->register_time))."</b><span class='clearfix' title='Durasi waktu dalam gedung'><i class='fa fa-clock-o fa-fw'></i> {$durasi}</span>",
-				'tujuan' 			=> $v->tujuan,
-				'keperluan' 		=> $v->keperluan,
-				'id_visitor_card'	=> $v->nama_kartu,
-				'suhu'              => $v->suhu,
-				'action'			=> join(" ", $action)
+				'nama' 			=> $v->nama_layar_qr,
+				'lokasi' 		=> '<center>'.$v->lokasi.'</center>',
+				'expired' 		=> '<center>'.date('d/m/Y - H:i', strtotime($v->tggl_expired)).'</center>',
+				'pesan' 		=> '<center>'.(($v->pesan_layar) ? '<i class="fa fa-check text-success fa-fw"></i>' : null).'</center>',
+				'jumlah_scan' 	=> '<center>'.$v->jumlah_scan.'</center>',
+				'aksi' 			=> '<center>'.implode(' ', $aksi).'</center>'
 			];
 		}
 
 		$output = [
 			'draw'				=> $this->input->post('draw'),
-			'recordsTotal'		=> $jum_total,
-			'recordsFiltered'	=> $jum_total,
+			'recordsTotal'		=> count($db),
+			'recordsFiltered'	=> count($db),
 			'data'				=> $data
 		];
 
 		$this->output->set_content_type('application/json')->set_output(json_encode($output));
 	}
 
+	function ajax_get_item(){
+		$status = false;
+		$data 	= [];
+
+		if($post = $this->input->post('id')){
+			$db = $this->M_absenqr->get(null, ['id' => $post]);
+			if($db){
+				$status = true;
+				$data 	= $db[0];
+			}
+		}
+
+		$this->output->set_content_type('application/json')->set_output(json_encode(compact('status', 'data')));
+	}
+
+	function ajax_post_form(){
+		$status = false;
+		$msg 	= null;
+		$data 	= [];
+		$post 	= $this->input->post();
+
+		$this->form_validation->set_rules('nama_layar_qr', 'Nama Layar', 'required|trim');
+		$this->form_validation->set_rules('token_layar', 'Kode Akses', 'trim');
+
+		if($this->form_validation->run()){
+
+			// get all items
+			foreach($post as $i => $v){
+                if ($i == 'id') {continue;}
+                $data[$i] = $v;
+			}
+			
+			// bila token display tidak ada, maka tambahkan
+			if($post['token_layar'] == ''){
+				$data['token_layar'] = base64_encode(uniqid());
+			}
+
+            if(! $post['id']) {
+                // log & generated token
+                $data += [
+					'generated_token'	=> uniqid(),
+					// 'tggl_expired'		=> '' // TODO: + 1 hari
+                    'created_by' 		=> $_SESSION['userID'],
+                    'created_at' 		=> date('Y-m-d H:i:s'),
+                ];
+
+                $db = $this->M_absenqr->insert(null, $data);
+            }else{
+                // log
+                $data += [
+                    'updated_by' 	=> $_SESSION['userID'],
+                    'updated_at'	=> date('Y-m-d H:i:s'),
+                ];
+
+				$db = $this->M_absenqr->update(null, ['id' => $post['id']], $data);
+			}
+			
+			if($db){ $status = true; }
+		}else{
+			$msg = str_replace(['<p>', '</p>'], [null, '<br/>'], validation_errors());
+		}
+
+		$this->output->set_content_type('application/json')->set_output(json_encode(compact('status', 'msg')));
+	}
+
+	function ajax_delete_item(){
+        $status = false;
+
+        if($id = $this->input->post('id')){
+            $db = $this->M_absenqr->delete(null, ['id' => $id]);
+            if($db){ $status = true; }
+        }
+
+        $this->output->set_content_type('application/json')->set_output(json_encode(compact('status')));
+    }
+
+	// PRIVATE FUNCTIONS
 	function _verify_access(){
 		if(! isset($_SESSION['userID']) && $this->agent->is_browser()){
 			// bila session tidak ada dan diakses melalui browser
@@ -117,4 +194,5 @@ class Absenqr extends CI_Controller {
 			redirect('/login');
 		}
 	}
+	// END PRIVATE FUNCTIONS
 }

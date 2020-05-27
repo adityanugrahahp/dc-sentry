@@ -39,7 +39,7 @@
 						</div>
 						<div class="row">
 							<div class="col-lg-12 text-right">
-								<a href="javascript:void(0)" class="btn btn-primary btn-sm"><i class="fa fa-plus fa-fw"></i> Tambah Layar</a>
+								<a href="javascript:void(0)" class="btn btn-primary btn-new-screen btn-sm"><i class="fa fa-plus fa-fw"></i> Tambah Layar</a>
 							</div>
 						</div>
 						<div class="row" style="margin-top: 30px;">
@@ -50,6 +50,8 @@
 											<tr>
 												<th>Nama Display</th>
 												<th class="text-center">Lokasi</th>
+												<th class="text-center">Tanggal Expired</th>
+												<th class="text-center">Pesan</th>
 												<th class="text-center">Jumlah Scan</th>
 												<th class="text-center">Aksi</th>
 											</tr>
@@ -73,18 +75,13 @@
 					</div>
 				</div>
 			</div>
-			<div class="box-footer">
-				<div class="btn-group pull-right">
-					<a href="#" class="btn btn-primary">Save</a>
-				</div>
-			</div>
 		</div>
 	</div>
 </div>
 
 <!-- MODAL FOR ADD DISPLAY -->
 <div id="display-new" class="modal fade" role="dialog">
-	<div class="modal-dialog modal-lg">
+	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -92,13 +89,31 @@
 			</div>
 			<div class="modal-body">
 				<form id="form-display">
-					
+					<div class="form-group">
+						<label>Nama Layar<span style="color:red">*</span></label>
+						<input type="hidden" name="id" required/>
+						<input type="text" name="nama_layar_qr" class="form-control" required/>
+						<small class="clearfix"><b>Contoh:</b> Lobby Utama.</small>
+					</div>
+					<div class="form-group">
+						<label>Lokasi<span style="color:red">*</span></label>
+						<?= form_dropdown('lokasi', ['KANTOR PUSAT' => 'KANTOR PUSAT'], null, 'class="form-control" required') ?>
+					</div>
+					<div class="form-group">
+						<label>Pesan Screen</label>
+						<textarea name="pesan_layar" class="form-control" rows="4"></textarea>
+					</div>
+					<div class="form-group">
+						<label>Custom Kode Akses</label>
+						<input type="text" name="token_layar" class="form-control"/>
+						<small class="clearfix"><b>Catatan:</b> Kosongkan bila tidak ada kode akses custom untuk display ini.</small>
+					</div>
 				</form>
 			</div>
 			<div class="modal-footer">
 				<div class="btn-group">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-					<button type="button" class="btn btn-primary btn-save" disabled>Simpan</button>
+					<button type="button" class="btn btn-primary btn-save">Simpan</button>
 				</div>
 			</div>
 		</div>
