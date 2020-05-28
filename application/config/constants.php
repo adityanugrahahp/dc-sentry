@@ -91,6 +91,8 @@ defined('APP_COMPANY')          OR define('APP_COMPANY', 'PT. Pelayaran Nasional
 defined('APP_VERSION')          OR define('APP_VERSION', '0.0.2');
 defined('AUTO_NEW_CARD')        OR define('AUTO_NEW_CARD', TRUE); // aktifkan bila jumlah ketersediaan kartu akses kurang
 
-//  QR RELATED (WS)
+//  QR RELATED
 defined('WS_URL')               OR define('WS_URL', 'https://google.com');
 defined('WS_AUTH_KEY')          OR define('WS_AUTH_KEY', 'thisisKey');
+defined('PK_SECRET')            OR define('PK_SECRET', 'private-key');
+defined('QR_URL')               OR define('QR_URL', 'https://portal.pelni.co.id/phpqrcode/?data=');

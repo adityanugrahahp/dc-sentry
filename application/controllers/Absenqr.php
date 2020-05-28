@@ -2,6 +2,8 @@
 
 class Absenqr extends MY_Controller {
 
+	protected $durasi_expired = 5; // satuan dalam detik
+
 	function __construct(){
 		parent::__construct();
 
@@ -38,14 +40,36 @@ class Absenqr extends MY_Controller {
 			}
 		}
 
+		if(! $is_valid){
+			show_error('The page you are trying to access is invalid or you don\'t have sufficient permission level.', 401, 'Invalid Request');
+		}
+
 		// tidak perlu pengecekan session
 		$this->load->view('absenqr/V_screen');
 	}
 
-	function ajax_update_qr(){
-		// TODO: CURL TO DEVEL
+	function ajax_generate_qr($screen_id = null){
+		// check diredis entry untuk layar ini masih sama? kalo masih sama tidak perlu generate
+		// INFO: FORMAT QR ADALAH ABSENSI:{tggl_expired (Y-m-d H:i)|id_layar|random_string}(encrypted):PUBLIC_KEY harian
+		$status = true;
+		$data 	= [];
+
+		// tanggal expired qr code
+		$public_key	= uniqid();
+		$date_exp 	= new DateTime('+'.$this->durasi_expired.' seconds');
+		$payload 	= [$date_exp->format('Y-m-d H:i:s'), $screen_id, uniqid()];
+		$e_payload	= encrypt(implode('|', $payload), $public_key);
+		$format_qr 	= implode(':', ['ABSENSI', $e_payload, $public_key]);
+
+		$data = [
+			'qr' 			=> QR_URL.$format_qr,
+			'next_request'	=> $date_exp->format('Y-m-d H:i:s')
+		];
+
+		$this->output->set_content_type('application/json')->set_output(json_encode(compact('status', 'data')));
 	}
 
+	// TODO: UNTUK MENDAPATKAN LIST SIAPA YANG ABSEN TERKINI
 	function ajax_get_latest_attendee(){
 		$status = false;
 		$data 	= [];
