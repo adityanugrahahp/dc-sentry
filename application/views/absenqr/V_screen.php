@@ -139,7 +139,9 @@
 						</h5></div>
 					<div class="row">
 						<div class="col align-self-center">
-							<center><img src="<?= base_url(THEME_PATH); ?>images/qr-code.png" alt="Image" class="img-fluid" width="55%"></center></div>
+							<center>
+								<img src="" alt="QR Code" class="img-qr img-fluid" width="55%">
+							</center>
 						</div>
 					</div>
 					
@@ -197,7 +199,7 @@
 		}
 		setInterval(showTime,500);
 	</script>
-	
+	<script>var base_url = '<?= base_url() ?>';</script>
 	<script src="<?= base_url(THEME_PATH); ?>vendor/jquery/jquery-3.2.1.min.js"></script>
 	<script src="<?= base_url(THEME_PATH); ?>vendor/animsition/js/animsition.min.js"></script>
 	<script src="<?= base_url(THEME_PATH); ?>vendor/bootstrap/js/popper.js"></script>
@@ -206,6 +208,7 @@
 	<script src="<?= base_url(THEME_PATH); ?>vendor/daterangepicker/moment.min.js"></script>
 	<script src="<?= base_url(THEME_PATH); ?>vendor/daterangepicker/daterangepicker.js"></script>
 	<script src="<?= base_url(THEME_PATH); ?>vendor/countdowntime/countdowntime.js"></script>
+	<script src="<?= base_url(THEME_PATH); ?>dist/js/pages/absenqr/screen.js"></script>
 	<script src="<?= base_url(THEME_PATH); ?>js/main.js"></script>
 </body>
 </html>

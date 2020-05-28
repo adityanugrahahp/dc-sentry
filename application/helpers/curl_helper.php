@@ -9,7 +9,7 @@
  * @since		2019-06-12
  */
 
-if ( ! function_exists('curl_req')){
+if(! function_exists('curl_req')){
     function curl_req($type = 'get', $endpoint, $query_string = [], $http_header = [], $user_agent = null){
         $CI =& get_instance();
 
@@ -54,7 +54,7 @@ if ( ! function_exists('curl_req')){
     }
 }
 
-if ( ! function_exists('curl_output')){
+if(! function_exists('curl_output')){
     function curl_output($content = [], $type = 'application/json'){
         $CI =& get_instance();
 
