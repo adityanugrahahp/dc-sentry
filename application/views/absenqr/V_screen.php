@@ -151,13 +151,7 @@
 						</h5></div>
 					<div class="row">
 						<div class="col align-self-center">
-<<<<<<< HEAD
 							<center><img src="<?= base_url(THEME_PATH); ?>images/qr-code.png" alt="Image" class="img-fluid" width="50%"></center></div>
-=======
-							<center>
-								<img src="" alt="QR Code" class="img-qr img-fluid" width="55%">
-							</center>
->>>>>>> ce0ed2837432b5f6ed79cdd008cc376f95531d1c
 						</div>
 
 					</div>
@@ -167,59 +161,7 @@
 		</div>
 	</div>
 
-<<<<<<< HEAD
 	<script src="<?= base_url(THEME_PATH); ?>dist/js/pages/absenqr/screen.js"></script>
-=======
-<script>
-		var months = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
-		var days = ['Senin','Selasa','Rabu','Kamis','Jumat','Sabtu','Minggu'];
-		
-		var date = new Date();
-		var n = date.getDay();
-		var day = date.getDate();
-		var month = date.getMonth();
-		var year = <?php echo date('Y')?>
-
-		document.getElementById("date").innerHTML=days[n-1]+", "+" "+day+" "+months[month]+" "+year;
-	</script>
-	
-<script type="text/javascript">
-		function showTime(){
-			var a_p = "";
-			var today = new Date();
-			var curr_hour = today.getHours();
-			var curr_minute = today.getMinutes();
-			var curr_second = today.getSeconds();
-
-			// if (curr_hour<12) {
-			// 	a_p = "AM";
-			// }else {
-			// 	a_p = "PM";
-			// }
-
-			// if (curr_hour == 0) {
-			// 	curr_hour=12;
-			// }
-			// if (curr_hour == 12) {
-			// 	curr_hour=curr_hour-12;
-			// }
-			curr_hour = checkTime(curr_hour);
-			curr_minute = checkTime(curr_minute);
-			curr_second = checkTime(curr_second);
-
-			document.getElementById('time').innerHTML= curr_hour+":"+curr_minute+":"+curr_second+" "+a_p;
-		}
-
-		function checkTime(i){
-			if (i<10) {
-				i = "0"+i;
-			}
-			return i;
-		}
-		setInterval(showTime,500);
-	</script>
-	<script>var base_url = '<?= base_url() ?>';</script>
->>>>>>> ce0ed2837432b5f6ed79cdd008cc376f95531d1c
 	<script src="<?= base_url(THEME_PATH); ?>vendor/jquery/jquery-3.2.1.min.js"></script>
 	<script src="<?= base_url(THEME_PATH); ?>vendor/animsition/js/animsition.min.js"></script>
 	<script src="<?= base_url(THEME_PATH); ?>vendor/bootstrap/js/popper.js"></script>
@@ -228,7 +170,6 @@
 	<script src="<?= base_url(THEME_PATH); ?>vendor/daterangepicker/moment.min.js"></script>
 	<script src="<?= base_url(THEME_PATH); ?>vendor/daterangepicker/daterangepicker.js"></script>
 	<script src="<?= base_url(THEME_PATH); ?>vendor/countdowntime/countdowntime.js"></script>
-	<script src="<?= base_url(THEME_PATH); ?>dist/js/pages/absenqr/screen.js"></script>
 	<script src="<?= base_url(THEME_PATH); ?>js/main.js"></script>
 </body>
 </html>
