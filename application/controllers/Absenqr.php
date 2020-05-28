@@ -39,7 +39,7 @@ class Absenqr extends MY_Controller {
 		}
 
 		// tidak perlu pengecekan session
-		$this->load->view('absenqr/index');
+		$this->load->view('absenqr/V_screen');
 	}
 
 	function ajax_update_qr(){

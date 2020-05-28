@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login V18</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	<link rel="icon" type="image/png" href="<?= base_url(''); ?>assets/images/icons/favicon.ico"/>
-	<link rel="stylesheet" type="text/css" href="<?= base_url(''); ?>assets/vendor/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="<?= base_url(''); ?>assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="<?= base_url(''); ?>assets/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-	<link rel="stylesheet" type="text/css" href="<?= base_url(''); ?>assets/vendor/animate/animate.css">
-	<link rel="stylesheet" type="text/css" href="<?= base_url(''); ?>assets/vendor/css-hamburgers/hamburgers.min.css">
-	<link rel="stylesheet" type="text/css" href="<?= base_url(''); ?>assets/vendor/animsition/css/animsition.min.css">
-	<link rel="stylesheet" type="text/css" href="<?= base_url(''); ?>assets/vendor/select2/select2.min.css">
-	<link rel="stylesheet" type="text/css" href="<?= base_url(''); ?>assets/vendor/daterangepicker/daterangepicker.css">
-	<link rel="stylesheet" type="text/css" href="<?= base_url(''); ?>assets/css/util.css">
-	<link rel="stylesheet" type="text/css" href="<?= base_url(''); ?>assets/css/main.css">
+	<title><?php echo (isset($page_title)) ? $page_title.' - '.APP_NAME : APP_NAME ?></title>
+
+	<link rel="icon" href="<?php echo base_url(THEME_PATH) ?>favicon.ico">
+	<link rel="stylesheet" type="text/css" href="<?= base_url(THEME_PATH); ?>vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="<?= base_url(THEME_PATH); ?>fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="<?= base_url(THEME_PATH); ?>fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+	<link rel="stylesheet" type="text/css" href="<?= base_url(THEME_PATH); ?>vendor/animate/animate.css">
+	<link rel="stylesheet" type="text/css" href="<?= base_url(THEME_PATH); ?>vendor/css-hamburgers/hamburgers.min.css">
+	<link rel="stylesheet" type="text/css" href="<?= base_url(THEME_PATH); ?>vendor/animsition/css/animsition.min.css">
+	<link rel="stylesheet" type="text/css" href="<?= base_url(THEME_PATH); ?>vendor/select2/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="<?= base_url(THEME_PATH); ?>vendor/daterangepicker/daterangepicker.css">
+	<link rel="stylesheet" type="text/css" href="<?= base_url(THEME_PATH); ?>css/util.css">
+	<link rel="stylesheet" type="text/css" href="<?= base_url(THEME_PATH); ?>css/main.css">
 </head>
 <body style="background-color: #666666;">
 	
@@ -31,7 +31,7 @@
 					</span>
 					
 					<div class="text-center">
-						<table class="table fixed_header">
+						<table class="table table-condensed fixed_header">
 							<thead>
 								<tr>
 									<th scope="col">#</th>
@@ -44,70 +44,70 @@
 							<tbody>
 				                <tr>
 				                  <th scope="row">1</th>
-				                  <td><img src="<?= base_url(''); ?>assets/images/user.png" alt="Image" width="70px"></td>
+				                  <td><img src="<?= base_url(THEME_PATH); ?>images/user.png" alt="Image" width="70px"></td>
 				                  <td><small><b>Bagus Navyan Putra</b></small><br><small>(Manager Pengembangan Teknologi Informasi)</small></td>
 				                  <td>xxxxxxx</td>
 				                  <td>07.00</td>
 				                </tr>
 				                <tr>
 				                  <th scope="row">2</th>
-				                  <td><img src="<?= base_url(''); ?>assets/images/user.png" alt="Image" width="70px"></td>
+				                  <td><img src="<?= base_url(THEME_PATH); ?>images/user.png" alt="Image" width="70px"></td>
 				                  <td><small><b>Bagus Navyan Putra</b></small><br><small>(Manager Pengembangan Teknologi Informasi)</small></td>
 				                  <td>xxxxxxx</td>
 				                  <td>07.00</td>
 				                </tr>
 				                <tr>
 				                  <th scope="row">3</th>
-				                  <td><img src="<?= base_url(''); ?>assets/images/user.png" alt="Image" width="70px"></td>
+				                  <td><img src="<?= base_url(THEME_PATH); ?>images/user.png" alt="Image" width="70px"></td>
 				                  <td><small><b>Bagus Navyan Putra</b></small><br><small>(Manager Pengembangan Teknologi Informasi)</small></td>
 				                  <td>xxxxxxx</td>
 				                  <td>07.00</td>
 				                </tr>
 				                <tr>
 				                  <th scope="row">4</th>
-				                  <td><img src="<?= base_url(''); ?>assets/images/user.png" alt="Image" width="70px"></td>
+				                  <td><img src="<?= base_url(THEME_PATH); ?>images/user.png" alt="Image" width="70px"></td>
 				                  <td><small><b>Bagus Navyan Putra</b></small><br><small>(Manager Pengembangan Teknologi Informasi)</small></td>
 				                  <td>xxxxxxx</td>
 				                  <td>07.00</td>
 				                </tr>
 				                <tr>
 				                  <th scope="row">5</th>
-				                  <td><img src="<?= base_url(''); ?>assets/images/user.png" alt="Image" width="70px"></td>
+				                  <td><img src="<?= base_url(THEME_PATH); ?>images/user.png" alt="Image" width="70px"></td>
 				                  <td><small><b>Bagus Navyan Putra</b></small><br><small>(Manager Pengembangan Teknologi Informasi)</small></td>
 				                  <td>xxxxxxx</td>
 				                  <td>07.00</td>
 				                </tr>
 				                <tr>
 				                  <th scope="row">6</th>
-				                  <td><img src="<?= base_url(''); ?>assets/images/user.png" alt="Image" width="70px"></td>
+				                  <td><img src="<?= base_url(THEME_PATH); ?>images/user.png" alt="Image" width="70px"></td>
 				                  <td><small><b>Bagus Navyan Putra</b></small><br><small>(Manager Pengembangan Teknologi Informasi)</small></td>
 				                  <td>xxxxxxx</td>
 				                  <td>07.00</td>
 				                </tr>
 				                <tr>
 				                  <th scope="row">7</th>
-				                  <td><img src="<?= base_url(''); ?>assets/images/user.png" alt="Image" width="70px"></td>
+				                  <td><img src="<?= base_url(THEME_PATH); ?>images/user.png" alt="Image" width="70px"></td>
 				                  <td><small><b>Bagus Navyan Putra</b></small><br><small>(Manager Pengembangan Teknologi Informasi)</small></td>
 				                  <td>xxxxxxx</td>
 				                  <td>07.00</td>
 				                </tr>
 				                <tr>
 				                  <th scope="row">8</th>
-				                  <td><img src="<?= base_url(''); ?>assets/images/user.png" alt="Image" width="70px"></td>
+				                  <td><img src="<?= base_url(THEME_PATH); ?>images/user.png" alt="Image" width="70px"></td>
 				                  <td><small><b>Bagus Navyan Putra</b></small><br><small>(Manager Pengembangan Teknologi Informasi)</small></td>
 				                  <td>xxxxxxx</td>
 				                  <td>07.00</td>
 				                </tr>
 				                <tr>
 				                  <th scope="row">9</th>
-				                  <td><img src="<?= base_url(''); ?>assets/images/user.png" alt="Image" width="70px"></td>
+				                  <td><img src="<?= base_url(THEME_PATH); ?>images/user.png" alt="Image" width="70px"></td>
 				                  <td><small><b>Bagus Navyan Putra</b></small><br><small>(Manager Pengembangan Teknologi Informasi)</small></td>
 				                  <td>xxxxxxx</td>
 				                  <td>07.00</td>
 				                </tr>
 				                <tr>
 				                  <th scope="row">10</th>
-				                  <td><img src="<?= base_url(''); ?>assets/images/user.png" alt="Image" width="70px"></td>
+				                  <td><img src="<?= base_url(THEME_PATH); ?>images/user.png" alt="Image" width="70px"></td>
 				                  <td><small><b>Bagus Navyan Putra</b></small><br><small>(Manager Pengembangan Teknologi Informasi)</small></td>
 				                  <td>xxxxxxx</td>
 				                  <td>07.00</td>
@@ -117,7 +117,7 @@
 					</div>
 				</form>
 
-				<div class="login100-more" style="background-image: url('<?= base_url(''); ?>assets/images/5.jpg');">
+				<div class="login100-more" style="background-image: url('<?= base_url(THEME_PATH); ?>images/5.jpg');">
 					<div class="row">&nbsp;</div>
 					<span class="login100-form-title p-b-25">
 						<h1><b style="color: rgba(255, 255, 255, 0.8); ">
@@ -139,7 +139,7 @@
 						</h5></div>
 					<div class="row">
 						<div class="col align-self-center">
-							<center><img src="<?= base_url(''); ?>assets/images/qr-code.png" alt="Image" class="img-fluid" width="55%"></center></div>
+							<center><img src="<?= base_url(THEME_PATH); ?>images/qr-code.png" alt="Image" class="img-fluid" width="55%"></center></div>
 						</div>
 					</div>
 					
@@ -198,14 +198,14 @@
 		setInterval(showTime,500);
 	</script>
 	
-	<script src="<?= base_url(''); ?>assets/vendor/jquery/jquery-3.2.1.min.js"></script>
-	<script src="<?= base_url(''); ?>assets/vendor/animsition/js/animsition.min.js"></script>
-	<script src="<?= base_url(''); ?>assets/vendor/bootstrap/js/popper.js"></script>
-	<script src="<?= base_url(''); ?>assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script src="<?= base_url(''); ?>assets/vendor/select2/select2.min.js"></script>
-	<script src="<?= base_url(''); ?>assets/vendor/daterangepicker/moment.min.js"></script>
-	<script src="<?= base_url(''); ?>assets/vendor/daterangepicker/daterangepicker.js"></script>
-	<script src="<?= base_url(''); ?>assets/vendor/countdowntime/countdowntime.js"></script>
-	<script src="<?= base_url(''); ?>assets/js/main.js"></script>
+	<script src="<?= base_url(THEME_PATH); ?>vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="<?= base_url(THEME_PATH); ?>vendor/animsition/js/animsition.min.js"></script>
+	<script src="<?= base_url(THEME_PATH); ?>vendor/bootstrap/js/popper.js"></script>
+	<script src="<?= base_url(THEME_PATH); ?>vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="<?= base_url(THEME_PATH); ?>vendor/select2/select2.min.js"></script>
+	<script src="<?= base_url(THEME_PATH); ?>vendor/daterangepicker/moment.min.js"></script>
+	<script src="<?= base_url(THEME_PATH); ?>vendor/daterangepicker/daterangepicker.js"></script>
+	<script src="<?= base_url(THEME_PATH); ?>vendor/countdowntime/countdowntime.js"></script>
+	<script src="<?= base_url(THEME_PATH); ?>js/main.js"></script>
 </body>
 </html>
