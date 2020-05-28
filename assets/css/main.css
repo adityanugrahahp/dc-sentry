@@ -1,7 +1,6 @@
 
 
 
-
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]*/
 
@@ -645,4 +644,43 @@ input.input100 {
   padding: 5px;
   text-align: left;
   /*width: 200px;*/
+}
+
+#footer {
+  height: 40px;
+  background-color: #5bd1e3;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+
+
+#wrap > .container {
+  padding: 60px 15px 0;
+}
+.container .credit {
+  margin: 20px 0;
+}
+
+#footer > .container {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#footer {
+  position: fixed;
+    width: 100%;
+    display: block;
+    padding: 8px;
+    bottom: 0;
+}
+
+.center{
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    background:red;
+    top:calc(50% - 50px/2); /* height divided by 2*/
+    left:calc(50% - 50px/2); /* width divided by 2*/
 }
