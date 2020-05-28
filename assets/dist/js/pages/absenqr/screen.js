@@ -6,6 +6,9 @@ var days        = ['Senin','Selasa','Rabu','Kamis','Jumat','Sabtu','Minggu'];
 const refreshQRInterval = 1000; // 1 detik
 
 $(document).ready(function () {
+    // set to fullscreen
+    _switchFullScreen();
+
     // standard time
     setInterval(_showDateTime, 1000);
 
@@ -29,6 +32,20 @@ function _get_new_qr(){
             next_update = new Date(d.data.next_request);
         }
     });
+}
+
+function _switchFullScreen() {
+    var elem = document.documentElement;
+
+    if(elem.requestFullscreen) {
+        elem.requestFullscreen();
+    }else if (elem.mozRequestFullScreen) { /* Firefox */
+        elem.mozRequestFullScreen();
+    }else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+        elem.webkitRequestFullscreen();
+    }else if (elem.msRequestFullscreen) { /* IE/Edge */
+        elem.msRequestFullscreen();
+    }
 }
 
 function _showDateTime(){
