@@ -150,7 +150,12 @@
 						</h5></div>
 					<div class="row">
 						<div class="col align-self-center">
-							<center><img src="<?= base_url(THEME_PATH); ?>images/qr-code.png" alt="QR Code" class="img-fluid img-qr" width="50%"></center></div>
+							<center><img src="<?= base_url(THEME_PATH); ?>images/qr-code.png" alt="QR Code" class="img-fluid img-qr" width="45%"></center></div>
+						</div>	
+						<div id="footer">
+				  			<div class="container">
+								<marquee><h4>CUCI TANGAN PAKAI SABUN</h4></marquee>
+							</div>
 						</div>
 
 					</div>
