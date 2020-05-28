@@ -27,7 +27,8 @@ class Absenqr extends MY_Controller {
 
 	public function screen($screen_id = null, $screen_name = null, $access = null){
 		
-		$is_valid = false;
+		$is_valid 	= false;
+		$s_name 	= 'N/A';
 
 		// validasi id, nama dan akses layarnya
 		if($screen_id && $screen_name && $access){
@@ -36,6 +37,8 @@ class Absenqr extends MY_Controller {
 				// cek apakah judulnya benar?
 				if(url_title($db[0]->nama_layar_qr, '-', true) == $screen_name){
 					$is_valid = true;
+
+					$s_name = $db[0]->nama_layar_qr;
 				}
 			}
 		}
@@ -44,8 +47,10 @@ class Absenqr extends MY_Controller {
 			show_error('The page you are trying to access is invalid or you don\'t have sufficient permission level.', 401, 'Invalid Request');
 		}
 
-		// tidak perlu pengecekan session
-		$this->load->view('absenqr/V_screen');
+		$data['nama']		= $s_name;
+		$data['screen_id']	= $screen_id;
+		
+		$this->load->view('absenqr/V_screen', $data);
 	}
 
 	function ajax_generate_qr($screen_id = null){

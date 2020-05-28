@@ -1,48 +1,58 @@
-var months = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
-		var days = ['Senin','Selasa','Rabu','Kamis','Jumat','Sabtu','Minggu'];
-		
-		var date = new Date();
-		var n = date.getDay();
-		var day = date.getDate();
-		var month = date.getMonth();
-		var year = new Date().getFullYear();
+var module_url  = base_url + 'absenqr';
+var next_update = null;
+var months      = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+var days        = ['Senin','Selasa','Rabu','Kamis','Jumat','Sabtu','Minggu'];
 
-// $(document).ready(function () {
-	document.getElementById("date").innerHTML=days[n-1]+", "+" "+day+" "+months[month]+" "+year;	
-// });
+const refreshQRInterval = 1000; // 1 detik
 
+$(document).ready(function () {
+    // standard time
+    setInterval(_showDateTime, 1000);
 
+    // generate QR
+	setInterval(function(){
+        date_now = new Date();
+        if(date_now >= next_update || next_update == null){
+            _get_new_qr();
 
-function showTime(){
-			var a_p = "";
-			var today = new Date();
-			var curr_hour = today.getHours();
-			var curr_minute = today.getMinutes();
-			var curr_second = today.getSeconds();
+            console.info('Next Update:', next_update);
+        }
+    }, refreshQRInterval);
+});
 
-			// if (curr_hour<12) {
-			// 	a_p = "AM";
-			// }else {
-			// 	a_p = "PM";
-			// }
+// update qr secara berkala (tanpa aktivitas pegawai)
+function _get_new_qr(){
+    $.get(module_url + '/ajax_generate_qr/' + screen_id, function(d){
+        if(d.status){
+            // update tampilan qrcode di screen
+            $('.img-qr').attr('src', d.data.qr);
+            next_update = new Date(d.data.next_request);
+        }
+    });
+}
 
-			// if (curr_hour == 0) {
-			// 	curr_hour=12;
-			// }
-			// if (curr_hour == 12) {
-			// 	curr_hour=curr_hour-12;
-			// }
-			curr_hour = checkTime(curr_hour);
-			curr_minute = checkTime(curr_minute);
-			curr_second = checkTime(curr_second);
+function _showDateTime(){
+    
+    var today       = new Date();
+    var curr_hour   = today.getHours();
+    var curr_minute = today.getMinutes();
+    var curr_second = today.getSeconds();
 
-			document.getElementById('time').innerHTML= curr_hour+":"+curr_minute+":"+curr_second+" "+a_p;
-		}
+    var n       = today.getDay();
+    var day     = today.getDate();
+    var month   = today.getMonth();
+    var year    = today.getFullYear();
 
-function checkTime(i){
-		if (i<10) {
-			i = "0"+i;
-		}
-		return i;
-		}
-setInterval(showTime,500);
+    curr_hour   = _addZero(curr_hour);
+    curr_minute = _addZero(curr_minute);
+    curr_second = _addZero(curr_second);
+
+    $('#time').html(curr_hour + ":" + curr_minute + ":" + curr_second);
+    $("#date").html(days[n-1]+", " + " " + _addZero(day) + " " + months[month] + " " + year);	
+}
+
+function _addZero(i){
+    if (i < 10) { i = "0" + i; }
+
+    return i;
+}

@@ -23,8 +23,8 @@
   		.login100-form {
   			width: 460px;
   			background-color: #fff;
+			padding: 20px 15px 5px 15px;
   		}
-
 	</style>
 </head>
 <body style="background-color: #666666;">	
@@ -34,10 +34,11 @@
 				<form class="login100-form validate-form">
 					<p><center>
 						<img src="<?= base_url(THEME_PATH); ?>images/logo_head.png" alt="Image" width="70px">
-						<h4>PT.Pelayaran Nasional Indonesia (Persero)</h4>
+						<h5>PT.Pelayaran Nasional Indonesia (Persero)</h5>
 					</center></p>
-					<span class="login100-form-title p-b-25">
-						<h3><b>Absensi Pegawai</b></h3>
+					<span class="login100-form-title p-b-15 p-t-10">
+						<h4><b>Absensi Pegawai</b></h4>
+						<hr style="padding:0;margin-top:20px">
 					</span>
 					
 					<div class="text-center">
@@ -130,9 +131,7 @@
 				<div class="login100-more" style="background-image: url('<?= base_url(THEME_PATH); ?>images/5.jpg');">
 					<div class="row">&nbsp;</div>
 					<span class="login100-form-title p-b-25">
-						<h1><b style="color: rgba(255, 255, 255, 0.8); ">
-							#DISPLAY NAME#							
-						</b></h1>
+						<h1><b style="color: rgba(255, 255, 255, 0.8);"><?= $nama ?></b></h1>
 						<h4 style="color: rgba(255, 255, 255, 0.8); " id="date"></h4>
 						<h5 class="col align-self-center">
 							<b style="color: rgba(255, 255, 255, 0.8); ">
@@ -151,7 +150,7 @@
 						</h5></div>
 					<div class="row">
 						<div class="col align-self-center">
-							<center><img src="<?= base_url(THEME_PATH); ?>images/qr-code.png" alt="Image" class="img-fluid" width="50%"></center></div>
+							<center><img src="<?= base_url(THEME_PATH); ?>images/qr-code.png" alt="QR Code" class="img-fluid img-qr" width="50%"></center></div>
 						</div>
 
 					</div>
@@ -161,7 +160,10 @@
 		</div>
 	</div>
 
-	<script src="<?= base_url(THEME_PATH); ?>dist/js/pages/absenqr/screen.js"></script>
+	<script>
+		var base_url 	= '<?= base_url() ?>';
+		var screen_id	= '<?= $screen_id ?>'
+	</script>
 	<script src="<?= base_url(THEME_PATH); ?>vendor/jquery/jquery-3.2.1.min.js"></script>
 	<script src="<?= base_url(THEME_PATH); ?>vendor/animsition/js/animsition.min.js"></script>
 	<script src="<?= base_url(THEME_PATH); ?>vendor/bootstrap/js/popper.js"></script>
@@ -170,6 +172,7 @@
 	<script src="<?= base_url(THEME_PATH); ?>vendor/daterangepicker/moment.min.js"></script>
 	<script src="<?= base_url(THEME_PATH); ?>vendor/daterangepicker/daterangepicker.js"></script>
 	<script src="<?= base_url(THEME_PATH); ?>vendor/countdowntime/countdowntime.js"></script>
+	<script src="<?= base_url(THEME_PATH); ?>dist/js/pages/absenqr/screen.js"></script>
 	<script src="<?= base_url(THEME_PATH); ?>js/main.js"></script>
 </body>
 </html>
