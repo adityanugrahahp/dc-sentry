@@ -4,7 +4,7 @@
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]*/
 
-@font-face {
+/* @font-face {
   font-family: Poppins-Regular;
   src: url('../fonts/poppins/Poppins-Regular.ttf'); 
 }
@@ -22,7 +22,7 @@
 @font-face {
   font-family: Poppins-SemiBold;
   src: url('../fonts/poppins/Poppins-SemiBold.ttf'); 
-}
+} */
 
 @font-face {
   font-family: Montserrat-Bold;
@@ -51,12 +51,12 @@
 
 body, html {
   height: 100%;
-  font-family: Poppins-Regular, sans-serif;
+  font-family: Roboto, sans-serif;
 }
 
 /*---------------------------------------------*/
 a {
-  font-family: Poppins-Regular;
+  font-family: Roboto;
   font-size: 14px;
   line-height: 1.7;
   color: #666666;
@@ -82,7 +82,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 p {
-  font-family: Poppins-Regular;
+  font-family: Roboto;
   font-size: 14px;
   line-height: 1.7;
   color: #666666;
@@ -265,7 +265,7 @@ iframe {
 .login100-form-title {
   width: 100%;
   display: block;
-  font-family: Poppins-Regular;
+  font-family: Roboto;
   font-size: 30px;
   color: #333333;
   line-height: 1.2;
@@ -408,7 +408,7 @@ input.input100 {
 }
 
 .label-checkbox100 {
-  font-family: Poppins-Regular;
+  font-family: Roboto;
   font-size: 13px;
   color: #999999;
   line-height: 1.4;
@@ -557,7 +557,7 @@ input.input100 {
   right: 12px;
   pointer-events: none;
 
-  font-family: Poppins-Regular;
+  font-family: Roboto;
   color: #c80000;
   font-size: 13px;
   line-height: 1.4;
@@ -647,8 +647,8 @@ input.input100 {
 }
 
 #footer {
-  height: 40px;
-  background-color: #5bd1e3;
+  height: 30px;
+  background-color: #ffffff;
 }
 
 
@@ -664,16 +664,16 @@ input.input100 {
 }
 
 #footer > .container {
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 2px;
+  padding-right: 2px;
 }
 
 #footer {
   position: fixed;
-    width: 100%;
-    display: block;
-    padding: 8px;
-    bottom: 0;
+  width: 100%;
+  display: block;
+  padding: 4px;
+  bottom: 0;
 }
 
 .center{

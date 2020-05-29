@@ -16,6 +16,8 @@
 	<link rel="stylesheet" type="text/css" href="<?= base_url(THEME_PATH); ?>vendor/daterangepicker/daterangepicker.css">
 	<link rel="stylesheet" type="text/css" href="<?= base_url(THEME_PATH); ?>css/util.css">
 	<link rel="stylesheet" type="text/css" href="<?= base_url(THEME_PATH); ?>css/main.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
 	<style type="text/css">
 		.login100-more {
   			width: calc(100% - 460px);
@@ -34,98 +36,13 @@
 				<form class="login100-form validate-form">
 					<p><center>
 						<img src="<?= base_url(THEME_PATH); ?>images/logo_head.png" alt="Image" width="70px">
-						<h5>PT.Pelayaran Nasional Indonesia (Persero)</h5>
+						<h5>PT. Pelayaran Nasional Indonesia (Persero)</h5>
 					</center></p>
 					<span class="login100-form-title p-b-15 p-t-10">
 						<h4><b>Absensi Pegawai</b></h4>
 						<hr style="padding:0;margin-top:20px">
 					</span>
-					
-					<div class="text-center">
-						<table class="table-condensed fixed_header">
-							<thead>
-								<tr>
-									<th width="50px" scope="col">#</th>
-					                <!-- <th scope="col">Image</th> -->
-					                <th width="200px" scope="col">Nama Lengkap</th>
-					                <th width="200px" scope="col"><center>NRP</center></th>
-					                <th width="200px" scope="col">Time</th>
-								</tr>
-							</thead>
-							<tbody>
-				                <tr>
-				                  <th width="50px" scope="row">1</th>
-				                  <!-- <td><img src="<?= base_url(THEME_PATH); ?>images/user.png" alt="Image" width="70px"></td> -->
-				                  <td width="200px"><small><b>Bagus Navyan Putra</b></small><br><small>(Manager Pengembangan Teknologi Informasi)</small></td>
-				                  <td width="200px">xxxxxxx</td>
-				                  <td width="200px">07.00</td>
-				                </tr>
-				                <tr>
-				                  <th scope="row">2</th>
-				                  <!-- <td><img src="<?= base_url(THEME_PATH); ?>images/user.png" alt="Image" width="70px"></td> -->
-				                  <td width="200px"><small><b>Bagus Navyan Putra</b></small><br><small>(Manager Pengembangan Teknologi Informasi)</small></td>
-				                  <td width="200px">xxxxxxx</td>
-				                  <td width="200px">07.00</td>
-				                </tr>
-				                <tr>
-				                  <th scope="row">3</th>
-				                  <!-- <td><img src="<?= base_url(THEME_PATH); ?>images/user.png" alt="Image" width="70px"></td> -->
-				                  <td width="200px"><small><b>Bagus Navyan Putra</b></small><br><small>(Manager Pengembangan Teknologi Informasi)</small></td>
-				                  <td width="200px">xxxxxxx</td>
-				                  <td width="200px">07.00</td>
-				                </tr>
-				                <tr>
-				                  <th scope="row">4</th>
-				                  <!-- <td><img src="<?= base_url(THEME_PATH); ?>images/user.png" alt="Image" width="70px"></td> -->
-				                  <td width="200px"><small><b>Bagus Navyan Putra</b></small><br><small>(Manager Pengembangan Teknologi Informasi)</small></td>
-				                  <td width="200px">xxxxxxx</td>
-				                  <td width="200px">07.00</td>
-				                </tr>
-				                <tr>
-				                  <th scope="row">5</th>
-				                  <!-- <td><img src="<?= base_url(THEME_PATH); ?>images/user.png" alt="Image" width="70px"></td> -->
-				                  <td width="200px"><small><b>Bagus Navyan Putra</b></small><br><small>(Manager Pengembangan Teknologi Informasi)</small></td>
-				                  <td width="200px">xxxxxxx</td>
-				                  <td width="200px">07.00</td>
-				                </tr>
-				                <tr>
-				                  <th scope="row">6</th>
-				                  <!-- <td><img src="<?= base_url(THEME_PATH); ?>images/user.png" alt="Image" width="70px"></td> -->
-				                  <td width="200px"><small><b>Bagus Navyan Putra</b></small><br><small>(Manager Pengembangan Teknologi Informasi)</small></td>
-				                  <td width="200px">xxxxxxx</td>
-				                  <td width="200px">07.00</td>
-				                </tr>
-				                <tr>
-				                  <th scope="row">7</th>
-				                  <!-- <td><img src="<?= base_url(THEME_PATH); ?>images/user.png" alt="Image" width="70px"></td> -->
-				                  <td width="200px"><small><b>Bagus Navyan Putra</b></small><br><small>(Manager Pengembangan Teknologi Informasi)</small></td>
-				                  <td width="200px">xxxxxxx</td>
-				                  <td width="200px">07.00</td>
-				                </tr>
-				                <tr>
-				                  <th scope="row">8</th>
-				                  <!-- <td><img src="<?= base_url(THEME_PATH); ?>images/user.png" alt="Image" width="70px"></td> -->
-				                  <td width="200px"><small><b>Bagus Navyan Putra</b></small><br><small>(Manager Pengembangan Teknologi Informasi)</small></td>
-				                  <td width="200px">xxxxxxx</td>
-				                  <td width="200px">07.00</td>
-				                </tr>
-				                <tr>
-				                  <th scope="row">9</th>
-				                  <!-- <td><img src="<?= base_url(THEME_PATH); ?>images/user.png" alt="Image" width="70px"></td> -->
-				                  <td width="200px"><small><b>Bagus Navyan Putra</b></small><br><small>(Manager Pengembangan Teknologi Informasi)</small></td>
-				                  <td width="200px">xxxxxxx</td>
-				                  <td width="200px">07.00</td>
-				                </tr>
-				                <tr>
-				                  <th scope="row">10</th>
-				                  <!-- <td><img src="<?= base_url(THEME_PATH); ?>images/user.png" alt="Image" width="70px"></td> -->
-				                  <td width="200px"><small><b>Bagus Navyan Putra</b></small><br><small>(Manager Pengembangan Teknologi Informasi)</small></td>
-				                  <td width="200px">xxxxxxx</td>
-				                  <td width="200px">07.00</td>
-				                </tr>
-				              </tbody>
-						</table>
-					</div>
+					<div class="table-res"></div>
 				</form>
 
 				<div class="login100-more" style="background-image: url('<?= base_url(THEME_PATH); ?>images/5.jpg');">
@@ -147,19 +64,18 @@
 							<b style="color: rgba(255, 255, 255, 0.8); ">
 								<center>(SCAN DISINI UNTUK ABSENSI)</center><br>
 							</b>
-						</h5></div>
+						</h5>
+					</div>
+					<? if($pesan){ ?>
 					<div class="row">
 						<div class="col align-self-center">
 							<center><img src="<?= base_url(THEME_PATH); ?>images/qr-code.png" alt="QR Code" class="img-fluid img-qr" width="45%"></center></div>
 						</div>	
 						<div id="footer">
-				  			<div class="container">
-								<marquee><h4>CUCI TANGAN PAKAI SABUN</h4></marquee>
-							</div>
+							<marquee><b style="font-size:14px"><?= $pesan ?></b></marquee>
 						</div>
-
 					</div>
-					
+					<? } ?>
 				</div>
 			</div>
 		</div>

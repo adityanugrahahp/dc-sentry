@@ -9,14 +9,17 @@ $(document).ready(function () {
     // set to fullscreen
     _switchFullScreen();
 
-    // standard time
-    setInterval(_showDateTime, 1000);
+    // standard time & attendance
+    setInterval(function(){
+        _showDateTime();
+    }, 1000);
 
     // generate QR
 	setInterval(function(){
         date_now = new Date();
         if(date_now >= next_update || next_update == null){
             _get_new_qr();
+            _get_attendances();
 
             console.info('Next Update:', next_update);
         }
@@ -30,6 +33,16 @@ function _get_new_qr(){
             // update tampilan qrcode di screen
             $('.img-qr').attr('src', d.data.qr);
             next_update = new Date(d.data.next_request);
+        }
+    });
+}
+
+// fetch data user yang sudah melakukan absensi
+function _get_attendances(){
+    $.post(module_url + '/ajax_get_latest_attendee', {display_id:screen_id}, function(d){
+        if(d.status){
+            // render tabel
+            $('.table-res').html(d.data);
         }
     });
 }
