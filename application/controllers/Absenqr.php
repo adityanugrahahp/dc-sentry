@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Absenqr extends MY_Controller {
 
-	protected $durasi_expired = 5; // satuan dalam detik
+	protected $durasi_expired = 4; // satuan dalam detik
 
 	function __construct(){
 		parent::__construct();
