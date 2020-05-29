@@ -2,7 +2,7 @@
 
 class Absenqr extends MY_Controller {
 
-	protected $durasi_expired = 4; // satuan dalam detik
+	protected $durasi_expired = 5; // satuan dalam detik
 
 	function __construct(){
 		parent::__construct();
@@ -30,6 +30,12 @@ class Absenqr extends MY_Controller {
 		$is_valid 	= false;
 		$s_name 	= 'N/A';
 		$s_pesan 	= null;
+
+		// cek apakah referrernya benar? bila tidak tampilkan error
+		$ref = str_replace(base_url(), null, $this->agent->referrer());
+		if($ref != 'absenqr'){
+			redirect('login');
+		}
 
 		// validasi id, nama dan akses layarnya
 		if($screen_id && $screen_name && $access){

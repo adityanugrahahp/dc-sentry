@@ -4,8 +4,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Login extends CI_Controller {
 
 	public function index(){
-		$this->load->view('layouts/V_login');
-		
+		if(! isset($_SESSION['locationID'])){
+			// belum login
+			$this->load->view('layouts/V_login');
+		}else{
+			redirect('home');
+		}
 	}
 
 	public function login_action()
@@ -57,6 +61,7 @@ class Login extends CI_Controller {
 		unset($_SESSION['loket_name']);
 		unset($_SESSION['role']);
 		session_destroy();
-                redirect('Login');
+		
+		redirect('login');
 	}
 }

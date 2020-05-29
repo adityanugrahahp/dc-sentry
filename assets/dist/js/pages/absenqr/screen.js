@@ -19,7 +19,7 @@ $(document).ready(function () {
         date_now = new Date();
         if(date_now >= next_update || next_update == null){
             _get_new_qr();
-            _get_attendances();
+            // _get_attendances();
 
             console.info('Next Update:', next_update);
         }
