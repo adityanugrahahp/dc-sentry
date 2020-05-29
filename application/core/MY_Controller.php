@@ -20,12 +20,3 @@ class Management_Controller extends MY_Controller {
         parent::__construct();
     }
 }
-
-// untuk subclass tanpa pengecekan login
-class Kiosk_Controller extends MY_Controller {
-
-    /** Cnstructor */
-    public function __construct(){
-        parent::__construct();
-    }
-}
