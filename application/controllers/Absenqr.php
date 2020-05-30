@@ -10,6 +10,9 @@ class Absenqr extends MY_Controller {
 		// load library
 		$this->load->library(['user_agent', 'table']);
 
+		// load driver for caching
+        $this->load->driver('cache', ['adapter' => 'redis', 'key_prefix' => 'absenqr_']);
+
 		// load models
 		$this->load->model('M_absenqr');
 	}
@@ -243,7 +246,26 @@ class Absenqr extends MY_Controller {
         }
 
         $this->output->set_content_type('application/json')->set_output(json_encode(compact('status')));
-    }
+	}
+	
+	// untuk memeriksa apakah ada qr yg discan dan digunakan untuk generate QR baru
+	function ajax_get_trigger($screen_id = null){
+		
+		$status = false;
+
+		if($this->cache->redis->is_supported()){
+            $is_new = $this->cache->get('display_'.$screen_id);
+            if($is_new){
+				// set status menjadi true
+				$status = true;
+
+				// delete content redis
+				$this->cache->delete('display_'.$screen_id);
+			}
+			
+			$this->output->set_content_type('application/json')->set_output(json_encode(compact('status')));
+        }
+	}
 
 	// PRIVATE FUNCTIONS
 	function _verify_access(){

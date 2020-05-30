@@ -3,7 +3,8 @@ var next_update = null;
 var months      = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
 var days        = ['Senin','Selasa','Rabu','Kamis','Jumat','Sabtu','Minggu'];
 
-const refreshQRInterval = 1000; // 1 detik
+const refreshQRInterval     = 1000; // 1 detik
+const checkNewScanInterval  = 1000; // 1 detik
 
 $(document).ready(function () {
     // set to fullscreen
@@ -19,11 +20,15 @@ $(document).ready(function () {
         date_now = new Date();
         if(date_now >= next_update || next_update == null){
             _get_new_qr();
-            // _get_attendances();
+            _get_attendances();
 
-            console.info('Next Update:', next_update);
         }
     }, refreshQRInterval);
+
+    // trigger checker
+    setInterval(function(){
+        _get_trigger();
+    }, checkNewScanInterval);
 });
 
 // update qr secara berkala (tanpa aktivitas pegawai)
@@ -43,6 +48,16 @@ function _get_attendances(){
         if(d.status){
             // render tabel
             $('.table-res').html(d.data);
+        }
+    });
+}
+
+// mendapatkan trigger apabila qr code sudah direfresh
+function _get_trigger(){
+    $.get(module_url + '/ajax_get_trigger/' + screen_id, function(d){
+        if(d.status){
+            _get_new_qr();
+            console.info('Someone has scanned');
         }
     });
 }
