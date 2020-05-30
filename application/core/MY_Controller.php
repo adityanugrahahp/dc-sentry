@@ -18,5 +18,9 @@ class Management_Controller extends MY_Controller {
     /** Constructor */
     public function __construct(){
         parent::__construct();
+
+        if(! isset($_SESSION['userID'])){
+            redirect('login');
+        }
     }
 }

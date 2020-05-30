@@ -2,13 +2,16 @@
 
 class Absenqr extends MY_Controller {
 
-	protected $durasi_expired = 4; // satuan dalam detik
+	protected $durasi_expired = 5; // satuan dalam detik
 
 	function __construct(){
 		parent::__construct();
 
 		// load library
 		$this->load->library(['user_agent', 'table']);
+
+		// load driver for caching
+        $this->load->driver('cache', ['adapter' => 'redis', 'key_prefix' => 'absenqr_']);
 
 		// load models
 		$this->load->model('M_absenqr');
@@ -30,6 +33,12 @@ class Absenqr extends MY_Controller {
 		$is_valid 	= false;
 		$s_name 	= 'N/A';
 		$s_pesan 	= null;
+
+		// cek apakah referrernya benar? bila tidak tampilkan error
+		$ref = str_replace(base_url(), null, $this->agent->referrer());
+		if($ref != 'absenqr'){
+			redirect('login');
+		}
 
 		// validasi id, nama dan akses layarnya
 		if($screen_id && $screen_name && $access){
@@ -237,7 +246,26 @@ class Absenqr extends MY_Controller {
         }
 
         $this->output->set_content_type('application/json')->set_output(json_encode(compact('status')));
-    }
+	}
+	
+	// untuk memeriksa apakah ada qr yg discan dan digunakan untuk generate QR baru
+	function ajax_get_trigger($screen_id = null){
+		
+		$status = false;
+
+		if($this->cache->redis->is_supported()){
+            $is_new = $this->cache->get('display_'.$screen_id);
+            if($is_new){
+				// set status menjadi true
+				$status = true;
+
+				// delete content redis
+				$this->cache->delete('display_'.$screen_id);
+			}
+			
+			$this->output->set_content_type('application/json')->set_output(json_encode(compact('status')));
+        }
+	}
 
 	// PRIVATE FUNCTIONS
 	function _verify_access(){

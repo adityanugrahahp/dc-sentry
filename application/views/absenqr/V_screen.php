@@ -66,16 +66,16 @@
 							</b>
 						</h5>
 					</div>
-					<? if($pesan){ ?>
 					<div class="row">
 						<div class="col align-self-center">
 							<center><img src="<?= base_url(THEME_PATH); ?>images/qr-code.png" alt="QR Code" class="img-fluid img-qr" width="45%"></center></div>
 						</div>	
+						<? if($pesan){ ?>
 						<div id="footer">
 							<marquee><b style="font-size:14px"><?= $pesan ?></b></marquee>
 						</div>
+						<? } ?>
 					</div>
-					<? } ?>
 				</div>
 			</div>
 		</div>
