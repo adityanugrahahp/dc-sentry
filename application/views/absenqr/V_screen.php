@@ -100,5 +100,42 @@
 	<script src="<?= base_url(THEME_PATH); ?>dist/js/pages/absenqr/qrcode.min.js"></script>
 	<script src="<?= base_url(THEME_PATH); ?>dist/js/pages/absenqr/screen.js"></script>
 	<script src="<?= base_url(THEME_PATH); ?>js/main.js"></script>
+	<script>
+		var i = 0;
+		var img = ['4.jpg','5.jpg','6.jpg','7.jpg','8.jpg','9.jpg'];
+		var opacity = 1;
+		var incOpacity = 1; 
+		var delay = 1000;
+
+		// fungsi ganti gambar
+		function changeBg() {
+			opacity = 1;
+			incOpacity = 1;
+
+		    $('#FadeInOut').css("opacity", opacity);
+		    $('#FadeInOut').css("background-image", "url(<?= base_url(THEME_PATH); ?>images/background/" + img[i] + " )");
+
+		    i++;
+		    // cek if i = max
+		    if(i == img.length) {
+		        i = 0;
+		    }
+
+		    fadeIn();
+
+		    setTimeout(changeBg, 5000);
+		}
+		// fungsi effek fade 
+		function fadeIn() { 
+			opacity = incOpacity / delay; 
+			if(incOpacity <= delay) {
+				$('.header').css("opacity", opacity); 
+			    setTimeout(fadeIn, 100);
+			    incOpacity++; 
+			} 
+		}
+		        // inisialisai fungsi gambar
+		changeBg();
+	</script>
 </body>
 </html>

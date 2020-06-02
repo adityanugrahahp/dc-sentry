@@ -2,7 +2,7 @@ var qrcode;
 var module_url  = base_url + 'absenqr';
 var next_update = null;
 var months      = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
-var days        = ['Senin','Selasa','Rabu','Kamis','Jumat','Sabtu','Minggu'];
+var days        = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
 
 const refreshQRInterval     = 1000; // 1 detik
 const checkNewScanInterval  = 1000; // 1 detik
@@ -102,8 +102,8 @@ function _showDateTime(){
     curr_minute = _addZero(curr_minute);
     curr_second = _addZero(curr_second);
 
-    $('#time').html(curr_hour + ":" + curr_minute + ":" + curr_second);
-    $("#date").html(days[n-1]+", " + " " + _addZero(day) + " " + months[month] + " " + year);	
+    $('#time').html(curr_hour + ":" + curr_minute + ":" + curr_second + ' WIB');
+    $("#date").html(days[n]+", " + " " + _addZero(day) + " " + months[month] + " " + year);	
 }
 
 function _addZero(i){
