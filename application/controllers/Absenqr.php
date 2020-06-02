@@ -11,7 +11,7 @@ class Absenqr extends MY_Controller {
 		$this->load->library(['user_agent', 'table']);
 
 		// load driver for caching
-        $this->load->driver('cache', ['adapter' => 'redis', 'key_prefix' => 'absenqr_']);
+        $this->load->driver('cache', ['adapter' => 'redis']);
 
 		// load models
 		$this->load->model('M_absenqr');
