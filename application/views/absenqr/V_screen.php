@@ -48,10 +48,10 @@
 				<div class="login100-more" style="background-image: url('<?= base_url(THEME_PATH);?>images/background/4.jpg');">
 					<div class="row">&nbsp;</div>
 					<span class="login100-form-title p-b-25">
-						<h1><b style="color: rgba(255, 255, 255, 0.8);"><?= $nama ?></b></h1>
-						<h4 style="color: rgba(255, 255, 255, 0.8); " id="date"></h4>
+						<h1><b style="color: rgba(255, 255, 255, 5.8);"><?= $nama ?></b></h1>
+						<h4 style="color: rgba(255, 255, 255, 5.8); " id="date"></h4>
 						<h5 class="col align-self-center">
-							<b style="color: rgba(255, 255, 255, 0.8); ">
+							<b style="color: rgba(255, 255, 255, 5.8); ">
 								<center><h1 id="time"></h1></center>
 							</b>
 						</h5>
@@ -61,7 +61,7 @@
 					<!-- <div class="row">&nbsp;</div> -->
 					<div class="row">
 						<h5 class="col align-self-center">
-							<b style="color: rgba(255, 255, 255, 0.8); ">
+							<b style="color: rgba(255, 255, 255, 5.8); ">
 								<center>(SCAN DISINI UNTUK ABSENSI)</center><br>
 							</b>
 						</h5>
