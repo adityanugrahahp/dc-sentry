@@ -14,9 +14,7 @@ $(document).ready(function () {
 		"columns": [
 			{"data": "nama"},
 			{"data": "lokasi"},
-			{"data": "expired"},
 			{"data": "pesan"},
-			{"data": "jumlah_scan"},
 			{"data": "aksi"}
 		]
 	});

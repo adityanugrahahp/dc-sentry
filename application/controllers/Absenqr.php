@@ -72,15 +72,16 @@ class Absenqr extends MY_Controller {
 		$data 	= [];
 
 		// tanggal expired qr code
-		$public_key	= uniqid();
-		$date_exp 	= new DateTime('+'.$this->durasi_expired.' seconds');
-		$payload 	= [$date_exp->format('Y-m-d H:i:s'), $screen_id, uniqid()];
-		$e_payload	= encrypt(implode('|', $payload), $public_key);
-		$format_qr 	= implode(':', ['ABSENSI', $e_payload, $public_key]);
+		$public_key		= uniqid();
+		$date_exp 		= new DateTime('+'.$this->durasi_expired.' seconds');
+		$date_exp_js 	= new DateTime('+'.(($this->durasi_expired > 3) ? $this->durasi_expired - 2 : $this->durasi_expired).' seconds'); // added for js delay
+		$payload 		= [$date_exp->format('Y-m-d H:i:s'), $screen_id, uniqid()];
+		$e_payload		= encrypt(implode('|', $payload), $public_key);
+		$format_qr 		= implode(':', ['ABSENSI', $e_payload, $public_key]);
 
 		$data = [
-			'qr' 			=> QR_URL.$format_qr,
-			'next_request'	=> $date_exp->format('Y-m-d H:i:s')
+			'qr' 			=> $format_qr,
+			'next_request'	=> $date_exp_js->format('Y-m-d H:i:s')
 		];
 
 		$this->output->set_content_type('application/json')->set_output(json_encode(compact('status', 'data')));
@@ -155,9 +156,7 @@ class Absenqr extends MY_Controller {
 			$data[] = [
 				'nama' 			=> $v->nama_layar_qr,
 				'lokasi' 		=> '<center>'.$v->lokasi.'</center>',
-				'expired' 		=> '<center>'.date('d/m/Y - H:i', strtotime($v->tggl_expired)).'</center>',
 				'pesan' 		=> '<center>'.(($v->pesan_layar) ? '<i class="fa fa-check text-success fa-fw"></i>' : null).'</center>',
-				'jumlah_scan' 	=> '<center>'.$v->jumlah_scan.'</center>',
 				'aksi' 			=> '<center>'.implode(' ', $aksi).'</center>'
 			];
 		}

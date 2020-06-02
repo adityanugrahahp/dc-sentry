@@ -27,6 +27,10 @@
   			background-color: #fff;
 			padding: 20px 15px 5px 15px;
   		}
+		#img-qr img {
+			padding: 10px;
+			background: #FFF;
+		}
 	</style>
 </head>
 <body style="background-color: #666666;">	
@@ -42,16 +46,16 @@
 						<h4><b>Absensi Pegawai</b></h4>
 						<hr style="padding:0;margin-top:20px">
 					</span>
-					<div class="table-res"></div>
+					<div class="table-res"><center>Belum Ada Absen Pegawai</center></div>
 				</form>
 
-				<div class="login100-more" id="FadeInOut"">
+				<div class="login100-more" style="background-image: url('<?= base_url(THEME_PATH);?>images/background/4.jpg');">
 					<div class="row">&nbsp;</div>
 					<span class="login100-form-title p-b-25">
-						<h1><b style="color: rgba(255, 255, 255, 0.8);"><?= $nama ?></b></h1>
-						<h4 style="color: rgba(255, 255, 255, 0.8); " id="date"></h4>
+						<h1><b style="color: rgba(255, 255, 255, 5.8);"><?= $nama ?></b></h1>
+						<h4 style="color: rgba(255, 255, 255, 5.8); " id="date"></h4>
 						<h5 class="col align-self-center">
-							<b style="color: rgba(255, 255, 255, 0.8); ">
+							<b style="color: rgba(255, 255, 255, 5.8); ">
 								<center><h1 id="time"></h1></center>
 							</b>
 						</h5>
@@ -61,14 +65,14 @@
 					<!-- <div class="row">&nbsp;</div> -->
 					<div class="row">
 						<h5 class="col align-self-center">
-							<b style="color: rgba(255, 255, 255, 0.8); ">
+							<b style="color: rgba(255, 255, 255, 5.8); ">
 								<center>(SCAN DISINI UNTUK ABSENSI)</center><br>
 							</b>
 						</h5>
 					</div>
 					<div class="row">
 						<div class="col align-self-center">
-							<center><img src="<?= base_url(THEME_PATH); ?>images/qr-code.png" alt="QR Code" class="img-fluid img-qr" width="45%"></center></div>
+							<center><div id="img-qr"></div></center>
 						</div>	
 						<? if($pesan){ ?>
 						<div id="footer">
@@ -93,6 +97,7 @@
 	<script src="<?= base_url(THEME_PATH); ?>vendor/daterangepicker/moment.min.js"></script>
 	<script src="<?= base_url(THEME_PATH); ?>vendor/daterangepicker/daterangepicker.js"></script>
 	<script src="<?= base_url(THEME_PATH); ?>vendor/countdowntime/countdowntime.js"></script>
+	<script src="<?= base_url(THEME_PATH); ?>dist/js/pages/absenqr/qrcode.min.js"></script>
 	<script src="<?= base_url(THEME_PATH); ?>dist/js/pages/absenqr/screen.js"></script>
 	<script src="<?= base_url(THEME_PATH); ?>js/main.js"></script>
 	<script>

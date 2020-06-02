@@ -50,9 +50,7 @@
 											<tr>
 												<th>Nama Display</th>
 												<th class="text-center">Lokasi</th>
-												<th class="text-center">Tanggal Expired</th>
 												<th class="text-center">Pesan</th>
-												<th class="text-center">Jumlah Scan</th>
 												<th class="text-center">Aksi</th>
 											</tr>
 										</thead>
