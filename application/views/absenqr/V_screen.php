@@ -27,6 +27,10 @@
   			background-color: #fff;
 			padding: 20px 15px 5px 15px;
   		}
+		#img-qr img {
+			padding: 10px;
+			background: #FFF;
+		}
 	</style>
 </head>
 <body style="background-color: #666666;">	
@@ -42,7 +46,7 @@
 						<h4><b>Absensi Pegawai</b></h4>
 						<hr style="padding:0;margin-top:20px">
 					</span>
-					<div class="table-res"></div>
+					<div class="table-res"><center>Belum Ada Absen Pegawai</center></div>
 				</form>
 
 				<div class="login100-more" style="background-image: url('<?= base_url(THEME_PATH);?>images/background/4.jpg');">
@@ -68,7 +72,7 @@
 					</div>
 					<div class="row">
 						<div class="col align-self-center">
-							<center><img src="<?= base_url(THEME_PATH); ?>images/qr-code.png" alt="QR Code" class="img-fluid img-qr" width="45%"></center></div>
+							<center><div id="img-qr"></div></center>
 						</div>	
 						<? if($pesan){ ?>
 						<div id="footer">
@@ -93,6 +97,7 @@
 	<script src="<?= base_url(THEME_PATH); ?>vendor/daterangepicker/moment.min.js"></script>
 	<script src="<?= base_url(THEME_PATH); ?>vendor/daterangepicker/daterangepicker.js"></script>
 	<script src="<?= base_url(THEME_PATH); ?>vendor/countdowntime/countdowntime.js"></script>
+	<script src="<?= base_url(THEME_PATH); ?>dist/js/pages/absenqr/qrcode.min.js"></script>
 	<script src="<?= base_url(THEME_PATH); ?>dist/js/pages/absenqr/screen.js"></script>
 	<script src="<?= base_url(THEME_PATH); ?>js/main.js"></script>
 </body>

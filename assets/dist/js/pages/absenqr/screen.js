@@ -1,3 +1,4 @@
+var qrcode;
 var module_url  = base_url + 'absenqr';
 var next_update = null;
 var months      = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
@@ -9,6 +10,15 @@ const checkNewScanInterval  = 1000; // 1 detik
 $(document).ready(function () {
     // set to fullscreen
     _switchFullScreen();
+
+    // initial qr request
+    _get_new_qr();
+
+    // initialize qr code renderer
+    qrcode = new QRCode(document.getElementById("img-qr"), {
+        width : 400,
+        height : 400
+    });
 
     // standard time & attendance
     setInterval(function(){
@@ -36,7 +46,7 @@ function _get_new_qr(){
     $.get(module_url + '/ajax_generate_qr/' + screen_id, function(d){
         if(d.status){
             // update tampilan qrcode di screen
-            $('.img-qr').attr('src', d.data.qr);
+            qrcode.makeCode(d.data.qr);
             next_update = new Date(d.data.next_request);
         }
     });
