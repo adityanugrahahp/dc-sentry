@@ -93,6 +93,6 @@ defined('AUTO_NEW_CARD')        OR define('AUTO_NEW_CARD', TRUE); // aktifkan bi
 
 //  QR RELATED
 defined('WS_URL')               OR define('WS_URL', 'https://devel.pelni.co.id/new_normal/');
-defined('WS_AUTH_KEY')          OR define('WS_AUTH_KEY', 'random-token-here');
-defined('PK_SECRET')            OR define('PK_SECRET', 'private-key');
+defined('WS_AUTH_KEY')          OR define('WS_AUTH_KEY', 'i4eGH1g5QvJqfX7q4ejZ4tarIHlzcNKiBd0xHx9epL25GhbWcBZm4ZTaNyL5');
+defined('PK_SECRET')            OR define('PK_SECRET', 'h4Vr3GzlNSZuXxfqAIchGmjLHxh26riC6Fm9RjG0iAMHdUbWDE8QH4jw5swi');
 defined('QR_URL')               OR define('QR_URL', 'https://portal.pelni.co.id/phpqrcode/?data=');
