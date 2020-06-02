@@ -45,7 +45,7 @@
 					<div class="table-res"></div>
 				</form>
 
-				<div class="login100-more" style="background-image: url('<?= base_url(THEME_PATH); ?>images/5.jpg');">
+				<div class="login100-more" style="background-image: url('<?= base_url(THEME_PATH);?>images/background/4.jpg');">
 					<div class="row">&nbsp;</div>
 					<span class="login100-form-title p-b-25">
 						<h1><b style="color: rgba(255, 255, 255, 0.8);"><?= $nama ?></b></h1>
