@@ -167,8 +167,26 @@ class Home extends Management_Controller {
 			$durasi = $this->_durasi_waktu($v->register_time, date('Y-m-d H:i:s'));
 
 			$action = [
+				'<a href="#" class="btn btn-primary btn-xs btn-edit" data-id="'.$v->id.'" title="Verifikasi Data Tamu"><i class="fa fa-edit fa-fw"></i></a>',
 				'<a href="#" class="btn btn-danger btn-xs btn-delete" data-id="'.$v->id.'" title="Checkout Tamu"><i class="fa fa-sign-out fa-fw"></i></a>'
 			];
+
+			// nomor kartu visitor
+			$s_no_kartu_visitor 	= $v->nama_kartu;
+
+			// waktu pendaftaran
+			$s_waktu_pendaftaran 	= "<b>".date('d/M/Y, H:i', strtotime($v->register_time))."</b><span class='clearfix' title='Durasi waktu dalam gedung'><i class='fa fa-clock-o fa-fw'></i> {$durasi}</span>";
+
+			// bila statusnya belum approve, tampilkan tombol approve dan bukan checkout
+			if($v->flag_approve != 'Y'){
+				// hilangkan tombol checkout
+				unset($action[1]);
+				$s_waktu_pendaftaran 	= "<b class='text-warning'>Menunggu</b><span class='clearfix'>{$durasi}</span>";
+				$s_no_kartu_visitor 	= '-';
+			}else{
+				// hilangkan tombol verifikasi
+				unset($action[0]);
+			}
 
 			$foto = (! empty($v->foto) && is_file($v->foto)) ? '<img src="'.$v->foto.'" alt="Foto Tamu" height="100" />' : 'N/A';
 
@@ -176,12 +194,12 @@ class Home extends Management_Controller {
 				'foto' 				=> $foto,
 				'nama' 				=> "<b>{$v->nama}</b><small class='clearfix'>NIK: {$v->nik}</small>",
 				'no_hp'				=> $v->no_hp,
-				'register_time' 	=> "<b>".date('d/M/Y, H:i', strtotime($v->register_time))."</b><span class='clearfix' title='Durasi waktu dalam gedung'><i class='fa fa-clock-o fa-fw'></i> {$durasi}</span>",
+				'register_time' 	=> $s_waktu_pendaftaran,
 				'tujuan' 			=> $v->tujuan,
 				'keperluan' 		=> $v->keperluan,
-				'id_visitor_card'	=> $v->nama_kartu,
-				'suhu'              => $v->suhu,
-				'action'			=> join(" ", $action)
+				'id_visitor_card'	=> $s_no_kartu_visitor,
+				'suhu'              => ($v->suhu) ?: '-',
+				'action'			=> '<center>'.join(" ", $action).'</center>'
 			];
 		}
 
@@ -292,11 +310,19 @@ class Home extends Management_Controller {
 
 	// jumlah untuk tamu yang saat ini sedang berada dalam gedung (hari ini)
 	function ajax_get_current_visitor(){
-		$where 	= ['date(register_time)' => date('Y-m-d'), 'status' => 1];
+		// jumlah pengunjung keseluruhan
+		$where 	= ['date(register_time)' => date('Y-m-d'), 'status' => 1, 'flag_approve' => 'Y'];
 		$db 	= $this->M_visitor->get_new_visitor($where);
 		$jumlah	= str_pad(count($db), 3, 0, STR_PAD_LEFT);
 
-		$this->output->set_content_type('application/json')->set_output(json_encode(['jumlah' => $jumlah]));
+		// jumlah pengunjung menunggu approval
+		$where 	= ['date(register_time)' => date('Y-m-d'), 'status' => 1, 'flag_approve' => 'N'];
+		$db 	= $this->M_visitor->get_new_visitor($where);
+		$wait	= str_pad(count($db), 3, 0, STR_PAD_LEFT);
+
+		$output = ['jumlah' => $jumlah, 'waiting' => $wait];
+
+		$this->output->set_content_type('application/json')->set_output(json_encode($output));
 	}
 
 	// jumlah untuk riwayat tamu sesuai tanggal

@@ -26,7 +26,12 @@
 			<div class="box-body">
 				<div class="row">
 					<div class="col-lg-12" id="visitor-current">
-						<h5><strong><i class="fa fa-users fa-fw"></i> PENGUNJUNG SAAT INI: </strong> <span id="visitor-jumlah"></span> Orang</h5>
+						<h5>
+							<strong><i class="fa fa-users fa-fw"></i> PENGUNJUNG SAAT INI: </strong> 
+							<span id="visitor-jumlah"></span> Orang &middot;
+							<strong>MENUNGGU:</strong> 
+							<span id="waiting-visitor-jumlah"></span> Orang
+						</h5>
 						<div class="table-responsive">
 							<table id="table-visitor" class="table table-bordered table-striped">
 								<thead>
