@@ -252,18 +252,29 @@ class Absenqr extends MY_Controller {
 		
 		$status = false;
 
-		if($this->cache->redis->is_supported()){
-            $is_new = $this->cache->get('display_'.$screen_id);
-            if($is_new){
-				// set status menjadi true
-				$status = true;
+		// ORIGINAL
+		// if($this->cache->redis->is_supported()){
+        //     $is_new = $this->cache->get('display_'.$screen_id);
+        //     if($is_new){
+		// 		// set status menjadi true
+		// 		$status = true;
 
-				// delete content redis
-				$this->cache->delete('display_'.$screen_id);
-			}
+		// 		// delete content redis
+		// 		$this->cache->delete('display_'.$screen_id);
+		// 	}
 			
-			$this->output->set_content_type('application/json')->set_output(json_encode(compact('status')));
-        }
+		// 	$this->output->set_content_type('application/json')->set_output(json_encode(compact('status')));
+		// }
+
+		$param 	= ['id_display' => $screen_id];
+		$rest 	= curl_req('get', WS_URL.'ws_absenqr/get_status_change', $param, ['Token: '.WS_AUTH_KEY]);
+		if($rest['content']['code'] == 200){
+			if($rest['content']['status'] == true){
+				$status = true;
+			}
+		}
+
+		$this->output->set_content_type('application/json')->set_output(json_encode(compact('status')));
 	}
 
 	// PRIVATE FUNCTIONS
