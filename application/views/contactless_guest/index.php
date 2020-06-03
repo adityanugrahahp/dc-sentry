@@ -261,49 +261,6 @@
       <script src="<?php base_url('') ?>assets/js/bootstrap.min.js"></script>
       <script src="<?php base_url('') ?>assets/js/bootstrap-datepicker.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-    <!-- <script type="text/javascript">
-      $(function(){
-        $(".rad").click(function(){
-          $("#form1, #form2").hide()
-          if($(this).val() == "1"){
-            $("#form1").show();
-          }else{
-            $("#form2").show();
-          }
-        });
-      });
-    </script> -->
-
-    <!-- <script type="text/javascript">
-      $(function(){
-        $(".radstatus").click(function(){
-          $("#formstatus1, #formstatus2").hide()
-          if($(this).val() == "1"){
-            $("#formstatus1").show();
-          }else{
-            $("#formstatus2").show();
-          }
-        });
-      });
-    </script> -->
-
-    <!-- <script type="text/javascript">
-      $(function(){
-        $(".radperjalanan").click(function(){
-          $("#formperjalanan1, #formperjalanan2").hide()
-          if($(this).val() == "1"){
-            $("#formperjalanan1").show();
-          }else{
-            $("#formperjalanan2").show();
-          }
-        });
-      });
-    </script> -->
-    <!-- <script type="text/javascript">
-      $(document).ready(function () {
-      // datetimepicker initialization
-      $(".datepicker").datetimepicker({ format: 'MM-DD-YYYY' });
-      });
-    </script> -->
+      
 </body>
 </html>
