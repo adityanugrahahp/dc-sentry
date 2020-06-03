@@ -8,17 +8,17 @@
     <meta name="generator" content="Jekyll v4.0.1">
     <title>Registrasi Visitor - PT. PELNI</title>
 
-    <link rel="shortcut icon" href="<?php base_url('') ?>../assets/favicon.ico">
+    <link rel="shortcut icon" href="<?php base_url('') ?>assets/favicon.ico">
 
     <!-- Bootstrap core CSS -->
-    <link href="<?php base_url(''); ?>../assets/css/dist/bootstrap.css" rel="stylesheet">
-    <link href="<?php base_url(''); ?>../assets/css/dist/boxicons/css/boxicons.min.css"  rel="stylesheet">
+    <link href="<?php base_url(''); ?>assets/css/dist/bootstrap.css" rel="stylesheet">
+    <link href="<?php base_url(''); ?>assets/css/dist/boxicons/css/boxicons.min.css"  rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
 
     <style>
 
       body {
-        background: url('<?php base_url('') ?>../assets/images/background/6.jpg') no-repeat;
+        background: url('<?php base_url('') ?>assets/images/background/6.jpg') no-repeat;
         background-size: 100% 100%;
         background-attachment:fixed;
         }
@@ -65,7 +65,7 @@
     <div class="container"> 
         <nav class="navbar fixed-top navbar-light bg-light">
             <a class="navbar-brand" href="#">
-              <img src="<?php base_url('') ;?>../assets/favicon.ico" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+              <img src="<?php base_url('') ;?>assets/favicon.ico" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
               PT. Pelayaran Nasional Indonesia (Persero)
             </a>
           </nav>
@@ -77,36 +77,69 @@
       <div class="col-md-8">
         <div class="jumbotron">
           <h1>Form Registrasi Pengunjung</h1><hr class="my-4">
-          <form>
+          <div class="alert alert-info alert-dismissible fade show" role="alert">
+              <b>Silakan lengkapi identitas tamu pada form di bawah ini.</b>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          <form method="post" action="#" id="Daftar">
             <div class="form-group">
               <div class="row">
                 <div class="col">
                   <label><b>NIK </b><span style="color:red">*</span></label>
-                <input type="text" class="form-control">
+                <input type="text" name="ISI_DISINI" class="form-control" placeholder="Masukan NIK anda" required>
                 </div>
                 <div class="col">
                   <label><b>Nama Lengkap </b><span style="color:red">*</span></label>
-                <input type="text" class="form-control">
+                <input type="text" name="ISI_DISINI" class="form-control" placeholder="Masukan Nama Lengkap anda" required>
                 </div>
               </div>
             </div>
             <div class="form-group">
               <label><b>Alamat </b><span style="color:red">*</span></label>
-              <textarea class="form-control" aria-label="With textarea"></textarea>
+              <textarea class="form-control" name="ISI_DISINI" aria-label="With textarea" placeholder="Masukan Alamat anda" required></textarea>
             </div>
             <div class="form-group">
-              <label><b>NO HP </b><span style="color:red">*</span></label>
-              <input type="text" class="form-control">
+              <div class="row">
+                <div class="col">
+                  <label><b>No. Hp </b><span style="color:red">*</span></label>
+                <input type="text" name="ISI_DISINI" class="form-control" placeholder="Masukan No. Hp anda" required>
+                </div>
+                <div class="col">
+                  <label><b>Jenis Kelamin </b><span style="color:red">*</span></label>
+                    <select required class="form-control" name="ISI_DISINI" required>
+                      <option value="L">Laki-laki</option>
+                      <option value="P">Perempuan</option>
+                    </select>
+                </div>
+              </div>
             </div>
+
+            <div class="form-group">
+              <div class="row">
+                <div class="col">
+                  <label><b>Lantai </b><span style="color:red">*</span></label>
+                  <?php echo form_dropdown('tujuan', $tujuan, null, 'class="form-control"') ?>
+                </div>
+                <div class="col">
+                  <label><b>Keperluan </b><span style="color:red">*</span></label>
+                    <textarea class="form-control" name="ISI_DISINI" aria-label="With textarea" placeholder="Masukan Keperluan anda" required></textarea>
+                </div>
+              </div>
+            </div>
+
             <hr>
             <div class="form-group">
-              <label><b>Apakah ada riwayat sakit 1 minggu terakhir ?<span style="color:red">*</span></b></label>
-              <input type="text" class="form-control" placeholder="Demam, Batuk, Sesak, lemas, Diare">
+              <label><b>Apakah ada riwayat sakit 1 minggu terakhir? <span style="color:red">*</span></b></label>
+              <input type="text" class="form-control" name="pertanyaan_1" value="Apakah ada riwayat sakit 1 minggu terakhir?" hidden="">
+              <input type="text" name="ISI_DISINI" class="form-control" placeholder="(Demam, Batuk, Sesak, lemas, Diare)">
             </div>
 
 
             <div class="form-group">
               <label><b>Apakah sudah pernah melakukan raid test/SWAB? <span style="color:red">*</span></b></label><br>
+              <input type="text" class="form-control" name="pertanyaan_2" value="Apakah sudah pernah melakukan raid test/SWAB?" hidden="">
               <div class="row">
                 <div class="col-md-2">
                   <input type="radio" name="rad" id="rad1" value="1" class="rad"/>Ya
@@ -118,28 +151,29 @@
               <div id="form1" style="display:none">
                 <div class="row">
                   <div class="col">
-                    <label><b>Kapan rapid test/SWAB <span style="color:red">*</span></b></label>
+                    <label><b>Kapan rapid test/SWAB? <span style="color:red">*</span></b></label>
                     <div class="input-group mb-3">
                       <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1"><i class='bx bx-calendar'></i></span>
                       </div>
-                      <input type="text" class="form-control datepicker" placeholder="MM-DD-YYYY">
+                      <input type="text" name="ISI_DISINI" class="form-control datepicker" placeholder="MM-DD-YYYY">
                     </div>
                   </div>
                   <div class="col">
                     <label><b>Hasil </b><span style="color:red">*</span></label>
-                    <input type="text" class="form-control">
+                    <input type="text" name="ISI_DISINI" class="form-control" placeholder="(Positif / Negatif)">
                   </div>
                 </div>
               </div>
 
               <div id="form2" style="display:none">
-                <input type="text" class="form-control datepicker" hidden="">
+                <input type="text" class="form-control" hidden="">
               </div>
             </div>
 
             <div class="form-group">
               <label><b>Apakah pernah ada penetapan status anda ODP/PDP/Covid? <span style="color:red">*</span></b></label><br>
+              <input type="text" class="form-control" name="pertanyaan_3" value="Apakah pernah ada penetapan status anda ODP/PDP/Covid?" hidden="">
               <div class="row">
                 <div class="col-md-2">
                   <input type="radio" name="radstatus" id="radstatus1" value="1" class="radstatus"/>Ya
@@ -151,12 +185,12 @@
               <div id="formstatus1" style="display:none">
                 <div class="row">
                   <div class="col">
-                    <label><b>Dari </b></label>
+                    <label><b>Dari <span style="color:red">*</span></b></label>
                     <div class="input-group mb-3">
                       <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1"><i class='bx bx-calendar'></i></span>
                       </div>
-                      <input type="text" class="form-control datepicker" placeholder="MM-DD-YYYY">
+                      <input type="text" name="ISI_DISINI" class="form-control datepicker" placeholder="MM-DD-YYYY">
                     </div>
                   </div>
                   <div class="col">
@@ -165,19 +199,20 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1"><i class='bx bx-calendar'></i></span>
                       </div>
-                      <input type="text" class="form-control datepicker" placeholder="MM-DD-YYYY">
+                      <input type="text" name="ISI_DISINI" class="form-control datepicker" placeholder="MM-DD-YYYY">
                     </div>
                   </div>
                 </div>
               </div>
 
               <div id="formstatus2" style="display:none">
-                <input type="text" class="form-control datepicker" hidden="">
+                <input type="text" class="form-control" hidden="">
               </div>
             </div>
 
             <div class="form-group">
               <label><b>Apakah ada riwayat perjalanan ke/dari luar negeri dalam 1 minggu terakhir? <span style="color:red">*</span></b></label><br>
+              <input type="text" class="form-control" name="pertanyaan_4" value="Apakah ada riwayat perjalanan ke/dari luar negeri dalam 1 minggu terakhir?" hidden="">
               <div class="row">
                 <div class="col-md-2">
                   <input type="radio" name="radperjalanan" id="radperjalanan1" value="1" class="radperjalanan"/>Ya
@@ -188,21 +223,22 @@
               </div>
               <div id="formperjalanan1" style="display:none">
                     <label><b>Dari </b><span style="color:red">*</span></label>
-                    <input type="text" class="form-control">
+                    <input type="text" name="ISI_DISINI" class="form-control" placeholder="(Malaysia, Singapura, Thailand, China, USA)">
               </div>
 
               <div id="formperjalanan2" style="display:none">
-                <input type="text" class="form-control datepicker" hidden="">
+                <input type="text" class="form-control" hidden="">
               </div>
             </div><hr>
 
 
 
             <div class="form-group form-check">
-              <input type="checkbox" class="form-check-input">
-              <label class="form-check-label"><b>Pernyataan mengisi dengan benar. Jika ada kesalahan bersedia dituntut sesuai hukum yang berlaku <span style="color:red">*</span></b></label>
+              <input type="checkbox" class="form-check-input" required>
+              <label class="form-check-label"><b>Pernyataan mengisi dengan benar. Jika ada kesalahan bersedia dituntut sesuai hukum yang berlaku? <span style="color:red">*</span></b></label>
             </div>
-            <br><button type="button" class="btn btn-primary btn-lg btn-block">Daftar</button>
+
+            <br><button type="submit" class="btn btn-primary btn-lg btn-block">Daftar</button>
           </form>
         </div>
       </div>
@@ -214,59 +250,17 @@
     <span class="text-muted"><strong>&copy; <?php echo date('Y') ?> - <a href="http://pelni.co.id">PT. Pelayaran Nasional Indonesia (Persero))</a></strong></span>
   </div>
 </footer>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-      <script>window.jQuery || document.write('<script src="<?php base_url('') ?>../assets/js/dist/jquery.slim.min.js"><\/script>')</script><script src="<?php base_url('') ?>../assets/js/dist/js/bootstrap.bundle.js"></script>
+
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="<?php base_url('') ?>assets/js/dist/jquery.slim.min.js"><\/script>')</script><script src="<?php base_url('') ?>assets/js/dist/js/bootstrap.bundle.js"></script>
 
       <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-    <script type="text/javascript">
-      $(function(){
-        $(".rad").click(function(){
-          $("#form1, #form2").hide()
-          if($(this).val() == "1"){
-            $("#form1").show();
-          }else{
-            $("#form2").show();
-          }
-        });
-      });
-    </script>
-
-    <script type="text/javascript">
-      $(function(){
-        $(".radstatus").click(function(){
-          $("#formstatus1, #formstatus2").hide()
-          if($(this).val() == "1"){
-            $("#formstatus1").show();
-          }else{
-            $("#formstatus2").show();
-          }
-        });
-      });
-    </script>
-
-    <script type="text/javascript">
-      $(function(){
-        $(".radperjalanan").click(function(){
-          $("#formperjalanan1, #formperjalanan2").hide()
-          if($(this).val() == "1"){
-            $("#formperjalanan1").show();
-          }else{
-            $("#formperjalanan2").show();
-          }
-        });
-      });
-    </script>
-
-    <script src="<?php base_url('') ?>../assets/js/dist/js/moment.js"></script>
-    <script src="<?php base_url('') ?>../assets/js/jquery-3.3.1.min.js"></script>
-    <script src="<?php base_url('') ?>../assets/js/bootstrap.min.js"></script>
-    <script src="<?php base_url('') ?>../assets/js/bootstrap-datepicker.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function () {
-      // datetimepicker initialization
-      $(".datepicker").datetimepicker({ format: 'MM-DD-YYYY' });
-      });
-    </script>
+      <script src="<?= base_url(THEME_PATH); ?>dist/js/pages/contactless_guest/contactless_guest.js"></script>
+      <script src="<?php base_url('') ?>assets/js/dist/js/moment.js"></script>
+      <script src="<?php base_url('') ?>assets/js/jquery-3.3.1.min.js"></script>
+      <script src="<?php base_url('') ?>assets/js/bootstrap.min.js"></script>
+      <script src="<?php base_url('') ?>assets/js/bootstrap-datepicker.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+      
 </body>
 </html>
