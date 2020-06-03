@@ -211,8 +211,6 @@ class Absenqr extends MY_Controller {
             if(! $post['id']) {
                 // log & generated token
                 $data += [
-					'generated_token'	=> uniqid(),
-					// 'tggl_expired'		=> '' // TODO: + 1 hari
                     'created_by' 		=> $_SESSION['userID'],
                     'created_at' 		=> date('Y-m-d H:i:s'),
                 ];
