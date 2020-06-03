@@ -77,38 +77,48 @@
       <div class="col-md-8">
         <div class="jumbotron">
           <h1>Form Registrasi Pengunjung</h1><hr class="my-4">
+
+          <div class="alert alert-info alert-dismissible fade show" role="alert"  id="notice" style="display:none;">
+              <span><b>Data yang sudah diisi sedang di proses</b></span>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          
           <div class="alert alert-info alert-dismissible fade show" role="alert">
               <b>Silakan lengkapi identitas tamu pada form di bawah ini.</b>
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-          <form method="post" action="#" id="Daftar">
+            </button>
+          </div>
+          <form id="Daftar" method="post" action="<?= base_url('contactless_guest/ajax_post_form')?>">
             <div class="form-group">
               <div class="row">
                 <div class="col">
                   <label><b>NIK </b><span style="color:red">*</span></label>
-                <input type="text" name="ISI_DISINI" class="form-control" placeholder="Masukan NIK anda" required>
+                  <input type="text" name="nik" class="form-control" placeholder="Masukan NIK anda">
+                  <?= form_error('nik', '<small class="text-danger pl-3">','</small>'); ?>
                 </div>
                 <div class="col">
                   <label><b>Nama Lengkap </b><span style="color:red">*</span></label>
-                <input type="text" name="ISI_DISINI" class="form-control" placeholder="Masukan Nama Lengkap anda" required>
+                <input type="text" name="nama" class="form-control" placeholder="Masukan Nama Lengkap anda" >
                 </div>
               </div>
             </div>
             <div class="form-group">
               <label><b>Alamat </b><span style="color:red">*</span></label>
-              <textarea class="form-control" name="ISI_DISINI" aria-label="With textarea" placeholder="Masukan Alamat anda" required></textarea>
+              <textarea class="form-control" name="alamat" aria-label="With textarea" placeholder="Masukan Alamat anda" ></textarea>
             </div>
             <div class="form-group">
               <div class="row">
                 <div class="col">
                   <label><b>No. Hp </b><span style="color:red">*</span></label>
-                <input type="text" name="ISI_DISINI" class="form-control" placeholder="Masukan No. Hp anda" required>
+                <input type="text" name="no_hp" class="form-control" placeholder="Masukan No. Hp anda" >
                 </div>
                 <div class="col">
                   <label><b>Jenis Kelamin </b><span style="color:red">*</span></label>
-                    <select required class="form-control" name="ISI_DISINI" required>
+                    <select required class="form-control" name="jenis_kelamin" >
                       <option value="L">Laki-laki</option>
                       <option value="P">Perempuan</option>
                     </select>
@@ -124,7 +134,7 @@
                 </div>
                 <div class="col">
                   <label><b>Keperluan </b><span style="color:red">*</span></label>
-                    <textarea class="form-control" name="ISI_DISINI" aria-label="With textarea" placeholder="Masukan Keperluan anda" required></textarea>
+                    <textarea class="form-control" name="keperluan" aria-label="With textarea" placeholder="Masukan Keperluan anda" ></textarea>
                 </div>
               </div>
             </div>
@@ -133,7 +143,7 @@
             <div class="form-group">
               <label><b>Apakah ada riwayat sakit 1 minggu terakhir? <span style="color:red">*</span></b></label>
               <input type="text" class="form-control" name="pertanyaan_1" value="Apakah ada riwayat sakit 1 minggu terakhir?" hidden="">
-              <input type="text" name="ISI_DISINI" class="form-control" placeholder="(Demam, Batuk, Sesak, lemas, Diare)">
+              <input type="text" name="riwayat_sakit" class="form-control" placeholder="(Demam, Batuk, Sesak, lemas, Diare)">
             </div>
 
 
@@ -156,12 +166,12 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1"><i class='bx bx-calendar'></i></span>
                       </div>
-                      <input type="text" name="ISI_DISINI" class="form-control datepicker" placeholder="MM-DD-YYYY">
+                      <input type="text" name="tgl_rapid_test" class="form-control datepicker" placeholder="MM-DD-YYYY">
                     </div>
                   </div>
                   <div class="col">
                     <label><b>Hasil </b><span style="color:red">*</span></label>
-                    <input type="text" name="ISI_DISINI" class="form-control" placeholder="(Positif / Negatif)">
+                    <input type="text" name="hasil" class="form-control" placeholder="(Positif / Negatif)">
                   </div>
                 </div>
               </div>
@@ -190,7 +200,7 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1"><i class='bx bx-calendar'></i></span>
                       </div>
-                      <input type="text" name="ISI_DISINI" class="form-control datepicker" placeholder="MM-DD-YYYY">
+                      <input type="text" name="mulai_covid" class="form-control datepicker" placeholder="MM-DD-YYYY">
                     </div>
                   </div>
                   <div class="col">
@@ -199,7 +209,7 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1"><i class='bx bx-calendar'></i></span>
                       </div>
-                      <input type="text" name="ISI_DISINI" class="form-control datepicker" placeholder="MM-DD-YYYY">
+                      <input type="text" name="bebas_covid" class="form-control datepicker" placeholder="MM-DD-YYYY">
                     </div>
                   </div>
                 </div>
@@ -223,7 +233,7 @@
               </div>
               <div id="formperjalanan1" style="display:none">
                     <label><b>Dari </b><span style="color:red">*</span></label>
-                    <input type="text" name="ISI_DISINI" class="form-control" placeholder="(Malaysia, Singapura, Thailand, China, USA)">
+                    <input type="text" name="travel_history" class="form-control" placeholder="(Malaysia, Singapura, Thailand, China, USA)">
               </div>
 
               <div id="formperjalanan2" style="display:none">
@@ -234,11 +244,11 @@
 
 
             <div class="form-group form-check">
-              <input type="checkbox" class="form-check-input" required>
+              <input type="checkbox" class="form-check-input" >
               <label class="form-check-label"><b>Pernyataan mengisi dengan benar. Jika ada kesalahan bersedia dituntut sesuai hukum yang berlaku? <span style="color:red">*</span></b></label>
             </div>
 
-            <br><button type="submit" class="btn btn-primary btn-lg btn-block">Daftar</button>
+            <br><button type="submit" class="btn btn-primary btn-lg btn-block" id="btn-save">Daftar</button>
           </form>
         </div>
       </div>
