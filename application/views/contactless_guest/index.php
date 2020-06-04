@@ -45,14 +45,15 @@
       main > .container {
             padding: 60px 15px 0;
           }    
+      
       .footer {
-            background-color: #f5f5f5;
-          }
-
-          .footer > .container {
-            padding-right: 15px;
-            padding-left: 15px;
-          }
+          background-color: #f5f5f5;
+          /*position: relative;*/
+          width: 100%;
+          display: block;
+          padding: 4px;
+          bottom: 0;
+        }
 
           code {
             font-size: 80%;
@@ -92,7 +93,8 @@
                 <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <form id="Daftar" method="post" action="<?= base_url('contactless_guest/ajax_post_form')?>">
+          <!--<form id="Daftar" method="post" action="<?= base_url('contactless_guest/ajax_post_form')?>">-->
+          <form  method="post" class="hide_form">
             <div class="form-group">
               <div class="row">
                 <div class="col">
@@ -248,7 +250,7 @@
               <label class="form-check-label"><b>Pernyataan mengisi dengan benar. Jika ada kesalahan bersedia dituntut sesuai hukum yang berlaku? <span style="color:red">*</span></b></label>
             </div>
 
-            <br><button type="submit" class="btn btn-primary btn-lg btn-block" id="btn-save">Daftar</button>
+            <br><button type="submit" class="btn btn-primary btn-lg btn-block hide" id="btn-save">Daftar</button>
           </form>
         </div>
       </div>
@@ -271,6 +273,14 @@
       <script src="<?php base_url('') ?>assets/js/bootstrap.min.js"></script>
       <script src="<?php base_url('') ?>assets/js/bootstrap-datepicker.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+      
+      <script type="text/javascript">
+        $(document).ready(function(){
+          $(".hide").click(function(){
+            $(".hide_form").toggle(100);
+          });
+        });
+      </script>
       
 </body>
 </html>
