@@ -8,15 +8,17 @@ $(document).ready(function(){
         	url: action,
             data: data,
             method: method,
-            // beforeSend: function() {
+            beforeSend: function() {
 
-            // },
+            },
             success: function(data) {
-                $("#notice").fadeIn(400);
+                $("#myAlert").show();
+                $('#formhide').hide();
             }
-        })
-	})
-})
+        });
+	});
+});
+
 
 
 $(document).ready(function () {
