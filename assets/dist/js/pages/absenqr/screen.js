@@ -31,7 +31,6 @@ $(document).ready(function () {
         if(date_now >= next_update || next_update == null){
             _get_new_qr();
             _get_attendances();
-
         }
     }, refreshQRInterval);
 
@@ -43,13 +42,33 @@ $(document).ready(function () {
 
 // update qr secara berkala (tanpa aktivitas pegawai)
 function _get_new_qr(){
-    $.get(module_url + '/ajax_generate_qr/' + screen_id, function(d){
-        if(d.status){
-            // update tampilan qrcode di screen
-            qrcode.makeCode(d.data.qr);
-            next_update = new Date(d.data.next_request);
+    
+    $.ajax({
+        url: url_qr,
+        headers: { 
+            'Token': token,
+            'Access-Control-Allow-Origin':'*',
+            'Access-Control-Allow-Methods':'GET',
+            'Access-Control-Allow-Headers':'application/json'
+        },
+        dataType: 'json',
+        data: { id_display: screen_id },
+        success: function(d){
+            if(d.status){
+                // update tampilan qrcode di screen
+                qrcode.makeCode(d.data.qr);
+                next_update = new Date(d.data.next_request);
+            }
         }
     });
+
+    // $.get(module_url + '/ajax_generate_qr/' + screen_id, function(d){
+    //     if(d.status){
+    //         // update tampilan qrcode di screen
+    //         qrcode.makeCode(d.data.qr);
+    //         next_update = new Date(d.data.next_request);
+    //     }
+    // });
 }
 
 // fetch data user yang sudah melakukan absensi
@@ -64,12 +83,30 @@ function _get_attendances(){
 
 // mendapatkan trigger apabila qr code sudah direfresh
 function _get_trigger(){
-    $.get(module_url + '/ajax_get_trigger/' + screen_id, function(d){
-        if(d.status){
-            _get_new_qr();
-            console.info('Someone has scanned');
+    $.ajax({
+        url: url_trigger,
+        headers: { 
+            'Token': token,
+            'Access-Control-Allow-Origin':'*',
+            'Access-Control-Allow-Methods':'GET',
+            'Access-Control-Allow-Headers':'application/json'
+        },
+        dataType: 'json', // Notice! JSONP <-- P (lowercase)
+        data: { id_display: screen_id },
+        success: function(d){
+            if(d.status){
+                _get_new_qr();
+                console.info('Someone has scanned');
+            }
         }
     });
+
+    // $.get(module_url + '/ajax_get_trigger/' + screen_id, function(d){
+    //     if(d.status){
+    //         _get_new_qr();
+    //         console.info('Someone has scanned');
+    //     }
+    // });
 }
 
 function _switchFullScreen() {

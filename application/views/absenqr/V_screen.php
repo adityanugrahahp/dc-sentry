@@ -87,7 +87,10 @@
 
 	<script>
 		var base_url 	= '<?= base_url() ?>';
-		var screen_id	= '<?= $screen_id ?>'
+		var screen_id	= '<?= $screen_id ?>';
+		var token 		= '<?= WS_AUTH_KEY ?>';
+		var url_trigger = '<?= WS_URL.'ws_absenqr/get_status_change' ?>';
+		var url_qr 		= '<?= WS_URL.'ws_absenqr/get_new_qr' ?>';
 	</script>
 	<script src="<?= base_url(THEME_PATH); ?>vendor/jquery/jquery-3.2.1.min.js"></script>
 	<script src="<?= base_url(THEME_PATH); ?>vendor/animsition/js/animsition.min.js"></script>

@@ -73,15 +73,14 @@ class Absenqr extends MY_Controller {
 
 		// tanggal expired qr code
 		$public_key		= uniqid();
-		$date_exp 		= new DateTime('+'.$this->durasi_expired.' seconds');
-		$date_exp_js 	= new DateTime('+'.(($this->durasi_expired > 3) ? $this->durasi_expired - 2 : $this->durasi_expired).' seconds'); // added for js delay
-		$payload 		= [$date_exp->format('Y-m-d H:i:s'), $screen_id, uniqid()];
-		$e_payload		= encrypt(implode('|', $payload), $public_key);
-		$format_qr 		= implode(':', ['ABSENSI', $e_payload, $public_key]);
+		$date_exp 		= date('Y-m-d H:i:s', strtotime(date('Y-m-d H:i:s')." +{$this->durasi_expired} seconds"));
+		$date_exp_js	= date('Y-m-d H:i:s', strtotime(date('Y-m-d H:i:s')." +".(($this->durasi_expired > 3) ? $this->durasi_expired - 2 : $this->durasi_expired)." seconds"));
+		$e_payload		= encrypt($date_exp.'|'.$screen_id.'|'.uniqid(), $public_key);
+		$format_qr 		= 'ABSENSI:'.$e_payload.':'.$public_key;
 
 		$data = [
 			'qr' 			=> $format_qr,
-			'next_request'	=> $date_exp_js->format('Y-m-d H:i:s')
+			'next_request'	=> $date_exp_js
 		];
 
 		$this->output->set_content_type('application/json')->set_output(json_encode(compact('status', 'data')));
@@ -264,6 +263,7 @@ class Absenqr extends MY_Controller {
 		// 	$this->output->set_content_type('application/json')->set_output(json_encode(compact('status')));
 		// }
 
+		// INCONTROLLER REQUEST
 		$param 	= ['id_display' => $screen_id];
 		$rest 	= curl_req('get', WS_URL.'ws_absenqr/get_status_change', $param, ['Token: '.WS_AUTH_KEY]);
 		if($rest['content']['code'] == 200){
