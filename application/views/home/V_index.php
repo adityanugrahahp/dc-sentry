@@ -104,7 +104,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title"><i class="fa fa-user-plus fa-fw"></i> Pengunjung Baru</h4>
+				<h4 class="modal-title modal-visitor-title"><i class="fa fa-user-plus fa-fw"></i> Pengunjung Baru</h4>
 			</div>
 			<div class="modal-body">
 				<form id="form-visitor">
@@ -195,6 +195,14 @@
 								</div>
 							</div>
 							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label>Form Deklarasi Mandiri<span style="color:red">*</span></label>
+										<span class="clearfix"><a href="#" class="show-form-deklarasi">Lihat Form Deklarasi</a></span>
+									</div>
+								</div>
+							</div>
+							<div class="row">
 								<div class="col-lg-12"><hr></div>
 								<div class="col-md-6">
 									<div class="form-group">
@@ -211,19 +219,23 @@
 							</div>
 						</div>
 						<!-- Col untuk Camera -->
-						<div class="col-lg-6 text-center">
+						<div class="col-lg-6 text-center box-camera">
 							<div class="camera">
 								<video id="video">Video stream not available.</video>
-								<button id="startbutton">Take photo</button> 
+								<button id="startbutton">Ambil Gambar</button> 
 							</div>
-							<canvas id="canvas">
-							</canvas>
+							<canvas id="canvas"></canvas>
 							<div class="output">
 								<img id="photo" alt="The screen capture will appear in this box.">
 								<div class="form-group">
 									<input type="hidden" class="form-control" id="foto" name="foto" /> 
 								</div>
 							</div>
+						</div>
+						<div class="col-lg-6 box-deklarasi" style="display:none;">
+							<h4 class="text-primary text-bold">Form Deklarasi</h4>
+							<p>Berikut ini merupakan form deklarasi yang diisi oleh pengunjung.</p>
+							<hr>
 						</div>
 					</div>
 				</form>

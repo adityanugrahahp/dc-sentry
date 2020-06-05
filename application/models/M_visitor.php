@@ -8,6 +8,18 @@ class M_visitor extends CI_Model {
 		parent::__construct();
 	}
 
+	function get_visitor_detail($where = []){
+		
+		if($where){ $this->db->where($where); }
+
+		$this->db->select('visitor_registration.*, visitor_cards.nama_kartu, visitor_cards.no_kartu');
+		$this->db->join('visitor_cards', 'visitor_cards.id_kartu = visitor_registration.id_visitor_card', 'left');
+		
+		$q = $this->db->get('visitor_registration');
+
+		return ($q) ? $q->result() : [];
+	}
+
 	// add new code DM
 	function insert_new_visitor($data){
 		$query = $this->db->insert('visitor_registration', $data);
