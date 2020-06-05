@@ -42,25 +42,24 @@
             min-height: 0rem;
             padding-top: 4.5rem;
           }
-      main > .container {
+
+        main > .container {
             padding: 60px 15px 0;
-          }    
-      
-      .footer {
-          background-color: #f5f5f5;
-          /*position: relative;*/
-          width: 100%;
-          display: block;
-          padding: 4px;
-          bottom: 0;
-        }
+          }
+
+          .footer {
+            background-color: #f5f5f5;
+          }
+
+          .footer > .container {
+            padding-right: 15px;
+            padding-left: 15px;
+          }
 
           code {
             font-size: 80%;
           }
     </style>
-    <!-- Custom styles for this template -->
-    <!-- <link href="<?php base_url('') ?>assets/css/navbar-top-fixed.css" rel="stylesheet"> -->
   </head>
   <body>
     <div class="container"> 
@@ -79,22 +78,18 @@
         <div class="jumbotron">
           <h1>Form Registrasi Pengunjung</h1><hr class="my-4">
 
-          <div class="alert alert-info alert-dismissible fade show" role="alert"  id="notice" style="display:none;">
-              <span><b>Data yang sudah diisi sedang di proses</b></span>
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+          <div class="alert alert-success alert-dismissible" id="myAlert" style="display: none;">
+            <strong>Success!</strong> Data anda berhasil terdaftar silahkan menunggu untuk di proses
           </div>
-
           
           <div class="alert alert-info alert-dismissible fade show" role="alert">
-              <b>Silakan lengkapi identitas tamu pada form di bawah ini.</b>
+              <b>Silahkan lengkapi identitas tamu pada form di bawah ini.</b>
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <!--<form id="Daftar" method="post" action="<?= base_url('contactless_guest/ajax_post_form')?>">-->
-          <form  method="post" class="hide_form">
+          <div id="formhide">
+          <form id="Daftar" method="post" action="<?= base_url('contactless_guest/ajax_post_form')?> ">
             <div class="form-group">
               <div class="row">
                 <div class="col">
@@ -249,15 +244,14 @@
               <input type="checkbox" class="form-check-input" >
               <label class="form-check-label"><b>Pernyataan mengisi dengan benar. Jika ada kesalahan bersedia dituntut sesuai hukum yang berlaku? <span style="color:red">*</span></b></label>
             </div>
-
-            <br><button type="submit" class="btn btn-primary btn-lg btn-block hide" id="btn-save">Daftar</button>
+              <br><button type="submit" class="btn btn-primary btn-lg btn-block" >Daftar</button>
           </form>
+          </div>
         </div>
       </div>
     </main>
   </div>
-
-<footer class="footer mt-auto py-3">
+<footer class="footer mt-auto py-3" >
   <div class="container">
     <span class="text-muted"><strong>&copy; <?php echo date('Y') ?> - <a href="http://pelni.co.id">PT. Pelayaran Nasional Indonesia (Persero))</a></strong></span>
   </div>
@@ -273,14 +267,6 @@
       <script src="<?php base_url('') ?>assets/js/bootstrap.min.js"></script>
       <script src="<?php base_url('') ?>assets/js/bootstrap-datepicker.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-      
-      <script type="text/javascript">
-        $(document).ready(function(){
-          $(".hide").click(function(){
-            $(".hide_form").toggle(100);
-          });
-        });
-      </script>
       
 </body>
 </html>
