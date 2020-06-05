@@ -24,7 +24,7 @@ class Contactless_guest extends MY_Controller {
 		$this->load->view('contactless_guest/index', $data);
 	}
 
-	// TODO: SUBMIT FORM KE DATABASE
+	// TODO: SUBMIT FORM KE DATABASE 
 	function ajax_post_form(){
 		$status = false;
 		$msg 	= null;
