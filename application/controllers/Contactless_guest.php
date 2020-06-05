@@ -50,7 +50,7 @@ class Contactless_guest extends MY_Controller {
         // $this->form_validation->set_rules('travel_history', 'Riwayat Perjalanan');
 
 		if($this->form_validation->run()){
-			
+
 			foreach($post as $i => $v){
                 if ($i == 'id') {continue;}
                 $data[$i] = $v;
@@ -62,14 +62,14 @@ class Contactless_guest extends MY_Controller {
 					'lokasi'		=> 'KANTOR PUSAT',
 					'created_by'	=> $_SESSION['userID'],
 					'status'		=> 1,
-				// 	'id_visitor_card'		=> 5,
+					'id_visitor_card'		=> 5,
 				];
 
                 $db = $this->M_visitor->insert_new_visitor($data);
 
 
 			if($db){ $status = true; }
-			
+
 		}else{
 			$msg = str_replace(['<p>', '</p>'], [null, '<br/>'], validation_errors());
 		}
@@ -81,6 +81,8 @@ class Contactless_guest extends MY_Controller {
 	// BILA APPROVE, MAKA AKAN MUNCUL HALAMAN QR CODENYA YANG NANTI AKAN DI SCAN
 	// BILA STATUS SUDAH CHECKOUT MAKA MUNCULKAN HALAMAN TERIMA KASIH DAN MATIKAN SETINTERVAL()
 	function ajax_check_status(){
+
+		$this->load->view('contactless_guest/qr_guest');
 
 	}
 }
