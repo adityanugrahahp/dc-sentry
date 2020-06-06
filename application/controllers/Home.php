@@ -155,7 +155,10 @@ class Home extends Management_Controller {
 			if(is_numeric($keyword)){
 				$where['no_kartu'] = $keyword;
 			}else{
-				$like = ['lower(nama_kartu)' => strtolower($keyword)];
+				$like = [
+					'lower(nama_kartu)' => strtolower($keyword),
+					'lower(kode_akses)' => strtolower($keyword)
+				];
 			}
 		}
 
@@ -239,7 +242,10 @@ class Home extends Management_Controller {
 			if(is_numeric($keyword)){
 				$where .= " and visitor_cards.no_kartu = '{$keyword}'";
 			}else{
-				$like = ['lower(nama_kartu)' => strtolower($keyword)];
+				$like = [
+					'lower(nama_kartu)' => strtolower($keyword),
+					'lower(kode_akses)' => strtolower($keyword)
+				];
 			}
 		}
 
@@ -390,6 +396,28 @@ class Home extends Management_Controller {
 		}
 
 		$this->output->set_content_type('application/json')->set_output(json_encode(['status' => $status, 'total' => $result, 'since' => $since]));
+	}
+
+	// mendapatakan detail tamu
+	function ajax_get_detail_tamu(){
+		$status = false;
+		$msg 	= null;
+		$data 	= [];
+		$post 	= $this->input->post();
+
+		if(isset($post['id'])){
+			// dapatkan id visitornya
+			$id 	= $post['id'];
+			$where 	= ['id' => $id];
+
+			$db = $this->M_visitor->get_visitor_detail($where);
+			if($db){
+				$status = true;
+				$data 	= $db[0];
+			}
+		}
+
+		$this->output->set_content_type('application/json')->set_output(json_encode(['status' => $status, 'msg' => $msg, 'data' => $data]));
 	}
 
 	// fungsi untuk menghitung durasi antara 2 waktu
