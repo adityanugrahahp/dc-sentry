@@ -13,7 +13,7 @@ $(document).ready(function(){
             },
             success: function(data) {
                 $("#myAlert").show();
-                $('#formhide').hide();
+                $('#formhide').toggel();
             }
         });
 	});
