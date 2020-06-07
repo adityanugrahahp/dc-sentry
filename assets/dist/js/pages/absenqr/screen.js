@@ -12,7 +12,7 @@ $(document).ready(function () {
     _switchFullScreen();
 
     // initial qr request
-    _get_new_qr();
+    _get_new_qr_self();
 
     // initialize qr code renderer
     qrcode = new QRCode(document.getElementById("img-qr"), {
@@ -29,14 +29,14 @@ $(document).ready(function () {
 	setInterval(function(){
         date_now = new Date();
         if(date_now >= next_update || next_update == null){
-            _get_new_qr();
+            _get_new_qr_self();
             _get_attendances();
         }
     }, refreshQRInterval);
 
     // trigger checker
     setInterval(function(){
-        _get_trigger();
+        _get_trigger_self();
     }, checkNewScanInterval);
 });
 
@@ -45,6 +45,7 @@ function _get_new_qr(){
     
     $.ajax({
         url: url_qr,
+        crossDomain: true,
         headers: { 
             'Token': token,
             'Access-Control-Allow-Origin':'*',
