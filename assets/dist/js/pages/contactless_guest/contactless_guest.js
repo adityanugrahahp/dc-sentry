@@ -96,7 +96,7 @@ function _check_status(){
     $.post(url_cheker, {id: access_id}, function(d){
         if(d.status){
             if(d.kategori == 'checkin'){
-                $('.box-waiting').hide();
+                $('.box-waiting, .box-thanks').hide();
                 $('.box-qr').show();
 
                 // generate qrcode
@@ -111,10 +111,24 @@ function _check_status(){
         }else{
             if(d.kategori == 'checkout'){
                 is_confirmed = false;
+
+                // masukkan tanggal saat ini
+                now = new Date();
+                date_text = _addZero(now.getDate()) + '/' + _addZero(now.getMonth()) + '/' + now.getFullYear() + ' ' + _addZero(now.getHours()) + ':' + _addZero(now.getMinutes());
+                $('#checkout-detail').text(date_text);
+
+                $('.box-waiting, .box-qr').hide();
+                $('.box-thanks').show();
                 
                 // stop interval
                 clearInterval(refeshInterval);
             }
         }
     });
+}
+
+function _addZero(i){
+    if (i < 10) { i = "0" + i; }
+
+    return i;
 }

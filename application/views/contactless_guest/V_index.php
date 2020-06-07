@@ -273,6 +273,20 @@
                             </div>
                         </div>
                     </div>
+                    <div class="card-body box-thanks text-center" style="display:none;">
+                        <h5><b>Terima Kasih<br>atas Kunjungan Anda</b></h5>
+                        <hr>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <img src="<?= base_url(THEME_PATH); ?>image/alertbox/thanks.jpg" class="img-fluid" alt="Waiting" height="150px" loading="lazy">
+                            </div>
+                            <div class="col-lg-12">
+                                <span>Anda telah checkout (<b id="checkout-detail">#</b>)</span>
+                                <br>
+                                <span class="text-danger">#CovidSafeBUMN #NewNormalAtPELNI</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
