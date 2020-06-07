@@ -109,7 +109,7 @@ function _get_new_qr_self(){
 function _get_trigger_self(){
     $.get(module_url + '/ajax_get_trigger/' + screen_id, function(d){
         if(d.status){
-            _get_new_qr();
+            _get_new_qr_self();
             console.info('Someone has scanned');
         }
     });
