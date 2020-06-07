@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Contactless_guest extends MY_Controller {
-
+	// construct
 	function __construct(){
 		parent::__construct();
 
