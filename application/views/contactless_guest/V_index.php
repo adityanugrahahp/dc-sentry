@@ -80,7 +80,7 @@
                                 <!-- FORM DATA DIRI -->
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam vero necessitatibus aliquam, blanditiis totam rerum quod ea ab labore non amet est dolores minus voluptatem nisi et veritatis quos doloremque?</p>
+                                        <p>Silakan isi detail form di bawah ini sesuai dengan identitas Anda, Anda dapat bertanya kepada resepsionis terkait lantai tujuan Anda. Isi form pernyataan dengan data yang sebenar-benarnya.</p>
                                     </div>
                                 </div>
                                 <div class="form-group">
