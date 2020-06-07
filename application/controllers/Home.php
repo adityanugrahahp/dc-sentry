@@ -49,6 +49,7 @@ class Home extends Management_Controller {
 			// $this->form_validation->set_rules('foto', 'Photo', 'required');
 			
 			if($this->form_validation->run() != FALSE){
+				// preset data array
 				$data = [
 					'register_time' => date('Y-m-d H:i:s'),
 					'lokasi'		=> 'KANTOR PUSAT',
@@ -63,7 +64,9 @@ class Home extends Management_Controller {
 				if(AUTO_NEW_CARD){ $is_valid = true; }
 
 				if($is_valid){
+					// masukkan data-data visitor untuk disimpan
 					foreach ($this->input->post() as $i => $v) {
+						if($i == 'id') { continue; }
 						if($i == 'tgl_lahir'){ if(empty($v)){ continue; } }
 						if($i == 'nama'){ $data[$i] = strtoupper($v); continue; }
 						if($i == 'id_visitor_card'){ 
@@ -91,32 +94,45 @@ class Home extends Management_Controller {
 						$data[$i] = $v;
 					}
 					
-					$data_foto  = $data['foto'];
+					// data foto merupakan format base64
+					$data_foto = $data['foto'];
 	
-					list($type, $data_foto) = explode(';', $data_foto);
-					list(, $data_foto)      = explode(',', $data_foto);
+					@list($type, $data_foto) = explode(';', $data_foto);
+					@list(, $data_foto)      = explode(',', $data_foto);
+
 					$data_foto = base64_decode($data_foto);
-					$file_path = 'assets/image/photos/'.date('YmdHis').$data['nik'].'.jpg';
-					file_put_contents($file_path, $data_foto);
+					$file_path = base_url(THEME_PATH).'image/photos/'.date('YmdHis').$data['nik'].'.jpg';
+					@file_put_contents($file_path, $data_foto);
+
 					$data['foto'] = $file_path;
-					
-					// cek apakah nik, id_card, register_time dan status = 1 sdh ada ditabel?
-					if($this->M_visitor->get_new_visitor(
-						[
+
+					if(! $this->input->post('id')){
+						// bila id tidak ada, maka insert
+						// cek apakah nik, id_card, register_time dan status = 1 sdh ada ditabel?
+						$where = [
 							'nik' 				=> $data['nik'],
 							'nama' 				=> $data['nama'],
 							'id_visitor_card' 	=> $data['id_visitor_card'],
 							'status' 			=> 1
-						]
-					)){
-						$status = false;
-						$error 	= 'Data Sudah Ada.';
-					}else{
-						// insert to DB
-						$db = $this->M_visitor->insert_new_visitor($data);
-						if(! $db){
+						];
+
+						if($this->M_visitor->get_new_visitor($where)){
 							$status = false;
-							$error 	= 'Cannot save data.';
+							$error 	= 'Data Sudah Ada. Silakan checkout terlebih dahulu.';
+						}else{
+							// insert to DB
+							$db = $this->M_visitor->insert_new_visitor($data);
+							if(! $db){
+								$status = false;
+								$error 	= 'Cannot save data.';
+							}
+						}
+					}else{
+						// bila id ada, maka update entry
+						$db = $this->M_visitor->update_visitor(['id' => $this->input->post('id')], ['flag_approve' => 'Y']);
+						if(! $db){ 
+							$status = false;
+							$error 	= 'Cannot approve user.';
 						}
 					}
 				}else{
@@ -155,7 +171,10 @@ class Home extends Management_Controller {
 			if(is_numeric($keyword)){
 				$where['no_kartu'] = $keyword;
 			}else{
-				$like = ['lower(nama_kartu)' => strtolower($keyword)];
+				$like = [
+					'lower(nama_kartu)' => strtolower($keyword),
+					'lower(kode_akses)' => strtolower($keyword)
+				];
 			}
 		}
 
@@ -167,8 +186,26 @@ class Home extends Management_Controller {
 			$durasi = $this->_durasi_waktu($v->register_time, date('Y-m-d H:i:s'));
 
 			$action = [
+				'<a href="#" class="btn btn-primary btn-xs btn-edit" data-id="'.$v->id.'" title="Verifikasi Data Tamu"><i class="fa fa-edit fa-fw"></i></a>',
 				'<a href="#" class="btn btn-danger btn-xs btn-delete" data-id="'.$v->id.'" title="Checkout Tamu"><i class="fa fa-sign-out fa-fw"></i></a>'
 			];
+
+			// nomor kartu visitor
+			$s_no_kartu_visitor 	= $v->nama_kartu;
+
+			// waktu pendaftaran
+			$s_waktu_pendaftaran 	= "<b>".date('d/M/Y, H:i', strtotime($v->register_time))."</b><span class='clearfix' title='Durasi waktu dalam gedung'><i class='fa fa-clock-o fa-fw'></i> {$durasi}</span>";
+
+			// bila statusnya belum approve, tampilkan tombol approve dan bukan checkout
+			if($v->flag_approve != 'Y'){
+				// hilangkan tombol checkout
+				unset($action[1]);
+				$s_waktu_pendaftaran 	= "<b class='text-warning'>Menunggu</b><span class='clearfix'>{$durasi}</span>";
+				$s_no_kartu_visitor 	= '-';
+			}else{
+				// hilangkan tombol verifikasi
+				unset($action[0]);
+			}
 
 			$foto = (! empty($v->foto) && is_file($v->foto)) ? '<img src="'.$v->foto.'" alt="Foto Tamu" height="100" />' : 'N/A';
 
@@ -176,12 +213,12 @@ class Home extends Management_Controller {
 				'foto' 				=> $foto,
 				'nama' 				=> "<b>{$v->nama}</b><small class='clearfix'>NIK: {$v->nik}</small>",
 				'no_hp'				=> $v->no_hp,
-				'register_time' 	=> "<b>".date('d/M/Y, H:i', strtotime($v->register_time))."</b><span class='clearfix' title='Durasi waktu dalam gedung'><i class='fa fa-clock-o fa-fw'></i> {$durasi}</span>",
+				'register_time' 	=> $s_waktu_pendaftaran,
 				'tujuan' 			=> $v->tujuan,
 				'keperluan' 		=> $v->keperluan,
-				'id_visitor_card'	=> $v->nama_kartu,
-				'suhu'              => $v->suhu,
-				'action'			=> join(" ", $action)
+				'id_visitor_card'	=> $s_no_kartu_visitor,
+				'suhu'              => ($v->suhu) ?: '-',
+				'action'			=> '<center>'.join(" ", $action).'</center>'
 			];
 		}
 
@@ -221,7 +258,10 @@ class Home extends Management_Controller {
 			if(is_numeric($keyword)){
 				$where .= " and visitor_cards.no_kartu = '{$keyword}'";
 			}else{
-				$like = ['lower(nama_kartu)' => strtolower($keyword)];
+				$like = [
+					'lower(nama_kartu)' => strtolower($keyword),
+					'lower(kode_akses)' => strtolower($keyword)
+				];
 			}
 		}
 
@@ -292,11 +332,19 @@ class Home extends Management_Controller {
 
 	// jumlah untuk tamu yang saat ini sedang berada dalam gedung (hari ini)
 	function ajax_get_current_visitor(){
-		$where 	= ['date(register_time)' => date('Y-m-d'), 'status' => 1];
+		// jumlah pengunjung keseluruhan
+		$where 	= ['date(register_time)' => date('Y-m-d'), 'status' => 1, 'flag_approve' => 'Y'];
 		$db 	= $this->M_visitor->get_new_visitor($where);
 		$jumlah	= str_pad(count($db), 3, 0, STR_PAD_LEFT);
 
-		$this->output->set_content_type('application/json')->set_output(json_encode(['jumlah' => $jumlah]));
+		// jumlah pengunjung menunggu approval
+		$where 	= ['date(register_time)' => date('Y-m-d'), 'status' => 1, 'flag_approve' => 'N'];
+		$db 	= $this->M_visitor->get_new_visitor($where);
+		$wait	= str_pad(count($db), 3, 0, STR_PAD_LEFT);
+
+		$output = ['jumlah' => $jumlah, 'waiting' => $wait];
+
+		$this->output->set_content_type('application/json')->set_output(json_encode($output));
 	}
 
 	// jumlah untuk riwayat tamu sesuai tanggal
@@ -364,6 +412,48 @@ class Home extends Management_Controller {
 		}
 
 		$this->output->set_content_type('application/json')->set_output(json_encode(['status' => $status, 'total' => $result, 'since' => $since]));
+	}
+
+	// mendapatakan detail tamu
+	function ajax_get_detail_tamu(){
+		$status = false;
+		$msg 	= null;
+		$data 	= [];
+		$post 	= $this->input->post();
+
+		if(isset($post['id'])){
+			// dapatkan id visitornya
+			$id 	= $post['id'];
+			$where 	= ['id' => $id];
+
+			$db = $this->M_visitor->get_visitor_detail($where);
+			if($db){
+				$status = true;
+				$data 	= $db[0];
+
+				$html = null;
+				foreach(json_decode($db[0]->form_tambahan) as $i => $v){
+					$html .= "<b>".(++$i).". {$v->pertanyaan}</b><br>Respon: {$v->jawaban}<br>";
+
+					// keterangan tambahan
+					if(isset($v->keterangan) && $v->jawaban == 'Ya'){
+						$html .= "Keterangan Tambahan:<br>";
+
+						foreach($v->keterangan as $vk){
+							$html .= "- {$vk}<br>";
+						}
+					}
+
+					$html .= '<br>';
+				}
+
+				$data->{'form'} = $html;
+
+				unset($data->form_tambahan);
+			}
+		}
+
+		$this->output->set_content_type('application/json')->set_output(json_encode(['status' => $status, 'msg' => $msg, 'data' => $data]));
 	}
 
 	// fungsi untuk menghitung durasi antara 2 waktu

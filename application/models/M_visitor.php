@@ -8,11 +8,23 @@ class M_visitor extends CI_Model {
 		parent::__construct();
 	}
 
+	function get_visitor_detail($where = []){
+		
+		if($where){ $this->db->where($where); }
+
+		$this->db->select('visitor_registration.*, visitor_cards.nama_kartu, visitor_cards.no_kartu');
+		$this->db->join('visitor_cards', 'visitor_cards.id_kartu = visitor_registration.id_visitor_card', 'left');
+		
+		$q = $this->db->get('visitor_registration');
+
+		return ($q) ? $q->result() : [];
+	}
+
 	// add new code DM
 	function insert_new_visitor($data){
 		$query = $this->db->insert('visitor_registration', $data);
 
-		return ($query) ? true : false;
+		return ($query) ? $this->db->insert_id('id_seq') : false;
 	}
 
 	function get_new_visitor($where = [], $like = null, $limit = null, $offset = null, $order_by = 'register_time', $sort = 'desc'){
@@ -21,7 +33,17 @@ class M_visitor extends CI_Model {
 		$this->db->where($where);
 		
 		if($like){
-			$this->db->like($like);
+			if($where){ $this->db->group_start(); }
+			
+			if(is_array($like)){
+				foreach($like as $i => $v){
+					$this->db->or_like($i, $v);
+				}
+			}else{
+				$this->db->like($like);
+			}
+
+			if($where){ $this->db->group_end(); }
 		}
 
 		$this->db->limit($limit, $offset);

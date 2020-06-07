@@ -39,7 +39,7 @@
 			<div class="wrap-login100">
 				<form class="login100-form validate-form">
 					<p><center>
-						<img src="<?= base_url(THEME_PATH); ?>images/logo_head.png" alt="Image" width="70px">
+						<img src="<?= base_url(THEME_PATH); ?>image/logo_head.jpg" alt="Image" width="70px">
 						<h5>PT. Pelayaran Nasional Indonesia (Persero)</h5>
 					</center></p>
 					<span class="login100-form-title p-b-15 p-t-10">
@@ -49,7 +49,7 @@
 					<div class="table-res"><center>Belum Ada Absen Pegawai</center></div>
 				</form>
 
-				<div class="login100-more" style="background-image: url('<?= base_url(THEME_PATH);?>images/background/4.jpg');">
+				<div class="login100-more" style="background-image: url('<?= base_url(THEME_PATH);?>image/background/4.jpg');">
 					<div class="row">&nbsp;</div>
 					<span class="login100-form-title p-b-25">
 						<h1><b style="color: rgba(255, 255, 255, 5.8);"><?= $nama ?></b></h1>
@@ -87,7 +87,10 @@
 
 	<script>
 		var base_url 	= '<?= base_url() ?>';
-		var screen_id	= '<?= $screen_id ?>'
+		var screen_id	= '<?= $screen_id ?>';
+		var token 		= '<?= WS_AUTH_KEY ?>';
+		var url_trigger = '<?= WS_URL.'ws_absenqr/get_status_change' ?>';
+		var url_qr 		= '<?= WS_URL.'ws_absenqr/get_new_qr' ?>';
 	</script>
 	<script src="<?= base_url(THEME_PATH); ?>vendor/jquery/jquery-3.2.1.min.js"></script>
 	<script src="<?= base_url(THEME_PATH); ?>vendor/animsition/js/animsition.min.js"></script>
@@ -100,42 +103,5 @@
 	<script src="<?= base_url(THEME_PATH); ?>dist/js/pages/absenqr/qrcode.min.js"></script>
 	<script src="<?= base_url(THEME_PATH); ?>dist/js/pages/absenqr/screen.js"></script>
 	<script src="<?= base_url(THEME_PATH); ?>js/main.js"></script>
-	<script>
-		var i = 0;
-		var img = ['4.jpg','5.jpg','6.jpg','7.jpg','8.jpg','9.jpg'];
-		var opacity = 1;
-		var incOpacity = 1; 
-		var delay = 1000;
-
-		// fungsi ganti gambar
-		function changeBg() {
-			opacity = 1;
-			incOpacity = 1;
-
-		    $('#FadeInOut').css("opacity", opacity);
-		    $('#FadeInOut').css("background-image", "url(<?= base_url(THEME_PATH); ?>images/background/" + img[i] + " )");
-
-		    i++;
-		    // cek if i = max
-		    if(i == img.length) {
-		        i = 0;
-		    }
-
-		    fadeIn();
-
-		    setTimeout(changeBg, 5000);
-		}
-		// fungsi effek fade 
-		function fadeIn() { 
-			opacity = incOpacity / delay; 
-			if(incOpacity <= delay) {
-				$('.header').css("opacity", opacity); 
-			    setTimeout(fadeIn, 100);
-			    incOpacity++; 
-			} 
-		}
-		        // inisialisai fungsi gambar
-		changeBg();
-	</script>
 </body>
 </html>

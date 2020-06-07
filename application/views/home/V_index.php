@@ -26,7 +26,12 @@
 			<div class="box-body">
 				<div class="row">
 					<div class="col-lg-12" id="visitor-current">
-						<h5><strong><i class="fa fa-users fa-fw"></i> PENGUNJUNG SAAT INI: </strong> <span id="visitor-jumlah"></span> Orang</h5>
+						<h5>
+							<strong><i class="fa fa-users fa-fw"></i> PENGUNJUNG SAAT INI: </strong> 
+							<span id="visitor-jumlah"></span> Orang &middot;
+							<strong>MENUNGGU:</strong> 
+							<span id="waiting-visitor-jumlah"></span> Orang
+						</h5>
 						<div class="table-responsive">
 							<table id="table-visitor" class="table table-bordered table-striped">
 								<thead>
@@ -99,7 +104,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title"><i class="fa fa-user-plus fa-fw"></i> Pengunjung Baru</h4>
+				<h4 class="modal-title modal-visitor-title"><i class="fa fa-user-plus fa-fw"></i> Pengunjung Baru</h4>
 			</div>
 			<div class="modal-body">
 				<form id="form-visitor">
@@ -120,6 +125,7 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<label>NIK<span style="color:red">*</span></label>
+										<input type="hidden" name="id"/>
 										<input type="text" name="nik" required class="form-control" />
 									</div> 
 								</div>
@@ -190,14 +196,22 @@
 								</div>
 							</div>
 							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label>Form Deklarasi Mandiri<span style="color:red">*</span></label>
+										<span class="clearfix"><a href="#" class="show-form-deklarasi">Lihat Form Deklarasi</a></span>
+									</div>
+								</div>
+							</div>
+							<div class="row">
 								<div class="col-lg-12"><hr></div>
-								<div class="col-md-6">
+								<div class="col-md-4">
 									<div class="form-group">
 										<label>Visitor Card ID<span style="color:red">*</span></label>
 										<input required type="text" class="form-control" name="id_visitor_card" />
 									</div> 
 								</div>
-								<div class="col-md-6">
+								<div class="col-md-8">
 									<div class="form-group">
 										<label>Identifikasi Kartu Akses:</label>
 										<label class="clearfix" id="visitor-card-res" style="margin-top: 5px;">Scan Kartu Terlebih Dahulu</label>
@@ -206,19 +220,25 @@
 							</div>
 						</div>
 						<!-- Col untuk Camera -->
-						<div class="col-lg-6 text-center">
+						<div class="col-lg-6 text-center box-camera">
 							<div class="camera">
 								<video id="video">Video stream not available.</video>
-								<button id="startbutton">Take photo</button> 
+								<button id="startbutton">Ambil Gambar</button> 
 							</div>
-							<canvas id="canvas">
-							</canvas>
+							<canvas id="canvas"></canvas>
 							<div class="output">
 								<img id="photo" alt="The screen capture will appear in this box.">
 								<div class="form-group">
 									<input type="hidden" class="form-control" id="foto" name="foto" /> 
 								</div>
 							</div>
+						</div>
+						<div class="col-lg-6 box-deklarasi" style="display:none;">
+							<h4 class="text-primary text-bold">Form Deklarasi</h4>
+							<p>Berikut ini merupakan form deklarasi yang diisi oleh pengunjung.</p>
+							<hr>
+							<div id="form-tambahan"></div>
+							<span>Deklarasi pengakuan ini dibuat dengan sebenar-benarnya oleh pengunjung yang bersangkutan. Segala ketidakbenaran data akan ditanggung oleh pengunjung sepenuhnya.</span>
 						</div>
 					</div>
 				</form>

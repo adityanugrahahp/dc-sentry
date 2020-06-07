@@ -1,3 +1,4 @@
+var table 			= null;
 var menu_history 	= 0;
 var table_history 	= null;
 
@@ -17,6 +18,7 @@ $(document).ready(function () {
 			+ ".\nKlik RIWAYAT TAMU untuk CHECKOUT dengan memilih TANGGAL "+ e.since +" s/d HARI INI.");
 		}
 	});
+
 	$(document).on('keypress', 'input[name="nik"]',function (e) {
 		var nrp_inp = $(this).val();
 		if(e.which == 13) {
@@ -64,6 +66,39 @@ $(document).ready(function () {
 			}
 		});
 	}
+
+	table = $('#table-visitor').DataTable({
+		"bSort" : false,
+		"bLengthChange": false,
+		"processing": true,
+		"serverSide": true,
+		"ajax": {
+			"type": "POST",
+			"url": base_url + "home/ajax_get_visitor"
+		},
+		"columns": [
+			{"data": "foto"},
+			{"data": "nama"},
+			{"data": "no_hp"},
+			{"data": "register_time"},
+			{"data": "tujuan"},
+			{"data": "keperluan"},
+			{"data": "id_visitor_card"},
+			{"data": "suhu"},
+			{"data": "action"},
+		],
+		"columnDefs": [
+			{"className": "text-center", "targets": [7], "width": 30},
+			{"className": "text-center", "targets": [0, 2, 3, 6]},
+		]
+	});
+	
+	// setInterval untuk mengecek apakah ada visitor baru?
+	// INFO: loop setiap 1 menit sekali
+	setInterval(function(){
+		refreshVisitor();
+		table.ajax.reload();
+	}, 60 * 1000);
 });
 
 $(document).on('click', '.btn-save', function (){
@@ -75,45 +110,60 @@ $(document).on('click', '.btn-save', function (){
 			$('.form-error').html(e.msg);
 		}else{
 			alert("Pengunjung Berhasil Didaftarkan!");
-			formReset();
 			$('#visitor-new').modal('hide');
+			
+			formReset();
 			refreshVisitor();
 		}
-		console.log(e);
 	}).fail(function(e){
 		$('.form-error').html(e.responseText);
 	});
 });
 
-var table = $('#table-visitor').DataTable({
-	"bSort" : false,
-	"bLengthChange": false,
-	"processing": true,
-	"serverSide": true,
-	"ajax": {
-		"type": "POST",
-		"url": base_url + "home/ajax_get_visitor"
-	},
-	"columns": [
-        {"data": "foto"},
-        {"data": "nama"},
-        {"data": "no_hp"},
-        {"data": "register_time"},
-        {"data": "tujuan"},
-        {"data": "keperluan"},
-        {"data": "id_visitor_card"},
-        {"data": "suhu"},
-        {"data": "action"},
-	],
-	"columnDefs": [
-        {"className": "text-center", "targets": [7], "width": 30},
-        {"className": "text-center", "targets": [0, 2, 3, 6]},
-    ]
-});
-
 $(document).on('click', '.btn-filter', function (){
 	$('#history-date').text($('#history-filter-start').val()+ " s/d " +$('#history-filter-end').val());
 	refreshVisitorHistory($('#history-filter-start').val(), $('#history-filter-end').val());
+});
+
+$(document).on('click', '.show-form-deklarasi', function (){
+	$('.box-deklarasi, .box-camera').toggle();
+});
+
+$(document).on('click', '.btn-edit', function (){
+	data_id = $(this).data('id');
+
+	// ambil data dari backend
+	$.post(base_url + 'home/ajax_get_detail_tamu', {id: data_id}, function(d){
+		if(d.status){
+			// tampilkan modal
+			$('#visitor-new').modal('show');
+			$('.modal-visitor-title').html('<i class="fa fa-edit fa-fw"></i> Verifikasi Pengunjung Baru');
+
+			// masukkan semua item pada form modal
+			$('input[name="id"]').val(d.data.id);
+			$('input[name="nik"]').val(d.data.nik);
+			$('input[name="nama"]').val(d.data.nama);
+			$('select[name="jenis_kelamin"]').val(d.data.jenis_kelamin).change();
+			$('input[name="tgl_lahir"]').val(d.data.tgl_lahir);
+			$('textarea[name="alamat"]').val(d.data.alamat);
+			$('input[name="no_hp"]').val(d.data.no_hp);
+			$('input[name="keperluan"]').val(d.data.keperluan);
+			$('select[name="tujuan"]').val(d.data.tujuan).change();
+
+			// kartu akses
+			$('input[name="id_visitor_card"]').val(d.data.no_kartu);
+			$('#visitor-card-res').html('<span class="text-success">'+ d.data.nama_kartu + ' - ' + d.data.kode_akses + '</span>');
+
+			// form deklarasi
+			$('#form-tambahan').html(d.data.form);
+			$('.box-deklarasi').hide();
+			$('.box-camera').show();
+
+			$('.btn-save').removeAttr('disabled').text('Approve');
+		}else{
+			alert('Tidak Dapat Mendapatkan Data Visitor Ini');
+		}
+	});
 });
 
 $(document).on('click', '.btn-delete', function (){
@@ -238,6 +288,7 @@ function refreshVisitor(){
 	$.get(url).done(function(e){
 		table.ajax.reload();
 		$('#visitor-jumlah').text(e.jumlah);
+		$('#waiting-visitor-jumlah').text(e.waiting);
 	});
 }
 
