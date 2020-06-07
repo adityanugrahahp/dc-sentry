@@ -33,6 +33,7 @@ class Contactless_guest extends MY_Controller {
 	function ajax_post_form(){
 		$status = false;
 		$msg 	= null;
+		$access = null;
 		$data 	= [];
 		$post 	= $this->input->post();
 
@@ -63,7 +64,7 @@ class Contactless_guest extends MY_Controller {
 
 					if(isset($post['keterangan_'.$i])){
 						foreach($post['keterangan_'.$i] as $index => $v){
-							$temp['keterangan'][] = $v.' '.$post['jawaban_keterangan_'.$i][$index];
+							$temp['keterangan'][] = $v.' <b>'.$post['jawaban_keterangan_'.$i][$index].'</b>';
 						}
 					}
 				}
@@ -78,7 +79,7 @@ class Contactless_guest extends MY_Controller {
 				
 				$data = [
 					'nik'				=> $post['nik'],
-					'nama'				=> $post['nama'],
+					'nama'				=> strtoupper($post['nama']),
 					'alamat'			=> $post['alamat'],
 					'no_hp'				=> $post['no_hp'],
 					'jenis_kelamin'		=> $post['jenis_kelamin'],
@@ -95,21 +96,42 @@ class Contactless_guest extends MY_Controller {
 				];
 				
 				$db = $this->M_visitor->insert_new_visitor($data);
-				if($db){ $status = true; }
+
+				if($db){ 
+					$status = true; 
+					$access = $db;
+				}
 			}
 		}else{
 			$msg = str_replace(['<p>', '</p>'], [null, '<br/>'], validation_errors());
 		}
 
-		$this->output->set_content_type('application/json')->set_output(json_encode(compact('status', 'msg')));
+		$this->output->set_content_type('application/json')->set_output(json_encode(compact('status', 'msg', 'access')));
 	}
 
-	// TODO: UNTUK MELAKUKAN PENGECEKAN REGISTRASI APPROVE ATAU TIDAK?
-	// BILA APPROVE, MAKA AKAN MUNCUL HALAMAN QR CODENYA YANG NANTI AKAN DI SCAN
-	// BILA STATUS SUDAH CHECKOUT MAKA MUNCULKAN HALAMAN TERIMA KASIH DAN MATIKAN SETINTERVAL()
 	function ajax_check_status(){
+		$status 	= false;
+		$kategori 	= 'waiting';
+		$data 		= [];
 
-		$this->load->view('contactless_guest/qr_guest');
+		if($post = $this->input->post()){
+			// cek apakah visitor ini sudah diijinkan masuk?
+			$db = $this->M_visitor->get_visitor_detail(['id' => $post['id'], 'flag_approve' => 'Y']);
+			if($db){
+				if(! $db[0]->last_seen){
+					$status 	= true;
+					$kategori 	= 'checkin';
+					$data 		= [
+						'nama'	=> $db[0]->nama,
+						'since'	=> date('d/M/Y - H:i', strtotime($db[0]->register_time)),
+						'kode' 	=> $db[0]->kode_akses
+					];
+				}else{
+					$kategori = 'checkout';
+				}
+			}
+		}
 
+		$this->output->set_content_type('application/json')->set_output(json_encode(compact('status', 'kategori', 'data')));
 	}
 }

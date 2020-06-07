@@ -125,6 +125,7 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<label>NIK<span style="color:red">*</span></label>
+										<input type="hidden" name="id"/>
 										<input type="text" name="nik" required class="form-control" />
 									</div> 
 								</div>
@@ -204,13 +205,13 @@
 							</div>
 							<div class="row">
 								<div class="col-lg-12"><hr></div>
-								<div class="col-md-6">
+								<div class="col-md-4">
 									<div class="form-group">
 										<label>Visitor Card ID<span style="color:red">*</span></label>
 										<input required type="text" class="form-control" name="id_visitor_card" />
 									</div> 
 								</div>
-								<div class="col-md-6">
+								<div class="col-md-8">
 									<div class="form-group">
 										<label>Identifikasi Kartu Akses:</label>
 										<label class="clearfix" id="visitor-card-res" style="margin-top: 5px;">Scan Kartu Terlebih Dahulu</label>
@@ -236,6 +237,8 @@
 							<h4 class="text-primary text-bold">Form Deklarasi</h4>
 							<p>Berikut ini merupakan form deklarasi yang diisi oleh pengunjung.</p>
 							<hr>
+							<div id="form-tambahan"></div>
+							<span>Deklarasi pengakuan ini dibuat dengan sebenar-benarnya oleh pengunjung yang bersangkutan. Segala ketidakbenaran data akan ditanggung oleh pengunjung sepenuhnya.</span>
 						</div>
 					</div>
 				</form>

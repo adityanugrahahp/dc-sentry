@@ -93,6 +93,12 @@ $(document).ready(function () {
 		]
 	});
 	
+	// setInterval untuk mengecek apakah ada visitor baru?
+	// INFO: loop setiap 1 menit sekali
+	setInterval(function(){
+		refreshVisitor();
+		table.ajax.reload();
+	}, 60 * 1000);
 });
 
 $(document).on('click', '.btn-save', function (){
@@ -104,11 +110,11 @@ $(document).on('click', '.btn-save', function (){
 			$('.form-error').html(e.msg);
 		}else{
 			alert("Pengunjung Berhasil Didaftarkan!");
-			formReset();
 			$('#visitor-new').modal('hide');
+			
+			formReset();
 			refreshVisitor();
 		}
-		console.log(e);
 	}).fail(function(e){
 		$('.form-error').html(e.responseText);
 	});
@@ -134,8 +140,9 @@ $(document).on('click', '.btn-edit', function (){
 			$('.modal-visitor-title').html('<i class="fa fa-edit fa-fw"></i> Verifikasi Pengunjung Baru');
 
 			// masukkan semua item pada form modal
+			$('input[name="id"]').val(d.data.id);
 			$('input[name="nik"]').val(d.data.nik);
-			$('input[name="nama"]').val(d.data.nik);
+			$('input[name="nama"]').val(d.data.nama);
 			$('select[name="jenis_kelamin"]').val(d.data.jenis_kelamin).change();
 			$('input[name="tgl_lahir"]').val(d.data.tgl_lahir);
 			$('textarea[name="alamat"]').val(d.data.alamat);
@@ -145,9 +152,14 @@ $(document).on('click', '.btn-edit', function (){
 
 			// kartu akses
 			$('input[name="id_visitor_card"]').val(d.data.no_kartu);
-			$('#visitor-card-res').html('<span class="text-success">'+ d.data.nama_kartu + '</span>');
+			$('#visitor-card-res').html('<span class="text-success">'+ d.data.nama_kartu + ' - ' + d.data.kode_akses + '</span>');
 
-			$('.btn-save').removeAttr('disabled');
+			// form deklarasi
+			$('#form-tambahan').html(d.data.form);
+			$('.box-deklarasi').hide();
+			$('.box-camera').show();
+
+			$('.btn-save').removeAttr('disabled').text('Approve');
 		}else{
 			alert('Tidak Dapat Mendapatkan Data Visitor Ini');
 		}

@@ -49,6 +49,7 @@ class Home extends Management_Controller {
 			// $this->form_validation->set_rules('foto', 'Photo', 'required');
 			
 			if($this->form_validation->run() != FALSE){
+				// preset data array
 				$data = [
 					'register_time' => date('Y-m-d H:i:s'),
 					'lokasi'		=> 'KANTOR PUSAT',
@@ -63,7 +64,9 @@ class Home extends Management_Controller {
 				if(AUTO_NEW_CARD){ $is_valid = true; }
 
 				if($is_valid){
+					// masukkan data-data visitor untuk disimpan
 					foreach ($this->input->post() as $i => $v) {
+						if($i == 'id') { continue; }
 						if($i == 'tgl_lahir'){ if(empty($v)){ continue; } }
 						if($i == 'nama'){ $data[$i] = strtoupper($v); continue; }
 						if($i == 'id_visitor_card'){ 
@@ -91,32 +94,45 @@ class Home extends Management_Controller {
 						$data[$i] = $v;
 					}
 					
-					$data_foto  = $data['foto'];
+					// data foto merupakan format base64
+					$data_foto = $data['foto'];
 	
-					list($type, $data_foto) = explode(';', $data_foto);
-					list(, $data_foto)      = explode(',', $data_foto);
+					@list($type, $data_foto) = explode(';', $data_foto);
+					@list(, $data_foto)      = explode(',', $data_foto);
+
 					$data_foto = base64_decode($data_foto);
-					$file_path = 'assets/image/photos/'.date('YmdHis').$data['nik'].'.jpg';
-					file_put_contents($file_path, $data_foto);
+					$file_path = base_url(THEME_PATH).'image/photos/'.date('YmdHis').$data['nik'].'.jpg';
+					@file_put_contents($file_path, $data_foto);
+
 					$data['foto'] = $file_path;
-					
-					// cek apakah nik, id_card, register_time dan status = 1 sdh ada ditabel?
-					if($this->M_visitor->get_new_visitor(
-						[
+
+					if(! $this->input->post('id')){
+						// bila id tidak ada, maka insert
+						// cek apakah nik, id_card, register_time dan status = 1 sdh ada ditabel?
+						$where = [
 							'nik' 				=> $data['nik'],
 							'nama' 				=> $data['nama'],
 							'id_visitor_card' 	=> $data['id_visitor_card'],
 							'status' 			=> 1
-						]
-					)){
-						$status = false;
-						$error 	= 'Data Sudah Ada.';
-					}else{
-						// insert to DB
-						$db = $this->M_visitor->insert_new_visitor($data);
-						if(! $db){
+						];
+
+						if($this->M_visitor->get_new_visitor($where)){
 							$status = false;
-							$error 	= 'Cannot save data.';
+							$error 	= 'Data Sudah Ada. Silakan checkout terlebih dahulu.';
+						}else{
+							// insert to DB
+							$db = $this->M_visitor->insert_new_visitor($data);
+							if(! $db){
+								$status = false;
+								$error 	= 'Cannot save data.';
+							}
+						}
+					}else{
+						// bila id ada, maka update entry
+						$db = $this->M_visitor->update_visitor(['id' => $this->input->post('id')], ['flag_approve' => 'Y']);
+						if(! $db){ 
+							$status = false;
+							$error 	= 'Cannot approve user.';
 						}
 					}
 				}else{
@@ -414,6 +430,26 @@ class Home extends Management_Controller {
 			if($db){
 				$status = true;
 				$data 	= $db[0];
+
+				$html = null;
+				foreach(json_decode($db[0]->form_tambahan) as $i => $v){
+					$html .= "<b>".(++$i).". {$v->pertanyaan}</b><br>Respon: {$v->jawaban}<br>";
+
+					// keterangan tambahan
+					if(isset($v->keterangan) && $v->jawaban == 'Ya'){
+						$html .= "Keterangan Tambahan:<br>";
+
+						foreach($v->keterangan as $vk){
+							$html .= "- {$vk}<br>";
+						}
+					}
+
+					$html .= '<br>';
+				}
+
+				$data->{'form'} = $html;
+
+				unset($data->form_tambahan);
 			}
 		}
 

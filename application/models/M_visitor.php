@@ -24,7 +24,7 @@ class M_visitor extends CI_Model {
 	function insert_new_visitor($data){
 		$query = $this->db->insert('visitor_registration', $data);
 
-		return ($query) ? true : false;
+		return ($query) ? $this->db->insert_id('id_seq') : false;
 	}
 
 	function get_new_visitor($where = [], $like = null, $limit = null, $offset = null, $order_by = 'register_time', $sort = 'desc'){
@@ -33,7 +33,17 @@ class M_visitor extends CI_Model {
 		$this->db->where($where);
 		
 		if($like){
-			$this->db->like($like);
+			if($where){ $this->db->group_start(); }
+			
+			if(is_array($like)){
+				foreach($like as $i => $v){
+					$this->db->or_like($i, $v);
+				}
+			}else{
+				$this->db->like($like);
+			}
+
+			if($where){ $this->db->group_end(); }
 		}
 
 		$this->db->limit($limit, $offset);

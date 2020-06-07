@@ -7,6 +7,7 @@
     <link rel="shortcut icon" href="<?= base_url(THEME_PATH); ?>favicon.ico">
     <link href="<?= base_url(THEME_PATH); ?>css/dist/bootstrap.css" rel="stylesheet">
     <link href="<?= base_url(THEME_PATH); ?>css/dist/boxicons/css/boxicons.min.css"  rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
@@ -60,7 +61,7 @@
             <center>
                 <a class="navbar-brand" href="<?= current_url() ?>">
                     <img src="<?= base_url(THEME_PATH); ?>favicon.ico" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
-                    <b>Contactless Visitor PT. PELNI (Persero)</b>
+                    <b>Admittance Center</b>
                 </a>
             </center>
         </nav>
@@ -69,7 +70,7 @@
     <main role="main" class="container">
         <div class="row">
             <div class="col-md-8 offset-md-2">
-                <div class="card" style="margin-bottom: 50px;">
+                <div class="card card-form" style="margin-bottom: 50px;">
                     <div class="card-header">
                         <h5 class="pt-2"><b>Form Registrasi Pengunjung</b></h5>
                     </div>
@@ -232,6 +233,47 @@
                         </div>
                     </form>
                 </div>
+                <div class="card card-qr" style="margin-bottom: 50px;display:none;">
+                    <div class="card-body box-waiting text-center">
+                        <h5><b>Silakan Menunggu</b></h5>
+                        <hr>
+                        <span class="clearfix">
+                            Resepsionis kami akan memanggil Anda ketika form pendaftaran Anda telah disetujui, siapkan tanda pengenal Anda (KTP / SIM / Passpor / ID Lainnya). Anda akan mendapatkan <b>Virtual Visitor Card</b> berupa QR Code yang digunakan untuk checkout.
+                        </span>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <img src="<?= base_url(THEME_PATH); ?>image/alertbox/waiting.png" class="img-fluid" alt="Waiting" height="150px" loading="lazy">
+                            </div>
+                            <div class="col-lg-12">
+                                <span>
+                                    <i class="fa fa-refresh fa-fw fa-spin fa-2x text-primary"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body box-qr text-center" style="display:none;">
+                        <h5><b>Virtual Visitor Card</b></h5>
+                        <hr>
+                        <span class="clearfix">
+                            <b>PERHATIAN: </b>
+                            Untuk memudahkan proses checkout, jangan menutup halaman ini selama berada di dalam gedung. QR yang Anda miliki akan digunakan untuk checkout.
+                        </span>
+                        <div class="row">
+                            <div class="col-lg-12 py-2">
+                                <center>
+                                    <div id="img-qr"></div>
+                                    <br>
+                                    <b class="visitor-detail"></b>
+                                    <br>
+                                    <small class="visitor-detail"></small>
+                                </center>
+                            </div>
+                            <div class="col-lg-12">
+                                <small class="text-primary">Selalu gunakan masker, menjaga jarak aman dan mencuci tangan selama berada di dalam gedung ini.</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -242,11 +284,15 @@
         </div>
     </footer>
 
+    <script>
+        var url_cheker = '<?= base_url('contactless_guest/ajax_check_status') ?>';
+    </script>
     <script src="<?= base_url(THEME_PATH); ?>js/jquery-3.3.1.min.js"></script>
     <script src="<?= base_url(THEME_PATH); ?>js/bootstrap.min.js"></script>
     <script src="<?= base_url(THEME_PATH); ?>js/dist/js/moment.js"></script>
     <script src="<?= base_url(THEME_PATH); ?>js/bootstrap-datepicker.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.js"></script>
+	<script src="<?= base_url(THEME_PATH); ?>dist/js/pages/absenqr/qrcode.min.js"></script>
     <script src="<?= base_url(THEME_PATH); ?>dist/js/pages/contactless_guest/contactless_guest.js"></script>
 </body>
 </html>

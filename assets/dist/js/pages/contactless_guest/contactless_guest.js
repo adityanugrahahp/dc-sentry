@@ -1,5 +1,9 @@
+var qrcode;
+var is_confirmed    = false;
+var access_id       = null;
+var refeshInterval  = null;
 
-const intervalAccessChecker = 15000; // 15 detik
+const intervalAccessChecker = 5000; // 15 detik
 
 $(document).ready(function () {
     $(".datepicker").datepicker({ 
@@ -10,6 +14,18 @@ $(document).ready(function () {
 
     $('.btn-submit').addClass('disabled');
     $('.btn-submit').prop('disabled', true);
+
+    // initialize qr code renderer
+    qrcode = new QRCode(document.getElementById("img-qr"), {
+        width : 200,
+        height : 200
+    });
+});
+
+$(window).on('beforeunload', function(){
+    if(is_confirmed){
+        return 'Anda masih berada dalam gedung, QR ini akan digunakan untuk checkout. Tinggalkan Halaman?';
+    }
 });
 
 $(document).on('change', 'input[name="is_agreed"]', function(){
@@ -31,8 +47,18 @@ $(document).on('click', '.btn-submit', function(){
 
 	$.post(url, data, function(d){
         if(d.status){
-            Swal.fire('Berhasil Mendaftarkan', 'Form Pendaftaran Anda akan kami review, silakan menuju meja resepsonis untuk mendapatkan akses.', 'success').then(() => {
+            Swal.fire('Berhasil Mendaftarkan', 'Form Pendaftaran Anda telah kami terima.', 'success').then(() => {
                 // hide form
+                $('.card-form').hide();
+                $('.card-qr').show();
+
+                is_confirmed    = true;
+                access_id       = d.access;
+
+                // start setInterval
+                refeshInterval = setInterval(function(){
+                    _check_status();
+                }, intervalAccessChecker);
             });
         }else{
             Swal.fire('Terjadi Kesalahan', d.msg, 'error').then(() => {
@@ -65,3 +91,30 @@ $(document).on('click', '.radstatus', function(){
         $("#formstatus1").hide();
     }
 });
+
+function _check_status(){
+    $.post(url_cheker, {id: access_id}, function(d){
+        if(d.status){
+            if(d.kategori == 'checkin'){
+                $('.box-waiting').hide();
+                $('.box-qr').show();
+
+                // generate qrcode
+                qrcode.makeCode(d.data.kode);
+
+                // tampilkan konfirmasi saat akan menutup halaman
+                is_confirmed = true;
+
+                $('.visitor-detail').eq(0).text(d.data.kode);
+                $('.visitor-detail').eq(1).text(d.data.nama + ' - ' + d.data.since);
+            }
+        }else{
+            if(d.kategori == 'checkout'){
+                is_confirmed = false;
+                
+                // stop interval
+                clearInterval(refeshInterval);
+            }
+        }
+    });
+}
