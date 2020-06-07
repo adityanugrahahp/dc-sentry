@@ -61,14 +61,6 @@ function _get_new_qr(){
             }
         }
     });
-
-    // $.get(module_url + '/ajax_generate_qr/' + screen_id, function(d){
-    //     if(d.status){
-    //         // update tampilan qrcode di screen
-    //         qrcode.makeCode(d.data.qr);
-    //         next_update = new Date(d.data.next_request);
-    //     }
-    // });
 }
 
 // fetch data user yang sudah melakukan absensi
@@ -100,15 +92,30 @@ function _get_trigger(){
             }
         }
     });
-
-    // $.get(module_url + '/ajax_get_trigger/' + screen_id, function(d){
-    //     if(d.status){
-    //         _get_new_qr();
-    //         console.info('Someone has scanned');
-    //     }
-    // });
 }
 
+// SELF FUNCTIONS
+function _get_new_qr_self(){
+    $.get(module_url + '/ajax_generate_qr/' + screen_id, function(d){
+        if(d.status){
+            // update tampilan qrcode di screen
+            qrcode.makeCode(d.data.qr);
+            next_update = new Date(d.data.next_request);
+        }
+    });
+}
+
+function _get_trigger_self(){
+    $.get(module_url + '/ajax_get_trigger/' + screen_id, function(d){
+        if(d.status){
+            _get_new_qr();
+            console.info('Someone has scanned');
+        }
+    });
+}
+// END SELF FUNCTIONS
+
+// NON CORE FEATURES
 function _switchFullScreen() {
     var elem = document.documentElement;
 
@@ -148,3 +155,4 @@ function _addZero(i){
 
     return i;
 }
+// END NON CORE FEATURES

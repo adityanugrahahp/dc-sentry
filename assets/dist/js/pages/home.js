@@ -146,6 +146,8 @@ $(document).on('click', '.btn-edit', function (){
 			// kartu akses
 			$('input[name="id_visitor_card"]').val(d.data.no_kartu);
 			$('#visitor-card-res').html('<span class="text-success">'+ d.data.nama_kartu + '</span>');
+
+			$('.btn-save').removeAttr('disabled');
 		}else{
 			alert('Tidak Dapat Mendapatkan Data Visitor Ini');
 		}

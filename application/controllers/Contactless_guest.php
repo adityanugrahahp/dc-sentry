@@ -12,64 +12,91 @@ class Contactless_guest extends MY_Controller {
 		$this->load->library('form_validation');
 	}
 
-	public function index(){
-		$opt = [];
-		// daftar nama lantai
-		for($i = 1;$i <= 11; $i++){
-			$opt['Lantai '.$i] = 'Lantai '.$i;
-		}
+	public function index($token = null){
+
+		$token = decrypt($token);
+		if($token){
+			// daftar nama lantai
+			$opt = [];
+			for($i = 1;$i <= 11; $i++){ $opt['Lantai '.$i] = 'Lantai '.$i; }
 
 			$data['tujuan'] 	= $opt;
+			$data['id_petugas'] = $token;
 
-		$this->load->view('contactless_guest/index', $data);
+			$this->load->view('contactless_guest/V_index', $data);
+		}else{
+			// redirect ke web pelni
+			redirect('https://pelni.co.id');
+		}
 	}
 
-	// TODO: SUBMIT FORM KE DATABASE
 	function ajax_post_form(){
 		$status = false;
 		$msg 	= null;
 		$data 	= [];
 		$post 	= $this->input->post();
 
-		$this->form_validation->set_rules('nik', 'NIK', 'required|trim');
+		$this->form_validation->set_rules('nik', 'NIK', 'required|numeric|trim');
         $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required');
         $this->form_validation->set_rules('alamat', 'Alamat', 'required');
         $this->form_validation->set_rules('no_hp', 'No. HP', 'required|trim');
         $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required');
         $this->form_validation->set_rules('tujuan', 'Tujuan', 'required');
         $this->form_validation->set_rules('keperluan', 'Keperluan', 'required');
-        // $this->form_validation->set_rules('pertanyaan_1', 'Pertanyaan 1');
-        // $this->form_validation->set_rules('riwayat_sakit', 'Riwayat Sakit');
-        // $this->form_validation->set_rules('pertanyaan_2', 'Pertanyaan 2');
-        // $this->form_validation->set_rules('tgl_rapid_test', 'Tanggal Rapid');
-        // $this->form_validation->set_rules('hasil', 'Hasil');
-        // $this->form_validation->set_rules('pertanyaan_3', 'Pertanyaan 3');
-        // $this->form_validation->set_rules('mulai_covid', 'Mulai Covid');
-        // $this->form_validation->set_rules('bebas_covid', 'Bebas Covid');
-        // $this->form_validation->set_rules('pertanyaan_4', 'Pertanyaan 4');
-        // $this->form_validation->set_rules('travel_history', 'Riwayat Perjalanan');
+        $this->form_validation->set_rules('jawaban_1', 'Form Kesehatan', 'required|trim');
+        $this->form_validation->set_rules('jawaban_2', 'Form Kesehatan', 'required|trim');
+        $this->form_validation->set_rules('jawaban_3', 'Form Kesehatan', 'required|trim');
+        $this->form_validation->set_rules('jawaban_4', 'Form Kesehatan', 'required|trim');
 
 		if($this->form_validation->run()){
+			
+			$form_kesehatan = [];
+			$kode_akses 	= uniqid();
 
-			foreach($post as $i => $v){
-                if ($i == 'id') {continue;}
-                $data[$i] = $v;
+			// isian form kesehatan
+			for($i = 1; $i <= 4; $i++){
+				if(isset($post['pertanyaan_'.$i])){
+					$temp = [
+						'pertanyaan' 	=> $post['pertanyaan_'.$i],
+						'jawaban'		=> $post['jawaban_'.$i]
+					];
+
+					if(isset($post['keterangan_'.$i])){
+						foreach($post['keterangan_'.$i] as $index => $v){
+							$temp['keterangan'][] = $v.' '.$post['jawaban_keterangan_'.$i][$index];
+						}
+					}
+				}
+
+				$form_kesehatan[] = $temp;
 			}
 
-                
-                $data += [
-					'register_time' => date('Y-m-d H:i:s'),
-					'lokasi'		=> 'KANTOR PUSAT',
-					'created_by'	=> $_SESSION['userID'],
-					'status'		=> 1,
-					'id_visitor_card'		=> 5,
+			// dapatkan id kartu virtual
+			$db_kartu = $this->M_visitor->get_visitor_card(['no_kartu' => '0000000000']);
+			if($db_kartu){
+				$id_kartu = $db_kartu[0]->id_kartu;
+				
+				$data = [
+					'nik'				=> $post['nik'],
+					'nama'				=> $post['nama'],
+					'alamat'			=> $post['alamat'],
+					'no_hp'				=> $post['no_hp'],
+					'jenis_kelamin'		=> $post['jenis_kelamin'],
+					'tujuan'			=> $post['tujuan'],
+					'keperluan'			=> $post['keperluan'],
+					'register_time' 	=> date('Y-m-d H:i:s'),
+					'lokasi'			=> 'KANTOR PUSAT',
+					'created_by'		=> $post['id_petugas'],
+					'status'			=> 1,
+					'flag_approve'		=> 'N',
+					'kode_akses'		=> $kode_akses,
+					'id_visitor_card'	=> $id_kartu,
+					'form_tambahan'		=> json_encode($form_kesehatan)
 				];
-
-                $db = $this->M_visitor->insert_new_visitor($data);
-
-
-			if($db){ $status = true; }
-
+				
+				$db = $this->M_visitor->insert_new_visitor($data);
+				if($db){ $status = true; }
+			}
 		}else{
 			$msg = str_replace(['<p>', '</p>'], [null, '<br/>'], validation_errors());
 		}
