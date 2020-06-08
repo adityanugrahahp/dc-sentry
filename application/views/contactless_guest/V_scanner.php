@@ -13,25 +13,15 @@
 
     <title>Scan QR Code - PT. PELNI</title>
     <link rel="shortcut icon" href="<?= base_url(THEME_PATH); ?>favicon.ico">
-
-    <!-- Bootstrap Core CSS -->
-    <link href="<?=base_url();?>assets/bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" crossorigin="anonymous"> -->
-
-    
+    <link href="<?=base_url();?>assets/bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">    
     <link href="<?=base_url();?>assets/bower_components/select2/dist/css/select2.min.css" rel="stylesheet">
     <link href="<?=base_url();?>assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
     <link href="<?=base_url();?>assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 <style>
     body { font-family: 'Roboto', sans-serif; }
 </style>
-
-<!-- start heading title -->
 <div class="row" style="margin: 10px;">
-    <!-- SMALL SCREEN -->
     <div class="col-xs-8 visible-xs hidden-md">
         <a href="<?= base_url() ?>" class="btn btn-default"><i class="fa fa-arrow-left fa-fw"></i></a>
     </div>
@@ -48,8 +38,6 @@
             <span class="text-danger">#CovidSafeBUMN</span>
         </small>
     </div>
-    <!-- END SMALL SCREEN -->
-    <!-- BIGGER SCREEN -->
     <div class="col-sm-8 hidden-xs">
         <a href="<?= base_url() ?>" class="btn btn-default"><i class="fa fa-arrow-left fa-fw"></i></a>
     </div>
@@ -65,7 +53,6 @@
             <span class="text-danger">#CovidSafeBUMN</span>
         </small>
     </div>
-    <!-- END BIGGER SCREEN -->
 </div>
 <div class="row" style="margin:0px;position:relative;">
     <div id="scanner" style="width:100vw;"></div>
