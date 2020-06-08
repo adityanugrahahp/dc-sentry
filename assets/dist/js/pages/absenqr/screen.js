@@ -12,7 +12,7 @@ $(document).ready(function () {
     _switchFullScreen();
 
     // initial qr request
-    _get_new_qr_self();
+    _get_new_qr();
 
     // initialize qr code renderer
     qrcode = new QRCode(document.getElementById("img-qr"), {
@@ -28,15 +28,17 @@ $(document).ready(function () {
     // generate QR
 	setInterval(function(){
         date_now = new Date();
+        
         if(date_now >= next_update || next_update == null){
-            _get_new_qr_self();
-            _get_attendances();
+            _get_new_qr();
         }
+
+        _get_attendances();
     }, refreshQRInterval);
 
     // trigger checker
     setInterval(function(){
-        _get_trigger_self();
+        _get_trigger();
     }, checkNewScanInterval);
 });
 
@@ -44,14 +46,7 @@ $(document).ready(function () {
 function _get_new_qr(){
     
     $.ajax({
-        url: url_qr,
-        crossDomain: true,
-        headers: { 
-            'Token': token,
-            'Access-Control-Allow-Origin':'*',
-            'Access-Control-Allow-Methods':'GET',
-            'Access-Control-Allow-Headers':'application/json'
-        },
+        url: url_qr + '?token=' + token,
         dataType: 'json',
         data: { id_display: screen_id },
         success: function(d){
@@ -59,6 +54,8 @@ function _get_new_qr(){
                 // update tampilan qrcode di screen
                 qrcode.makeCode(d.data.qr);
                 next_update = new Date(d.data.next_request);
+
+                console.log('Request', d.data.next_request);
             }
         }
     });
@@ -77,14 +74,8 @@ function _get_attendances(){
 // mendapatkan trigger apabila qr code sudah direfresh
 function _get_trigger(){
     $.ajax({
-        url: url_trigger,
-        headers: { 
-            'Token': token,
-            'Access-Control-Allow-Origin':'*',
-            'Access-Control-Allow-Methods':'GET',
-            'Access-Control-Allow-Headers':'application/json'
-        },
-        dataType: 'json', // Notice! JSONP <-- P (lowercase)
+        url: url_trigger + '?token=' + token,
+        dataType: 'json',
         data: { id_display: screen_id },
         success: function(d){
             if(d.status){
