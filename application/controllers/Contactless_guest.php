@@ -134,4 +134,9 @@ class Contactless_guest extends MY_Controller {
 
 		$this->output->set_content_type('application/json')->set_output(json_encode(compact('status', 'kategori', 'data')));
 	}
+
+	function qr_scanner(){
+
+		$this->load->view('contactless_guest/V_scanner');
+	}
 }
