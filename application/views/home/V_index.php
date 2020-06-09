@@ -21,6 +21,9 @@
 					<button class="btn btn-success btn-sm" data-toggle="modal" data-target="#visitor-new">
 						<i class="fa fa-user-plus fa-fw"></i> TAMU BARU
 					</button>
+					<a href="<?php base_url(); ?>Contactless_guest/qr_scanner" class="btn btn-info btn-sm">
+						<i class="fa fa-qrcode fa-fw"></i> Scanner QR
+					</a>
 				</div>
 			</div>
 			<div class="box-body">
