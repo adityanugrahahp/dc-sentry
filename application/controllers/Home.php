@@ -174,7 +174,8 @@ class Home extends Management_Controller {
 				$like = [
 					'lower(nama_kartu)' => strtolower($keyword),
 					'lower(kode_akses)' => strtolower($keyword),
-					'lower(nama)' 		=> strtolower($keyword)
+					'lower(nama)' 		=> strtolower($keyword),
+					'lower(no_hp)' 		=> strtolower($keyword)
 				];
 			}
 		}
@@ -262,7 +263,8 @@ class Home extends Management_Controller {
 				$like = [
 					'lower(nama_kartu)' => strtolower($keyword),
 					'lower(kode_akses)' => strtolower($keyword),
-					'lower(nama)' 		=> strtolower($keyword)
+					'lower(nama)' 		=> strtolower($keyword),
+					'lower(no_hp)' 		=> strtolower($keyword)
 				];
 			}
 		}

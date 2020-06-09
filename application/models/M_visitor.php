@@ -24,7 +24,7 @@ class M_visitor extends CI_Model {
 	function insert_new_visitor($data){
 		$query = $this->db->insert('visitor_registration', $data);
 
-		return ($query) ? $this->db->insert_id('id_seq') : false;
+		return ($query) ? $this->db->insert_id((ENVIRONMENT == 'development') ? 'id_seq' : 'visitor_registration_id_seq') : false;
 	}
 
 	function get_new_visitor($where = [], $like = null, $limit = null, $offset = null, $order_by = 'register_time', $sort = 'desc'){
