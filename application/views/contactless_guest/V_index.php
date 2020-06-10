@@ -251,7 +251,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card-body box-qr text-center" style="display:none;">
+                    <div class="card-body box-qr text-center" id="screenshot-wrapper" style="display:none;">
                         <h5><b>Virtual Visitor Card</b></h5>
                         <hr>
                         <span class="clearfix">
@@ -261,15 +261,13 @@
                         <div class="row">
                             <div class="col-lg-12 py-2">
                                 <center>
-                                    <div id="ss">
-                                        <br><div id="img-qr"></div>
-                                        <br>
-                                        <b class="visitor-detail"></b>
-                                        <br>
-                                        <small class="visitor-detail"></small>
-                                    </div>
+                                    <br><div id="img-qr"></div>
+                                    <br>
+                                    <b class="visitor-detail"></b>
+                                    <br>
+                                    <small class="visitor-detail"></small>
 
-                                    <input type='button' class="btb btn-primary" id='but_screenshot' value='Download Qr-Code' onclick='screenshot();'><br/>
+                                    <a href='javascript:void(0)' class="btn btn-sm btn-primary btn-download" style="display:none;" onclick='_screenshot();'>Download Virtual Card</a>
                                 </center>
                             </div>
                             <div class="col-lg-12">
@@ -309,16 +307,6 @@
     <script src="<?= base_url(THEME_PATH); ?>js/html2canvas.js"></script>
     <script src="<?= base_url(THEME_PATH); ?>js/canvas2image.js"></script>
     <script src="<?= base_url(THEME_PATH); ?>js/jquery-3.3.1.min.js"></script>
-
-    <script type='text/javascript'>
-    function screenshot(){
-        html2canvas(document.getElementById('ss')).then(function(canvas) {
-            return Canvas2Image.saveAsPNG(canvas);
-        });
-    }
-    </script>
-
-    
     <script src="<?= base_url(THEME_PATH); ?>js/bootstrap.min.js"></script>
     <script src="<?= base_url(THEME_PATH); ?>js/dist/js/moment.js"></script>
     <script src="<?= base_url(THEME_PATH); ?>js/bootstrap-datepicker.js"></script>
