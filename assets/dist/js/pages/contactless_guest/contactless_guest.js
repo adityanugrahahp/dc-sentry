@@ -1,4 +1,5 @@
 var qrcode;
+var is_first        = true;
 var is_confirmed    = false;
 var access_id       = null;
 var refeshInterval  = null;
@@ -107,6 +108,14 @@ function _check_status(){
 
                 $('.visitor-detail').eq(0).text(d.data.kode);
                 $('.visitor-detail').eq(1).text(d.data.nama + ' - ' + d.data.since);
+
+                // download box qr untuk user saat pertama kali qr muncul
+                if(is_first){
+                    _screenshot();
+                    is_first = false;
+
+                    $('.btn-download').show();
+                }
             }
         }else{
             if(d.kategori == 'checkout'){
@@ -131,4 +140,10 @@ function _addZero(i){
     if (i < 10) { i = "0" + i; }
 
     return i;
+}
+
+function _screenshot(){
+    html2canvas(document.getElementById('screenshot-wrapper')).then(function(canvas) {
+        return Canvas2Image.saveAsPNG(canvas);
+    });
 }

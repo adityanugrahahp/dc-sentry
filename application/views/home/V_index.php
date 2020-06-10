@@ -21,8 +21,8 @@
 					<button class="btn btn-success btn-sm" data-toggle="modal" data-target="#visitor-new">
 						<i class="fa fa-user-plus fa-fw"></i> TAMU BARU
 					</button>
-					<a href="<?php base_url(); ?>Contactless_guest/qr_scanner" class="btn btn-info btn-sm">
-						<i class="fa fa-qrcode fa-fw"></i> Scanner QR
+					<a href="javascript:void(0)" class="btn btn-info btn-sm btn-checkout-qr">
+						<i class="fa fa-qrcode fa-fw"></i> CHECKOUT QR
 					</a>
 				</div>
 			</div>
@@ -100,6 +100,37 @@
 		</div>
 	</div>
 </div>
+
+<!-- checkout by qr modal -->
+<div id="visitor-checkout-qr" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title"><i class="fa fa-qrcode fa-fw"></i> New Normal - Visitor QR Checkout</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-lg-12">
+						<p>
+							<b class="text-primary">PETUNJUK:</b><br>
+							Dialog ini digunakan untuk melakukan checkout tamu yang menggunakan <b>VIRTUAL VISITOR CARD</b>. Silakan arah pengunjung untuk mengarahkan kartu virtualnya (berupa QR Code) ke arah kamera dengan kecerahan layar di naikkan hingga 75%.
+							<b class="text-danger">PASTIKAN POPUP ALERT TELAH MUNCUL SETELAH MELAKUKAN SCANNING.</b>
+						</p>
+					</div>
+					<div class="col-lg-12" style="margin-bottom:10px;">
+						<b>Pilihan Kamera:</b>
+						<select class="kamera_aktif form-control"></select>
+					</div>
+					<div class="col-lg-12 text-center">
+						<video id="scanner" class="clearfix" style="width:100%"></video>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- end checkout by qr modal -->
 
 <!-- new visitor modal -->
 <div id="visitor-new" class="modal fade" role="dialog">
