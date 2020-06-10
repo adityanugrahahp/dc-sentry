@@ -276,6 +276,11 @@ $(document).on('keypress', 'input[name="id_visitor_card"]', function(e){
     }
 });
 
+$('#visitor-checkout-qr').on('hidden.bs.modal', function (){
+	// destroy camera
+	scanner.stop();
+});
+
 function tableHistory(){
 	table_history = $('#table-visitor-history').DataTable({
 		"bSort" : false,
