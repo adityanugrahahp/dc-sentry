@@ -23,7 +23,7 @@ class Home extends Management_Controller {
 			}
 
 			$data['tujuan'] 	= $opt;
-			$data['extraJs'] 	= ["home.js", "capture.js", "instascan.min.js"];
+			$data['extraJs'] 	= ["capture.js", "home.js", "instascan.min.js"];
 			$data['page_title'] = "Register Visitor";
 			$data['page_view'] 	= "home/V_index";
 			$this->load->view('layouts/V_master', $data);
