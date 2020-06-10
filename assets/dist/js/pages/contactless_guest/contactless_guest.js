@@ -4,7 +4,7 @@ var is_confirmed    = false;
 var access_id       = null;
 var refeshInterval  = null;
 
-const intervalAccessChecker = 15000; // 15 detik
+const intervalAccessChecker = 10000; // 10 detik
 
 $(document).ready(function () {
     $(".datepicker").datepicker({ 
