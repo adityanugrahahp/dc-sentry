@@ -64,33 +64,17 @@
                 <small>Waktu Saat Ini:</small><br>
                 <b id="time">Loading...</b>
             </div>
-            <div class="col-xs-3 text-right">
-                <button type="button" class="btn btn-default btn-circle btn-lg" data-toggle="modal" data-target="#modal-camera"><i class="fa fa-camera"></i></button>
-            </div>
         </div>
     </div>
 </div>
 
-<div class="modal fade" id="modal-camera" tabindex="-1" role="dialog" style="padding-top: 50%">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Pilih Kamera</h4>
-            </div>
-            <div class="modal-body">
-                <select class="kamera_aktif form-control"></select>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
+    
+    <script src="<?= base_url(THEME_PATH); ?>bower_components/jquery/dist/jquery.min.js"></script>
     <script src="<?= base_url(THEME_PATH); ?>dist/js/pages/contactless_guest/qr_scanner.js"></script>
     <script src="<?= base_url(THEME_PATH); ?>dist/js/pages/contactless_guest/html5-qrcode.min.js"></script>
-    <script src="<?= base_url(THEME_PATH); ?>bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="<?= base_url(THEME_PATH); ?>vendor/bootstrap/js/popper.js"></script>
+    <script src="<?= base_url(THEME_PATH); ?>vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?= base_url(THEME_PATH); ?>vendor/daterangepicker/moment.min.js"></script>
 
     <script type="text/javascript">
         function onScanSuccess(qrCodeMessage) {
@@ -102,16 +86,19 @@
         html5QrcodeScanner.render(onScanSuccess);
     </script>
 
+<!--     / This method will trigger user permissions
+Html5Qrcode.getCameras().then(devices => { -->
 
+
+    
+    
+    
+
+    <!-- <script src="<?= base_url(THEME_PATH); ?>js/main.js"></script> -->
     <!-- <script src="<?= base_url(THEME_PATH); ?>vendor/jquery/jquery-3.2.1.min.js"></script> -->
-    <script src="<?= base_url(THEME_PATH); ?>vendor/animsition/js/animsition.min.js"></script>
-    <script src="<?= base_url(THEME_PATH); ?>bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
-    <script src="<?= base_url(THEME_PATH); ?>vendor/bootstrap/js/popper.js"></script>
-    <script src="<?= base_url(THEME_PATH); ?>vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="<?= base_url(THEME_PATH); ?>vendor/select2/select2.min.js"></script>
-    <script src="<?= base_url(THEME_PATH); ?>vendor/daterangepicker/moment.min.js"></script>
-    <script src="<?= base_url(THEME_PATH); ?>vendor/daterangepicker/daterangepicker.js"></script>
-    <script src="<?= base_url(THEME_PATH); ?>vendor/countdowntime/countdowntime.js"></script>
+    <!-- <script src="<?= base_url(THEME_PATH); ?>vendor/animsition/js/animsition.min.js"></script> -->
     <!-- <script src="<?= base_url(THEME_PATH); ?>dist/js/pages/contactless_guest/contactless_guest.js"></script> -->
-    <script src="<?= base_url(THEME_PATH); ?>vendor/daterangepicker/moment.min.js"></script>
-    <script src="<?= base_url(THEME_PATH); ?>js/main.js"></script>
+    <!-- <script src="<?= base_url(THEME_PATH); ?>vendor/select2/select2.min.js"></script> -->
+    <!-- <script src="<?= base_url(THEME_PATH); ?>vendor/countdowntime/countdowntime.js"></script>  -->   
+    <!-- <script src="<?= base_url(THEME_PATH); ?>bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script> -->
+    <!-- <script src="<?= base_url(THEME_PATH); ?>vendor/daterangepicker/daterangepicker.js"></script> -->

@@ -261,11 +261,15 @@
                         <div class="row">
                             <div class="col-lg-12 py-2">
                                 <center>
-                                    <div id="img-qr"></div>
-                                    <br>
-                                    <b class="visitor-detail"></b>
-                                    <br>
-                                    <small class="visitor-detail"></small>
+                                    <div id="ss">
+                                        <br><div id="img-qr"></div>
+                                        <br>
+                                        <b class="visitor-detail"></b>
+                                        <br>
+                                        <small class="visitor-detail"></small>
+                                    </div>
+
+                                    <input type='button' class="btb btn-primary" id='but_screenshot' value='Download Qr-Code' onclick='screenshot();'><br/>
                                 </center>
                             </div>
                             <div class="col-lg-12">
@@ -301,7 +305,20 @@
     <script>
         var url_cheker = '<?= base_url('contactless_guest/ajax_check_status') ?>';
     </script>
+
+    <script src="<?= base_url(THEME_PATH); ?>js/html2canvas.js"></script>
+    <script src="<?= base_url(THEME_PATH); ?>js/canvas2image.js"></script>
     <script src="<?= base_url(THEME_PATH); ?>js/jquery-3.3.1.min.js"></script>
+
+    <script type='text/javascript'>
+    function screenshot(){
+        html2canvas(document.getElementById('ss')).then(function(canvas) {
+            return Canvas2Image.saveAsPNG(canvas);
+        });
+    }
+    </script>
+
+    
     <script src="<?= base_url(THEME_PATH); ?>js/bootstrap.min.js"></script>
     <script src="<?= base_url(THEME_PATH); ?>js/dist/js/moment.js"></script>
     <script src="<?= base_url(THEME_PATH); ?>js/bootstrap-datepicker.js"></script>
