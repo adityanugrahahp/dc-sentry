@@ -169,7 +169,10 @@ class Home extends Management_Controller {
 		// bila user mencari menggunakan keyword
 		if($keyword){
 			if(is_numeric($keyword)){
-				$where['no_kartu'] = $keyword;
+				$like = [
+					'no_kartu' 	=> $keyword,
+					'no_hp'		=> $keyword
+				];
 			}else{
 				$like = [
 					'lower(nama_kartu)' => strtolower($keyword),
@@ -257,7 +260,8 @@ class Home extends Management_Controller {
 		$like = null;
 		if($keyword){
 			if(is_numeric($keyword)){
-				$where .= " and visitor_cards.no_kartu = '{$keyword}'";
+				$where .= " and (visitor_cards.no_kartu = '{$keyword}'";
+				$where .= " or visitor_cards.no_hp = '{$keyword}')";
 			}else{
 				$like = [
 					'lower(nama_kartu)' => strtolower($keyword),
