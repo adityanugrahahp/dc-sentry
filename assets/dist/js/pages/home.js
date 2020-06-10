@@ -1,6 +1,8 @@
 var table 			= null;
 var menu_history 	= 0;
 var table_history 	= null;
+var scanner 		= null;
+var data_camera 	= [];
 
 $(document).ready(function () {
 	// datetimepicker initialization
@@ -166,6 +168,17 @@ $(document).on('click', '.btn-edit', function (){
 	});
 });
 
+$(document).on('click', '.btn-checkout-qr', function (){
+	scanner = new Instascan.Scanner({ 
+        video: document.getElementById('scanner'),
+        mirror: false
+	});
+
+	_initiate_camera();
+	
+	$('#visitor-checkout-qr').modal('show');
+});
+
 $(document).on('click', '.btn-delete', function (){
 	data_id = $(this).data('id');
 
@@ -227,6 +240,18 @@ $(document).on('click', '.btn-change', function(){
 
 	$('#visitor-history').toggle();
 	$('#visitor-current').toggle();
+});
+
+$(document).on('change', '.kamera_aktif', function(){
+    var val = $(this).val();
+    
+    try {
+        if(data_camera[val] !== undefined){
+            scanner.start(data_camera[val]);
+        }
+    } catch (error) {
+        console.log(error);
+    }
 });
 
 $(document).on('keypress', 'input[name="id_visitor_card"]', function(e){
@@ -309,4 +334,45 @@ function formReset(){
 	$('#visitor-card-res').removeClass('text-danger');
 	$('#visitor-card-res').removeClass('text-success');
 	$('#visitor-card-res').text('Scan Kartu Terlebih Dahulu');
+}
+
+function _initiate_camera(){
+    scanner.addListener('scan', function (data_qr) {
+
+		$.post(base_url + 'home/ajax_checkout', {kode_akses: data_qr}).done(function(d){
+			if(d.status){ 
+				refreshVisitor();
+				refreshVisitorHistory();
+
+				$('#visitor-checkout-qr').modal('hide');
+				
+				alert('Tamu Berhasil Checkout');
+			}else{
+				alert('Terjadi Kesalahan: ' + d.msg);
+			}
+		}).fail(function(e){
+			alert("Oops.. Terjadi Kesalahan.");
+		});
+
+    });
+
+    try {
+        Instascan.Camera.getCameras().then(function (e) {
+            $(".kamera_aktif").empty().trigger("change");
+    
+            if(e.length > 0){
+                $.each(e, function(i, v){
+                    data_camera.push(v);
+                    newOption = new Option(v.name, i, false, false);
+                    $('.kamera_aktif').append(newOption);
+				});
+				
+				$('.kamera_aktif').trigger('change');
+            }else{
+                alert('No cameras found.');
+            }
+        });
+    } catch (error) {
+        console.log(error);
+    }
 }

@@ -23,7 +23,7 @@ class Home extends Management_Controller {
 			}
 
 			$data['tujuan'] 	= $opt;
-			$data['extraJs'] 	= ["home.js", "capture.js"];
+			$data['extraJs'] 	= ["home.js", "capture.js", "instascan.min.js"];
 			$data['page_title'] = "Register Visitor";
 			$data['page_view'] 	= "home/V_index";
 			$this->load->view('layouts/V_master', $data);
@@ -317,9 +317,20 @@ class Home extends Management_Controller {
 	function ajax_checkout(){
 		$status = true;
 		$error 	= null;
+		$where 	= [];
 
 		$last_seen = date('Y-m-d H:i:s');
-		
+
+		// checkout dengan menggunakan id
+		if($id = $this->input->post('id')){
+			$where = ['id' => $id];
+		}
+
+		// checkout dengan menggunakan kode akses (QR Code)
+		if($kode_akses = $this->input->post('kode_akses')){
+			$where = ['kode_akses' => $kode_akses];
+		}
+
 		// bila last_seen ada, maka ini checkout diluar tanggal normal
 		if($ls = $this->input->post('last_seen')){
 			$ex 	= explode(' ', $ls);
@@ -327,7 +338,7 @@ class Home extends Management_Controller {
 			$last_seen = date('Y-m-d H:i:s', strtotime($ex_d[2].'-'.$ex_d[0].'-'.$ex_d[1].' '.$ex[1]));
 		}
 
-		$db = $this->M_visitor->update_visitor(['id' => $this->input->post('id')], ['status' => 0, 'last_seen' => $last_seen, 'checked_out_by' => $_SESSION['userID']]);
+		$db = $this->M_visitor->update_visitor($where, ['status' => 0, 'last_seen' => $last_seen, 'checked_out_by' => $_SESSION['userID']]);
 		if(! $db){ 
 			$status = false;
 			$error 	= "Gagal Menghapus Entri";
