@@ -101,7 +101,7 @@ class Home extends Management_Controller {
 					@list(, $data_foto)      = explode(',', $data_foto);
 
 					$data_foto = base64_decode($data_foto);
-					$file_path = base_url(THEME_PATH).'image/photos/'.date('YmdHis').$data['nik'].'.jpg';
+					$file_path = $_SERVER['DOCUMENT_ROOT'].'/assets/image/photos/'.date('YmdHis').$data['nik'].'.jpg';
 					@file_put_contents($file_path, $data_foto);
 
 					$data['foto'] = $file_path;
