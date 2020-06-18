@@ -18,7 +18,7 @@
 					<button class="btn btn-primary btn-sm btn-change">
 						<i class="fa fa-list fa-fw"></i> RIWAYAT TAMU
 					</button>
-					<button class="btn btn-success btn-sm" data-toggle="modal" data-target="#visitor-new">
+					<button class="btn btn-success btn-sm btn-add">
 						<i class="fa fa-user-plus fa-fw"></i> TAMU BARU
 					</button>
 					<a href="javascript:void(0)" class="btn btn-info btn-sm btn-checkout-qr">

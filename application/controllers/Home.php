@@ -102,9 +102,12 @@ class Home extends Management_Controller {
 
 					$data_foto = base64_decode($data_foto);
 					$file_path = $_SERVER['DOCUMENT_ROOT'].'/assets/image/photos/'.date('YmdHis').$data['nik'].'.jpg';
-					@file_put_contents($file_path, $data_foto);
+					file_put_contents($file_path, $data_foto);
 
-					$data['foto'] = $file_path;
+					$data['foto'] = str_replace($_SERVER['DOCUMENT_ROOT'].'/', null, $file_path);
+
+					// auto approve
+					$data['flag_approve'] = 'Y';
 
 					if(! $this->input->post('id')){
 						// bila id tidak ada, maka insert
@@ -449,19 +452,21 @@ class Home extends Management_Controller {
 				$data 	= $db[0];
 
 				$html = null;
-				foreach(json_decode($db[0]->form_tambahan) as $i => $v){
-					$html .= "<b>".(++$i).". {$v->pertanyaan}</b><br>Respon: {$v->jawaban}<br>";
-
-					// keterangan tambahan
-					if(isset($v->keterangan) && $v->jawaban == 'Ya'){
-						$html .= "Keterangan Tambahan:<br>";
-
-						foreach($v->keterangan as $vk){
-							$html .= "- {$vk}<br>";
+				if($db[0]->form_tambahan){
+					foreach(json_decode($db[0]->form_tambahan) as $i => $v){
+						$html .= "<b>".(++$i).". {$v->pertanyaan}</b><br>Respon: {$v->jawaban}<br>";
+	
+						// keterangan tambahan
+						if(isset($v->keterangan) && $v->jawaban == 'Ya'){
+							$html .= "Keterangan Tambahan:<br>";
+	
+							foreach($v->keterangan as $vk){
+								$html .= "- {$vk}<br>";
+							}
 						}
+	
+						$html .= '<br>';
 					}
-
-					$html .= '<br>';
 				}
 
 				$data->{'form'} = $html;
