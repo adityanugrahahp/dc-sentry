@@ -131,6 +131,13 @@ $(document).on('click', '.show-form-deklarasi', function (){
 	$('.box-deklarasi, .box-camera').toggle();
 });
 
+$(document).on('click', '.btn-add', function (){
+	$('#visitor-new').modal('show');
+	$('.modal-visitor-title').html('<i class="fa fa-user-plus fa-fw"></i> Pengunjung Baru');
+	$('#form-visitor').trigger('reset');
+	$('.btn-save').attr('disabled', 'disabled').text('Simpan');
+});
+
 $(document).on('click', '.btn-edit', function (){
 	data_id = $(this).data('id');
 
