@@ -9,15 +9,23 @@ $(document).ready(function () {
 		"serverSide": true,
 		"ajax": {
 			"type": "POST",
-			"url": base_url + "absenqr/ajax_module_index"
+			"url": base_url + "absenqr/ajax_module_index",
+			data: function(d){
+				d.unit_kerja = $('.filter_gedung').val()
+			}
 		},
 		"columns": [
 			{"data": "nama"},
 			{"data": "lokasi"},
 			{"data": "pesan"},
+			{"data": "whitelist"},
 			{"data": "aksi"}
 		]
 	});
+});
+
+$(document).on('change', '.filter_gedung', function (){
+	table.ajax.reload();
 });
 
 $(document).on('click', '.btn-new-screen', function (){
@@ -68,6 +76,7 @@ $(document).on('click', '.btn-edit', function (){
 			$('input[name="id"]').val(e.data.id);
 			$('input[name="nama_layar_qr"]').val(e.data.nama_layar_qr);
 			$('input[name="token_layar"]').val(e.data.token_layar);
+			$('input[name="whitelist_ip"]').val(e.data.whitelist_ip);
 			$('textarea[name="pesan_layar"]').val(e.data.pesan_layar);
 			$('select[name="lokasi"]').val(e.data.lokasi).change();
 		}else{
