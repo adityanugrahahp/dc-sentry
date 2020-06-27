@@ -38,7 +38,7 @@
                 <div class="pull-right hidden-xs">
                     Made with 💖 by DIVISI TI - <b>Version</b> <?php echo APP_VERSION ?>
                 </div>
-                <strong>&copy; <?php echo date('Y') ?> - <a href="http://pelni.co.id"><?php echo APP_COMPANY ?></a></strong>
+                <strong>&copy; <?php echo date('Y') ?> - <a href="https://www.pelni.co.id"><?php echo APP_COMPANY ?></a></strong>
             </footer>
         <!-- END FOOTER -->
 		</div>
