@@ -9,7 +9,7 @@
 			<div class="col-lg-8 hidden-xs text-center" style="background-image: url('<?= base_url(THEME_PATH);?>image/background/5.jpg');background-size:cover;height:100vh;"></div>
 			<div class="col-lg-4" style="background:white;height:100vh;">
 				<div class="row">
-					<div class="col-lg-10 col-lg-offset-1 col-xs-10 col-xs-offset-1 text-center" style="margin-top:20vh">
+					<div class="col-lg-10 col-lg-offset-1 col-xs-10 col-xs-offset-1 text-center" style="margin-top:16vh">
 						<h4 class="login-logo" style="margin: 0px;">
 							<a href="<?php echo base_url() ?>">
 								<img src="<?= base_url('assets/image/logopelni.png') ?>" alt="Logo Pelni" height="70">
@@ -22,7 +22,7 @@
 					</div>
 					<?php 
 						$message = $this->session->flashdata('message');
-						if($message!=null):
+						if($message != null):
 					?>
 					<div class="col-lg-10 col-lg-offset-1 col-xs-10 col-xs-offset-1">
 						<div class="alert alert-danger">

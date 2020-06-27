@@ -38,7 +38,10 @@
 							<div class="col-lg-12"><hr></div>
 						</div>
 						<div class="row">
-							<div class="col-lg-12 text-right">
+							<div class="col-lg-4">
+								<?= form_dropdown('filter_gedung', (array_merge(['ALL' => 'SEMUA'], $unit_kerja)), null, 'class="form-control filter_gedung"') ?>
+							</div>
+							<div class="col-lg-8 text-right">
 								<a href="javascript:void(0)" class="btn btn-primary btn-new-screen btn-sm"><i class="fa fa-plus fa-fw"></i> Tambah Layar</a>
 							</div>
 						</div>
@@ -51,6 +54,7 @@
 												<th>Nama Display</th>
 												<th class="text-center">Lokasi</th>
 												<th class="text-center">Pesan</th>
+												<th class="text-center">Whitelist IP</th>
 												<th class="text-center">Aksi</th>
 											</tr>
 										</thead>
@@ -64,6 +68,7 @@
 						<b>PETUNJUK:</b>
 						<p>Berikut ini berisi daftar layar yang menampilkan QR Code yang dapat discan oleh para pegawai untuk absensi mereka.</p>
 						<p>Pastikan Anda menampilkan layar sesuai dengan lokasi yang Anda Tentukan.</p>
+						<p>Whitelist IP adalah alamat IP yang diperbolehkan untuk mengakses halaman display.</p>
 						<b>ALUR ABSENSI:</b>
 						<ul class="list-unstyled">
 							<li>- Pegawai mengakses QR Scanner melalui halaman PORTAL PELNI.</li>
@@ -95,11 +100,16 @@
 					</div>
 					<div class="form-group">
 						<label>Lokasi<span style="color:red">*</span></label>
-						<?= form_dropdown('lokasi', ['KANTOR PUSAT' => 'KANTOR PUSAT'], null, 'class="form-control" required') ?>
+						<?= form_dropdown('lokasi', $unit_kerja, null, 'class="form-control" required') ?>
 					</div>
 					<div class="form-group">
 						<label>Pesan Screen</label>
 						<textarea name="pesan_layar" class="form-control" rows="4"></textarea>
+					</div>
+					<div class="form-group">
+						<label>Whitelist IP</label>
+						<input type="text" name="whitelist_ip" class="form-control"/>
+						<small class="clearfix">Kosongkan apabila tanpa pengecekan IP, pisahkan beberapa IP dengan tanda koma (X.X.X.X, X.X.X.X).</small>
 					</div>
 					<div class="form-group">
 						<label>Custom Kode Akses</label>

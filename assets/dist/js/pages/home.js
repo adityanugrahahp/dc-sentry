@@ -135,6 +135,8 @@ $(document).on('click', '.btn-add', function (){
 	$('#visitor-new').modal('show');
 	$('.modal-visitor-title').html('<i class="fa fa-user-plus fa-fw"></i> Pengunjung Baru');
 	$('#form-visitor').trigger('reset');
+
+	$('.btn-disapprove').attr('disabled', 'disabled').hide();
 	$('.btn-save').attr('disabled', 'disabled').text('Simpan');
 });
 
@@ -168,6 +170,7 @@ $(document).on('click', '.btn-edit', function (){
 			$('.box-deklarasi').hide();
 			$('.box-camera').show();
 
+			$('.btn-disapprove').removeAttr('disabled').show();
 			$('.btn-save').removeAttr('disabled').text('Approve');
 		}else{
 			alert('Tidak Dapat Mendapatkan Data Visitor Ini');
@@ -216,6 +219,29 @@ $(document).on('click', '.btn-delete', function (){
 		}).fail(function(e){
 			console.log(e);
 			alert("Oops.. Terjadi Kesalahan.");
+		});
+	}
+});
+
+$(document).on('click', '.btn-disapprove', function (){
+	data_id = $('input[name="id"]').val();
+
+	res = confirm('Apakah Anda yakin dengan aksi ini?');
+	if(res){
+		url = base_url + 'home/ajax_disapprove';
+
+		$.post(url, { id: data_id }).done(function(e){
+			if(e.status){ 
+				refreshVisitor();
+				refreshVisitorHistory();
+				
+				$('#form-visitor').trigger('reset');
+				$("#visitor-new").modal('hide');
+				
+				alert('Tamu Berhasil Dihapus');
+			}else{
+				alert('Gagal Menghapus Data');
+			}
 		});
 	}
 });

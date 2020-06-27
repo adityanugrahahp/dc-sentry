@@ -3,6 +3,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Login extends CI_Controller {
 
+	private $pepper = 'iAP07hr6UhEZr5LoP950';
+	
+	function __construct(){
+		parent::__construct();
+
+		// library
+		$this->load->library('form_validation');
+
+		// models
+		$this->load->model('M_visitor');
+	}
+
 	public function index(){
 		if(! isset($_SESSION['locationID'])){
 			// belum login
@@ -12,44 +24,52 @@ class Login extends CI_Controller {
 		}
 	}
 
-	public function login_action()
-	{
+	public function login_action(){
+
+		$is_valid 	= false;
+		$msg 		= null;
+
+		// inputan user
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
-		$this->load->library('form_validation');
-        
-		$this->load->model('M_visitor');
 
 		$this->form_validation->set_rules('username', 'username', 'required');
 		$this->form_validation->set_rules('password', 'password', 'required');
 
-		if ($this->form_validation->run() != FALSE){
-			$password 		= md5($password);
-			$result_login 	= $this->M_visitor->login($username,$password);
-			
-			if($result_login['status']=='success'){
-				$data = $result_login['data'];
+		if($this->form_validation->run()){
 
-				// bila role tidak sesuai
-				if($data['role'] != 4){
-					$this->session->set_flashdata('message', 'User ini tidak terdaftar untuk aplikasi ini');
-					redirect('Login');
+			// verifikasi username dan login
+			$db_user = $this->M_visitor->get_login($username);
+			if($db_user){
+				// INFO: KOMBINASI: RAW_PASS + CUSTOM SALT + PEPPER
+				$hashed = hash_hmac("sha256", $password.$db_user->salt, $this->pepper);
+				if(password_verify($hashed, $db_user->password)){
+
+					// set session untuk user ini
+					$_SESSION['userID'] 	= $db_user->id_user;
+					$_SESSION['userName'] 	= $db_user->username;
+					$_SESSION['locationID'] = $db_user->location_id;
+					$_SESSION['loket_name'] = $db_user->loket_name;
+					$_SESSION['role'] 		= $db_user->role;
+
+					$is_valid = true;
+				}else{
+					$msg = 'Username & Password Tidak Cocok';
 				}
+			}else{
+				$msg = 'Akun Tidak Ditemukan';
+			}
 
-				$_SESSION['userID'] 	= $data['id_user'];
-				$_SESSION['userName'] 	= $data['username'];
-				$_SESSION['locationID'] = $data['location_id'];
-				$_SESSION['loket_name'] = $data['loket_name'];
-				$_SESSION['role'] 		= $data['role'];
-
+			if($is_valid){
 				redirect('/');
 			}else{
-				$this->session->set_flashdata('message', "Username & Email Tidak Cocok");
-				redirect('Login');
+				// redirect ke login
+				$this->session->set_flashdata('message', $msg);
+				redirect('login');
 			}
 		}else{
 			$this->session->set_flashdata('message', validation_errors());
-			redirect('Login');
+			redirect('login');
 		}
 	}
 

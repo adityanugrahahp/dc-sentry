@@ -43,7 +43,8 @@
 						<h5>PT. Pelayaran Nasional Indonesia (Persero)</h5>
 					</center></p>
 					<span class="login100-form-title p-b-15 p-t-10">
-						<h4><b>Absensi Pegawai</b></h4>
+						<h4 class="clearfix text-danger"><b>Absensi Pegawai</b></h4>
+						<h6 style="padding-top:10px;"><b><?= $lokasi ?></b></h6>
 						<hr style="padding:0;margin-top:20px">
 					</span>
 					<div class="table-res"><center>Belum Ada Absen Pegawai</center></div>

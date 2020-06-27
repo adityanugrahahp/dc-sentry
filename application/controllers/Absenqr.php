@@ -21,6 +21,14 @@ class Absenqr extends MY_Controller {
 		// check user access
 		$this->_verify_access();
 
+		// dapatkan nama kantor pusat/cabang
+		$opt_uk = [];
+		$db_utk = $this->M_absenqr->get_unit_kerja();
+		foreach($db_utk as $v){
+			$opt_uk += [strtoupper($v->utk_ket) => "{$v->utk_ket} ({$v->jumlah_screen})"];
+		}
+
+		$data['unit_kerja']	= $opt_uk;
 		$data['extraJs'] 	= ["absenqr/index.js"];
 		$data['page_title'] = "Pengaturan Absensi QR";
 		$data['page_view'] 	= "absenqr/V_setting";
@@ -32,24 +40,35 @@ class Absenqr extends MY_Controller {
 		
 		$is_valid 	= false;
 		$s_name 	= 'N/A';
+		$s_lokasi 	= 'N/A';
 		$s_pesan 	= null;
-
-		// cek apakah referrernya benar? bila tidak tampilkan error
-		$ref = str_replace(base_url(), null, $this->agent->referrer());
-		if($ref != 'absenqr'){
-			redirect('login');
-		}
 
 		// validasi id, nama dan akses layarnya
 		if($screen_id && $screen_name && $access){
 			$db = $this->M_absenqr->get(null, ['id' => $screen_id, 'token_layar' => $access]);
 			if($db){
+				// cek apakah referrernya benar? bila tidak tampilkan error
+				$ref = str_replace(base_url(), null, $this->agent->referrer());
+				if($ref != 'absenqr' && $db[0]->whitelist_ip == null){
+					redirect('login');
+				}
+
+				// bila ada whiltelist IP, maka cek apakah akses user ini berasal dari IP yang diijinkan?
+				if($db[0]->whitelist_ip){
+					$list_whitelisted_ip = explode(', ', $db[0]->whitelist_ip);
+
+					if(! in_array($this->input->ip_address(), $list_whitelisted_ip)){
+						show_error('Maaf, Anda tidak memiliki hak untuk mengakses halaman ini. Silakan kontak Helpdesk IT / Administrator terkait masalah ini.<br><br><b>Reason: </b><span>(403) Invalid Address ('.$this->input->ip_address().').</span>', 403, 'Akses Ditolak');
+					}
+				}
+
 				// cek apakah judulnya benar?
 				if(url_title($db[0]->nama_layar_qr, '-', true) == $screen_name){
 					$is_valid = true;
 
-					$s_name	 = $db[0]->nama_layar_qr;
-					$s_pesan = $db[0]->pesan_layar;
+					$s_name	 	= $db[0]->nama_layar_qr;
+					$s_lokasi	= $db[0]->lokasi;
+					$s_pesan 	= $db[0]->pesan_layar;
 				}
 			}
 		}
@@ -58,9 +77,11 @@ class Absenqr extends MY_Controller {
 			show_error('The page you are trying to access is invalid or you don\'t have sufficient permission level.', 401, 'Invalid Request');
 		}
 
+		$data['lokasi']		= $s_lokasi;
 		$data['pesan']		= $s_pesan;
 		$data['nama']		= $s_name;
 		$data['screen_id']	= $screen_id;
+		$data['page_title'] = "QR Display {$s_lokasi}";
 		
 		$this->load->view('absenqr/V_screen', $data);
 	}
@@ -131,12 +152,16 @@ class Absenqr extends MY_Controller {
 		// get data visitor
 		$data 	= [];
 		$like 	= [];
+		$where 	= [];
 
 		$keyword 	= $this->input->post("search")['value'];
 		$start 		= $this->input->post("start");
 		$length 	= $this->input->post("length");
+		$lokasi 	= $this->input->post("unit_kerja");
 
-		$where = ['lokasi' => 'KANTOR PUSAT'];
+		if($lokasi && $lokasi != 'ALL'){
+			$where = ['lokasi' => $lokasi];
+		}
 
 		// bila search
 		if($keyword != ''){
@@ -152,10 +177,17 @@ class Absenqr extends MY_Controller {
 				'<a href="javascript:void(0)" class="btn btn-xs btn-danger btn-delete" data-id="'.$v->id.'"><i class="fa fa-trash fa-fw"></i></a>'
 			];
 
+			$s_whitelist = null;
+			if($v->whitelist_ip){
+				$ex = explode(', ', $v->whitelist_ip);
+				$s_whitelist = count($ex);
+			}
+
 			$data[] = [
 				'nama' 			=> $v->nama_layar_qr,
 				'lokasi' 		=> '<center>'.$v->lokasi.'</center>',
 				'pesan' 		=> '<center>'.(($v->pesan_layar) ? '<i class="fa fa-check text-success fa-fw"></i>' : null).'</center>',
+				'whitelist'		=> '<center>'.(($s_whitelist) ? '<span class="label label-primary">'.$s_whitelist.' Alamat IP</span>' : null).'</center>',
 				'aksi' 			=> '<center>'.implode(' ', $aksi).'</center>'
 			];
 		}
@@ -193,6 +225,8 @@ class Absenqr extends MY_Controller {
 
 		$this->form_validation->set_rules('nama_layar_qr', 'Nama Layar', 'required|trim');
 		$this->form_validation->set_rules('token_layar', 'Kode Akses', 'trim');
+		$this->form_validation->set_rules('pesan_layar', 'Pesan Layar', 'trim');
+		$this->form_validation->set_rules('whitelist_ip', 'Whitelist IP', 'trim');
 
 		if($this->form_validation->run()){
 
@@ -205,6 +239,33 @@ class Absenqr extends MY_Controller {
 			// bila token display tidak ada, maka tambahkan
 			if($post['token_layar'] == ''){
 				$data['token_layar'] = $this->_random_string();
+			}
+
+			// bila ada whitelist IP, maka perbaiki formatnya
+			if($post['whitelist_ip']){
+				$temp_list = [];
+
+				// cek format untuk (', ')
+				$ex = explode(', ', $post['whitelist_ip']);
+				if(! $ex){
+					// cek format untuk (',')
+					$ex = explode(',', $post['whitelist_ip']);
+					if(! $ex){
+						// kemungkinan single item
+						$temp_list = $post['whitelist_ip'];
+					}
+				}
+
+				// looping item sesuai format
+				if($ex && ! $temp_list){
+					foreach($ex as $r){
+						$temp_list[] = $r;
+					}
+
+					$data['whitelist_ip'] = implode(', ', $temp_list);
+				}else{
+					$data['whitelist_ip'] = $temp_list;
+				}
 			}
 
             if(! $post['id']) {

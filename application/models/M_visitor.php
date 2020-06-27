@@ -78,6 +78,15 @@ class M_visitor extends CI_Model {
 		return ($query) ? true : false;
 	}
 
+	function delete_visitor($id = null){
+		if(! $id){ return false; }
+
+		$this->db->where(['id' => $id]);
+		$query = $this->db->delete('visitor_registration');
+
+		return ($query) ? true : false;
+	}
+
 	function get_visitor_card($where = [], $like = null, $limit = null, $offset = null){
 		if($where){ $this->db->where($where); }
 		if($like){ $this->db->like($like); }
@@ -152,6 +161,19 @@ class M_visitor extends CI_Model {
 		{
 			return array('status'=>'error','invalid credential'=>'OK','data'=>array());
 		}
+	}
+
+	function get_login($username = null){
+
+		$this->db->where([
+			'username' 	=> $username,
+			'role' 		=> 4
+		]);
+		$this->db->limit(1);
+
+		$q = $this->db->get('user_loket');
+
+		return ($q) ? $q->row() : false;
 	}
 
 	public function get_pegawai($nrp)

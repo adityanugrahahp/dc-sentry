@@ -7,6 +7,7 @@ class Contactless_guest extends MY_Controller {
 
 		// load model
 		$this->load->model('M_visitor');
+		$this->load->model('M_user_loket');
 
 		// fomr validation
 		$this->load->library('form_validation');
@@ -75,7 +76,14 @@ class Contactless_guest extends MY_Controller {
 			// dapatkan id kartu virtual
 			$db_kartu = $this->M_visitor->get_visitor_card(['no_kartu' => '0000000000']);
 			if($db_kartu){
-				$id_kartu = $db_kartu[0]->id_kartu;
+				$id_kartu 	= $db_kartu[0]->id_kartu;
+
+				// dapatkan lokasi ID petugas ini
+				$lokasi		= 'N/A';
+				$db_user 	= $this->M_user_loket->get_user(['id_user' => $post['id_petugas']]);
+				if($db_user){
+					$lokasi = $db_user[0]->location_id;
+				}
 				
 				$data = [
 					'nik'				=> $post['nik'],
@@ -86,7 +94,7 @@ class Contactless_guest extends MY_Controller {
 					'tujuan'			=> $post['tujuan'],
 					'keperluan'			=> $post['keperluan'],
 					'register_time' 	=> date('Y-m-d H:i:s'),
-					'lokasi'			=> 'KANTOR PUSAT',
+					'lokasi'			=> $lokasi,
 					'created_by'		=> $post['id_petugas'],
 					'status'			=> 1,
 					'flag_approve'		=> 'N',
