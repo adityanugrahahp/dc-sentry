@@ -28,7 +28,7 @@ class Home extends Management_Controller {
 			$data['page_view'] 	= "home/V_index";
 			$this->load->view('layouts/V_master', $data);
 		}else{
-			redirect('/login');
+			redirect('login');
 		}
 	}
 	
@@ -52,7 +52,7 @@ class Home extends Management_Controller {
 				// preset data array
 				$data = [
 					'register_time' => date('Y-m-d H:i:s'),
-					'lokasi'		=> 'KANTOR PUSAT',
+					'lokasi'		=> $_SESSION['locationID'],
 					'created_by'	=> $_SESSION['userID'],
 					'status'		=> 1
 				];
@@ -116,7 +116,8 @@ class Home extends Management_Controller {
 							'nik' 				=> $data['nik'],
 							'nama' 				=> $data['nama'],
 							'id_visitor_card' 	=> $data['id_visitor_card'],
-							'status' 			=> 1
+							'status' 			=> 1,
+							'lower(lokasi)' 	=> strtolower($_SESSION['locationID'])
 						];
 
 						if($this->M_visitor->get_new_visitor($where)){
@@ -163,11 +164,9 @@ class Home extends Management_Controller {
 
 		$where 	= [
 			'date(register_time)' 	=> date('Y-m-d'),
-			'status'				=> 1
+			'status'				=> 1,
+			'lower(lokasi)' 		=> strtolower($_SESSION['locationID'])
 		];
-
-		// data total
-		$jum_total = count($this->M_visitor->get_new_visitor($where));
 
 		// bila user mencari menggunakan keyword
 		if($keyword){
@@ -185,6 +184,8 @@ class Home extends Management_Controller {
 			}
 		}
 
+		// data total pengunjung
+		$jum_total = count($this->M_visitor->get_new_visitor($where));
 
 		$db = $this->M_visitor->get_new_visitor($where, $like, $length, $start);
 		foreach ($db as $v) {
@@ -254,10 +255,11 @@ class Home extends Management_Controller {
 		$tggl_awal 	= (count($ex1) > 1) ? join('-', [$ex1[2], $ex1[0], $ex1[1]]) : date('Y-m-d');
 		$tggl_akhir	= (count($ex2) > 1) ? join('-', [$ex2[2], $ex2[0], $ex2[1]]) : date('Y-m-d');
 
-		$where 	= "date(register_time) >= date('{$tggl_awal}') and date(register_time) <= date('{$tggl_akhir}')";
-
-		// data total
-		$jum_total = count($this->M_visitor->get_new_visitor($where));
+		$where 	= [
+			'date(register_time) >=' 	=> $tggl_awal,
+			'date(register_time) <=' 	=> $tggl_akhir,
+			'lower(lokasi)' 			=> strtolower($_SESSION['locationID'])
+		];
 
 		// bila user mencari menggunakan keyword
 		$like = null;
@@ -273,6 +275,9 @@ class Home extends Management_Controller {
 				];
 			}
 		}
+
+		// data total pengunjung
+		$jum_total = count($this->M_visitor->get_new_visitor($where));
 
 		$db = $this->M_visitor->get_new_visitor($where, $like, $length, $start, 'last_seen');
 		foreach ($db as $v) {
@@ -353,12 +358,12 @@ class Home extends Management_Controller {
 	// jumlah untuk tamu yang saat ini sedang berada dalam gedung (hari ini)
 	function ajax_get_current_visitor(){
 		// jumlah pengunjung keseluruhan
-		$where 	= ['date(register_time)' => date('Y-m-d'), 'status' => 1, 'flag_approve' => 'Y'];
+		$where 	= ['date(register_time)' => date('Y-m-d'), 'status' => 1, 'flag_approve' => 'Y', 'lower(lokasi)' => strtolower($_SESSION['locationID'])];
 		$db 	= $this->M_visitor->get_new_visitor($where);
 		$jumlah	= str_pad(count($db), 3, 0, STR_PAD_LEFT);
 
 		// jumlah pengunjung menunggu approval
-		$where 	= ['date(register_time)' => date('Y-m-d'), 'status' => 1, 'flag_approve' => 'N'];
+		$where 	= ['date(register_time)' => date('Y-m-d'), 'status' => 1, 'flag_approve' => 'N', 'lower(lokasi)' => strtolower($_SESSION['locationID'])];
 		$db 	= $this->M_visitor->get_new_visitor($where);
 		$wait	= str_pad(count($db), 3, 0, STR_PAD_LEFT);
 
@@ -415,7 +420,8 @@ class Home extends Management_Controller {
 		if($this->input->method(FALSE) == 'post'){
 			$where 	= [
 				'date(register_time) !='	=> date('Y-m-d'),
-				'status'					=> 1
+				'status'					=> 1,
+				'lower(lokasi)' 			=> strtolower($_SESSION['locationID'])
 			];
 	
 			// data total
@@ -476,6 +482,22 @@ class Home extends Management_Controller {
 		}
 
 		$this->output->set_content_type('application/json')->set_output(json_encode(['status' => $status, 'msg' => $msg, 'data' => $data]));
+	}
+
+	// tamu checkout dari gedung
+	function ajax_disapprove(){
+		$status = false;
+		$error 	= null;
+
+		// hapus visitor dengan menggunakan id
+		if($id = $this->input->post('id')){
+			$db = $this->M_visitor->delete_visitor($id);
+			if($db){ 
+				$status = true;
+			}
+		}
+
+		$this->output->set_content_type('application/json')->set_output(json_encode(['status' => $status]));
 	}
 
 	// fungsi untuk menghitung durasi antara 2 waktu

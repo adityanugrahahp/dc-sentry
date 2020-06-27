@@ -2,7 +2,7 @@
 	<div class="col-lg-10 col-lg-offset-1">
 		<div class="box">
 			<div class="box-header">
-				<h3 class="box-title">PT. PELNI (Persero) - <b>Kantor Pusat</b></h3>
+				<h3 class="box-title">PT. PELNI (Persero) - <b><?= $_SESSION['locationID'] ?></b></h3>
 				<h3 class="box-title pull-right">Tanggal: <b><span><?php echo date('d/m/Y');?></span></b></h3>
 			</div>
 			<div class="box-body" style="border-bottom: 1px solid #EEE">
@@ -201,7 +201,7 @@
 								</div>
 							</div>
 							<div class="row">
-							    <div class="col-md-6">
+								<div class="col-md-6">
 									<div class="form-group">
 										<label>No HP<span style="color:red">*</span></label>
 										<input required type="text" class="form-control" name="no_hp" />
@@ -278,7 +278,8 @@
 				</form>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+				<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tutup</button>
+				<button type="button" class="btn btn-danger btn-disapprove" disabled>Tolak</button>
 				<button type="button" class="btn btn-primary btn-save" disabled>Simpan</button>
 			</div>
 		</div>
