@@ -57,8 +57,10 @@ class Absenqr extends MY_Controller {
 				if($db[0]->whitelist_ip){
 					$list_whitelisted_ip = explode(', ', $db[0]->whitelist_ip);
 
-					if(! in_array($this->input->ip_address(), $list_whitelisted_ip)){
-						show_error('Maaf, Anda tidak memiliki hak untuk mengakses halaman ini. Silakan kontak Helpdesk IT / Administrator terkait masalah ini.<br><br><b>Reason: </b><span>(403) Invalid Address ('.$this->input->ip_address().').</span>', 403, 'Akses Ditolak');
+					// dapatkan IP sebenarnya (bukan reverse proxy IP address)
+					$client_ip = isset($_SERVER['HTTP_X_REAL_IP']) ? $_SERVER['HTTP_X_REAL_IP'] : $this->input->ip_address();
+					if(! in_array($client_ip, $list_whitelisted_ip)){
+						show_error('Maaf, Anda tidak memiliki hak untuk mengakses halaman ini. Silakan kontak Helpdesk IT / Administrator terkait masalah ini.<br><br><b>Reason: </b><span>(403) Invalid Address ('.$client_ip.').</span>', 403, 'Akses Ditolak');
 					}
 				}
 
