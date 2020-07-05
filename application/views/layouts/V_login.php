@@ -6,7 +6,7 @@
 	</head>
 	<body class="hold-transition">
 		<div class="row">
-			<div class="col-lg-8 hidden-xs text-center" style="background-image: url('<?= base_url(THEME_PATH);?>image/background/5.jpg');background-size:cover;height:100vh;"></div>
+			<div class="col-lg-8 hidden-xs text-center" style="background-image: url('<?= base_url(THEME_PATH);?>image/background/5.jpg');background-size:cover;height:100vh;background-position:center"></div>
 			<div class="col-lg-4" style="background:white;height:100vh;">
 				<div class="row">
 					<div class="col-lg-10 col-lg-offset-1 col-xs-10 col-xs-offset-1 text-center" style="margin-top:16vh">
