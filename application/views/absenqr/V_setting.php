@@ -39,7 +39,7 @@
 						</div>
 						<div class="row">
 							<div class="col-lg-4">
-								<?= form_dropdown('filter_gedung', (array_merge(['ALL' => 'SEMUA'], $unit_kerja)), null, 'class="form-control filter_gedung"') ?>
+								<?= form_dropdown('filter_gedung', (array_merge(['ALL' => 'SEMUA'], $unit_kerja)), $_SESSION['locationID'], 'class="form-control filter_gedung"') ?>
 							</div>
 							<div class="col-lg-8 text-right">
 								<a href="javascript:void(0)" class="btn btn-primary btn-new-screen btn-sm"><i class="fa fa-plus fa-fw"></i> Tambah Layar</a>

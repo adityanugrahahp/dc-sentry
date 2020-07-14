@@ -32,4 +32,27 @@ class M_absenqr extends MY_Model {
 
 		return ($q) ? $q->result() : [];
 	}
+
+	// data cabang + kantor pusat
+	function get_cabang(){
+		$this->db->select('
+			cab_kode, 
+			cab_ket, 
+			(select count(id) from visitor_qr where lower(lokasi) = lower(cab_ket)) as jumlah_screen
+		');
+		
+		$this->db->where([
+			'flag_sdm_berlaku' 	=> 'Y', 
+			'cab_st_aktif' 		=> 'Y',
+			'cab_kode !='		=> '04A'
+		]);
+
+		$this->db->or_where('cab_st_kp', 'Y');
+
+		$this->db->order_by('cab_sdm_klass ASC, cab_kode ASC');
+
+		$q = $this->db->get('cabang');
+
+		return ($q) ? $q->result() : [];
+	}
 }

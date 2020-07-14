@@ -23,9 +23,9 @@ class Absenqr extends MY_Controller {
 
 		// dapatkan nama kantor pusat/cabang
 		$opt_uk = [];
-		$db_utk = $this->M_absenqr->get_unit_kerja();
+		$db_utk = $this->M_absenqr->get_cabang();
 		foreach($db_utk as $v){
-			$opt_uk += [strtoupper($v->utk_ket) => "{$v->utk_ket} ({$v->jumlah_screen})"];
+			$opt_uk += [strtoupper($v->cab_ket) => "{$v->cab_ket} ({$v->jumlah_screen})"];
 		}
 
 		$data['unit_kerja']	= $opt_uk;
