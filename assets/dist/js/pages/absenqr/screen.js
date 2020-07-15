@@ -1,4 +1,5 @@
 var qrcode;
+var time_offset = 7;
 var module_url  = base_url + 'absenqr';
 var next_update = null;
 var months      = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
@@ -48,14 +49,15 @@ function _get_new_qr(){
     $.ajax({
         url: url_qr + '?token=' + token,
         dataType: 'json',
-        data: { id_display: screen_id },
+        data: { 
+            id_display: screen_id,
+            time_offset: time_offset
+        },
         success: function(d){
             if(d.status){
                 // update tampilan qrcode di screen
                 qrcode.makeCode(d.data.qr);
                 next_update = new Date(d.data.next_request);
-
-                console.log('Request', d.data.next_request);
             }
         }
     });
@@ -138,7 +140,24 @@ function _showDateTime(){
     curr_minute = _addZero(curr_minute);
     curr_second = _addZero(curr_second);
 
-    $('#time').html(curr_hour + ":" + curr_minute + ":" + curr_second + ' WIB');
+    // dapatkan suffix keterangan waktu
+    var suffix  = 'LT';
+    switch(getTimezoneOffset()){
+        case '+0700':
+            suffix = 'WIB';
+            time_offset = 7;
+            break;
+        case '+0800':
+            suffix = 'WITA';
+            time_offset = 8;
+            break;
+        case '+0900':
+            suffix = 'WIT';
+            time_offset = 9;
+            break;
+    }
+
+    $('#time').html(curr_hour + ":" + curr_minute + ' ' + suffix);
     $("#date").html(days[n]+", " + " " + _addZero(day) + " " + months[month] + " " + year);	
 }
 
@@ -146,5 +165,16 @@ function _addZero(i){
     if (i < 10) { i = "0" + i; }
 
     return i;
+}
+
+function getTimezoneOffset() {
+    function z(n){
+        return (n<10? '0' : '') + n
+    }
+
+    var offset = new Date().getTimezoneOffset();
+    var sign = offset < 0 ? '+' : '-';
+    offset = Math.abs(offset);
+    return sign + z(offset/60 | 0) + z(offset%60);
 }
 // END NON CORE FEATURES
