@@ -85,7 +85,7 @@ class Absenqr extends MY_Controller {
 		$data['screen_id']	= $screen_id;
 		$data['page_title'] = "QR Display {$s_lokasi}";
 		
-		$this->load->view('absenqr/V_screen', $data);
+		$this->load->view('absenqr/V_screen_video', $data);
 	}
 
 	function ajax_generate_qr($screen_id = null){

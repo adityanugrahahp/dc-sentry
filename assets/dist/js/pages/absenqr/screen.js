@@ -17,8 +17,8 @@ $(document).ready(function () {
 
     // initialize qr code renderer
     qrcode = new QRCode(document.getElementById("img-qr"), {
-        width : 400,
-        height : 400
+        width : 370,
+        height : 370
     });
 
     // standard time & attendance
@@ -41,6 +41,10 @@ $(document).ready(function () {
     setInterval(function(){
         _get_trigger();
     }, checkNewScanInterval);
+});
+
+$(document).on('mouseover', '#img-qr', function(){
+    $(this).removeAttr('title');
 });
 
 // update qr secara berkala (tanpa aktivitas pegawai)
