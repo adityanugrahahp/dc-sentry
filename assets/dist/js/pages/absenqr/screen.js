@@ -1,4 +1,6 @@
 var qrcode;
+var video_index     = 0;
+var video_list      = [];
 var default_table   = null;
 var time_offset     = 7;
 var module_url      = base_url + 'absenqr';
@@ -10,19 +12,32 @@ const refreshQRInterval     = 1000; // 1 detik
 const checkNewScanInterval  = 1000; // 1 detik
 
 $(document).ready(function () {
+    // default html bila table pegawai kosong
+    default_table = $('.table-res').html();
+
+    // daftar nama-nama video
+    video_list = [
+        '01.mp4',
+        '02.mp4',
+        '03.mp4'
+    ];
+
+    video_index = 0;
+
     // set to fullscreen
     _switchFullScreen();
 
     // initial qr request
     _get_new_qr();
 
-    default_table = $('.table-res').html();
-
     // initialize qr code renderer
     qrcode = new QRCode(document.getElementById("img-qr"), {
         width : 370,
         height : 370
     });
+
+    // load video pertama
+    _play_video(video_index);
 
     // standard time & attendance
     setInterval(function(){
@@ -44,6 +59,16 @@ $(document).ready(function () {
     setInterval(function(){
         _get_trigger();
     }, checkNewScanInterval);
+});
+
+$('#promo-video').on('ended', function(){
+    if(video_index == (video_list.length - 1)){
+        video_index = 0;
+        _play_video(video_index);
+    }else{
+        video_index++;
+        _play_video(video_index);
+    }
 });
 
 $(document).on('mouseover', '#img-qr', function(){
@@ -95,6 +120,11 @@ function _get_trigger(){
             }
         }
     });
+}
+
+function _play_video(index = 0){
+    $('#promo-video').attr('src', url_video + video_list[index]);
+    $('#promo-video').get(0).play();
 }
 
 // SELF FUNCTIONS
