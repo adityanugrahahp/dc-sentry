@@ -79,10 +79,7 @@
 		</div>
 		<div class="col-md-6" style="padding-right:0;">
 			<div class="row" style="max-height:50vh;">
-			<video autoplay loop style="max-height:50vh;min-width:100%">
-				<source src="<?= base_url(THEME_PATH) ?>videos/01.mp4" type="video/mp4" />
-				Your browser does not support the video tag.
-			</video>
+				<video id="promo-video" style="max-height:50vh;min-width:100%"></video>
 			</div>
 			<div class="row" style="max-height:50vh;padding-top:10px;">
 				<div class="col-lg-12">
@@ -105,6 +102,7 @@
 		var token 		= '<?= WS_AUTH_KEY ?>';
 		var url_trigger = '<?= WS_URL.'ws_absenqr/get_status_change' ?>';
 		var url_qr 		= '<?= WS_URL.'ws_absenqr/get_new_qr' ?>';
+		var url_video 	= '<?= base_url(THEME_PATH) ?>videos/';
 	</script>
 	<script src="<?= base_url(THEME_PATH); ?>vendor/jquery/jquery-3.2.1.min.js"></script>
 	<script src="<?= base_url(THEME_PATH); ?>vendor/animsition/js/animsition.min.js"></script>
