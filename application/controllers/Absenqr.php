@@ -127,13 +127,15 @@ class Absenqr extends MY_Controller {
 				// set heading
 				$this->table->set_heading(
 					['data' => 'Nama Lengkap', 'class' => 'bg-danger text-white'],
+					['data' => 'Unit Kerja', 'class' => 'bg-danger text-white'],
 					['data' => 'Waktu Absen', 'class' => 'text-center bg-danger text-white']
 				);
 
 				if($db = $rest['content']['data']){
 					foreach($db as $v){
 						$this->table->add_row(
-							['data' => '<b class="clearfix">'.$v['nama_lengkap'].' ('.$v['nrp'].')</b><small>'.$v['unit_kerja'].'</small>'],
+							['data' => '<b class="clearfix">'.$v['nama_lengkap'].' ('.$v['nrp'].')</b>'],
+							['data' => '<small>'.$v['unit_kerja'].'</small>'],
 							['data' => date('H:i', strtotime($v['waktu_absen'])), 'class' => 'text-center']
 						);
 					}
@@ -361,7 +363,7 @@ class Absenqr extends MY_Controller {
 
 	function _generate_table($identifier = null){
         $template = array(
-            'table_open'            => '<div class="table-responsive"><table class="table table-bordered table-sm table-striped">',
+            'table_open'            => '<div class="table-responsive"><table class="table table-bordered table-sm table-sm table-striped">',
             'thead_open'            => '<thead>',
             'thead_close'           => '</thead>',
             'heading_row_start'     => '<tr>',

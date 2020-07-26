@@ -19,83 +19,74 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 
 	<style type="text/css">
-		.login100-more {
-			width: calc(100% - 460px);
-		}
-		.login100-form {
-			width: 460px;
-			background-color: #fff;
-			padding: 20px 15px 5px 15px;
-		}
 		#img-qr img {
 			padding: 10px;
 			background: #FFF;
 		}
+		
 		video {
-			/* -webkit-transform: scaleX(2); 
-			-moz-transform: scaleX(2); */
 			object-fit: fill!important;
+		}
+
+		.box-absen {
+			background-image: url('<?= base_url(THEME_PATH);?>image/background/4.jpg');
+			background-size: cover;
 		}
 	</style>
 </head>
-<body style="background-color: #666666;">	
-	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
-				<div class="login100-form validate-form" style="padding-top:0">
-					<div class="row" style="max-height:35vh;">
-					<video autoplay loop style="max-height:35vh;min-width:100%">
-						<source src="<?= base_url(THEME_PATH) ?>videos/01.mp4" type="video/mp4" />
-						Your browser does not support the video tag.
-					</video>
-					</div>
-					<div class="row" style="max-height:59vh;padding-top:10px;">
-						<div class="col-lg-12">
-							<div class="table-res"><center>Belum Ada Absen Pegawai</center></div>
+<body>	
+	<div class="row" style="max-width:100%">
+		<div class="col-md-6 box-absen" style="height:100vh">
+			<div class="card-img-overlay" style="background:rgba(0,0,0,0.6)">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6">
+							<img src="<?= base_url(THEME_PATH) ?>image/logopelni_white.png" alt="Logo PELNI" class="img-fluid" style="height:80px;">
 						</div>
+						<div class="col-lg-6 text-right" style="padding-top:10px;">
+							<h4 class="clearfix text-white"><b>ABSENSI PEGAWAI</b></h4>
+							<b class="text-danger" style="font-size:14pt"><?= $lokasi ?></b>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-12 text-center">
+							<h1><b style="color: #FFF"><?= $nama ?></b></h1>
+							<h4 style="color: #FFF " id="date"></h4>
+							<h5 class="col align-self-center">
+								<b style="color: #FFF ">
+									<center><h1 id="time"></h1></center>
+								</b>
+							</h5>	
+						</div>
+					</div>
+					<div class="row">
+						<b class="col align-self-center" style="color:#FFF;padding-top:10px;padding-bottom:20px;">
+							<center>(SCAN DISINI UNTUK ABSENSI)</center>
+						</b>
+					</div>
+					<div class="row">
+						<div class="col align-self-center">
+							<center><div id="img-qr"></div></center>
+						</div>	
 					</div>
 				</div>
-
-				<div class="login100-more" style="background-image: url('<?= base_url(THEME_PATH);?>image/background/4.jpg');">
-					<div class="card-img-overlay" style="background:rgba(0,0,0,0.6)">
-						<div class="container">
-							<div class="row">
-								<div class="col-lg-6">
-									<img src="<?= base_url(THEME_PATH) ?>image/logopelni_white.png" alt="Logo PELNI" class="img-fluid" style="height:80px;">
-								</div>
-								<div class="col-lg-6 text-right" style="padding-top:10px;">
-									<h4 class="clearfix text-white"><b>ABSENSI PEGAWAI</b></h4>
-									<b class="text-danger" style="font-size:14pt"><?= $lokasi ?></b>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-lg-12 text-center">
-									<h1><b style="color: #FFF"><?= $nama ?></b></h1>
-									<h4 style="color: #FFF " id="date"></h4>
-									<h5 class="col align-self-center">
-										<b style="color: #FFF ">
-											<center><h1 id="time"></h1></center>
-										</b>
-									</h5>	
-								</div>
-							</div>
-							<div class="row">
-								<b class="col align-self-center" style="color:#FFF;padding-top:10px;padding-bottom:20px;">
-									<center>(SCAN DISINI UNTUK ABSENSI)</center>
-								</b>
-							</div>
-							<div class="row">
-								<div class="col align-self-center">
-									<center><div id="img-qr"></div></center>
-								</div>	
-							</div>
-						</div>
-					</div>
-					<? if($pesan){ ?>
-					<div id="footer">
-						<marquee><b style="font-size:14px"><?= $pesan ?></b></marquee>
-					</div>
-					<? } ?>
+			</div>
+			<? if($pesan){ ?>
+			<div id="footer">
+				<marquee><b style="font-size:14px"><?= $pesan ?></b></marquee>
+			</div>
+			<? } ?>
+		</div>
+		<div class="col-md-6" style="padding-right:0;">
+			<div class="row" style="max-height:50vh;">
+			<video autoplay loop style="max-height:50vh;min-width:100%">
+				<source src="<?= base_url(THEME_PATH) ?>videos/01.mp4" type="video/mp4" />
+				Your browser does not support the video tag.
+			</video>
+			</div>
+			<div class="row" style="max-height:50vh;padding-top:10px;">
+				<div class="col-lg-12">
+					<div class="table-res"><center>Belum Ada Absen Pegawai</center></div>
 				</div>
 			</div>
 		</div>
