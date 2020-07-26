@@ -1,9 +1,10 @@
 var qrcode;
-var time_offset = 7;
-var module_url  = base_url + 'absenqr';
-var next_update = null;
-var months      = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
-var days        = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
+var default_table   = null;
+var time_offset     = 7;
+var module_url      = base_url + 'absenqr';
+var next_update     = null;
+var months          = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+var days            = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
 
 const refreshQRInterval     = 1000; // 1 detik
 const checkNewScanInterval  = 1000; // 1 detik
@@ -14,6 +15,8 @@ $(document).ready(function () {
 
     // initial qr request
     _get_new_qr();
+
+    default_table = $('.table-res').html();
 
     // initialize qr code renderer
     qrcode = new QRCode(document.getElementById("img-qr"), {
@@ -73,6 +76,8 @@ function _get_attendances(){
         if(d.status){
             // render tabel
             $('.table-res').html(d.data);
+        }else{
+            $('.table-res').html(default_table);
         }
     });
 }

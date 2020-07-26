@@ -86,7 +86,14 @@
 			</div>
 			<div class="row" style="max-height:50vh;padding-top:10px;">
 				<div class="col-lg-12">
-					<div class="table-res"><center>Belum Ada Absen Pegawai</center></div>
+					<div class="table-res">
+						<center style="padding-top:18%">
+							<i class="fa fa-users fa-fw fa-2x"></i><br>
+							<b class="clearfix">Belum Ada Absen Pegawai</b>
+							<small class="clearfix">Lakukan absen dengan menggunakan Portal PELNI atau Aplikasi PELNI One</small>
+							<img src="<?= base_url(THEME_PATH) ?>image/logo/playstore.png" alt="Playstore" height="50">
+						</center>
+					</div>
 				</div>
 			</div>
 		</div>
