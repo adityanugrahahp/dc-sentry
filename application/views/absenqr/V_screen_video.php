@@ -79,7 +79,11 @@
 		</div>
 		<div class="col-md-6" style="padding-right:0;">
 			<div class="row" style="max-height:50vh;">
-				<video autoplay id="promo-video" style="max-height:50vh;min-width:100%"></video>
+				<video autoplay id="promo-video" style="max-height:50vh;min-width:100%">
+					<source src="<?= base_url(THEME_PATH) ?>videos/01.mp4"/>
+					<source src="<?= base_url(THEME_PATH) ?>videos/02.mp4"/>
+					<source src="<?= base_url(THEME_PATH) ?>videos/03.mp4"/>
+				</video>
 			</div>
 			<div class="row" style="max-height:50vh;padding-top:10px;overflow:hidden;">
 				<div class="col-lg-12" style="z-index:-999">
