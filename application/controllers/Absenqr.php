@@ -115,6 +115,8 @@ class Absenqr extends MY_Controller {
 		$data 	= [];
 		$msg 	= [];
 
+		die();
+
 		if($display_id = $this->input->post('display_id')){
 			// post_body
 			$param 	= [
