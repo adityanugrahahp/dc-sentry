@@ -109,12 +109,11 @@ class Absenqr extends MY_Controller {
 		$this->output->set_content_type('application/json')->set_output(json_encode(compact('status', 'data')));
 	}
 
+	// INFO: DEPRECATED (MENYEBABKAN EFEK KE SERVER)
 	function ajax_get_latest_attendee(){
 		$status = false;
 		$data 	= [];
 		$msg 	= [];
-
-		die();
 
 		if($display_id = $this->input->post('display_id')){
 			// post_body

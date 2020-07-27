@@ -52,7 +52,7 @@ $(document).ready(function () {
             _get_new_qr();
         }
 
-        // _get_attendances();
+        _get_attendances();
     }, refreshQRInterval);
 
     // trigger checker
@@ -96,8 +96,14 @@ function _get_new_qr(){
 }
 
 // fetch data user yang sudah melakukan absensi
-function _get_attendances(){
-    $.post(module_url + '/ajax_get_latest_attendee', {display_id:screen_id}, function(d){
+function _get_attendances(is_table = true){
+    if(is_table){
+        endpoint_url = url_ws + '/get_latest_attendance_table' + '?token=' + token;
+    }else{
+        endpoint_url = module_url + '/ajax_get_latest_attendee';
+    }
+
+    $.post(endpoint_url, {display_id:screen_id}, function(d){
         if(d.status){
             // render tabel
             $('.table-res').html(d.data);
