@@ -81,8 +81,8 @@
 			<div class="row" style="max-height:50vh;">
 				<video id="promo-video" style="max-height:50vh;min-width:100%"></video>
 			</div>
-			<div class="row" style="max-height:50vh;padding-top:10px;">
-				<div class="col-lg-12">
+			<div class="row" style="max-height:50vh;padding-top:10px;overflow:hidden;">
+				<div class="col-lg-12" style="z-index:-999">
 					<div class="table-res">
 						<center style="padding-top:18%">
 							<i class="fa fa-users fa-fw fa-2x"></i><br>
