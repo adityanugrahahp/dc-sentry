@@ -37,7 +37,7 @@ $(document).ready(function () {
     });
 
     // load video pertama
-    // _play_video(video_index);
+    _play_video(video_index);
 
     // standard time & attendance
     setInterval(function(){
