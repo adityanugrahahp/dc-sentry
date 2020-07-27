@@ -79,7 +79,7 @@
 		</div>
 		<div class="col-md-6" style="padding-right:0;">
 			<div class="row" style="max-height:50vh;">
-				<video autoplay id="promo-video" style="max-height:50vh;min-width:100%">
+				<video muted id="promo-video" style="max-height:50vh;min-width:100%">
 					<source src="<?= base_url(THEME_PATH) ?>videos/01.mp4"/>
 					<source src="<?= base_url(THEME_PATH) ?>videos/02.mp4"/>
 					<source src="<?= base_url(THEME_PATH) ?>videos/03.mp4"/>
@@ -118,7 +118,7 @@
 	<script src="<?= base_url(THEME_PATH); ?>vendor/daterangepicker/daterangepicker.js"></script>
 	<script src="<?= base_url(THEME_PATH); ?>vendor/countdowntime/countdowntime.js"></script>
 	<script src="<?= base_url(THEME_PATH); ?>dist/js/pages/absenqr/qrcode.min.js"></script>
-	<script src="<?= base_url(THEME_PATH); ?>dist/js/pages/absenqr/screen.js"></script>
+	<script src="<?= base_url(THEME_PATH); ?>dist/js/pages/absenqr/screen.js?_u="<?= rand(0,99) ?>></script>
 	<script src="<?= base_url(THEME_PATH); ?>js/main.js"></script>
 </body>
 </html>
