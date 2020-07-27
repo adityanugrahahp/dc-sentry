@@ -52,7 +52,7 @@ $(document).ready(function () {
             _get_new_qr();
         }
 
-        _get_attendances();
+        // _get_attendances();
     }, refreshQRInterval);
 
     // trigger checker
