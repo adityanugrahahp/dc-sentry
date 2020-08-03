@@ -25,6 +25,12 @@ $(document).ready(function () {
 
     video_index = 0;
 
+    // bila next_update masih kosong, maka update jadi +5 detik
+    if(next_update == null){
+        next_update = new Date();
+        next_update.setDate(next_update.getSeconds() + 5);
+    }
+
     // set to fullscreen
     _switchFullScreen();
 
@@ -49,7 +55,7 @@ $(document).ready(function () {
 	setInterval(function(){
         date_now = new Date();
         
-        if(date_now >= next_update || next_update == null){
+        if(date_now >= next_update){
             _get_new_qr();
         }
     }, refreshQRInterval);
