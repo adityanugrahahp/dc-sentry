@@ -8,8 +8,9 @@ var next_update     = null;
 var months          = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
 var days            = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
 
-const refreshQRInterval     = 1000; // 1 detik
-const checkNewScanInterval  = 1000; // 1 detik
+const refreshQRInterval         = 1000; // 1 detik
+const checkNewScanInterval      = 5000; // 5 detik
+const attendanceListInterval    = 10000; // 10 detik
 
 $(document).ready(function () {
     // default html bila table pegawai kosong
@@ -51,9 +52,12 @@ $(document).ready(function () {
         if(date_now >= next_update || next_update == null){
             _get_new_qr();
         }
-
-        _get_attendances();
     }, refreshQRInterval);
+
+    // data pengabsen
+    setInterval(function(){
+        _get_attendances();
+    }, attendanceListInterval);
 
     // trigger checker
     setInterval(function(){
