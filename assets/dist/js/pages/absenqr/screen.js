@@ -9,8 +9,8 @@ var months          = ['Januari','Februari','Maret','April','Mei','Juni','Juli',
 var days            = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
 
 const refreshQRInterval         = 1000; // 1 detik
-const checkNewScanInterval      = 5000; // 5 detik
-const attendanceListInterval    = 10000; // 10 detik
+const checkNewScanInterval      = 3000; // 3 detik
+const attendanceListInterval    = 4000; // 4 detik
 
 $(document).ready(function () {
     // default html bila table pegawai kosong
