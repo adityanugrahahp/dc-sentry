@@ -134,6 +134,13 @@
                                 <div class="form-group">
                                     <label><b>Apakah ada riwayat sakit 1 minggu terakhir? <span style="color:red">*</span></b></label>
                                     <input type="text" class="form-control" name="pertanyaan_1" value="Apakah ada riwayat sakit 1 minggu terakhir?" hidden="">
+                                    <select class="form-control sel-pertanyaan-1">
+                                        <option value="N" selected>Tidak Ada</option>
+                                        <option value="Y">Ya</option>
+                                    </select>
+                                </div>
+                                <div class="form-group box-detail-penyakit" style="display:none;">
+                                    <label><b>Sebutkan riwayat penyakit Anda 1 minggu terakhir:</b></label>
                                     <input type="text" name="jawaban_1" class="form-control" placeholder="(Demam, Batuk, Sesak, lemas, Diare)">
                                 </div>
                                 <div class="form-group">
