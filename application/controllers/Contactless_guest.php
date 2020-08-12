@@ -16,7 +16,7 @@ class Contactless_guest extends MY_Controller {
 	public function index($token = null){
 
 		$token = decrypt($token);
-		if(true){
+		if($token){
 			// daftar nama lantai
 			$opt = [];
 			for($i = 1;$i <= 11; $i++){ $opt['Lantai '.$i] = 'Lantai '.$i; }
