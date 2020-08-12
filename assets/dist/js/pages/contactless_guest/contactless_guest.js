@@ -29,6 +29,18 @@ $(window).on('beforeunload', function(){
     }
 });
 
+$(document).on('change', '.sel-pertanyaan-1', function(){
+    var value = $(this).val();
+
+    if(value == 'Y'){
+        $('.box-detail-penyakit').show();
+        $('input[name="jawaban_1"]').val('');
+    }else{
+        $('.box-detail-penyakit').hide();
+        $('input[name="jawaban_1"]').val('Tidak Ada');
+    }
+});
+
 $(document).on('change', 'input[name="is_agreed"]', function(){
     if($(this).is(':checked')){
         $('.btn-submit').removeClass('disabled');

@@ -29,7 +29,7 @@ $config['cache_query_string'] 		= FALSE;
 
 $config['encryption_key'] 			= '';
 $config['sess_driver'] 				= 'redis';
-$config['sess_cookie_name'] 		= 'ci_session';
+$config['sess_cookie_name'] 		= 'pelni_visitor';
 $config['sess_expiration'] 			= 7200;
 $config['sess_save_path'] 			= 'tcp://redis:6379';
 $config['sess_match_ip'] 			= TRUE;
