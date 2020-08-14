@@ -141,7 +141,7 @@
                                 </div>
                                 <div class="form-group box-detail-penyakit" style="display:none;">
                                     <label><b>Sebutkan riwayat penyakit Anda 1 minggu terakhir:</b></label>
-                                    <input type="text" name="jawaban_1" class="form-control" placeholder="(Demam, Batuk, Sesak, lemas, Diare)">
+                                    <input type="text" name="jawaban_1" class="form-control" placeholder="(Demam, Batuk, Sesak, lemas, Diare)" value="Tidak Ada">
                                 </div>
                                 <div class="form-group">
                                     <label><b>Apakah sudah pernah melakukan Rapid Test / SWAB Test terkait COVID-19? <span style="color:red">*</span></b></label><br>
