@@ -16,6 +16,8 @@ $(document).ready(function () {
     $('.btn-submit').addClass('disabled');
     $('.btn-submit').prop('disabled', true);
 
+    $('.sel-pertanyaan-1').change();
+
     // initialize qr code renderer
     qrcode = new QRCode(document.getElementById("img-qr"), {
         width : 200,
