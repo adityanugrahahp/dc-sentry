@@ -45,10 +45,10 @@ class Contactless_guest extends MY_Controller {
         $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required');
         $this->form_validation->set_rules('tujuan', 'Tujuan', 'required');
         $this->form_validation->set_rules('keperluan', 'Keperluan', 'required');
-        $this->form_validation->set_rules('jawaban_1', 'Form Kesehatan', 'trim');
-        $this->form_validation->set_rules('jawaban_2', 'Form Kesehatan', 'required|trim');
-        $this->form_validation->set_rules('jawaban_3', 'Form Kesehatan', 'required|trim');
-        $this->form_validation->set_rules('jawaban_4', 'Form Kesehatan', 'required|trim');
+        $this->form_validation->set_rules('jawaban_1', 'Mengenai Penyakit 1 Minggu Sebelumnya', 'required|trim');
+        $this->form_validation->set_rules('jawaban_2', 'Mengenai Rapid Test', 'required|trim');
+        $this->form_validation->set_rules('jawaban_3', 'Mengenai Status ODP', 'required|trim');
+        $this->form_validation->set_rules('jawaban_4', 'Mengenai Perjalanan Ke Daerah Terdampak', 'required|trim');
 
 		if($this->form_validation->run()){
 			
