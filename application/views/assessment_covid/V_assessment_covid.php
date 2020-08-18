@@ -86,6 +86,9 @@
 
     <style type="text/css">
         /*swal style*/
+        .swal2-popup {
+        font-size: 1.6rem !important;
+        }
         .swal-wide{
         width:500px !important;
         }
@@ -937,7 +940,7 @@
         var imgUrl = "<?=$img_potret;?>";
         Swal.fire({
                         imageUrl: imgUrl,
-                        imageWidth: 450,
+                        // imageWidth: 750,
                         imageAlt: 'Banner Image',
                         showConfirmButton: false,
                         background: 'transparent',
@@ -949,7 +952,7 @@
                         hideClass: {
                         popup: 'animate__animated animate__bounceOutLeft'
                         },
-                        customClass: "<?php // $swal_class;?>",
+                        customClass: "<?php $swal_class;?>",
                         closeButtonHtml: '<button class="btn btn-danger"><i class="fa fa-times"></i></button>',
                         onClose: refresh,
                     })
