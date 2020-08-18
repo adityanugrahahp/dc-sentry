@@ -11,7 +11,7 @@ class Assessment_covid19 extends MY_Controller
     public function __construct(){
         parent::__construct();
 
-    
+        $this->load->library('user_agent');
 
     }
 
@@ -38,18 +38,18 @@ class Assessment_covid19 extends MY_Controller
         //     "DT_bootstrap.js",
             "jquery.validate.min.js",
         //     "metronic.js",
-        //     "ui-blockui.js",
-        //     "jquery.blockui.min.js",
+            "ui-blockui.js",
+            "blockui.min.js",
             "sweetalert2.min.js"
         ];
 
-        // $data['title']      = $this->module_name;
-        // $data['img_potret'] = base_url()."theme/dashboard/img/new_normal/potret_perusahaan_desktop_min.jpg";
-        //     $data['swal_class'] = 'swal-wide'; 
-        // if($this->agent->is_mobile()){
-        //     $data['img_potret'] = base_url()."theme/dashboard/img/new_normal/potret_perusahaan_mobile_min.jpg";
-        //     $data['swal_class'] = '';
-        // }
+        $data['title']      = $this->module_name;
+        $data['img_potret'] = base_url()."assets/image/new_normal/potret_perusahaan_desktop_min.jpg";
+            $data['swal_class'] = 'swal-wide'; 
+        if($this->agent->is_mobile()){
+            $data['img_potret'] = base_url()."assets/image/new_normal/potret_perusahaan_mobile_min.jpg";
+            $data['swal_class'] = '';
+        }   
 
         $data['file']       = "assessment_covid/V_assessment_covid";
         $this->load->view($data['file'], $data);
@@ -113,8 +113,9 @@ class Assessment_covid19 extends MY_Controller
         $penyakit = $this->input->post('penyakit');
         
         // $this->form_validation->set_rules('healthy', 'longitude', 'required');
-        // $this->form_validation->set_rules('nrp', 'nrp', 'required');
+        $this->form_validation->set_rules('nrp', 'nrp', 'required');
         $result = array();
+        $result['status'] = "success";
         $msg    = null;
 
         if ($this->form_validation->run() == TRUE) 
@@ -139,11 +140,12 @@ class Assessment_covid19 extends MY_Controller
                 'kegiatan_kontak'=> $kegiatan_interaksi,
                 'tanggal_sakit' => $tanggal_sakit,
                 'tanggal_sembuh'=> $tanggal_sembuh,
-                'penyakit'    => $penyakit,
+                'penyakit'      => $penyakit,
+                'act'           => 'insert',
             );
         $url = $this->ws_url.'insert_health_log';
 
-        $status = $this->dataCurl($report_health, $url);
+        $result = $this->dataCurl($report_health, $url);
         //     if($health_status!="sehat")
         //     {
         //         $report_health['keterangan'] = $keterangan;

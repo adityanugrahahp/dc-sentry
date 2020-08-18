@@ -889,7 +889,7 @@
                 data: data_kirim,
                 beforeSend: function(){
                     $.blockUI({
-                        message: '<img src="' + base_url + '/theme/dashboard/img/loading.gif" height="80px" style="image-rendering: auto;"/>',
+                        message: '<img src="' + base_url + '/assets/image/loading.gif" height="80px" style="image-rendering: auto;"/>',
                         css: { border: 'none', backgroundColor: 'none', color: '#fff', 'z-index': 1055 }
                     });
                 },
@@ -901,7 +901,7 @@
 
                     Swal.fire({
                         html: '<span class="text-success"><p>Anda Termasuk:</p><h4>'+response.status_message+'</h4><br><i class="fa fa-check-circle fa-fw"></i></span><b>Selamat '+  'Datang' +'</b><br><b>'+ nama +'</b><br/><br/>' + '<small class="clearfix">Selamat bekerja <b>The New Normal Way</b>, gunakan selalu <b class="text-primary">masker</b> selama di kantor, sering <b class="text-primary">mencuci tangan</b> dan <b class="text-primary">menjaga jarak</b> aman.<br/><br/><span class="text-danger">#CovidSafeBUMN</span></small>',
-                        imageUrl: base_url + 'theme/dashboard/img/new_normal/working.png',
+                        imageUrl: base_url + 'assets/image/new_normal/working.png',
                         imageWidth: 250,
                         imageAlt: 'Banner Image',
                         onClose: potret_perusahaan
@@ -911,7 +911,7 @@
                     {
                     Swal.fire({
                         html: '<span class="text-danger"><p>Anda Termasuk:</p><b><h4>'+response.status_message+'</h4><i class="fa fa-times-circle fa-fw"></i><br></span>Sdr/sdri kami <br><b>'+ nama +'</b><br/><br/><p>Anda Dianjurkan Untuk Beristirahat Hingga Kondisi Anda Optimal</p><span class="text-danger">#CovidSafeBUMN</span>',
-                        imageUrl: base_url + 'theme/dashboard/img/new_normal/stop_wfo.png',
+                        imageUrl: base_url + 'assets/image/new_normal/stop_wfo.png',
                         imageWidth: 150,
                         imageAlt: 'Banner Image',
                         onClose: potret_perusahaan
@@ -919,7 +919,7 @@
                     }
                     else
                     {
-                    swal("Error!", response.status_message, "error"); 
+                    Swal.fire("Error!", response.status_message, "error"); 
                     }
                     $('#myModal').modal('hide');
                     $.unblockUI();
@@ -934,10 +934,10 @@
 
         function potret_perusahaan()
         {
-        var imgUrl = "";
+        var imgUrl = "<?=$img_potret;?>";
         Swal.fire({
                         imageUrl: imgUrl,
-                        // imageWidth: 450,
+                        imageWidth: 450,
                         imageAlt: 'Banner Image',
                         showConfirmButton: false,
                         background: 'transparent',
