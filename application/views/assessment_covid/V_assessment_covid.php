@@ -727,6 +727,8 @@
     </div>
 <script type="text/javascript">
     $(document).ready(function() {
+
+    
     // potret_perusahaan();
     startTime();    
     $("#nrp").select2({
@@ -834,6 +836,7 @@
                     keyboard: false
             });
           $('#myModal').modal('show');
+          $('.modal-backdrop').remove();
         // }
 
         function startTime() {
