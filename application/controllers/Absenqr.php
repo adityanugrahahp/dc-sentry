@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Absenqr extends MY_Controller {
+class Absenqr extends Management_Controller {
 
 	protected $durasi_expired = 10; // satuan dalam detik
 
@@ -15,6 +15,25 @@ class Absenqr extends MY_Controller {
 
 		// load models
 		$this->load->model('M_absenqr');
+
+		// pengecekan akses user menu
+		if(! app_check_access(2)){
+			// cek menu_access yang dimiliki user ini apa?
+			$ex = explode(', ', $_SESSION['access']);
+			if($ex){
+				// dapatkan element pertama dari user access, cek di daftar menu
+				$menu = app_menu_list();
+				if($menu && $menu[$ex[0]]){
+					$link = explode('|', $menu[$ex[0]]);
+					if($link){
+						redirect($link[1]);
+					}
+				}
+			}
+
+			// bila tidak ada access yang sesuai, maka tampilkan halaman error
+			show_error('Anda tidak dapat mengakses halaman ini. Hal ini disebabkan karena akun Anda tidak memiliki hak yang sesuai.', 401, 'Terjadi Kesalahan');
+		}
 	}
 
 	public function index(){
@@ -22,8 +41,9 @@ class Absenqr extends MY_Controller {
 		$this->_verify_access();
 
 		// dapatkan nama kantor pusat/cabang
+		// hanya tampilkan data sesuai dengan nama lokasinya user ini
 		$opt_uk = [];
-		$db_utk = $this->M_absenqr->get_cabang();
+		$db_utk = $this->M_absenqr->get_cabang(['cab_ket' => $_SESSION['locationID']]);
 		foreach($db_utk as $v){
 			$opt_uk += [strtoupper($v->cab_ket) => "{$v->cab_ket} ({$v->jumlah_screen})"];
 		}
@@ -47,12 +67,6 @@ class Absenqr extends MY_Controller {
 		if($screen_id && $screen_name && $access){
 			$db = $this->M_absenqr->get(null, ['id' => $screen_id, 'token_layar' => $access]);
 			if($db){
-				// cek apakah referrernya benar? bila tidak tampilkan error
-				$ref = str_replace(base_url(), null, $this->agent->referrer());
-				if($ref != 'absenqr' && $db[0]->whitelist_ip == null){
-					redirect('login');
-				}
-
 				// bila ada whiltelist IP, maka cek apakah akses user ini berasal dari IP yang diijinkan?
 				if($db[0]->whitelist_ip){
 					$list_whitelisted_ip = explode(', ', $db[0]->whitelist_ip);

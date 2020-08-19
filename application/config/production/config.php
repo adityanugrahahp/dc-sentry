@@ -27,10 +27,10 @@ $config['error_views_path'] 		= '';
 $config['cache_path'] 				= '';
 $config['cache_query_string'] 		= FALSE;
 
-$config['encryption_key'] 			= '';
+$config['encryption_key'] 			= 'wpAc3HuWyJ50BLK0YqeQ4X9j7tOkIC8Nla7J4xVG';
 $config['sess_driver'] 				= 'redis';
 $config['sess_cookie_name'] 		= 'pelni_visitor';
-$config['sess_expiration'] 			= 7200;
+$config['sess_expiration'] 			= 0;
 $config['sess_save_path'] 			= 'tcp://localhost:6379';
 $config['sess_match_ip'] 			= TRUE;
 $config['sess_time_to_update'] 		= 300;

@@ -11,6 +11,25 @@ class Home extends Management_Controller {
 
 		// fomr validation
 		$this->load->library('form_validation');
+
+		// pengecekan akses user menu
+		if(! app_check_access(1)){
+			// cek menu_access yang dimiliki user ini apa?
+			$ex = explode(', ', $_SESSION['access']);
+			if($ex){
+				// dapatkan element pertama dari user access, cek di daftar menu
+				$menu = app_menu_list();
+				if($menu && $menu[$ex[0]]){
+					$link = explode('|', $menu[$ex[0]]);
+					if($link){
+						redirect($link[1]);
+					}
+				}
+			}
+
+			// bila tidak ada access yang sesuai, maka tampilkan halaman error
+			show_error('Anda tidak dapat mengakses halaman ini. Hal ini disebabkan karena akun Anda tidak memiliki hak yang sesuai.', 401, 'Terjadi Kesalahan');
+		}
 	}
 
 	// tampilan halaman utama
