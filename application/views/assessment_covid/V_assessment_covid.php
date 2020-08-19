@@ -550,7 +550,7 @@
                                         <div class="form-group">
                                             <div class="data_blk">
                                                 <div class="justify">
-                                                    <h3>Mohon lengkapi data berikut untuk memulai assement:
+                                                    <h3>Mohon lengkapi data berikut untuk memulai assessment:
                                                     </h3>
                                                     <select class="form-control" name="nrp" id="nrp" style="width:100%;">
                                                     </select>
