@@ -836,7 +836,7 @@
                     keyboard: false
             });
           $('#myModal').modal('show');
-        //   $('.modal-backdrop').remove();
+          $('.modal-backdrop').css('opacity', 0);
         // }
 
         function startTime() {
