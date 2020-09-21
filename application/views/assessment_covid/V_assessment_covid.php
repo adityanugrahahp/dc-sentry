@@ -673,11 +673,11 @@
                                                     <input type="radio" name="q4" value="2">&nbsp;Tidak
                                                     <h5>5. Apakah anda memiliki riwayat kontak erat dengan orang yang dinyatakan ODP, PDP atau konfrim COVID-19 (berjabat tangan, berbicara, berada dalam satu ruangan/satu rumah)?
                                                     </h5>
-                                                    <input type="radio" name="q5" value="1">&nbsp;Ya &nbsp;&nbsp;&nbsp;
-                                                    <input type="radio" name="q5" value="2">&nbsp;Tidak
-                                                    <h5>6. Apakah anda pernah melakukan perjalanan dinas keluar kota/internasional dalam 7 hari terakhir? </h5>
                                                     <input type="radio" name="q6" value="1">&nbsp;Ya &nbsp;&nbsp;&nbsp;
                                                     <input type="radio" name="q6" value="2">&nbsp;Tidak
+                                                    <h5>6. Apakah anda pernah melakukan perjalanan dinas keluar kota/internasional dalam 7 hari terakhir? </h5>
+                                                    <input type="radio" name="q5" value="1">&nbsp;Ya &nbsp;&nbsp;&nbsp;
+                                                    <input type="radio" name="q5" value="2">&nbsp;Tidak
                                                 </div>
                                             </div>
                                             <div class="row">
