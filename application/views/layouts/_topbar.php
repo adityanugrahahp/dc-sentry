@@ -13,8 +13,21 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars fa-fw"></i> Main Menu</a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="<?= base_url() ?>"><i class="fa fa-users"></i> Visitor Management</a></li>
-                            <li><a href="<?= base_url('absenqr') ?>"><i class="fa fa-qrcode"></i> Absensi QR</a></li>
+                            <? 
+                                $menu = [];
+                                if(isset($_SESSION['access'])){
+                                    // load menu id
+                                    $menu = app_generate_menu(explode(', ', $_SESSION['access']));
+                                }
+                            ?>
+                            <?  foreach($menu as $v){ 
+                                    $ex = explode('|', $v);
+
+                                    if($ex){
+                                        echo '<li><a href="'.$ex[1].'"><i class="fa '.$ex[2].'"></i> '.$ex[0].'</a></li>';
+                                    }
+                                }
+                            ?>
                         </ul>
                     </li>
                     <li class="user user-menu">

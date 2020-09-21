@@ -51,6 +51,7 @@ class Login extends CI_Controller {
 					$_SESSION['locationID'] = $db_user->location_id;
 					$_SESSION['loket_name'] = $db_user->loket_name;
 					$_SESSION['role'] 		= $db_user->role;
+					$_SESSION['access']		= $db_user->menu_access;
 
 					$is_valid = true;
 				}else{
@@ -77,8 +78,9 @@ class Login extends CI_Controller {
 	{
 		unset($_SESSION['userID']);
 		unset($_SESSION['locationID']);
-		unset($_SESSION['userName']);
 		unset($_SESSION['loket_name']);
+		unset($_SESSION['userName']);
+		unset($_SESSION['access']);
 		unset($_SESSION['role']);
 		session_destroy();
 		
