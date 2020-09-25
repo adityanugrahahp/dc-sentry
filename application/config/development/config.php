@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-$config['base_url'] = (isset($_SERVER['HTTPS'])) ? 'https:' : 'https:';
+$config['base_url'] = (isset($_SERVER['HTTPS'])) ? 'https:' : 'http:';
 $config['base_url'] .= "//".$_SERVER['HTTP_HOST'];
 $config['base_url'] .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
 
@@ -28,10 +28,10 @@ $config['cache_path'] 				= '';
 $config['cache_query_string'] 		= FALSE;
 
 $config['encryption_key'] 			= 'wpAc3HuWyJ50BLK0YqeQ4X9j7tOkIC8Nla7J4xVG';
-$config['sess_driver'] 				= 'files';
+$config['sess_driver'] 				= 'redis';
 $config['sess_cookie_name'] 		= 'pelni_visitor';
 $config['sess_expiration'] 			= 0;
-$config['sess_save_path']           = sys_get_temp_dir();
+$config['sess_save_path'] 			= 'tcp://redis:6379';
 $config['sess_match_ip'] 			= TRUE;
 $config['sess_time_to_update'] 		= 300;
 $config['sess_regenerate_destroy'] 	= FALSE;
