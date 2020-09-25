@@ -28,10 +28,10 @@ $config['cache_path'] 				= '';
 $config['cache_query_string'] 		= FALSE;
 
 $config['encryption_key'] 			= 'wpAc3HuWyJ50BLK0YqeQ4X9j7tOkIC8Nla7J4xVG';
-$config['sess_driver'] 				= 'redis';
+$config['sess_driver'] 				= 'files';
 $config['sess_cookie_name'] 		= 'pelni_visitor';
 $config['sess_expiration'] 			= 0;
-$config['sess_save_path'] 			= 'tcp://redis:6379';
+$config['sess_save_path']           = sys_get_temp_dir();
 $config['sess_match_ip'] 			= TRUE;
 $config['sess_time_to_update'] 		= 300;
 $config['sess_regenerate_destroy'] 	= FALSE;
