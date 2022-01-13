@@ -52,9 +52,9 @@ class M_absenqr extends MY_Model {
 		}
     
     if($cab_st_aktif == 'Y'){
-      $this->db->or_where('cab_st_kp', 'Y');
+      $this->db->where('cab_st_kp', 'Y');
     }
-    
+
 		$this->db->order_by('cab_sdm_klass ASC, cab_kode ASC');
 
 		$q = $this->db->get('cabang');
