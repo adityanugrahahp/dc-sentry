@@ -34,7 +34,7 @@ class M_absenqr extends MY_Model {
 	}
 
 	// data cabang + kantor pusat
-	function get_cabang($where = []){
+	function get_cabang($where = [], $cab_st_aktif = 'Y'){
 		$this->db->select('
 			cab_kode, 
 			cab_ket, 
@@ -43,16 +43,15 @@ class M_absenqr extends MY_Model {
 		
 		$this->db->where([
 			'flag_sdm_berlaku' 	=> 'Y', 
-			'cab_st_aktif' 		=> 'Y',
-			'cab_kode !='		=> '04A'
+			'cab_st_aktif' 		  => $cab_st_aktif,
+			'cab_kode !='		    => '04A'
 		]);
 
 		if($where){
 			$this->db->where($where);
 		}
-
-		$this->db->or_where('cab_st_kp', 'Y');
-
+    
+    $this->db->where('cab_st_kp', 'Y');
 		$this->db->order_by('cab_sdm_klass ASC, cab_kode ASC');
 
 		$q = $this->db->get('cabang');
