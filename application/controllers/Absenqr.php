@@ -43,7 +43,7 @@ class Absenqr extends Management_Controller {
 		// dapatkan nama kantor pusat/cabang
 		// hanya tampilkan data sesuai dengan nama lokasinya user ini
 		$opt_uk = [];
-		$db_utk = $this->M_absenqr->get_cabang(['cab_ket' => $_SESSION['locationID']], ($_SESSION['locationID'] == 'KANTOR PUSAT') ? 'N' : 'Y');
+		$db_utk = $this->M_absenqr->get_cabang(['cab_ket' => $_SESSION['locationID']]);
 		foreach($db_utk as $v){
 			$opt_uk += [strtoupper($v->cab_ket) => "{$v->cab_ket} ({$v->jumlah_screen})"];
 		}
