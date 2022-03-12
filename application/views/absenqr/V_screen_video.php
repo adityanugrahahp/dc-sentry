@@ -29,7 +29,7 @@
 		}
 
 		.box-absen {
-			background-image: url('<?= base_url(THEME_PATH);?>image/background/4.jpg');
+			background-image: url('<?= base_url(THEME_PATH);?>image/background/g20.jpg');
 			background-size: cover;
 		}
 	</style>
@@ -37,17 +37,18 @@
 <body>	
 	<div class="row" style="max-width:100%">
 		<div class="col-md-6 box-absen" style="height:100vh">
-			<div class="card-img-overlay" style="background:rgba(0,0,0,0.6)">
+			<div class="card-img-overlay" style="background:rgba(0,0,0,0.4)">
 				<div class="container">
-					<div class="row">
-						<div class="col-lg-6">
-							<img src="<?= base_url(THEME_PATH) ?>image/logopelni_white.png" alt="Logo PELNI" class="img-fluid" style="height:80px;">
+					<div class="row" style="z-index:999;">
+						<div class="col-lg-6" style="padding-top:10px;">
+							<h5 class="clearfix text-white" style="font-size:15pt!important;"><b>ABSENSI PEGAWAI</b></h5>
+							<b class="text-warning" style="font-size:13pt"><?= $lokasi ?></b>
 						</div>
-						<div class="col-lg-6 text-right" style="padding-top:10px;">
-							<h4 class="clearfix text-white"><b>ABSENSI PEGAWAI</b></h4>
-							<b class="text-danger" style="font-size:14pt"><?= $lokasi ?></b>
-						</div>
+            <div class="col-lg-6 text-right">
+              <img src="<?= base_url(THEME_PATH) ?>image/logopelni_white.png" alt="Logo PELNI" class="img-fluid" style="height:60px;">
+            </div>
 					</div>
+          <div style="padding-top:10%"></div>
 					<div class="row">
 						<div class="col-lg-12 text-center">
 							<h1><b style="color: #FFF"><?= $nama ?></b></h1>
@@ -69,33 +70,41 @@
 							<center><div id="img-qr"></div></center>
 						</div>	
 					</div>
+          <div class="fixed-bottom" style="padding-bottom:100px">
+            <div class="col-lg-12">
+              <img src="<?= base_url(THEME_PATH) ?>image/logo/g20-footer.png" alt="Logo G20" class="img-fluid" style="height:120px;">
+            </div>
+          </div>
+          <div class="fixed-bottom bg-white row" style="padding:0px;">
+            <div class="col-lg-2 bg-danger pt-4">
+              <h4 class="text-white" style="padding-left:10px;padding-top:10px;font-size:15pt">
+                <center>
+                  <b id="greeter">-</b>
+                </center>
+              </h4>
+						</div>
+            <div class="col-lg-10 py-2 px-4 table-res" style="background:#eee">
+              <center style="height:65px;padding-top:18px">
+                <h6><b class="clearfix"><i class="fa fa-users fa-fw"></i> Belum Ada Absen Pegawai</b></h6>
+                <h6 class="small">Lakukan absen dengan menggunakan Portal PELNI atau Aplikasi PELNI One</h6>
+              </center>
+						</div>	
+					</div>
 				</div>
 			</div>
-			<? if($pesan){ ?>
-			<div id="footer">
-				<marquee><b style="font-size:14px"><?= $pesan ?></b></marquee>
-			</div>
-			<? } ?>
 		</div>
 		<div class="col-md-6" style="padding-right:0;">
-			<div class="row" style="max-height:50vh;">
-				<video muted id="promo-video" style="max-height:50vh;min-width:100%">
+			<div class="row" style="max-height:calc(50vh - 30.25px);">
+				<video muted id="promo-video" style="max-height:calc(50vh - 30.25px);min-width:100%">
 					<source src="<?= base_url(THEME_PATH) ?>videos/01.mp4"/>
 					<source src="<?= base_url(THEME_PATH) ?>videos/02.mp4"/>
 					<source src="<?= base_url(THEME_PATH) ?>videos/03.mp4"/>
 				</video>
 			</div>
-			<div class="row" style="max-height:50vh;padding-top:10px;overflow:hidden;">
-				<div class="col-lg-12" style="z-index:-999">
-					<div class="table-res">
-						<center style="padding-top:18%">
-							<i class="fa fa-users fa-fw fa-2x"></i><br>
-							<b class="clearfix">Belum Ada Absen Pegawai</b>
-							<small class="clearfix">Lakukan absen dengan menggunakan Portal PELNI atau Aplikasi PELNI One</small>
-							<img src="<?= base_url(THEME_PATH) ?>image/logo/playstore.png" alt="Playstore" height="50">
-						</center>
-					</div>
-				</div>
+			<div class="row align-items-center h-100" style="max-height:calc(50vh - 30.25px);">
+        <div class="col text-center">
+          <img src="https://jabarprov.go.id/assets/images/berita/gambar_44070.png" height="200" alt="Logo PL">
+        </div>
 			</div>
 		</div>
 	</div>

@@ -115,8 +115,39 @@ function _get_attendances(is_table = true){
 
     $.post(endpoint_url, {display_id:screen_id}, function(d){
         if(d.status){
+          var _temp_component = '';
+
             // render tabel
-            $('.table-res').html(d.data);
+            $('.table-res').empty();
+
+            // buat list card untuk pegawai yang sudah absen
+            $.each(d.data, function(_i, v){
+              _temp_component += `
+                <div class="col-lg-4">
+                  <div class="card" style="box-shadow: rgba(1, 1, 0.5, 0.4) 0px 7px 29px 0px;">
+                    <div class="card-body p-2">
+                      <div class="container" style="height:50px;">
+                        <div class="row align-items-center h-100">
+                          <div class="col-lg-12" style="overflow:hidden; max-width:340px;white-space:nowrap">
+                            <h6><b>${v.nama_lengkap}</b></h6>
+                            <h6 class="small text-danger">
+                              <b>${v.unit_kerja}</b>
+                            </h6>
+                            <h6 class="small">
+                              NRP: ${v.nrp}
+                              &middot;
+                              <b>${v.waktu_absen}</b>
+                            </h6>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              `;
+            });
+
+            $('.table-res').html(`<div class="row pr-2">${_temp_component}</div>`);
         }else{
             $('.table-res').html(default_table);
         }
@@ -214,6 +245,13 @@ function _showDateTime(){
 
     $('#time').html(curr_hour + ":" + curr_minute + ' ' + suffix);
     $("#date").html(days[n]+", " + " " + _addZero(day) + " " + months[month] + " " + year);	
+
+    // dapatkan waktunya, bila di bawah jam 13.00 maka tampilkan pesan selamat datang, bila tidak tampilkan selamat jalan
+    if(curr_hour < 13){
+      $('#greeter').text("Selamat Datang");
+    }else{
+      $('#greeter').text("Terima Kasih");
+    }
 }
 
 function _addZero(i){
