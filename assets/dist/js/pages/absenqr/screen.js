@@ -43,6 +43,17 @@ $(document).ready(function () {
         height : 370
     });
 
+    try {
+      // tampilkan qr pedulilindungi
+      qrcode_pl = new QRCode(document.getElementById("img-qr-pl"), {
+          width : 210,
+          height : 210
+      });
+      qrcode_pl.makeCode('checkin:614a66914386fd008e3a898f');
+    } catch (error) {
+      console.log(error);
+    }
+
     // load video pertama
     _play_video(video_index);
 
@@ -62,7 +73,7 @@ $(document).ready(function () {
 
     // data pengabsen
     setInterval(function(){
-        _get_attendances();
+        _get_attendances(false);
     }, attendanceListInterval);
 
     // trigger checker
@@ -110,7 +121,7 @@ function _get_attendances(is_table = true){
     if(is_table){
         endpoint_url = url_ws + '/get_latest_attendance_table' + '?token=' + token;
     }else{
-        endpoint_url = module_url + '/ajax_get_latest_attendee';
+        endpoint_url = url_ws + '/get_latest_attendance' + '?token=' + token;
     }
 
     $.post(endpoint_url, {display_id:screen_id}, function(d){

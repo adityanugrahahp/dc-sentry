@@ -48,7 +48,7 @@
               <img src="<?= base_url(THEME_PATH) ?>image/logopelni_white.png" alt="Logo PELNI" class="img-fluid" style="height:60px;">
             </div>
 					</div>
-          <div style="padding-top:10%"></div>
+          <div style="padding-top:5%"></div>
 					<div class="row">
 						<div class="col-lg-12 text-center">
 							<h1><b style="color: #FFF"><?= $nama ?></b></h1>
@@ -101,11 +101,31 @@
 					<source src="<?= base_url(THEME_PATH) ?>videos/03.mp4"/>
 				</video>
 			</div>
-			<div class="row align-items-center h-100" style="max-height:calc(50vh - 30.25px);">
-        <div class="col text-center">
-          <img src="https://jabarprov.go.id/assets/images/berita/gambar_44070.png" height="200" alt="Logo PL">
+      <? if($lokasi == 'KANTOR PUSAT'){ ?>
+			<div class="row align-items-center">
+        <div class="col text-center text-white" style="height:calc(50vh - 30.25px);">
+          <div class="row h-50">
+            <div class="col" style="background: #eee;padding-top:5%;">
+              <center><img src="<?= base_url(THEME_PATH) ?>image/new_normal/pl.png" height="140" alt="Logo PL"></center>
+            </div>
+          </div>
+          <div class="row h-50">
+            <div class="col" style="background: #064C6F;padding-top:10%;">
+              <h3><b>Scan Peduli Lindungi</b></h3><br>
+              <span>Sebelum <b>memasuki</b> lokasi ini,</span><br>
+              <span>Scan Kode QR untuk pelacakan kontak</span>
+            </div>
+          </div>
+        </div>
+        <div class="col text-center h-100" style="min-height:calc(50vh - 30.25px);padding-top:10%;">
+          <center>
+            <div id="img-qr-pl"></div>
+            <br>
+            <h6><b style="color:#064C6F;font-size:14pt;">Kantor Pusat PT PELNI (Persero)</b></h6>
+          </center>
         </div>
 			</div>
+      <? } ?>
 		</div>
 	</div>
 
