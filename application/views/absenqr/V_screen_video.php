@@ -95,7 +95,7 @@
 		</div>
 		<div class="col-md-6" style="padding-right:0;">
 			<div class="row" style="max-height:calc(50vh - 30.25px);">
-				<video muted id="promo-video" style="max-height:calc(50vh - 30.25px);min-width:100%">
+				<video id="promo-video" style="max-height:calc(50vh - 30.25px);min-width:100%">
 					<source src="<?= base_url(THEME_PATH) ?>videos/01.mp4"/>
 					<source src="<?= base_url(THEME_PATH) ?>videos/02.mp4"/>
 					<source src="<?= base_url(THEME_PATH) ?>videos/03.mp4"/>
