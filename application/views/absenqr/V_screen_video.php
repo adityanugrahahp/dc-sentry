@@ -29,7 +29,7 @@
 		}
 
 		.box-absen {
-			background-image: url('<?= base_url(THEME_PATH);?>image/background/g20.jpg');
+			background-image: url('<?= base_url(THEME_PATH);?>image/background/4.jpg');
 			background-size: cover;
 		}
 	</style>
@@ -37,7 +37,7 @@
 <body>	
 	<div class="row" style="max-width:100%">
 		<div class="col-md-6 box-absen" style="height:100vh">
-			<div class="card-img-overlay" style="background:rgba(0,0,0,0.4)">
+			<div class="card-img-overlay" style="background:rgba(120,0,0,0.9)">
 				<div class="container">
 					<div class="row" style="z-index:999;">
 						<div class="col-lg-6" style="padding-top:10px;">
@@ -70,9 +70,9 @@
 							<center><div id="img-qr"></div></center>
 						</div>	
 					</div>
-          <div class="fixed-bottom" style="padding-bottom:100px">
+          <div class="fixed-bottom" style="padding-bottom:100px;margin-left:10px;">
             <div class="col-lg-12">
-              <img src="<?= base_url(THEME_PATH) ?>image/logo/g20-footer.png" alt="Logo G20" class="img-fluid" style="height:120px;">
+              <img src="<?= base_url(THEME_PATH) ?>image/logo/asean23-footer.png" alt="Logo ASEAN 2023" class="img-fluid" style="height:130px;">
             </div>
           </div>
           <div class="fixed-bottom bg-white row" style="padding:0px;">
