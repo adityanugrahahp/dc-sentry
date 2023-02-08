@@ -70,7 +70,7 @@
 							<center><div id="img-qr"></div></center>
 						</div>	
 					</div>
-          <div class="fixed-bottom" style="padding-bottom:100px;margin-left:10px;">
+          <div class="fixed-bottom" style="padding-bottom:100px;">
             <div class="col-lg-12">
               <img src="<?= base_url(THEME_PATH) ?>image/logo/asean23-footer.png" alt="Logo ASEAN 2023" class="img-fluid" style="height:130px;">
             </div>
@@ -95,10 +95,8 @@
 		</div>
 		<div class="col-md-6" style="padding-right:0;">
 			<div class="row" style="max-height:calc(50vh - 30.25px);">
-				<video id="promo-video" style="max-height:calc(50vh - 30.25px);min-width:100%">
-					<source src="<?= base_url(THEME_PATH) ?>videos/01.mp4"/>
-					<source src="<?= base_url(THEME_PATH) ?>videos/02.mp4"/>
-					<source src="<?= base_url(THEME_PATH) ?>videos/03.mp4"/>
+				<video muted id="promo-video" style="max-height:calc(50vh - 30.25px);min-width:100%">
+					<source src="<?= base_url(THEME_PATH) ?>videos/00.mp4"/>
 				</video>
 			</div>
       <? if($lokasi == 'KANTOR PUSAT'){ ?>

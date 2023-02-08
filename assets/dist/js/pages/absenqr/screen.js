@@ -18,9 +18,7 @@ $(document).ready(function () {
 
     // daftar nama-nama video
     video_list = [
-        '01.mp4',
-        '02.mp4',
-        '03.mp4'
+      '00.mp4',
     ];
 
     video_index = 0;
