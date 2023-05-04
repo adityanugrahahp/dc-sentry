@@ -1,0 +1,98 @@
+ERROR - 2022-01-13 15:22:54 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;localhost&quot; (127.0.0.1) and accepting
+	TCP/IP connections on port 5432?
+could not connect to server: Cannot assign requested address
+	Is the server running on host &quot;localhost&quot; (::1) and accepting
+	TCP/IP connections on port 5432? /htdocs/visitor-management/system/database/drivers/postgre/postgre_driver.php 154
+ERROR - 2022-01-13 15:22:54 --> Unable to connect to the database
+ERROR - 2022-01-13 15:22:54 --> Severity: Warning --> Redis::connect(): connect() failed: Cannot assign requested address /htdocs/visitor-management/system/libraries/Session/drivers/Session_redis_driver.php 138
+ERROR - 2022-01-13 15:22:54 --> Session: Unable to connect to Redis with the configured settings.
+ERROR - 2022-01-13 15:22:54 --> Severity: Warning --> ini_set(): A session is active. You cannot change the session module's ini settings at this time /htdocs/visitor-management/system/libraries/Session/Session_driver.php 205
+ERROR - 2022-01-13 15:22:54 --> Severity: Warning --> session_start(): Failed to initialize storage module: user (path: /tmp) /htdocs/visitor-management/system/libraries/Session/Session.php 143
+ERROR - 2022-01-13 15:22:54 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;localhost&quot; (127.0.0.1) and accepting
+	TCP/IP connections on port 5432?
+could not connect to server: Cannot assign requested address
+	Is the server running on host &quot;localhost&quot; (::1) and accepting
+	TCP/IP connections on port 5432? /htdocs/visitor-management/system/database/drivers/postgre/postgre_driver.php 154
+ERROR - 2022-01-13 15:22:54 --> Unable to connect to the database
+ERROR - 2022-01-13 15:22:54 --> Severity: Warning --> Redis::connect(): connect() failed: Cannot assign requested address /htdocs/visitor-management/system/libraries/Session/drivers/Session_redis_driver.php 138
+ERROR - 2022-01-13 15:22:54 --> Session: Unable to connect to Redis with the configured settings.
+ERROR - 2022-01-13 15:22:54 --> Severity: Warning --> ini_set(): A session is active. You cannot change the session module's ini settings at this time /htdocs/visitor-management/system/libraries/Session/Session_driver.php 205
+ERROR - 2022-01-13 15:22:54 --> Severity: Warning --> session_start(): Failed to initialize storage module: user (path: /tmp) /htdocs/visitor-management/system/libraries/Session/Session.php 143
+ERROR - 2022-01-13 15:23:36 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;localhost&quot; (127.0.0.1) and accepting
+	TCP/IP connections on port 5432?
+could not connect to server: Cannot assign requested address
+	Is the server running on host &quot;localhost&quot; (::1) and accepting
+	TCP/IP connections on port 5432? /htdocs/visitor-management/system/database/drivers/postgre/postgre_driver.php 154
+ERROR - 2022-01-13 15:23:36 --> Unable to connect to the database
+ERROR - 2022-01-13 15:23:36 --> Severity: Warning --> Redis::connect(): connect() failed: Cannot assign requested address /htdocs/visitor-management/system/libraries/Session/drivers/Session_redis_driver.php 138
+ERROR - 2022-01-13 15:23:36 --> Session: Unable to connect to Redis with the configured settings.
+ERROR - 2022-01-13 15:23:36 --> Severity: Warning --> ini_set(): A session is active. You cannot change the session module's ini settings at this time /htdocs/visitor-management/system/libraries/Session/Session_driver.php 205
+ERROR - 2022-01-13 15:23:36 --> Severity: Warning --> session_start(): Failed to initialize storage module: user (path: /tmp) /htdocs/visitor-management/system/libraries/Session/Session.php 143
+ERROR - 2022-01-13 15:23:36 --> Severity: Warning --> pg_escape_literal() expects parameter 1 to be resource, bool given /htdocs/visitor-management/system/database/drivers/postgre/postgre_driver.php 326
+ERROR - 2022-01-13 15:23:36 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;localhost&quot; (127.0.0.1) and accepting
+	TCP/IP connections on port 5432?
+could not connect to server: Cannot assign requested address
+	Is the server running on host &quot;localhost&quot; (::1) and accepting
+	TCP/IP connections on port 5432? /htdocs/visitor-management/system/database/drivers/postgre/postgre_driver.php 154
+ERROR - 2022-01-13 15:23:36 --> Unable to connect to the database
+ERROR - 2022-01-13 15:23:36 --> Severity: Warning --> pg_last_error() expects parameter 1 to be resource, bool given /htdocs/visitor-management/system/database/drivers/postgre/postgre_driver.php 479
+ERROR - 2022-01-13 15:23:36 --> Query error:  - Invalid query: SELECT *
+FROM "user_loket"
+WHERE "username" =
+AND "role" = 4
+ LIMIT 1
+ERROR - 2022-01-13 15:23:36 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;localhost&quot; (127.0.0.1) and accepting
+	TCP/IP connections on port 5432?
+could not connect to server: Cannot assign requested address
+	Is the server running on host &quot;localhost&quot; (::1) and accepting
+	TCP/IP connections on port 5432? /htdocs/visitor-management/system/database/drivers/postgre/postgre_driver.php 154
+ERROR - 2022-01-13 15:23:36 --> Unable to connect to the database
+ERROR - 2022-01-13 15:23:36 --> Severity: Warning --> Redis::connect(): connect() failed: Cannot assign requested address /htdocs/visitor-management/system/libraries/Session/drivers/Session_redis_driver.php 138
+ERROR - 2022-01-13 15:23:36 --> Session: Unable to connect to Redis with the configured settings.
+ERROR - 2022-01-13 15:23:36 --> Severity: Warning --> ini_set(): A session is active. You cannot change the session module's ini settings at this time /htdocs/visitor-management/system/libraries/Session/Session_driver.php 205
+ERROR - 2022-01-13 15:23:36 --> Severity: Warning --> session_start(): Failed to initialize storage module: user (path: /tmp) /htdocs/visitor-management/system/libraries/Session/Session.php 143
+ERROR - 2022-01-13 15:25:13 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;localhost&quot; (127.0.0.1) and accepting
+	TCP/IP connections on port 5432?
+could not connect to server: Cannot assign requested address
+	Is the server running on host &quot;localhost&quot; (::1) and accepting
+	TCP/IP connections on port 5432? /htdocs/visitor-management/system/database/drivers/postgre/postgre_driver.php 154
+ERROR - 2022-01-13 15:25:13 --> Unable to connect to the database
+ERROR - 2022-01-13 15:25:13 --> Severity: Warning --> Redis::connect(): connect() failed: Cannot assign requested address /htdocs/visitor-management/system/libraries/Session/drivers/Session_redis_driver.php 138
+ERROR - 2022-01-13 15:25:13 --> Session: Unable to connect to Redis with the configured settings.
+ERROR - 2022-01-13 15:25:13 --> Severity: Warning --> ini_set(): A session is active. You cannot change the session module's ini settings at this time /htdocs/visitor-management/system/libraries/Session/Session_driver.php 205
+ERROR - 2022-01-13 15:25:13 --> Severity: Warning --> session_start(): Failed to initialize storage module: user (path: /tmp) /htdocs/visitor-management/system/libraries/Session/Session.php 143
+ERROR - 2022-01-13 15:25:14 --> Severity: Warning --> pg_escape_literal() expects parameter 1 to be resource, bool given /htdocs/visitor-management/system/database/drivers/postgre/postgre_driver.php 326
+ERROR - 2022-01-13 15:25:14 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;localhost&quot; (127.0.0.1) and accepting
+	TCP/IP connections on port 5432?
+could not connect to server: Cannot assign requested address
+	Is the server running on host &quot;localhost&quot; (::1) and accepting
+	TCP/IP connections on port 5432? /htdocs/visitor-management/system/database/drivers/postgre/postgre_driver.php 154
+ERROR - 2022-01-13 15:25:14 --> Unable to connect to the database
+ERROR - 2022-01-13 15:25:14 --> Severity: Warning --> pg_last_error() expects parameter 1 to be resource, bool given /htdocs/visitor-management/system/database/drivers/postgre/postgre_driver.php 479
+ERROR - 2022-01-13 15:25:14 --> Query error:  - Invalid query: SELECT *
+FROM "user_loket"
+WHERE "username" =
+AND "role" = 4
+ LIMIT 1
+ERROR - 2022-01-13 15:25:14 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;localhost&quot; (127.0.0.1) and accepting
+	TCP/IP connections on port 5432?
+could not connect to server: Cannot assign requested address
+	Is the server running on host &quot;localhost&quot; (::1) and accepting
+	TCP/IP connections on port 5432? /htdocs/visitor-management/system/database/drivers/postgre/postgre_driver.php 154
+ERROR - 2022-01-13 15:25:14 --> Unable to connect to the database
+ERROR - 2022-01-13 15:25:14 --> Severity: Warning --> Redis::connect(): connect() failed: Cannot assign requested address /htdocs/visitor-management/system/libraries/Session/drivers/Session_redis_driver.php 138
+ERROR - 2022-01-13 15:25:14 --> Session: Unable to connect to Redis with the configured settings.
+ERROR - 2022-01-13 15:25:14 --> Severity: Warning --> ini_set(): A session is active. You cannot change the session module's ini settings at this time /htdocs/visitor-management/system/libraries/Session/Session_driver.php 205
+ERROR - 2022-01-13 15:25:14 --> Severity: Warning --> session_start(): Failed to initialize storage module: user (path: /tmp) /htdocs/visitor-management/system/libraries/Session/Session.php 143
+ERROR - 2022-01-13 15:26:13 --> Session: Error while trying to obtain lock for ci_session:172.19.0.1:e06qb0p2e9t6hje6632v52pt3ohasik5
+ERROR - 2022-01-13 15:26:13 --> Severity: Warning --> ini_set(): A session is active. You cannot change the session module's ini settings at this time /htdocs/visitor-management/system/libraries/Session/Session_driver.php 205
+ERROR - 2022-01-13 15:26:13 --> Severity: Warning --> session_start(): Failed to read session data: user (path: /tmp) /htdocs/visitor-management/system/libraries/Session/Session.php 143
+ERROR - 2022-01-13 15:28:03 --> 404 Page Not Found: Faviconico/index

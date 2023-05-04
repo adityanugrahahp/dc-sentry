@@ -1,0 +1,168 @@
+ERROR - 2023-05-04 01:48:14 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 01:48:14 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 01:48:14 --> Unable to connect to the database
+ERROR - 2023-05-04 01:48:14 --> Unable to connect to the database
+ERROR - 2023-05-04 02:29:40 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 02:29:40 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 02:29:40 --> Unable to connect to the database
+ERROR - 2023-05-04 02:29:40 --> Unable to connect to the database
+ERROR - 2023-05-04 02:49:03 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 02:49:03 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 02:49:03 --> Unable to connect to the database
+ERROR - 2023-05-04 02:49:03 --> Unable to connect to the database
+ERROR - 2023-05-04 03:50:18 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 03:50:18 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 03:50:18 --> Unable to connect to the database
+ERROR - 2023-05-04 03:50:18 --> Unable to connect to the database
+ERROR - 2023-05-04 03:54:04 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 03:54:04 --> Unable to connect to the database
+ERROR - 2023-05-04 03:54:04 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 03:54:04 --> Unable to connect to the database
+ERROR - 2023-05-04 03:55:41 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 03:55:41 --> Unable to connect to the database
+ERROR - 2023-05-04 03:56:45 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 03:56:45 --> Unable to connect to the database
+ERROR - 2023-05-04 03:56:47 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 03:56:47 --> Unable to connect to the database
+ERROR - 2023-05-04 03:57:15 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 03:57:15 --> Unable to connect to the database
+ERROR - 2023-05-04 03:58:47 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 03:58:47 --> Unable to connect to the database
+ERROR - 2023-05-04 04:00:13 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 04:00:13 --> Unable to connect to the database
+ERROR - 2023-05-04 04:01:36 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 04:01:36 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 04:01:36 --> Unable to connect to the database
+ERROR - 2023-05-04 04:01:36 --> Unable to connect to the database
+ERROR - 2023-05-04 04:03:14 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 04:03:14 --> Unable to connect to the database
+ERROR - 2023-05-04 04:04:21 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 04:04:21 --> Unable to connect to the database
+ERROR - 2023-05-04 04:04:30 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 04:04:30 --> Unable to connect to the database
+ERROR - 2023-05-04 04:06:20 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 04:06:20 --> Unable to connect to the database
+ERROR - 2023-05-04 04:07:52 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 04:07:52 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 04:07:52 --> Unable to connect to the database
+ERROR - 2023-05-04 04:07:52 --> Unable to connect to the database
+ERROR - 2023-05-04 04:09:43 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 04:09:43 --> Unable to connect to the database
+ERROR - 2023-05-04 04:09:58 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 04:09:58 --> Unable to connect to the database
+ERROR - 2023-05-04 04:10:38 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 04:10:38 --> Unable to connect to the database
+ERROR - 2023-05-04 04:10:58 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 04:10:58 --> Unable to connect to the database
+ERROR - 2023-05-04 04:11:39 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 04:11:39 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 04:11:39 --> Unable to connect to the database
+ERROR - 2023-05-04 04:11:39 --> Unable to connect to the database
+ERROR - 2023-05-04 04:12:43 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 04:12:43 --> Unable to connect to the database
+ERROR - 2023-05-04 04:12:54 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 04:12:54 --> Unable to connect to the database
+ERROR - 2023-05-04 04:14:32 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 04:14:32 --> Unable to connect to the database
+ERROR - 2023-05-04 04:14:45 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 04:14:45 --> Unable to connect to the database
+ERROR - 2023-05-04 04:15:12 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 04:15:12 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 04:15:12 --> Unable to connect to the database
+ERROR - 2023-05-04 04:15:12 --> Unable to connect to the database
+ERROR - 2023-05-04 04:16:27 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 04:16:27 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 04:16:27 --> Unable to connect to the database
+ERROR - 2023-05-04 04:16:27 --> Unable to connect to the database
+ERROR - 2023-05-04 04:17:30 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 04:17:30 --> Unable to connect to the database
+ERROR - 2023-05-04 04:17:43 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;10.1.0.110&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2023-05-04 04:17:43 --> Unable to connect to the database
+ERROR - 2023-05-04 14:18:23 --> Severity: error --> Exception: Undefined constant "API_UPLOAD_URL" /var/www/html/src/application/controllers/Home.php 602
+ERROR - 2023-05-04 14:21:01 --> Severity: Warning --> Array to string conversion /var/www/html/src/vendor/codeigniter/framework/system/database/DB_driver.php 1484
+ERROR - 2023-05-04 14:21:01 --> Severity: Warning --> pg_query(): Query failed: ERROR:  syntax error at or near &quot;,&quot;
+LINE 1: ... '01281281212', 'Lantai 1', 'Kerja', '80', '41', Array, 'Y')
+                                                                 ^ /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 234
+ERROR - 2023-05-04 14:21:01 --> Query error: ERROR:  syntax error at or near ","
+LINE 1: ... '01281281212', 'Lantai 1', 'Kerja', '80', '41', Array, 'Y')
+                                                                 ^ - Invalid query: INSERT INTO "visitor_registration" ("register_time", "lokasi", "created_by", "status", "nik", "nama", "jenis_kelamin", "tgl_lahir", "alamat", "no_hp", "tujuan", "keperluan", "suhu", "id_visitor_card", "foto", "flag_approve") VALUES ('2023-05-04 14:20:59', 'KANTOR PUSAT', '8', 1, '1111', 'JOHN DOE', 'L', '05-04-2023', 'Alamat', '01281281212', 'Lantai 1', 'Kerja', '80', '41', Array, 'Y')

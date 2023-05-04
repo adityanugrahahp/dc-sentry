@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  app:
+    container_name: "PHP8-DEV-VISITOR"
+    image: registry-prod.pelni.co.id/pelni-php-microservice:8.0
+    environment:
+      SERVICE_PORT: http
+    volumes:
+      - ./:/var/www/html
+    ports: 
+      - 89:80

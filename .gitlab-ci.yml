@@ -1,0 +1,52 @@
+variables:
+  KUBE_CONTEXT: dimas.wicaksono/agent-repository:pelni-agent
+  REPO_NAME: gitlab.pelni.co.id/$CI_PROJECT_PATH
+  APP_NAME: app-visitor
+  SUBDOMAIN: visitor
+  DOCKER_IMAGE_TAG: pelni-php-microservice:8.0
+  
+.kube-context:
+  before_script:
+  - if [ -n "$KUBE_CONTEXT" ]; then kubectl config use-context "$KUBE_CONTEXT"; fi
+  
+stages:
+  - deploy_development
+  - deploy_production
+
+deploy_development:
+  extends: [.kube-context]
+  stage: deploy_development
+  image: 
+    name: dtzar/helm-kubectl:3.7.2
+  tags:
+    - shell
+  only:
+    - master
+  variables:
+    KUBERNETES_NAMESPACE_OVERWRITE: "development"
+  script:
+    - helm uninstall $APP_NAME || exit_code=$?
+    - helm upgrade --install $APP_NAME ./deploy -f ./deploy/values-dev.yaml --set ingress.hostname=$SUBDOMAIN-dev.pelni.co.id --set image.repository=registry-prod.pelni.co.id/$DOCKER_IMAGE_TAG --set projectPathSlug=$CI_PROJECT_PATH_SLUG --set envSlug=development
+  environment:
+    name: development/dev-$CI_COMMIT_SHORT_SHA
+    url: https://$APP_NAME-dev.pelni.co.id
+
+
+deploy_production:
+  extends: [.kube-context]
+  stage: deploy_production
+  image: 
+    name: dtzar/helm-kubectl:3.7.2
+  only:
+    - production
+  variables:
+    KUBERNETES_NAMESPACE_OVERWRITE: "production"
+  tags:
+    - shell
+  script:
+    - helm uninstall $APP_NAME || exit_code=$?
+    - helm upgrade --install $APP_NAME ./deploy -f ./deploy/values-prod.yaml --set ingress.hostname=$SUBDOMAIN.pelni.co.id --set image.repository=registry-prod.pelni.co.id/$DOCKER_IMAGE_TAG --set projectPathSlug=$CI_PROJECT_PATH_SLUG --set envSlug=production
+  when: manual
+  environment:
+    name: production
+    url: https://$APP_NAME.pelni.co.id

@@ -1,0 +1,16 @@
+{
+	"description": "Visitor Management",
+	"name": "pelni/visitor_management",
+	"type": "project",
+	"homepage": "https://codeigniter.com",
+	"license": "MIT",
+	"require": {
+		"nesbot/carbon": "^2",
+    "codeigniter/framework": "3.1.*"
+	},
+	"config": {
+		"allow-plugins": {
+			"kylekatarnls/update-helper": true
+		}
+	}
+}
