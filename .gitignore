@@ -7,4 +7,4 @@ application/logs/*
 !application/logs/.htaccess
 
 composer.lock
-src/vendor/*
+src/vendor
