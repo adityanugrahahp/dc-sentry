@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.application.name }}
+  annotations:
+    app.gitlab.com/app: {{ .Values.projectPathSlug }}
+    app.gitlab.com/env: {{ .Values.envSlug }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.application.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.application.name }}
+      annotations:
+        app.gitlab.com/app: {{ .Values.projectPathSlug }}
+        app.gitlab.com/env: {{ .Values.envSlug }}
+    spec:
+      imagePullSecrets:
+        - name: registry-auth
+      containers:
+        - name: {{ .Values.application.name }}
+          image: "{{ .Values.image.repository }}"
+          imagePullPolicy: Always
+          env:
+            - name: APP_REPO_URL
+              value: {{ .Values.application.repoUrl }}
+            - name: APP_BRANCH
+              value: {{ .Values.application.repoBranch }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.containerPort }}
+              protocol: TCP
+          livenessProbe:
+            tcpSocket:
+              port: {{ .Values.service.containerPort }}
+            failureThreshold: 1
+            periodSeconds: 45

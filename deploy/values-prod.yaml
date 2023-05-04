@@ -1,0 +1,28 @@
+replicaCount: 2
+
+application:
+  name: app-visitor
+  repoUrl: "vyan/visitor-management.git"
+  repoBranch: production
+
+service:
+  type: ClusterIP
+  port: 80
+  containerPort: 80
+
+resources:
+  limits:
+    cpu: 2000m
+    memory: 4000Mi
+  requests:
+    cpu: 2000m
+    memory: 4000Mi
+
+livenessProbe:
+  periodSeconds: 30
+  failureThreshold: 10
+
+readinessProbe:
+  path: /login
+  periodSeconds: 30
+  failureThreshold: 10
