@@ -1,5 +1,5 @@
 variables:
-  KUBE_CONTEXT: dimas.wicaksono/agent-repository:pelni-agent
+  KUBE_CONTEXT: vyan/api-gateway-krakend:pelni-agent
   REPO_NAME: gitlab.pelni.co.id/$CI_PROJECT_PATH
   APP_NAME: app-visitor
   SUBDOMAIN: visitor
