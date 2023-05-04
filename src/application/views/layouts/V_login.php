@@ -49,6 +49,7 @@
 					<div class="col-lg-12 col-xs-12 text-center" style="bottom:20px;position:absolute">
 						<span>&COPY; <?php echo date('Y').' - '.APP_COMPANY ?></span>
 						<a class="clearfix" href="https://www.pelni.co.id">www.pelni.co.id</a>
+						<span><?= APP_VERSION.' '.ENV ?></span>
 					</div>
 				</div>
 			</div>
