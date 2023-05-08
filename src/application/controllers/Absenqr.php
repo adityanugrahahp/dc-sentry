@@ -137,7 +137,7 @@ class Absenqr extends Management_Controller {
 				'tggl' 			=> date('Y-m-d'),
 				'id_display'	=> $display_id
 			];
-			$rest   = curl_req('get', WS_URL.'ws_absenqr/get_latest_attendance', $param, ['Token: '.WS_AUTH_KEY]);
+			$rest   = curl_req('get', WS_URL.'attendance-qr/get_latest_attendance', $param, ['Token: '.WS_AUTH_KEY]);
 			if($rest['content']['code'] == 200){
 				$status = true;
 
@@ -347,7 +347,7 @@ class Absenqr extends Management_Controller {
 
 		// INCONTROLLER REQUEST
 		$param 	= ['id_display' => $screen_id];
-		$rest 	= curl_req('get', WS_URL.'ws_absenqr/get_status_change', $param, ['Token: '.WS_AUTH_KEY]);
+		$rest 	= curl_req('get', WS_URL.'attendance-qr/get_status_change', $param, ['Token: '.WS_AUTH_KEY]);
 		if($rest['content']['code'] == 200){
 			if($rest['content']['status'] == true){
 				$status = true;
