@@ -7,12 +7,17 @@ var module_url      = base_url + 'absenqr';
 var next_update     = null;
 var months          = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
 var days            = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
+var display_lat     = 0;
+var display_lon     = 0;
 
 const refreshQRInterval         = 1000; // 1 detik
 const checkNewScanInterval      = 3000; // 3 detik
 const attendanceListInterval    = 4000; // 4 detik
 
 $(document).ready(function () {
+    // get current position
+    _getGeoLocationDisplay();
+    
     // default html bila table pegawai kosong
     default_table = $('.table-res').html();
 
@@ -94,11 +99,35 @@ $(document).on('mouseover', '#img-qr', function(){
     $(this).removeAttr('title');
 });
 
+// geolocation
+function _getGeoLocationDisplay(){
+  if (navigator.geolocation) {
+    try {
+      navigator.geolocation.getCurrentPosition(function(p){
+        
+        display_lat = p.coords.latitude;
+        display_lon = p.coords.longitude;
+
+      }, function(error){
+        console.error(error);
+        if(error.PERMISSION_DENIED){
+          alert("ERROR: Mohon izinkan akses lokasi pada display absensi");
+        }
+      });
+    } catch (error) {
+      console.error(error);
+      alert(`ERROR: ${error.message}`);
+    }
+  } else { 
+    alert("Geolocation is not supported by this browser.");
+  }
+}
+
 // update qr secara berkala (tanpa aktivitas pegawai)
 function _get_new_qr(){
     
     $.ajax({
-        url: url_qr + '?token=' + token,
+        url: url_qr + '?token=' + token + '&lat_lon=' + [display_lat, display_lon].join(':'),
         dataType: 'json',
         data: { 
             id_display: screen_id,
@@ -107,7 +136,17 @@ function _get_new_qr(){
         success: function(d){
             if(d.status){
                 // update tampilan qrcode di screen
-                qrcode.makeCode(d.data.qr);
+                if(display_lat != 0 && display_lon != 0){
+                  qrcode.makeCode(d.data.qr);
+                  $('#img-qr').show();
+                  $('#user-no-location').hide();
+                }else{
+                  $('#img-qr').hide();
+                  $('#user-no-location b').html('Terjadi Kesalahan');
+                  $('#user-no-location p').html('Mohon ijinkan akses lokasi pada display ini untuk dapat menampilkan QR Code');
+                  $('#user-no-location').show();
+                }
+
                 next_update = new Date(d.data.next_request);
             }
         }

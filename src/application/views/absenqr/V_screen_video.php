@@ -37,7 +37,7 @@
 <body>	
 	<div class="row" style="max-width:100%">
 		<div class="col-md-6 box-absen" style="height:100vh">
-			<div class="card-img-overlay" style="background:rgba(120,0,0,0.9)">
+			<div class="card-img-overlay" style="background:rgba(40,66,137,0.9)">
 				<div class="container">
 					<div class="row" style="z-index:999;">
 						<div class="col-lg-6" style="padding-top:10px;">
@@ -68,11 +68,17 @@
 					<div class="row">
 						<div class="col align-self-center">
 							<center><div id="img-qr"></div></center>
+							<center>
+                <div id="user-no-location" class="text-white" style="display:none;padding-top:100px">
+                  <b style="padding-top:300px">Mohon Tunggu</b>
+                  <p class="text-white"></p>
+                </div>
+              </center>
 						</div>	
 					</div>
           <div class="fixed-bottom" style="padding-bottom:100px;">
             <div class="col-lg-12">
-              <img src="<?= base_url(THEME_PATH) ?>image/logo/asean23-footer.png" alt="Logo ASEAN 2023" class="img-fluid" style="height:130px;">
+              <img src="<?= base_url(THEME_PATH) ?>image/logo/hut-pelni.png" alt="Logo ASEAN 2023" class="img-fluid" style="height:130px;filter: brightness(0) invert(1);">
             </div>
           </div>
           <div class="fixed-bottom bg-white row" style="padding:0px;">
@@ -128,12 +134,12 @@
 	</div>
 
 	<script>
-		var base_url 	= '<?= base_url() ?>';
-		var screen_id	= '<?= $screen_id ?>';
-		var token 		= '<?= WS_AUTH_KEY ?>';
-		var url_ws 		= '<?= WS_URL.'ws_absenqr' ?>';
+		var base_url 	  = '<?= base_url() ?>';
+		var screen_id	  = '<?= $screen_id ?>';
+		var token 		  = '<?= WS_AUTH_KEY ?>';
+		var url_ws 		  = '<?= WS_URL.'ws_absenqr' ?>';
 		var url_trigger = '<?= WS_URL.'ws_absenqr/get_status_change' ?>';
-		var url_qr 		= '<?= WS_URL.'ws_absenqr/get_new_qr' ?>';
+		var url_qr 		  = '<?= WS_URL.'ws_absenqr/get_new_qr' ?>';
 		var url_video 	= '<?= base_url(THEME_PATH) ?>videos/';
 	</script>
 	<script src="<?= base_url(THEME_PATH); ?>vendor/jquery/jquery-3.2.1.min.js"></script>

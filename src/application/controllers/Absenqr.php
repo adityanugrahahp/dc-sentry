@@ -58,9 +58,9 @@ class Absenqr extends Management_Controller {
 
 	public function screen($screen_id = null, $screen_name = null, $access = null){
 		
-		$is_valid 	= false;
+		$is_valid = false;
 		$s_name 	= 'N/A';
-		$s_lokasi 	= 'N/A';
+		$s_lokasi = 'N/A';
 		$s_pesan 	= null;
 
 		// validasi id, nama dan akses layarnya
@@ -93,9 +93,9 @@ class Absenqr extends Management_Controller {
 			show_error('The page you are trying to access is invalid or you don\'t have sufficient permission level.', 401, 'Invalid Request');
 		}
 
-		$data['lokasi']		= $s_lokasi;
-		$data['pesan']		= $s_pesan;
-		$data['nama']		= $s_name;
+		$data['lokasi']		  = $s_lokasi;
+		$data['pesan']		  = $s_pesan;
+		$data['nama']		    = $s_name;
 		$data['screen_id']	= $screen_id;
 		$data['page_title'] = "QR Display {$s_lokasi}";
 		

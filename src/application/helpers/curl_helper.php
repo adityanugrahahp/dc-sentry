@@ -10,14 +10,11 @@
  */
 
 if(! function_exists('curl_req')){
-    function curl_req($type = 'get', $endpoint, $query_string = [], $http_header = [], $user_agent = null){
+    function curl_req($type = 'get', $url = null, $query_string = [], $http_header = [], $user_agent = null){
         $CI =& get_instance();
 
         $output = null;
         $ch     = curl_init(); 
-
-        // ini untuk menggabungkan antara url endpoint dengan query string yang ada
-        $url = $endpoint;
 
         if(! empty($query_string)){
             if($type == 'get'){
