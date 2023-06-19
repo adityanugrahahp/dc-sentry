@@ -28,7 +28,7 @@ $config['cache_path'] 				      = '';
 $config['cache_query_string'] 		  = FALSE;
 
 $config['encryption_key'] 			    = 'wpAc3HuWyJ50BLK0YqeQ4X9j7tOkIC8Nla7J4xVG';
-$config['sess_driver'] 				      = 'file';
+$config['sess_driver'] 				      = 'files';
 $config['sess_cookie_name'] 		    = 'pelni_visitor';
 $config['sess_expiration'] 			    = 7200;
 $config['sess_save_path'] 			    = '/tmp'; // tcp://172.16.252.53:6379
