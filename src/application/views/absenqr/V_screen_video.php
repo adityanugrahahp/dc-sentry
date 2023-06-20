@@ -76,7 +76,7 @@
             </div>
           </div>
           <div class="fixed-bottom bg-white row" style="padding:0px;">
-            <div class="col-lg-2 bg-danger pt-4">
+            <div class="col-lg-2 pt-4" style="background-color:#72BCE8!important;">
               <h4 class="text-white" style="padding-left:10px;padding-top:10px;font-size:15pt">
                 <center>
                   <b id="greeter">-</b>
