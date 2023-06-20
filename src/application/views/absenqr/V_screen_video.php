@@ -37,7 +37,7 @@
 <body>	
 	<div class="row" style="max-width:100%">
 		<div class="col-md-6 box-absen" style="height:100vh">
-			<div class="card-img-overlay" style="background:rgba(120,0,0,0.9)">
+			<div class="card-img-overlay" style="background:rgba(52,67,138,0.9)">
 				<div class="container">
 					<div class="row" style="z-index:999;">
 						<div class="col-lg-6" style="padding-top:10px;">
