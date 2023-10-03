@@ -10,6 +10,14 @@ service:
   port: 80
   containerPort: 80
 
+resources:
+  limits:
+    cpu: 3000m
+    memory: 4000Mi
+  requests:
+    cpu: 3000m
+    memory: 400Mi
+
 livenessProbe:
   periodSeconds: 30
   failureThreshold: 10
