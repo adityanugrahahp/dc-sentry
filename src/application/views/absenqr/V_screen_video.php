@@ -37,7 +37,7 @@
 <body>	
 	<div class="row" style="max-width:100%">
 		<div class="col-md-6 box-absen" style="height:100vh">
-			<div class="card-img-overlay" style="background:rgba(40,66,137,0.9)">
+			<div class="card-img-overlay" style="background:rgba(52,67,138,0.9)">
 				<div class="container">
 					<div class="row" style="z-index:999;">
 						<div class="col-lg-6" style="padding-top:10px;">
@@ -82,7 +82,7 @@
             </div>
           </div>
           <div class="fixed-bottom bg-white row" style="padding:0px;">
-            <div class="col-lg-2 bg-danger pt-4">
+            <div class="col-lg-2 pt-4" style="background-color:#72BCE8!important;">
               <h4 class="text-white" style="padding-left:10px;padding-top:10px;font-size:15pt">
                 <center>
                   <b id="greeter">-</b>

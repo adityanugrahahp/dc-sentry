@@ -12,11 +12,11 @@ service:
 
 resources:
   limits:
-    cpu: 2000m
+    cpu: 3000m
     memory: 4000Mi
   requests:
-    cpu: 2000m
-    memory: 4000Mi
+    cpu: 3000m
+    memory: 400Mi
 
 livenessProbe:
   periodSeconds: 30
