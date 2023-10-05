@@ -4,7 +4,7 @@
 
 <title><?php echo (isset($page_title)) ? $page_title.' - '.APP_NAME : APP_NAME ?></title>
 
-<link rel="icon" href="<?php echo base_url(THEME_PATH) ?>favicon.ico">
+<link rel="icon" href="https://static.pelni.co.id/file/logo/new2023/logogram.png">
 <link rel="stylesheet" href="<?php echo base_url(THEME_PATH) ?>bower_components/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="<?php echo base_url(THEME_PATH) ?>bower_components/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="<?php echo base_url(THEME_PATH) ?>dist/css/AdminLTE.min.css">
@@ -17,9 +17,17 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 <style>
-    table.table-bordered.dataTable tbody td { vertical-align: middle; }
+  table.table-bordered.dataTable tbody td { vertical-align: middle; }
 
-    .skin-blue .main-header .navbar .dropdown-menu li a {
-        color: #000!important;
-    }
+  .skin-blue .main-header .navbar .dropdown-menu li a {
+    color: #000!important;
+  }
+
+  .btn-primary, .skin-blue .main-header .navbar {
+    background: #34438a!important;
+  }
+
+  .text-primary {
+    color: #34438a!important;
+  }
 </style>

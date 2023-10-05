@@ -12,7 +12,7 @@
 					<div class="col-lg-10 col-lg-offset-1 col-xs-10 col-xs-offset-1 text-center" style="margin-top:16vh">
 						<h4 class="login-logo" style="margin: 0px;">
 							<a href="<?php echo base_url() ?>">
-								<img src="<?= base_url('assets/image/logopelni.png') ?>" alt="Logo Pelni" height="70">
+                <img src="https://static.pelni.co.id/file/logo/new2023/logo-full-color-tagline.png" alt="Logo Pelni" height="70">
 							</a>
 						</h4>
 						<h4 class="login-box-msg text-bold text-primary" style="padding:20px 0;">

@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title><?php echo (isset($page_title)) ? $page_title.' - '.APP_NAME : APP_NAME ?></title>
 
-	<link rel="icon" href="<?php echo base_url(THEME_PATH) ?>favicon.ico">
+  <link rel="icon" href="https://static.pelni.co.id/file/logo/new2023/logogram.png">
 	<link rel="stylesheet" type="text/css" href="<?= base_url(THEME_PATH); ?>vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="<?= base_url(THEME_PATH); ?>fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="<?= base_url(THEME_PATH); ?>fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
@@ -32,6 +32,14 @@
 			background-image: url('<?= base_url(THEME_PATH);?>image/background/4.jpg');
 			background-size: cover;
 		}
+
+    .btn-primary, .skin-blue .main-header .navbar {
+      background: #34438a!important;
+    }
+
+    .text-primary {
+      color: #34438a!important;
+    }
 	</style>
 </head>
 <body>	
@@ -78,7 +86,6 @@
 					</div>
           <div class="fixed-bottom" style="padding-bottom:100px;">
             <div class="col-lg-12">
-              <img src="<?= base_url(THEME_PATH) ?>image/logo/hut-pelni.png" alt="Logo ASEAN 2023" class="img-fluid" style="height:130px;filter: brightness(0) invert(1);">
             </div>
           </div>
           <div class="fixed-bottom bg-white row" style="padding:0px;">
@@ -107,20 +114,6 @@
 			</div>
       <? if($lokasi == 'KANTOR PUSAT'){ ?>
 			<div class="row align-items-center">
-        <div class="col text-center text-white" style="height:calc(50vh - 30.25px);">
-          <div class="row h-50">
-            <div class="col" style="background: #eee;padding-top:5%;">
-              <center><img src="<?= base_url(THEME_PATH) ?>image/new_normal/pl.png" height="140" alt="Logo PL"></center>
-            </div>
-          </div>
-          <div class="row h-50">
-            <div class="col" style="background: #064C6F;padding-top:10%;">
-              <h3><b>Scan Peduli Lindungi</b></h3><br>
-              <span>Sebelum <b>memasuki</b> lokasi ini,</span><br>
-              <span>Scan Kode QR untuk pelacakan kontak</span>
-            </div>
-          </div>
-        </div>
         <div class="col text-center h-100" style="min-height:calc(50vh - 30.25px);padding-top:10%;">
           <center>
             <div id="img-qr-pl"></div>

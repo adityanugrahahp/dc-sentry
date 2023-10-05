@@ -88,7 +88,7 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 defined('THEME_PATH')           OR define('THEME_PATH', 'assets/');
 defined('APP_NAME')             OR define('APP_NAME', 'PELNI Visitor & Attendance System');
 defined('APP_COMPANY')          OR define('APP_COMPANY', 'PT. Pelayaran Nasional Indonesia (Persero)');
-defined('APP_VERSION')          OR define('APP_VERSION', '1.6.0');
+defined('APP_VERSION')          OR define('APP_VERSION', '1.7.0');
 defined('AUTO_NEW_CARD')        OR define('AUTO_NEW_CARD', TRUE); // aktifkan bila jumlah ketersediaan kartu akses kurang
 
 //  QR RELATED

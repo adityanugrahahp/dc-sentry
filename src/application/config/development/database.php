@@ -5,9 +5,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '10.1.0.110',
-	'username' => 'dashboard',
-	'password' => 's1mp3ln1',
+  'hostname' => '172.16.101.97',
+  'username' => 'portal_dev',
+  'password' => 'PelniD3v3lPortaL',  
 	'database' => 'dashboard',
 	'dbdriver' => 'postgre',
 	'dbprefix' => '',
