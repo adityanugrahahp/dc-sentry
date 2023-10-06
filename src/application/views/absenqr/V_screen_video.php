@@ -113,13 +113,14 @@
 				</video>
 			</div>
       <? if($lokasi == 'KANTOR PUSAT'){ ?>
-			<div class="row align-items-center">
-        <div class="col text-center h-100" style="min-height:calc(50vh - 30.25px);padding-top:10%;">
-          <center>
-            <div id="img-qr-pl"></div>
-            <br>
-            <h6><b style="color:#064C6F;font-size:14pt;">Kantor Pusat PT PELNI (Persero)</b></h6>
-          </center>
+      <div class="row align-items-center">
+        <div class="col news-list-item text-center text-white p-0 m-0" style="height:calc(50vh - 30.25px);">
+          <div class="p-0 m-0">
+            <div style="background: rgba(0,0,0,0.4);margin-top:calc(40vh - 30.25px);padding:15px;">
+              <b class="news-list-item-title clearfix" style="color:#FFF;">#NEWSFEED_TITLE#</b>
+              <small><b class="news-list-item-date" style="color:#FFF;">#NEWSFEED_DATE#</b></small>
+            </div>
+          </div>
         </div>
 			</div>
       <? } ?>
@@ -133,6 +134,7 @@
 		var url_ws 		  = '<?= WS_URL.'attendance-qr' ?>';
 		var url_trigger = '<?= WS_URL.'attendance-qr/get_status_change' ?>';
 		var url_qr 		  = '<?= WS_URL.'attendance-qr/get_new_qr' ?>';
+		var url_news    = 'https://ms-website-content.pelni.co.id/news/lang/id';
 		var url_video 	= '<?= base_url(THEME_PATH) ?>videos/';
 	</script>
 	<script src="<?= base_url(THEME_PATH); ?>vendor/jquery/jquery-3.2.1.min.js"></script>
