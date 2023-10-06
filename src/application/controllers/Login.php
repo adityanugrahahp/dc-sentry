@@ -43,13 +43,8 @@ class Login extends CI_Controller {
 			if($db_user){
 				// INFO: KOMBINASI: RAW_PASS + CUSTOM SALT + PEPPER
 				$hashed = hash_hmac("sha256", $password.$db_user->salt, $this->pepper);
-        
-        // echo password_hash($hashed, PASSWORD_BCRYPT);
-        // echo '<br>'.$db_user->salt;
-        // die();
 				
         if(password_verify($hashed, $db_user->password)){
-
 					// set session untuk user ini
 					$_SESSION['userID'] 	= $db_user->id_user;
 					$_SESSION['userName'] 	= $db_user->username;

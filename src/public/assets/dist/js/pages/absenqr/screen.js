@@ -1,6 +1,8 @@
 var qrcode;
 var video_index     = 0;
+var news_index      = 0;
 var video_list      = [];
+var news_list       = [];
 var default_table   = null;
 var time_offset     = 7;
 var module_url      = base_url + 'absenqr';
@@ -13,6 +15,8 @@ var display_lon     = 0;
 const refreshQRInterval         = 1000; // 1 detik
 const checkNewScanInterval      = 3000; // 3 detik
 const attendanceListInterval    = 4000; // 4 detik
+const newsListInterval          = 7200000; // 2 jam
+const slideShowNewsInterval     = 5000; // 5 detik untuk slideshow berita
 
 $(document).ready(function () {
     // get current position
@@ -27,6 +31,7 @@ $(document).ready(function () {
     ];
 
     video_index = 0;
+    news_index = 0;
 
     // bila next_update masih kosong, maka update jadi +5 detik
     if(next_update == null){
@@ -39,6 +44,7 @@ $(document).ready(function () {
 
     // initial qr request
     _get_new_qr();
+    _fetchNewsList();
 
     // initialize qr code renderer
     qrcode = new QRCode(document.getElementById("img-qr"), {
@@ -60,13 +66,31 @@ $(document).ready(function () {
     // load video pertama
     _play_video(video_index);
 
+    // untuk slideshow berita
+    _change_news_slideshow(news_index);
+
+    setInterval(() => {
+      if(news_index != (news_list.length - 1)){
+        news_index++;
+      }else{
+        news_index = 0;
+      }
+
+      _change_news_slideshow(news_index);
+    }, slideShowNewsInterval);
+
     // standard time & attendance
     setInterval(function(){
         _showDateTime();
     }, 1000);
 
+    // fetch news data
+    setInterval(() => {
+      _fetchNewsList();
+    }, newsListInterval);
+
     // generate QR
-	setInterval(function(){
+    setInterval(function(){
         date_now = new Date();
         
         if(date_now >= next_update){
@@ -99,6 +123,19 @@ $(document).on('mouseover', '#img-qr', function(){
     $(this).removeAttr('title');
 });
 
+// news list
+function _fetchNewsList(){
+  $.ajax({
+    url: url_news,
+    dataType: 'json',
+    success: function(d){
+      if(d.error_code == 0){
+        news_list = d.data;
+      }
+    }
+});
+}
+
 // geolocation
 function _getGeoLocationDisplay(){
   if (navigator.geolocation) {
@@ -109,13 +146,11 @@ function _getGeoLocationDisplay(){
         display_lon = p.coords.longitude;
 
       }, function(error){
-        console.error(error);
         if(error.PERMISSION_DENIED){
           alert("ERROR: Mohon izinkan akses lokasi pada display absensi");
         }
       });
     } catch (error) {
-      console.error(error);
       alert(`ERROR: ${error.message}`);
     }
   } else { 
@@ -165,9 +200,10 @@ function _get_attendances(is_table = true){
         if(d.status){
           var _temp_component = '';
 
+          if(d.data.length > 0){
             // render tabel
             $('.table-res').empty();
-
+  
             // buat list card untuk pegawai yang sudah absen
             $.each(d.data, function(_i, v){
               _temp_component += `
@@ -194,10 +230,11 @@ function _get_attendances(is_table = true){
                 </div>
               `;
             });
-
+  
             $('.table-res').html(`<div class="row pr-2">${_temp_component}</div>`);
+          }
         }else{
-            $('.table-res').html(default_table);
+          $('.table-res').html(default_table);
         }
     });
 }
@@ -220,6 +257,33 @@ function _get_trigger(){
 function _play_video(index = 0){
     $('#promo-video').attr('src', url_video + video_list[index]);
     $('#promo-video').get(0).play();
+}
+
+function _change_news_slideshow(index = 0){
+  try {
+    if(news_list.length > 0){
+      // parse tanggal
+      const date = moment(news_list[index].date, 'YYYY-MM-DD');
+      moment.updateLocale('id', {
+        weekdays: ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'],
+        months: [
+          'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+          'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+        ],
+        monthsShort: [
+          'Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun',
+          'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'
+        ]
+      });
+
+      // looping data berita untuk ditampilkan pada halaman berita
+      $('.news-list-item').eq(0).attr('style', `background: url('${news_list[index].cover}') center;background-size:cover;`)
+      $('.news-list-item-title').eq(0).html(news_list[index].title);
+      $('.news-list-item-date').eq(0).html(date.format('dddd, DD MMMM YYYY'));
+    }
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 // SELF FUNCTIONS
