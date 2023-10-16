@@ -152,9 +152,15 @@ function _getGeoLocationDisplay(){
       });
     } catch (error) {
       alert(`ERROR: ${error.message}`);
+
+      display_lat = 1;
+      display_lon = 1;
     }
   } else { 
     alert("Geolocation is not supported by this browser.");
+
+    display_lat = 1;
+    display_lon = 1;
   }
 }
 
