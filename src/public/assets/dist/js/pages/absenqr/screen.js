@@ -20,7 +20,7 @@ const slideShowNewsInterval     = 5000; // 5 detik untuk slideshow berita
 
 $(document).ready(function () {
     // get current position
-    _getGeoLocationDisplay();
+    // _getGeoLocationDisplay();
     
     // default html bila table pegawai kosong
     default_table = $('.table-res').html();
