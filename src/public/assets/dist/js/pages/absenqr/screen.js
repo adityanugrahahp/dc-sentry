@@ -9,8 +9,8 @@ var module_url      = base_url + 'absenqr';
 var next_update     = null;
 var months          = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
 var days            = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
-var display_lat     = 0;
-var display_lon     = 0;
+var display_lat     = 10;
+var display_lon     = 10;
 
 const refreshQRInterval         = 1000; // 1 detik
 const checkNewScanInterval      = 3000; // 3 detik
@@ -153,14 +153,14 @@ function _getGeoLocationDisplay(){
     } catch (error) {
       alert(`ERROR: ${error.message}`);
       
-      display_lat = 1;
-      display_lon = 1;
+      display_lat = 10;
+      display_lon = 10;
     }
   } else { 
     alert("Geolocation is not supported by this browser.");
 
-    display_lat = 1;
-    display_lon = 1;
+    display_lat = 10;
+    display_lon = 10;
   }
 }
 
