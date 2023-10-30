@@ -169,7 +169,7 @@ function _get_new_qr(){
         data: { 
             id_display: screen_id,
             time_offset: time_offset,
-            timestamp: new Date().getTime() / 1000
+            timestamp: Math.round(+new Date()/1000)
         },
         success: function(d){
             if(d.status){
