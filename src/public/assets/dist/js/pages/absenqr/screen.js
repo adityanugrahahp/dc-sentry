@@ -199,7 +199,7 @@ function _get_attendances(is_table = true){
         endpoint_url = url_ws + '/get_latest_attendance' + '?token=' + token;
     }
 
-    $.post(endpoint_url, {display_id:screen_id}, function(d){
+    $.post(endpoint_url, {id_display:screen_id}, function(d){
         if(d.status){
           var _temp_component = '';
 
