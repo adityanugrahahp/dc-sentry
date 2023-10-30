@@ -20,7 +20,7 @@ const slideShowNewsInterval     = 5000; // 5 detik untuk slideshow berita
 
 $(document).ready(function () {
     // get current position
-    _getGeoLocationDisplay();
+    // _getGeoLocationDisplay();
     
     // default html bila table pegawai kosong
     default_table = $('.table-res').html();
@@ -92,6 +92,8 @@ $(document).ready(function () {
     // generate QR
     setInterval(function(){
         date_now = new Date();
+        console.log('NOW: ' + date_now);
+        console.log('NEXT: ' + next_update);
         
         if(date_now >= next_update){
             _get_new_qr();
@@ -152,15 +154,9 @@ function _getGeoLocationDisplay(){
       });
     } catch (error) {
       alert(`ERROR: ${error.message}`);
-
-      display_lat = 1;
-      display_lon = 1;
     }
   } else { 
     alert("Geolocation is not supported by this browser.");
-
-    display_lat = 1;
-    display_lon = 1;
   }
 }
 
@@ -172,7 +168,8 @@ function _get_new_qr(){
         dataType: 'json',
         data: { 
             id_display: screen_id,
-            time_offset: time_offset
+            time_offset: time_offset,
+            timestamp: new Date().getTime() / 1000
         },
         success: function(d){
             if(d.status){
@@ -361,7 +358,7 @@ function _showDateTime(){
             break;
     }
 
-    $('#time').html(curr_hour + ":" + curr_minute + ' ' + suffix);
+    $('#time').html(curr_hour + ":" + curr_minute + ':' + curr_second + ' ' + suffix);
     $("#date").html(days[n]+", " + " " + _addZero(day) + " " + months[month] + " " + year);	
 
     // dapatkan waktunya, bila di bawah jam 13.00 maka tampilkan pesan selamat datang, bila tidak tampilkan selamat jalan
