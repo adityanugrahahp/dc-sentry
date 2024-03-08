@@ -92,9 +92,9 @@ defined('APP_VERSION')          OR define('APP_VERSION', '1.7.0');
 defined('AUTO_NEW_CARD')        OR define('AUTO_NEW_CARD', TRUE); // aktifkan bila jumlah ketersediaan kartu akses kurang
 
 //  QR RELATED
-defined('ENV')                  OR define('ENV', 'development');
-defined('WS_URL')               OR define('WS_URL', 'https://ms-hrm-dev.pelni.co.id/');
 // defined('WS_URL')               OR define('WS_URL', 'https://api-dev.pelni.co.id/pelnione/v1/');
+defined('ENV')                  OR define('ENV', 'development');
+defined('WS_URL')               OR define('WS_URL', 'https://app-attendance-dev.pelni.co.id/');
 defined('WS_AUTH_KEY')          OR define('WS_AUTH_KEY', 'i4eGH1g5QvJqfX7q4ejZ4tarIHlzcNKiBd0xHx9epL25GhbWcBZm4ZTaNyL5');
 defined('PK_SECRET')            OR define('PK_SECRET', 'h4Vr3GzlNSZuXxfqAIchGmjLHxh26riC6Fm9RjG0iAMHdUbWDE8QH4jw5swi');
 defined('QR_URL')               OR define('QR_URL', 'https://portal.pelni.co.id/phpqrcode/?data=');
