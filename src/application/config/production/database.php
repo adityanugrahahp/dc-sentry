@@ -5,8 +5,8 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '172.16.101.99',
-	'username' => 'dashboard',
+	'hostname' => '10.1.0.110',
+	'username' => 'dashboard_prod_rw',
 	'password' => 's1mp3ln1',
 	'database' => 'dashboard',
 	'dbdriver' => 'postgre',
