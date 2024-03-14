@@ -194,6 +194,7 @@ class Absenqr extends Management_Controller {
 
 			$aksi = [
 				'<a href="'.base_url('absenqr/screen/'.$v->id.'/'.url_title($v->nama_layar_qr, '-', true).'/'.$v->token_layar).'" target="_blank" class="btn btn-xs btn-default" data-id="'.$v->id.'"><i class="fa fa-share fa-fw"></i></a>',
+				'<a href="https://app-attendance-display-dev.pelni.co.id/screen/'.$v->id.'/'.url_title($v->nama_layar_qr, '-', true).'/'.$v->token_layar.'" target="_blank" class="btn btn-xs btn-default" data-id="'.$v->id.'"><i class="fa fa-link fa-fw"></i></a>',
 				'<a href="javascript:void(0)" class="btn btn-xs btn-primary btn-edit" data-id="'.$v->id.'"><i class="fa fa-edit fa-fw"></i></a>',
 				'<a href="javascript:void(0)" class="btn btn-xs btn-danger btn-delete" data-id="'.$v->id.'"><i class="fa fa-trash fa-fw"></i></a>'
 			];

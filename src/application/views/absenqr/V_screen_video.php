@@ -131,9 +131,9 @@
 		var base_url 	  = '<?= base_url() ?>';
 		var screen_id	  = '<?= $screen_id ?>';
 		var token 		  = '<?= WS_AUTH_KEY ?>';
-		var url_ws 		  = '<?= WS_URL.'attendance-qr' ?>';
-		var url_trigger = '<?= WS_URL.'attendance-qr/get_status_change' ?>';
-		var url_qr 		  = '<?= WS_URL.'attendance-qr/get_new_qr' ?>';
+		var url_ws 		  = '<?= WS_URL.'v1/attendance' ?>';
+		var url_trigger = '<?= WS_URL.'v1/attendance/get_status_change' ?>';
+		var url_qr 		  = '<?= WS_URL.'v1/attendance/get_new_qr' ?>';
 		var url_news    = 'https://ms-website-content.pelni.co.id/news/lang/id';
 		var url_video 	= '<?= base_url(THEME_PATH) ?>videos/';
 	</script>
