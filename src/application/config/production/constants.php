@@ -99,3 +99,4 @@ defined('PK_SECRET')            OR define('PK_SECRET', 'h4Vr3GzlNSZuXxfqAIchGmjL
 defined('QR_URL')               OR define('QR_URL', 'https://portal.pelni.co.id/phpqrcode/?data=');
 defined('API_UPLOAD_URL')       OR define('API_UPLOAD_URL', 'https://static.pelni.co.id/');
 defined('APP_ATTENDANCE_URL')   OR define('APP_ATTENDANCE_URL', 'https://app-attendance-display.pelni.co.id');
+defined('JWT_PRIVATE_KEY')      OR define('JWT_PRIVATE_KEY', '1vZzc083rFHDYwbfw9KMvRxUVUe95tE78XjVJhNd5CfdTR28yi3cGdUJGYF7pt6k');

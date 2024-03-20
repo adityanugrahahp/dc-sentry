@@ -133,3 +133,27 @@
 	</div>
 </div>
 <!-- MODAL FOR ADD DISPLAY -->
+<!-- MODAL FOR JWT KEY -->
+<div id="display-token" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title"><i class="fa fa-key fa-fw"></i> Token Display Desktop</h4>
+			</div>
+			<div class="modal-body">
+				<p>Silakan copy paste token ini pada aplikasi Absensi QR versi Desktop. Harap diperhatikan bahwa masa berlaku token ini adalah 1 menit saja.</p>
+        <span><b>Masa Berlaku Token:</b> <span id="token-exp">N/A</span></span>
+        <br>
+        <br>
+        <textarea id="display-token-jwt" class="form-control" cols="30" rows="10" readonly></textarea>
+			</div>
+			<div class="modal-footer">
+				<div class="btn-group">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- END MODAL FOR JWT KEY -->
