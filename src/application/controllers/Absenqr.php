@@ -1,5 +1,9 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+use Carbon\Carbon;
+
 class Absenqr extends Management_Controller {
 
 	protected $durasi_expired = 10; // satuan dalam detik
@@ -195,6 +199,7 @@ class Absenqr extends Management_Controller {
 			$aksi = [
 				'<a href="'.base_url('absenqr/screen/'.$v->id.'/'.url_title($v->nama_layar_qr, '-', true).'/'.$v->token_layar).'" target="_blank" class="btn btn-xs btn-default" data-id="'.$v->id.'"><i class="fa fa-share fa-fw"></i></a>',
 				'<a href="'.APP_ATTENDANCE_URL.'/screen/'.$v->id.'/'.url_title($v->nama_layar_qr, '-', true).'/'.$v->token_layar.'" target="_blank" class="btn btn-xs btn-default" data-id="'.$v->id.'"><i class="fa fa-link fa-fw"></i></a>',
+				'<a href="javascript:void(0)" class="btn btn-xs btn-info btn-token" data-id="'.$v->id.'"><i class="fa fa-key fa-fw"></i></a>',
 				'<a href="javascript:void(0)" class="btn btn-xs btn-primary btn-edit" data-id="'.$v->id.'"><i class="fa fa-edit fa-fw"></i></a>',
 				'<a href="javascript:void(0)" class="btn btn-xs btn-danger btn-delete" data-id="'.$v->id.'"><i class="fa fa-trash fa-fw"></i></a>'
 			];
@@ -233,6 +238,46 @@ class Absenqr extends Management_Controller {
 			if($db){
 				$status = true;
 				$data 	= $db[0];
+			}
+		}
+
+		$this->output->set_content_type('application/json')->set_output(json_encode(compact('status', 'data')));
+	}
+
+  function ajax_get_token(){
+		$status = false;
+		$data 	= [];
+
+		if($post = $this->input->post('id')){
+			$db = $this->M_absenqr->get(null, ['id' => $post]);
+			if($db){
+        $expired  = Carbon::now()->add('1 minutes');
+
+				$status   = true;
+        $key      = JWT_PRIVATE_KEY;
+        $payload  = [
+          'aud'           => 'PELNI Attendance Display (Desktop Version)',
+          'sub'           => 'PELNI Attendance Display (Desktop Version)',
+          'nbf'           => Carbon::now()->timestamp,
+          'jti'           => hash('sha256', url_title('Display ID '.$db[0]->id, '-', true)),
+          'iss'           => 'https://visitor.pelni.co.id',
+          'iat'           => Carbon::now()->timestamp,
+          'exp'           => $expired->timestamp,
+          'display_id'    => (int) $db[0]->id,
+          'display_slug'  => url_title($db[0]->nama_layar_qr, '-', true),
+          'display_token' => $db[0]->token_layar
+        ];
+
+        try {
+          // generate random JWT
+          $jwt  = JWT::encode($payload, $key, 'HS256');
+          $data = [
+            'token'   => $jwt,
+            'expired' => $expired->format('d M Y H:i:s'),
+          ];
+        } catch (\Throwable $th) {
+          $status = false;
+        }
 			}
 		}
 

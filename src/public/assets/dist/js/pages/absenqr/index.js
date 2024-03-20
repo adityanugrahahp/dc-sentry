@@ -68,6 +68,29 @@ $(document).on('click', '.btn-delete', function (){
 	}
 });
 
+$(document).on('click', '.btn-token', function (){
+	$.post(module_url + '/ajax_get_token', {id:$(this).data('id')}).done(function(e){
+		if(e.status){
+			$('#display-token').modal('show');
+      $('#display-token-jwt').val(e.data.token);
+      $('#token-exp').html(e.data.expired);
+		}else{
+			alert('Gagal Medapatkan Data');
+		}
+	}).fail(function(e){
+		// alert error
+		alert(e.responseText);
+	});
+});
+
+$(document).on('click', '#display-token-jwt', function(){
+  var token = $(this).val();
+  $(this).select();
+  navigator.clipboard.writeText(token).then(() => {
+    alert('Berhasil Copy Token QR Code');
+  });
+});
+
 $(document).on('click', '.btn-edit', function (){
 	$.post(module_url + '/ajax_get_item', {id:$(this).data('id')}).done(function(e){
 		if(e.status){
