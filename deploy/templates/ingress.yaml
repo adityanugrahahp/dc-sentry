@@ -3,10 +3,10 @@ kind: Ingress
 metadata:
   name: {{ .Values.application.name }}-ingress
   annotations:
-    kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/proxy-ssl-verify: "false"
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
 spec:
+  ingressClassName: appsec-nginx
   tls:
     - hosts:
       - {{ .Values.ingress.hostname }}
