@@ -193,7 +193,7 @@ class Absenqr extends Management_Controller {
 			$like = ['lower(nama_layar_qr)' => strpos($keyword)];
 		}
 
-		$db_count = $this->M_absenqr->get(null, $where, null, null, null, null, null, $like);
+    $db_count = $this->M_absenqr->get(null, $where, null, null, null, null, null, $like);
 		$db       = $this->M_absenqr->get(null, $where, null, null, ['created_at' => 'desc'], $length, $start, $like);
 		foreach($db as $v){
 

@@ -5,10 +5,12 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '10.1.0.110',
+	// 'hostname' => '10.1.0.110',
+  'hostname' => 'kuda-terbang.pelni.co.id',
+  'port'     => 5000
 	'username' => 'dashboard',
 	'password' => 's1mp3ln1',
-	'database' => 'dashboard_prod_rw',
+	'database' => 'dashboard',
 	'dbdriver' => 'postgre',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
