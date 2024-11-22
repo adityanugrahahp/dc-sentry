@@ -5,9 +5,8 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	// 'hostname' => '10.1.0.110',
-  'hostname' => 'kuda-terbang.pelni.co.id',
-  'port'     => 5000
+	'hostname' => '172.16.101.99',
+  'port'     => 5432
 	'username' => 'dashboard',
 	'password' => 's1mp3ln1',
 	'database' => 'dashboard',
