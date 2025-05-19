@@ -46,12 +46,15 @@ class Login extends CI_Controller {
 				
         if(password_verify($hashed, $db_user->password)){
 					// set session untuk user ini
-					$_SESSION['userID'] 	= $db_user->id_user;
+					$_SESSION['userID'] 	  = $db_user->id_user;
 					$_SESSION['userName'] 	= $db_user->username;
 					$_SESSION['locationID'] = $db_user->location_id;
 					$_SESSION['loket_name'] = $db_user->loket_name;
-					$_SESSION['role'] 		= $db_user->role;
-					$_SESSION['access']		= $db_user->menu_access;
+					$_SESSION['role'] 		  = $db_user->role;
+					$_SESSION['access']		  = $db_user->menu_access;
+
+          // update timestamp user ini sebagai informasi login
+          $this->M_visitor->update_user_login_time($db_user->id_user);
 
 					$is_valid = true;
 				}else{

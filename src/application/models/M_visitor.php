@@ -2,7 +2,6 @@
 
 class M_visitor extends CI_Model {
 
-
 	public function __construct()
 	{
 		parent::__construct();
@@ -56,6 +55,15 @@ class M_visitor extends CI_Model {
 	function update_visitor($where = [], $data = []){
 		$this->db->where($where);
 		$query = $this->db->update('visitor_registration', $data);
+
+		return ($query) ? true : false;
+	}
+
+  function update_user_login_time($user_id = []){
+    $dt = new DateTime("now", new DateTimeZone('Asia/Jakarta')); 
+
+		$this->db->where('id_user', $user_id);
+		$query = $this->db->update('user_loket', ['login_date' => $dt->format('Y-m-d H:i:s')]);
 
 		return ($query) ? true : false;
 	}
