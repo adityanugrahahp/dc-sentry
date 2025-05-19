@@ -93,7 +93,7 @@ $(document).on('click', '.btn-show-display', function (){
       that.removeClass('disabled').attr('disabled', false).html('<i class="fa fa-desktop fa-fw"></i>');
 
       // open new tab
-			window.open(e.url, '_blank');
+			window.open(e.url);
 		}else{
 			alert('Gagal Medapatkan Data. Harap refresh halaman.');
 		}
