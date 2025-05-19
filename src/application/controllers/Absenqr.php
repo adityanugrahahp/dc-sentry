@@ -198,8 +198,8 @@ class Absenqr extends Management_Controller {
 		foreach($db as $v){
 
 			$aksi = [
-				'<a href="'.base_url('absenqr/screen/'.$v->id.'/'.url_title($v->nama_layar_qr, '-', true).'/'.$v->token_layar).'" target="_blank" class="btn btn-xs btn-default" data-id="'.$v->id.'"><i class="fa fa-share fa-fw"></i></a>',
-				'<a href="'.APP_ATTENDANCE_URL.'/screen/'.$v->id.'/'.url_title($v->nama_layar_qr, '-', true).'/'.$v->token_layar.'" target="_blank" class="btn btn-xs btn-default" data-id="'.$v->id.'"><i class="fa fa-link fa-fw"></i></a>',
+				// '<a href="'.base_url('absenqr/screen/'.$v->id.'/'.url_title($v->nama_layar_qr, '-', true).'/'.$v->token_layar).'" target="_blank" class="btn btn-xs btn-default" data-id="'.$v->id.'" title="Display Legacy"><i class="fa fa-share fa-fw"></i></a>',
+				'<a href="javascript:void(0)" class="btn btn-xs btn-default btn-show-display" data-id="'.$v->id.'" title="Display Current" data-url="'.APP_ATTENDANCE_URL.'/screen/'.$v->id.'/'.url_title($v->nama_layar_qr, '-', true).'/'.$v->token_layar.'"><i class="fa fa-desktop fa-fw"></i></a>',
 				'<a href="javascript:void(0)" class="btn btn-xs btn-info btn-token" data-id="'.$v->id.'"><i class="fa fa-key fa-fw"></i></a>',
 				'<a href="javascript:void(0)" class="btn btn-xs btn-primary btn-edit" data-id="'.$v->id.'"><i class="fa fa-edit fa-fw"></i></a>',
 				'<a href="javascript:void(0)" class="btn btn-xs btn-danger btn-delete" data-id="'.$v->id.'"><i class="fa fa-trash fa-fw"></i></a>'
@@ -215,7 +215,7 @@ class Absenqr extends Management_Controller {
 				'nama' 			=> $v->nama_layar_qr,
 				'lokasi' 		=> '<center>'.$v->lokasi.'</center>',
 				'pesan' 		=> '<center>'.(($v->pesan_layar) ? '<i class="fa fa-check text-success fa-fw"></i>' : null).'</center>',
-				'whitelist'		=> '<center>'.(($s_whitelist) ? '<span class="label label-primary">'.$s_whitelist.' Alamat IP</span>' : null).'</center>',
+				'whitelist' => '<center>'.(($s_whitelist) ? '<span class="label label-primary">'.$s_whitelist.' Alamat IP</span>' : null).'</center>',
 				'aksi' 			=> '<center>'.implode(' ', $aksi).'</center>'
 			];
 		}
@@ -284,6 +284,61 @@ class Absenqr extends Management_Controller {
 
 		$this->output->set_content_type('application/json')->set_output(json_encode(compact('status', 'data')));
 	}
+
+  function ajax_get_display_access_token(){
+    $status     = false;
+    $url        = null;
+    $error_msg  = null;
+
+    if(! $this->input->is_ajax_request()){
+      exit('No direct script access allowed');
+    }
+
+    $display_id   = $this->input->post('id');
+    $display_url  = $this->input->post('url');
+
+    if(! $display_id || ! $display_url){
+      $error_msg = 'Display ID not found';
+
+      $this->output->set_content_type('application/json')->set_output(json_encode(compact('status', 'url', 'error_msg')));
+      return false;
+    }
+
+    $this->_verify_access();
+
+    try {
+      // request curl to WS_URL
+      $curl = curl_init();
+
+      curl_setopt_array($curl, array(
+        CURLOPT_URL => WS_URL.'v1/display/access_token',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS => sprintf('id=%s&username=%s', $display_id, $_SESSION['userName']),
+        CURLOPT_HTTPHEADER => array(
+          'Token: '.WS_AUTH_KEY,
+          'Content-Type: application/x-www-form-urlencoded'
+        ),
+      ));
+
+      $response = curl_exec($curl);
+      curl_close($curl);
+
+      if($response){
+        // decode response
+        $r = json_decode($response);
+        if($r->error_code == '0'){
+          $status = true;
+          $url  = $display_url.'?t='.$r->data;
+        }
+      }
+    } catch (\Throwable $th) {
+      $error_msg = $th->getMessage();
+    }
+
+    $this->output->set_content_type('application/json')->set_output(json_encode(compact('status', 'url', 'error_msg')));
+  }
 
 	function ajax_post_form(){
 		$status = false;

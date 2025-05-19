@@ -83,6 +83,26 @@ $(document).on('click', '.btn-token', function (){
 	});
 });
 
+$(document).on('click', '.btn-show-display', function (){
+  const that = $(this);
+  // change button text to loading
+  that.addClass('disabled').attr('disabled', 'disabled').html('<i class="fa fa-refresh fa-spin"></i>.');
+
+	$.post(module_url + '/ajax_get_display_access_token', {id:$(this).data('id'), url: $(this).data('url')}).done(function(e){
+		if(e.status){
+      that.removeClass('disabled').attr('disabled', false).html('<i class="fa fa-desktop fa-fw"></i>');
+
+      // open new tab
+			window.open(e.url, '_blank');
+		}else{
+			alert('Gagal Medapatkan Data');
+		}
+	}).fail(function(e){
+		// alert error
+		alert(e.responseText);
+	});
+});
+
 $(document).on('click', '#display-token-jwt', function(){
   var token = $(this).val();
   $(this).select();

@@ -95,9 +95,9 @@ defined('AUTO_NEW_CARD')        OR define('AUTO_NEW_CARD', TRUE); // aktifkan bi
 // defined('WS_URL')               OR define('WS_URL', 'https://api-dev.pelni.co.id/pelnione/v1/');
 defined('ENV')                  OR define('ENV', 'development');
 defined('WS_URL')               OR define('WS_URL', 'https://app-attendance-dev.pelni.co.id/');
-defined('WS_AUTH_KEY')          OR define('WS_AUTH_KEY', 'i4eGH1g5QvJqfX7q4ejZ4tarIHlzcNKiBd0xHx9epL25GhbWcBZm4ZTaNyL5');
-defined('PK_SECRET')            OR define('PK_SECRET', 'h4Vr3GzlNSZuXxfqAIchGmjLHxh26riC6Fm9RjG0iAMHdUbWDE8QH4jw5swi');
+defined('WS_AUTH_KEY')          OR define('WS_AUTH_KEY', 'vZxKMe7qCtU6RYNL5wbFdc0Pg4AfQsOl1n3mTXyzp9HJiaGV2rWuEmkobBDX8tJh');
+defined('PK_SECRET')            OR define('PK_SECRET', 'gYJztQEpXkRhdOb7CN0vHF35LiMmZDPc8qfWsnWlrUBI2T6x9AJVyogeaK41uSMX');
 defined('QR_URL')               OR define('QR_URL', 'https://portal.pelni.co.id/phpqrcode/?data=');
 defined('API_UPLOAD_URL')       OR define('API_UPLOAD_URL', 'https://static-dev.pelni.co.id/');
-defined('APP_ATTENDANCE_URL')   OR define('APP_ATTENDANCE_URL', 'https://app-attendance-display-dev.pelni.co.id');
+defined('APP_ATTENDANCE_URL')   OR define('APP_ATTENDANCE_URL', 'http://app-attendance-display-dev.pelni.co.id');
 defined('JWT_PRIVATE_KEY')      OR define('JWT_PRIVATE_KEY', '1vZzc083rFHDYwbfw9KMvRxUVUe95tE78XjVJhNd5CfdTR28yi3cGdUJGYF7pt6k');
