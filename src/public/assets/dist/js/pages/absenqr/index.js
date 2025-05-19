@@ -95,7 +95,7 @@ $(document).on('click', '.btn-show-display', function (){
       // open new tab
 			window.open(e.url, '_blank');
 		}else{
-			alert('Gagal Medapatkan Data');
+			alert('Gagal Medapatkan Data. Harap refresh halaman.');
 		}
 	}).fail(function(e){
 		// alert error
