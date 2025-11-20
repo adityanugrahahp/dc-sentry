@@ -381,24 +381,49 @@ class Data_center extends CI_Controller
 
         // FILTER STATUS
         $status_filter = $this->input->get('status');
-        $allowed_statuses = ['Menunggu Approval', 'Diteruskan ke Manager', 'Revisi Diperlukan', 'Disetujui'];
 
-        // Setup base query untuk count
-        $this->db->from('dc_form f')
-            ->join('dc_staff s', 's.dc_form_id = f.id', 'left');
+        // **AMBIL SEMUA DATA TANPA PAGINATION DI QUERY - SAMA DENGAN MANAGER**
+        $this->db->select('f.*, s.nama_staff_it, s.file_ttd_staff, s.tanggal_ttd, f.file_pdf_final')
+            ->from('dc_form f')
+            ->join('dc_staff s', 's.dc_form_id = f.id', 'left')
+            ->where_in('f.status', ['Menunggu Approval', 'Diteruskan ke Manager', 'Revisi Diperlukan', 'Disetujui']);
 
-        if ($status_filter && in_array($status_filter, $allowed_statuses)) {
+        // APPLY FILTER JIKA ADA
+        if ($status_filter) {
             $this->db->where('f.status', $status_filter);
-        } else {
-            $this->db->where_in('f.status', ['Menunggu Approval', 'Diteruskan ke Manager', 'Revisi Diperlukan', 'Disetujui']);
         }
 
+        $this->db->order_by('f.id', 'DESC');
+
+        $all_permohonan = $this->db->get()->result();
+
+        // **HITUNG TOTAL UNTUK FILTER - SAMA DENGAN MANAGER**
+        $count_all = count($all_permohonan);
+
+        // Hitung per status
+        $count_menunggu = 0;
+        $count_diajukan = 0;
+        $count_revisi = 0;
+        $count_disetujui = 0;
+
+        foreach ($all_permohonan as $p) {
+            if ($p->status == 'Menunggu Approval') {
+                $count_menunggu++;
+            } elseif ($p->status == 'Diteruskan ke Manager') {
+                $count_diajukan++;
+            } elseif ($p->status == 'Revisi Diperlukan') {
+                $count_revisi++;
+            } elseif ($p->status == 'Disetujui') {
+                $count_disetujui++;
+            }
+        }
+
+        // **SETUP PAGINATION MANUAL - SAMA DENGAN MANAGER**
         $config['base_url'] = site_url('data_center/index_staff');
-        $config['total_rows'] = $this->db->count_all_results();
+        $config['total_rows'] = count($all_permohonan);
         $config['per_page'] = 10;
         $config['uri_segment'] = 3;
-        $config['reuse_query_string'] = TRUE;
-        $config['num_links'] = 2;
+        $config['reuse_query_string'] = TRUE; // Penting untuk menjaga parameter filter
 
         $config['full_tag_open'] = '<ul class="pagination">';
         $config['full_tag_close'] = '</ul>';
@@ -424,32 +449,20 @@ class Data_center extends CI_Controller
 
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
-        // Query data dengan filter - PERBAIKAN ORDER BY: ID DESC (terbaru di atas)
-        $this->db->select('f.*, s.nama_staff_it, s.file_ttd_staff, s.tanggal_ttd, f.file_pdf_final')
-            ->from('dc_form f')
-            ->join('dc_staff s', 's.dc_form_id = f.id', 'left');
+        // **AMBIL DATA UNTUK HALAMAN SAAT INI - SAMA DENGAN MANAGER**
+        $permohonan = array_slice($all_permohonan, $page, $config['per_page']);
 
-        if ($status_filter && in_array($status_filter, $allowed_statuses)) {
-            $this->db->where('f.status', $status_filter);
-        } else {
-            $this->db->where_in('f.status', ['Menunggu Approval', 'Diteruskan ke Manager', 'Revisi Diperlukan', 'Disetujui']);
-        }
-
-        // PERBAIKAN: Order by ID DESC agar form terbaru di atas
-        $this->db->order_by('f.id', 'DESC')
-            ->limit($config['per_page'], $page);
-
-        $data['permohonan'] = $this->db->get()->result();
-        $data['pagination_permohonan'] = $this->pagination->create_links();
-        $data['user'] = $user;
-        $data['status_filter'] = $status_filter;
-
-        // HITUNG JUMLAH PER STATUS
-        $data['count_menunggu'] = $this->db->where('status', 'Menunggu Approval')->count_all_results('dc_form');
-        $data['count_diajukan'] = $this->db->where('status', 'Diteruskan ke Manager')->count_all_results('dc_form');
-        $data['count_revisi'] = $this->db->where('status', 'Revisi Diperlukan')->count_all_results('dc_form');
-        $data['count_disetujui'] = $this->db->where('status', 'Disetujui')->count_all_results('dc_form');
-        $data['count_all'] = $data['count_menunggu'] + $data['count_diajukan'] + $data['count_revisi'] + $data['count_disetujui'];
+        $data = [
+            'permohonan' => $permohonan,
+            'pagination_permohonan' => $this->pagination->create_links(),
+            'user' => $user,
+            'status_filter' => $status_filter,
+            'count_all' => $count_all,
+            'count_menunggu' => $count_menunggu,
+            'count_diajukan' => $count_diajukan,
+            'count_revisi' => $count_revisi,
+            'count_disetujui' => $count_disetujui,
+        ];
 
         $this->load->view('data_center/V_datacenterit', $data);
     }
@@ -975,9 +988,9 @@ class Data_center extends CI_Controller
         $data = $this->db->get_where('dc_form', ['id' => $id, 'status' => 'Disetujui'])->row();
         if ($data) {
             echo "<h2 style='color:green'>Izin Akses SAH</h2>
-                  <p><strong>Nama:</strong> {$data->nama_pemohon}<br>
-                  <strong>Proyek:</strong> {$data->nama_proyek}<br>
-                  <strong>Waktu:</strong> {$data->waktu_proyek}</p>";
+                <p><strong>Nama:</strong> {$data->nama_pemohon}<br>
+                <strong>Proyek:</strong> {$data->nama_proyek}<br>
+                <strong>Waktu:</strong> {$data->waktu_proyek}</p>";
         } else {
             echo "<h2 style='color:red'>Izin TIDAK SAH</h2>";
         }
