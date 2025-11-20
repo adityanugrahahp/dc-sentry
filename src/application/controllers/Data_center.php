@@ -12,7 +12,7 @@ class Data_center extends CI_Controller
         // Load dengan session
         $this->load->database();
         $this->load->library(['session', 'upload', 'email', 'pagination']);
-        $this->load->helper(['url', 'form']);
+        $this->load->helper(['url', 'form', 'string']); // TAMBAH 'string' helper
 
         date_default_timezone_set('Asia/Jakarta');
 
@@ -23,7 +23,7 @@ class Data_center extends CI_Controller
     private function check_auth_access()
     {
         $current_method = $this->router->fetch_method();
-        $public_methods = ['form', 'simpan_permohonan', 'get_detail', 'verify', 'fix_upload_folder', 'debug_upload_path', 'test_email', 'index'];
+        $public_methods = ['form', 'simpan_permohonan', 'get_detail', 'verify', 'fix_upload_folder', 'debug_upload_path', 'test_email', 'index', 'generate_form_url', 'preview_file', 'download_detail_txt'];
 
         // Skip auth check untuk public methods
         if (in_array($current_method, $public_methods)) {
@@ -62,12 +62,117 @@ class Data_center extends CI_Controller
     }
 
     // ======================
+    // === FORM TOKEN SYSTEM ===
+    // ======================
+
+    /**
+     * Generate unique form URL dengan token
+     */
+    public function generate_form_url()
+    {
+        // Generate token unik
+        $token = random_string('alnum', 32);
+
+        // Simpan token di session dengan timestamp
+        $form_tokens = $this->session->userdata('form_tokens') ?: [];
+        $form_tokens[$token] = [
+            'created_at' => time(),
+            'used' => false
+        ];
+
+        $this->session->set_userdata('form_tokens', $form_tokens);
+
+        // Redirect ke URL dengan token
+        redirect('data_center_form/' . $token);
+    }
+
+    /**
+     * Form dengan token validation
+     */
+    public function form($token = null)
+    {
+        // Jika tidak ada token, redirect ke generator
+        if (!$token) {
+            redirect('data_center_form');
+        }
+
+        // Validasi token
+        if (!$this->validate_form_token($token)) {
+            show_error('URL form tidak valid atau sudah digunakan. Silakan buka form baru.', 403, 'Akses Ditolak');
+        }
+
+        // Tandai token sebagai digunakan
+        // $this->mark_token_as_used($token);
+
+        $data['token'] = $token;
+        $this->load->view('v_indexdacen', $data);
+    }
+
+    /**
+     * Validasi token form
+     */
+    /**
+     * Validasi token form - FIXED VERSION
+     */
+    private function validate_form_token($token)
+    {
+        $form_tokens = $this->session->userdata('form_tokens');
+
+        // Cek jika token ada di session
+        if (!isset($form_tokens[$token])) {
+            return false;
+        }
+
+        $token_data = $form_tokens[$token];
+
+        // Cek expiry time (24 jam) - hanya ini yang penting
+        $token_age = time() - $token_data['created_at'];
+        if ($token_age > 24 * 60 * 60) { // 24 jam
+            $this->cleanup_expired_tokens();
+            return false;
+        }
+
+        // Token valid selama belum expired
+        return true;
+    }
+
+    /**
+     * Tandai token sebagai digunakan
+     */
+    private function mark_token_as_used($token)
+    {
+        $form_tokens = $this->session->userdata('form_tokens');
+
+        if (isset($form_tokens[$token])) {
+            // Hapus token dari session setelah digunakan
+            unset($form_tokens[$token]);
+            $this->session->set_userdata('form_tokens', $form_tokens);
+
+            log_message('debug', 'Token dihapus dari session: ' . $token);
+        }
+    }
+
+    /**
+     * Bersihkan token yang expired
+     */
+    private function cleanup_expired_tokens()
+    {
+        $form_tokens = $this->session->userdata('form_tokens');
+        $current_time = time();
+
+        foreach ($form_tokens as $token => $data) {
+            $token_age = $current_time - $data['created_at'];
+            if ($token_age > 24 * 60 * 60) { // 24 jam
+                unset($form_tokens[$token]);
+            }
+        }
+
+        $this->session->set_userdata('form_tokens', $form_tokens);
+    }
+
+    // ======================
     // === FORM USER ===
     // ======================
-    public function form()
-    {
-        $this->load->view('v_indexdacen');
-    }
 
     public function index()
     {
@@ -80,6 +185,28 @@ class Data_center extends CI_Controller
         if ($this->input->method() !== 'post') {
             show_404();
         }
+
+        // **DEBUG: Lihat semua post data**
+        log_message('debug', 'POST Data: ' . print_r($this->input->post(), true));
+        log_message('debug', 'Files Data: ' . print_r($_FILES, true));
+
+        // Cek token dari form
+        $token = $this->input->post('form_token');
+        log_message('debug', 'Token received: ' . $token);
+
+        if (!$this->validate_form_token($token)) {
+            $form_tokens = $this->session->userdata('form_tokens');
+            log_message('debug', 'Form tokens in session: ' . print_r($form_tokens, true));
+
+            echo json_encode([
+                'status' => 'error',
+                'message' => 'Session form tidak valid. Silakan buka form baru.'
+            ]);
+            return;
+        }
+
+        // Tandai token sebagai digunakan setelah submit berhasil
+        $this->mark_token_as_used($token);
 
         try {
             // **PROTECTION: Cek timestamp untuk prevent double submission**
@@ -700,7 +827,7 @@ class Data_center extends CI_Controller
         echo json_encode($response);
     }
 
-    /// ======================
+    // ======================
     // === MANAGER ===
     // ======================
     public function index_manager()
@@ -995,6 +1122,7 @@ class Data_center extends CI_Controller
             echo "<h2 style='color:red'>Izin TIDAK SAH</h2>";
         }
     }
+
     public function fix_upload_folder()
     {
         echo "<h3>Fix Upload Folder</h3>";
@@ -1040,6 +1168,7 @@ class Data_center extends CI_Controller
         echo "<b>APPPATH:</b> " . APPPATH . "<br>";
         echo "<b>Current Dir:</b> " . getcwd() . "<br>";
     }
+
     public function debug_upload_path()
     {
         echo "<h3>Upload Path Debug</h3>";
@@ -1070,7 +1199,7 @@ class Data_center extends CI_Controller
 
         $config = [
             'upload_path'   => './uploads/tanda_tangan/',
-            'allowed_types' => 'jpg|jpeg|png|pdf|p7s|p7m|sig|asc|gpg|xades|cades|pades', // ← DIPERBARUI
+            'allowed_types' => 'jpg|jpeg|png|pdf|p7s|p7m|sig|asc|gpg|xades|cades|pades',
             'max_size'      => 2048,
             'encrypt_name'  => true,
         ];
@@ -1081,7 +1210,7 @@ class Data_center extends CI_Controller
         echo "<b>Upload Path exists:</b> " . (is_dir($this->upload->upload_path) ? '✅ YES' : '❌ NO') . "<br>";
         echo "<b>Upload Path writable:</b> " . (is_writable($this->upload->upload_path) ? '✅ YES' : '❌ NO') . "<br>";
     }
-    // Tambahkan di Data_center.php controller atau buat controller baru
+
     public function preview_file($folder, $filename)
     {
         $allowed_folders = ['ktp', 'ttd_pemohon', 'tanda_tangan', 'dokumen_tambahan'];

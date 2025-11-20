@@ -1978,6 +1978,36 @@
             }, 500);
         });
     </script>
+    <style>
+        .watermark {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            opacity: 0.25;
+            z-index: 9999;
+            pointer-events: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            color: #004080;
+            text-align: right;
+            line-height: 1.4;
+        }
+
+        .watermark-main {
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .watermark-sub {
+            font-weight: 500;
+            opacity: 0.8;
+        }
+    </style>
+
+    <div class="watermark">
+        <div class="watermark-main">Made With Anger 🤬 - OPS TI</div>
+        <div class="watermark-sub" id="watermarkTimestamp"></div>
+    </div>
 </body>
 
 </html>

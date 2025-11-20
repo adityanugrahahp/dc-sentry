@@ -1418,6 +1418,11 @@
             // Buat FormData dari form yang ada
             const formData = new FormData();
 
+            // **TAMBAHKAN TOKEN KE FORM DATA**
+            const formToken = '<?php echo isset($token) ? $token : ''; ?>';
+            console.log('Token yang dikirim:', formToken); // Debug
+            formData.append('form_token', formToken);
+
             // Tambahkan semua field text dari form
             const formElements = this.elements;
             for (let element of formElements) {

@@ -8,7 +8,8 @@ $route['translate_uri_dashes'] = FALSE;
 $route['logout'] = 'login/logout';
 $route['new_visitor/(:any)'] = 'contactless_guest/index/$1';
 
-$route['data_center_form']     = 'data_center/form';
+$route['data_center_form/(:any)'] = 'data_center/form/$1';
+$route['data_center_form'] = 'data_center/generate_form_url';
 $route['data_center_it']       = 'data_center/index_staff';
 $route['data_center_mg']       = 'data_center/index_manager';
 

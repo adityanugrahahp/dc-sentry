@@ -397,6 +397,7 @@
             }
         }
     </style>
+
 </head>
 
 <body>
@@ -410,8 +411,8 @@
                 <div class="logo">
                     <i class="fas fa-server"></i>
                 </div>
-                <h1>DATA CENTER</h1>
-                <p>PT PELNI - Secure Access Portal</p>
+                <h1>DC-SENTRY</h1>
+                <p>PT PELNI - Data Center Secure Entry Network for Tracking & Registration System</p>
                 <div class="security-badge">
                     <i class="fas fa-shield-alt"></i> End-to-End Encrypted
                 </div>
@@ -539,6 +540,36 @@
             container.appendChild(el);
         }
     </script>
+    <style>
+        .watermark {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            opacity: 0.25;
+            z-index: 9999;
+            pointer-events: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            color: #ffffffff;
+            text-align: right;
+            line-height: 1.4;
+        }
+
+        .watermark-main {
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .watermark-sub {
+            font-weight: 500;
+            opacity: 0.8;
+        }
+    </style>
+
+    <div class="watermark">
+        <div class="watermark-main">Made With Anger 🤬 - OPS TI</div>
+        <div class="watermark-sub" id="watermarkTimestamp"></div>
+    </div>
 </body>
 
 </html>
