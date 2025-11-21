@@ -1,14 +1,14 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '172.16.101.99',
-  'port'     => 5432,
-	'username' => 'dashboard',
-	'password' => 's1mp3ln1',
+	'hostname' => '172.16.101.97',
+	'port'     => 5432,
+	'username' => 'portal_dev',
+	'password' => 'PelniD3v3lPortaL',
 	'database' => 'dashboard',
 	'dbdriver' => 'postgre',
 	'dbprefix' => '',
