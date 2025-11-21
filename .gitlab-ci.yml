@@ -12,6 +12,7 @@ variables:
 stages:
   - deploy_development
   - deploy_production
+  - deploy_dacen
 
 deploy_development:
   extends: [.kube-context]
@@ -38,7 +39,7 @@ deploy_production:
   image: 
     name: dtzar/helm-kubectl:3.7.2
   only:
-    - production
+    - dacen
   variables:
     KUBERNETES_NAMESPACE_OVERWRITE: "production"
   tags:
@@ -50,3 +51,22 @@ deploy_production:
   environment:
     name: production
     url: https://$APP_NAME.pelni.co.id
+
+deploy_dacen:
+  extends: [.kube-context]
+  stage: deploy_dacen
+  image: 
+    name: dtzar/helm-kubectl:3.7.2
+  only:
+    - dacen
+  variables:
+    KUBERNETES_NAMESPACE_OVERWRITE: "production"
+  tags:
+    - shell
+  script:
+    - helm uninstall $APP_NAME-dacen || exit_code=$?
+    - helm upgrade --install $APP_NAME-dacen ./deploy -f ./deploy/values-dacen.yaml --set ingress.hostname=$SUBDOMAIN-dacen.pelni.co.id --set image.repository=registry-prod.pelni.co.id/$DOCKER_IMAGE_TAG --set projectPathSlug=$CI_PROJECT_PATH_SLUG --set envSlug=production
+  when: manual
+  environment:
+    name: production
+    url: https://$APP_NAME-dacen.pelni.co.id
