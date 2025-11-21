@@ -630,22 +630,25 @@
         }
 
         /* Tambahan untuk upload area dokumen */
-        #uploadAreaDokumen {
-            border: 2px dashed #004080;
-            background: #f0f7ff;
+        /* Style untuk semua upload area agar konsisten */
+        .upload-area {
+            border: 2px dashed #94a3b8;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            background: #f8fafc;
             transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
         }
 
-        #uploadAreaDokumen:hover {
-            border-color: #003366;
-            background: #e6f2ff;
+        .upload-area:hover,
+        .upload-area.dragover {
+            border-color: var(--primary-light);
+            background: #e0f2fe;
         }
 
-        #uploadAreaDokumen.dragover {
-            border-color: #002244;
-            background: #d9ebff;
-            transform: scale(1.02);
-        }
+        /* Hapus style khusus untuk uploadAreaDokumen */
 
         /* Style untuk preview kosong dokumen */
         .empty-preview {
