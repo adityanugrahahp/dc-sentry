@@ -47,7 +47,7 @@ class Home extends Management_Controller
 			$data['tujuan'] 	= $opt;
 			$data['extraJs'] 	= ["capture.js", "home.js", "instascan.min.js"];
 			$data['page_title'] = "Register Visitor";
-			$data['page_view'] 	= "home/V_index";
+			$data['page_view'] 	= "home/V_dclogin";
 			$this->load->view('layouts/V_master', $data);
 		} else {
 			redirect('dc-auth');
