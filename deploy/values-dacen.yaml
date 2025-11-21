@@ -23,6 +23,6 @@ livenessProbe:
   failureThreshold: 10
 
 readinessProbe:
-  path: /dc-auth
+  path: /login
   periodSeconds: 30
   failureThreshold: 10
