@@ -58,7 +58,7 @@ deploy_dacen:
   image: 
     name: dtzar/helm-kubectl:3.7.2
   only:
-    - production
+    - dacen
   variables:
     KUBERNETES_NAMESPACE_OVERWRITE: "production"
   tags:
