@@ -1,81 +1,40 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.application.name }}
+  name: { { .Values.application.name } }
   annotations:
-    app.gitlab.com/app: {{ .Values.projectPathSlug }}
-    app.gitlab.com/env: {{ .Values.envSlug }}
+    app.gitlab.com/app: { { .Values.projectPathSlug } }
+    app.gitlab.com/env: { { .Values.envSlug } }
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: { { .Values.replicaCount } }
   selector:
     matchLabels:
-      app: {{ .Values.application.name }}
+      app: { { .Values.application.name } }
   template:
     metadata:
       labels:
-        app: {{ .Values.application.name }}
+        app: { { .Values.application.name } }
       annotations:
-        app.gitlab.com/app: {{ .Values.projectPathSlug }}
-        app.gitlab.com/env: {{ .Values.envSlug }}
+        app.gitlab.com/app: { { .Values.projectPathSlug } }
+        app.gitlab.com/env: { { .Values.envSlug } }
     spec:
-      # TAMBAHKAN SECURITY CONTEXT DI SINI:
-      securityContext:
-        runAsUser: 1000
-        runAsGroup: 1000
-        fsGroup: 1000
-      
-      # TAMBAHKAN INIT CONTAINER DI SINI:
-      initContainers:
-        - name: create-upload-dirs
-          image: busybox
-          command: 
-            - 'sh'
-            - '-c'
-            - |
-              mkdir -p /var/www/html/uploads/ktp
-              mkdir -p /var/www/html/uploads/ttd_pemohon  
-              mkdir -p /var/www/html/uploads/tanda_tangan
-              mkdir -p /var/www/html/uploads/dokumen_tambahan
-              mkdir -p /var/www/html/uploads/pdf_final
-              chmod -R 755 /var/www/html/uploads/
-          volumeMounts:
-            - name: data
-              mountPath: /var/www/html/uploads
-
       imagePullSecrets:
         - name: registry-auth
       containers:
-        - name: {{ .Values.application.name }}
+        - name: { { .Values.application.name } }
           image: "{{ .Values.image.repository }}"
           imagePullPolicy: Always
           env:
             - name: APP_REPO_URL
-              value: {{ .Values.application.repoUrl }}
+              value: { { .Values.application.repoUrl } }
             - name: APP_BRANCH
-              value: {{ .Values.application.repoBranch }}
+              value: { { .Values.application.repoBranch } }
           ports:
             - name: http
-              containerPort: {{ .Values.service.containerPort }}
+              containerPort: { { .Values.service.containerPort } }
               protocol: TCP
-          
-          # TAMBAHKAN VOLUME MOUNT DI CONTAINER:
-          volumeMounts:
-            - name: data
-              mountPath: /var/www/html/uploads
-              subPath: ""
-          
           livenessProbe:
             tcpSocket:
-              port: {{ .Values.service.containerPort }}
+              port: { { .Values.service.containerPort } }
             failureThreshold: 1
             periodSeconds: 45
-      
-      # TAMBAHKAN VOLUMES DI SINI:
-      volumes:
-        - name: data
-          {{- if .Values.persistence.enabled }}
-          persistentVolumeClaim:
-            claimName: {{ .Values.application.name }}-pvc
-          {{- else }}
-          emptyDir: {}
-          {{- end }}
