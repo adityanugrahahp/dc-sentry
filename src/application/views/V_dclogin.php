@@ -567,7 +567,7 @@
     </style>
 
     <div class="watermark">
-        <div class="watermark-main">Made With Anger 🤬 - OPS TI</div>
+        <div class="watermark-main">Made With Anger 🤬 - DIV TI</div>
         <div class="watermark-sub" id="watermarkTimestamp"></div>
     </div>
 </body>
