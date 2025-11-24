@@ -1,0 +1,430 @@
+ERROR - 2025-11-24 03:54:11 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-11-24 03:54:11 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-11-24 03:57:59 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-24 03:57:59 --> 404 Page Not Found: Well-known/appspecific
+INFO - 2025-11-24 03:59:41 --> Config Class Initialized
+INFO - 2025-11-24 03:59:41 --> Hooks Class Initialized
+DEBUG - 2025-11-24 03:59:41 --> UTF-8 Support Enabled
+INFO - 2025-11-24 03:59:41 --> Utf8 Class Initialized
+INFO - 2025-11-24 03:59:42 --> URI Class Initialized
+INFO - 2025-11-24 03:59:42 --> Router Class Initialized
+INFO - 2025-11-24 03:59:42 --> Output Class Initialized
+INFO - 2025-11-24 03:59:42 --> Security Class Initialized
+DEBUG - 2025-11-24 03:59:42 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-11-24 03:59:42 --> Input Class Initialized
+INFO - 2025-11-24 03:59:42 --> Language Class Initialized
+INFO - 2025-11-24 03:59:42 --> Loader Class Initialized
+INFO - 2025-11-24 03:59:42 --> Helper loaded: url_helper
+INFO - 2025-11-24 03:59:42 --> Helper loaded: html_helper
+INFO - 2025-11-24 03:59:42 --> Helper loaded: inflector_helper
+INFO - 2025-11-24 03:59:42 --> Helper loaded: security_helper
+INFO - 2025-11-24 03:59:42 --> Helper loaded: string_helper
+INFO - 2025-11-24 03:59:42 --> Helper loaded: language_helper
+INFO - 2025-11-24 03:59:42 --> Helper loaded: cookie_helper
+INFO - 2025-11-24 03:59:42 --> Helper loaded: text_helper
+INFO - 2025-11-24 03:59:42 --> Helper loaded: curl_helper
+INFO - 2025-11-24 03:59:42 --> Helper loaded: crypto_helper
+INFO - 2025-11-24 03:59:42 --> Helper loaded: app_helper
+INFO - 2025-11-24 03:59:42 --> Database Driver Class Initialized
+INFO - 2025-11-24 03:59:42 --> Table Class Initialized
+INFO - 2025-11-24 03:59:42 --> Helper loaded: form_helper
+INFO - 2025-11-24 03:59:42 --> Form Validation Class Initialized
+INFO - 2025-11-24 03:59:42 --> Session: Class initialized using 'files' driver.
+DEBUG - 2025-11-24 03:59:42 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-11-24 03:59:42 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-11-24 03:59:42 --> Encryption Class Initialized
+INFO - 2025-11-24 03:59:42 --> Language file loaded: language/english/pagination_lang.php
+INFO - 2025-11-24 03:59:42 --> Pagination Class Initialized
+INFO - 2025-11-24 03:59:42 --> Upload Class Initialized
+INFO - 2025-11-24 03:59:42 --> MY_Model class loaded
+INFO - 2025-11-24 03:59:42 --> Model "M_visitor" initialized
+INFO - 2025-11-24 03:59:42 --> Controller Class Initialized
+DEBUG - 2025-11-24 03:59:42 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2025-11-24 03:59:42 --> Upload class already loaded. Second attempt ignored.
+INFO - 2025-11-24 03:59:42 --> Email Class Initialized
+DEBUG - 2025-11-24 03:59:42 --> Pagination class already loaded. Second attempt ignored.
+INFO - 2025-11-24 03:59:46 --> Config Class Initialized
+INFO - 2025-11-24 03:59:46 --> Hooks Class Initialized
+DEBUG - 2025-11-24 03:59:46 --> UTF-8 Support Enabled
+INFO - 2025-11-24 03:59:46 --> Utf8 Class Initialized
+INFO - 2025-11-24 03:59:46 --> URI Class Initialized
+INFO - 2025-11-24 03:59:46 --> Router Class Initialized
+INFO - 2025-11-24 03:59:46 --> Output Class Initialized
+INFO - 2025-11-24 03:59:46 --> Security Class Initialized
+DEBUG - 2025-11-24 03:59:46 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-11-24 03:59:46 --> Input Class Initialized
+INFO - 2025-11-24 03:59:46 --> Language Class Initialized
+INFO - 2025-11-24 03:59:46 --> Loader Class Initialized
+INFO - 2025-11-24 03:59:46 --> Helper loaded: url_helper
+INFO - 2025-11-24 03:59:46 --> Helper loaded: html_helper
+INFO - 2025-11-24 03:59:46 --> Helper loaded: inflector_helper
+INFO - 2025-11-24 03:59:46 --> Helper loaded: security_helper
+INFO - 2025-11-24 03:59:46 --> Helper loaded: string_helper
+INFO - 2025-11-24 03:59:46 --> Helper loaded: language_helper
+INFO - 2025-11-24 03:59:46 --> Helper loaded: cookie_helper
+INFO - 2025-11-24 03:59:46 --> Helper loaded: text_helper
+INFO - 2025-11-24 03:59:46 --> Helper loaded: curl_helper
+INFO - 2025-11-24 03:59:46 --> Helper loaded: crypto_helper
+INFO - 2025-11-24 03:59:46 --> Helper loaded: app_helper
+INFO - 2025-11-24 03:59:46 --> Database Driver Class Initialized
+INFO - 2025-11-24 03:59:46 --> Table Class Initialized
+INFO - 2025-11-24 03:59:46 --> Helper loaded: form_helper
+INFO - 2025-11-24 03:59:46 --> Form Validation Class Initialized
+INFO - 2025-11-24 03:59:46 --> Session: Class initialized using 'files' driver.
+DEBUG - 2025-11-24 03:59:46 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-11-24 03:59:46 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-11-24 03:59:46 --> Encryption Class Initialized
+INFO - 2025-11-24 03:59:46 --> Language file loaded: language/english/pagination_lang.php
+INFO - 2025-11-24 03:59:46 --> Pagination Class Initialized
+INFO - 2025-11-24 03:59:46 --> Upload Class Initialized
+INFO - 2025-11-24 03:59:46 --> MY_Model class loaded
+INFO - 2025-11-24 03:59:46 --> Model "M_visitor" initialized
+INFO - 2025-11-24 03:59:46 --> Controller Class Initialized
+DEBUG - 2025-11-24 03:59:46 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2025-11-24 03:59:46 --> Upload class already loaded. Second attempt ignored.
+INFO - 2025-11-24 03:59:46 --> Email Class Initialized
+DEBUG - 2025-11-24 03:59:46 --> Pagination class already loaded. Second attempt ignored.
+INFO - 2025-11-24 03:59:46 --> Config Class Initialized
+INFO - 2025-11-24 03:59:46 --> Hooks Class Initialized
+DEBUG - 2025-11-24 03:59:46 --> UTF-8 Support Enabled
+INFO - 2025-11-24 03:59:46 --> Utf8 Class Initialized
+INFO - 2025-11-24 03:59:46 --> URI Class Initialized
+INFO - 2025-11-24 03:59:46 --> Router Class Initialized
+INFO - 2025-11-24 03:59:46 --> Output Class Initialized
+INFO - 2025-11-24 03:59:46 --> Security Class Initialized
+DEBUG - 2025-11-24 03:59:46 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-11-24 03:59:46 --> Input Class Initialized
+INFO - 2025-11-24 03:59:46 --> Language Class Initialized
+INFO - 2025-11-24 03:59:47 --> Loader Class Initialized
+INFO - 2025-11-24 03:59:47 --> Helper loaded: url_helper
+INFO - 2025-11-24 03:59:47 --> Helper loaded: html_helper
+INFO - 2025-11-24 03:59:47 --> Helper loaded: inflector_helper
+INFO - 2025-11-24 03:59:47 --> Helper loaded: security_helper
+INFO - 2025-11-24 03:59:47 --> Helper loaded: string_helper
+INFO - 2025-11-24 03:59:47 --> Helper loaded: language_helper
+INFO - 2025-11-24 03:59:47 --> Helper loaded: cookie_helper
+INFO - 2025-11-24 03:59:47 --> Helper loaded: text_helper
+INFO - 2025-11-24 03:59:47 --> Helper loaded: curl_helper
+INFO - 2025-11-24 03:59:47 --> Helper loaded: crypto_helper
+INFO - 2025-11-24 03:59:47 --> Helper loaded: app_helper
+INFO - 2025-11-24 03:59:47 --> Database Driver Class Initialized
+INFO - 2025-11-24 03:59:47 --> Table Class Initialized
+INFO - 2025-11-24 03:59:47 --> Helper loaded: form_helper
+INFO - 2025-11-24 03:59:47 --> Form Validation Class Initialized
+INFO - 2025-11-24 03:59:47 --> Session: Class initialized using 'files' driver.
+DEBUG - 2025-11-24 03:59:47 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-11-24 03:59:47 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-11-24 03:59:47 --> Encryption Class Initialized
+INFO - 2025-11-24 03:59:47 --> Language file loaded: language/english/pagination_lang.php
+INFO - 2025-11-24 03:59:47 --> Pagination Class Initialized
+INFO - 2025-11-24 03:59:47 --> Upload Class Initialized
+INFO - 2025-11-24 03:59:47 --> MY_Model class loaded
+INFO - 2025-11-24 03:59:47 --> Model "M_visitor" initialized
+INFO - 2025-11-24 03:59:47 --> Controller Class Initialized
+DEBUG - 2025-11-24 03:59:47 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2025-11-24 03:59:47 --> Upload class already loaded. Second attempt ignored.
+INFO - 2025-11-24 03:59:47 --> Email Class Initialized
+DEBUG - 2025-11-24 03:59:47 --> Pagination class already loaded. Second attempt ignored.
+INFO - 2025-11-24 04:06:11 --> Config Class Initialized
+INFO - 2025-11-24 04:06:11 --> Hooks Class Initialized
+DEBUG - 2025-11-24 04:06:12 --> UTF-8 Support Enabled
+INFO - 2025-11-24 04:06:12 --> Utf8 Class Initialized
+INFO - 2025-11-24 04:06:12 --> URI Class Initialized
+INFO - 2025-11-24 04:06:12 --> Router Class Initialized
+INFO - 2025-11-24 04:06:12 --> Output Class Initialized
+INFO - 2025-11-24 04:06:12 --> Security Class Initialized
+DEBUG - 2025-11-24 04:06:12 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-11-24 04:06:12 --> Input Class Initialized
+INFO - 2025-11-24 04:06:12 --> Language Class Initialized
+INFO - 2025-11-24 04:06:12 --> Loader Class Initialized
+INFO - 2025-11-24 04:06:12 --> Helper loaded: url_helper
+INFO - 2025-11-24 04:06:12 --> Helper loaded: html_helper
+INFO - 2025-11-24 04:06:12 --> Helper loaded: inflector_helper
+INFO - 2025-11-24 04:06:12 --> Helper loaded: security_helper
+INFO - 2025-11-24 04:06:12 --> Helper loaded: string_helper
+INFO - 2025-11-24 04:06:12 --> Helper loaded: language_helper
+INFO - 2025-11-24 04:06:12 --> Helper loaded: cookie_helper
+INFO - 2025-11-24 04:06:12 --> Helper loaded: text_helper
+INFO - 2025-11-24 04:06:12 --> Helper loaded: curl_helper
+INFO - 2025-11-24 04:06:12 --> Helper loaded: crypto_helper
+INFO - 2025-11-24 04:06:12 --> Helper loaded: app_helper
+INFO - 2025-11-24 04:06:12 --> Database Driver Class Initialized
+INFO - 2025-11-24 04:06:12 --> Table Class Initialized
+INFO - 2025-11-24 04:06:12 --> Helper loaded: form_helper
+INFO - 2025-11-24 04:06:12 --> Form Validation Class Initialized
+INFO - 2025-11-24 04:06:12 --> Session: Class initialized using 'files' driver.
+DEBUG - 2025-11-24 04:06:12 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-11-24 04:06:12 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-11-24 04:06:12 --> Encryption Class Initialized
+INFO - 2025-11-24 04:06:12 --> Language file loaded: language/english/pagination_lang.php
+INFO - 2025-11-24 04:06:12 --> Pagination Class Initialized
+INFO - 2025-11-24 04:06:12 --> Upload Class Initialized
+INFO - 2025-11-24 04:06:12 --> MY_Model class loaded
+INFO - 2025-11-24 04:06:12 --> Model "M_visitor" initialized
+INFO - 2025-11-24 04:06:12 --> Controller Class Initialized
+INFO - 2025-11-24 04:06:12 --> Model "M_DCAuth" initialized
+DEBUG - 2025-11-24 04:06:12 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2025-11-24 04:06:12 --> Form_validation class already loaded. Second attempt ignored.
+INFO - 2025-11-24 04:06:12 --> File loaded: /var/www/html/src/application/views/V_dclogin.php
+INFO - 2025-11-24 04:06:12 --> Final output sent to browser
+DEBUG - 2025-11-24 04:06:12 --> Total execution time: 0.7064
+INFO - 2025-11-24 04:06:13 --> Config Class Initialized
+INFO - 2025-11-24 04:06:13 --> Hooks Class Initialized
+DEBUG - 2025-11-24 04:06:13 --> UTF-8 Support Enabled
+INFO - 2025-11-24 04:06:13 --> Utf8 Class Initialized
+INFO - 2025-11-24 04:06:13 --> URI Class Initialized
+INFO - 2025-11-24 04:06:13 --> Router Class Initialized
+INFO - 2025-11-24 04:06:13 --> Output Class Initialized
+INFO - 2025-11-24 04:06:13 --> Security Class Initialized
+DEBUG - 2025-11-24 04:06:13 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-11-24 04:06:13 --> Input Class Initialized
+INFO - 2025-11-24 04:06:13 --> Language Class Initialized
+INFO - 2025-11-24 04:06:13 --> Loader Class Initialized
+INFO - 2025-11-24 04:06:13 --> Helper loaded: url_helper
+INFO - 2025-11-24 04:06:14 --> Helper loaded: html_helper
+INFO - 2025-11-24 04:06:14 --> Helper loaded: inflector_helper
+INFO - 2025-11-24 04:06:14 --> Helper loaded: security_helper
+INFO - 2025-11-24 04:06:14 --> Helper loaded: string_helper
+INFO - 2025-11-24 04:06:14 --> Helper loaded: language_helper
+INFO - 2025-11-24 04:06:14 --> Helper loaded: cookie_helper
+INFO - 2025-11-24 04:06:14 --> Helper loaded: text_helper
+INFO - 2025-11-24 04:06:14 --> Helper loaded: curl_helper
+INFO - 2025-11-24 04:06:14 --> Helper loaded: crypto_helper
+INFO - 2025-11-24 04:06:14 --> Helper loaded: app_helper
+INFO - 2025-11-24 04:06:14 --> Database Driver Class Initialized
+INFO - 2025-11-24 04:06:14 --> Table Class Initialized
+INFO - 2025-11-24 04:06:14 --> Helper loaded: form_helper
+INFO - 2025-11-24 04:06:14 --> Form Validation Class Initialized
+INFO - 2025-11-24 04:06:14 --> Session: Class initialized using 'files' driver.
+DEBUG - 2025-11-24 04:06:14 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-11-24 04:06:14 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-11-24 04:06:14 --> Encryption Class Initialized
+INFO - 2025-11-24 04:06:14 --> Language file loaded: language/english/pagination_lang.php
+INFO - 2025-11-24 04:06:14 --> Pagination Class Initialized
+INFO - 2025-11-24 04:06:14 --> Upload Class Initialized
+INFO - 2025-11-24 04:06:14 --> MY_Model class loaded
+INFO - 2025-11-24 04:06:14 --> Model "M_visitor" initialized
+INFO - 2025-11-24 04:06:14 --> Controller Class Initialized
+INFO - 2025-11-24 04:06:14 --> Model "M_DCAuth" initialized
+DEBUG - 2025-11-24 04:06:14 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2025-11-24 04:06:14 --> Form_validation class already loaded. Second attempt ignored.
+INFO - 2025-11-24 04:06:14 --> File loaded: /var/www/html/src/application/views/V_dclogin.php
+INFO - 2025-11-24 04:06:14 --> Final output sent to browser
+DEBUG - 2025-11-24 04:06:14 --> Total execution time: 0.5591
+INFO - 2025-11-24 04:07:04 --> Config Class Initialized
+INFO - 2025-11-24 04:07:04 --> Hooks Class Initialized
+DEBUG - 2025-11-24 04:07:04 --> UTF-8 Support Enabled
+INFO - 2025-11-24 04:07:04 --> Utf8 Class Initialized
+INFO - 2025-11-24 04:07:04 --> URI Class Initialized
+INFO - 2025-11-24 04:07:04 --> Router Class Initialized
+INFO - 2025-11-24 04:07:04 --> Output Class Initialized
+INFO - 2025-11-24 04:07:04 --> Security Class Initialized
+DEBUG - 2025-11-24 04:07:04 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-11-24 04:07:04 --> Input Class Initialized
+INFO - 2025-11-24 04:07:04 --> Language Class Initialized
+INFO - 2025-11-24 04:07:04 --> Loader Class Initialized
+INFO - 2025-11-24 04:07:04 --> Helper loaded: url_helper
+INFO - 2025-11-24 04:07:04 --> Helper loaded: html_helper
+INFO - 2025-11-24 04:07:04 --> Helper loaded: inflector_helper
+INFO - 2025-11-24 04:07:04 --> Helper loaded: security_helper
+INFO - 2025-11-24 04:07:04 --> Helper loaded: string_helper
+INFO - 2025-11-24 04:07:04 --> Helper loaded: language_helper
+INFO - 2025-11-24 04:07:04 --> Helper loaded: cookie_helper
+INFO - 2025-11-24 04:07:04 --> Helper loaded: text_helper
+INFO - 2025-11-24 04:07:04 --> Helper loaded: curl_helper
+INFO - 2025-11-24 04:07:04 --> Helper loaded: crypto_helper
+INFO - 2025-11-24 04:07:04 --> Helper loaded: app_helper
+INFO - 2025-11-24 04:07:04 --> Database Driver Class Initialized
+INFO - 2025-11-24 04:07:04 --> Table Class Initialized
+INFO - 2025-11-24 04:07:04 --> Helper loaded: form_helper
+INFO - 2025-11-24 04:07:05 --> Form Validation Class Initialized
+INFO - 2025-11-24 04:07:05 --> Session: Class initialized using 'files' driver.
+DEBUG - 2025-11-24 04:07:05 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-11-24 04:07:05 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-11-24 04:07:05 --> Encryption Class Initialized
+INFO - 2025-11-24 04:07:05 --> Language file loaded: language/english/pagination_lang.php
+INFO - 2025-11-24 04:07:05 --> Pagination Class Initialized
+INFO - 2025-11-24 04:07:05 --> Upload Class Initialized
+INFO - 2025-11-24 04:07:05 --> MY_Model class loaded
+INFO - 2025-11-24 04:07:05 --> Model "M_visitor" initialized
+INFO - 2025-11-24 04:07:05 --> Controller Class Initialized
+INFO - 2025-11-24 04:07:05 --> Model "M_DCAuth" initialized
+DEBUG - 2025-11-24 04:07:05 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2025-11-24 04:07:05 --> Form_validation class already loaded. Second attempt ignored.
+INFO - 2025-11-24 04:07:05 --> File loaded: /var/www/html/src/application/views/V_dclogin.php
+INFO - 2025-11-24 04:07:05 --> Final output sent to browser
+DEBUG - 2025-11-24 04:07:05 --> Total execution time: 0.6943
+INFO - 2025-11-24 04:09:13 --> Config Class Initialized
+INFO - 2025-11-24 04:09:13 --> Hooks Class Initialized
+DEBUG - 2025-11-24 04:09:13 --> UTF-8 Support Enabled
+INFO - 2025-11-24 04:09:13 --> Utf8 Class Initialized
+INFO - 2025-11-24 04:09:13 --> URI Class Initialized
+INFO - 2025-11-24 04:09:13 --> Router Class Initialized
+INFO - 2025-11-24 04:09:13 --> Output Class Initialized
+INFO - 2025-11-24 04:09:13 --> Security Class Initialized
+DEBUG - 2025-11-24 04:09:13 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-11-24 04:09:13 --> Input Class Initialized
+INFO - 2025-11-24 04:09:13 --> Language Class Initialized
+INFO - 2025-11-24 04:09:13 --> Loader Class Initialized
+INFO - 2025-11-24 04:09:13 --> Helper loaded: url_helper
+INFO - 2025-11-24 04:09:13 --> Helper loaded: html_helper
+INFO - 2025-11-24 04:09:13 --> Helper loaded: inflector_helper
+INFO - 2025-11-24 04:09:13 --> Helper loaded: security_helper
+INFO - 2025-11-24 04:09:13 --> Helper loaded: string_helper
+INFO - 2025-11-24 04:09:13 --> Helper loaded: language_helper
+INFO - 2025-11-24 04:09:13 --> Helper loaded: cookie_helper
+INFO - 2025-11-24 04:09:13 --> Helper loaded: text_helper
+INFO - 2025-11-24 04:09:13 --> Helper loaded: curl_helper
+INFO - 2025-11-24 04:09:13 --> Helper loaded: crypto_helper
+INFO - 2025-11-24 04:09:13 --> Helper loaded: app_helper
+INFO - 2025-11-24 04:09:13 --> Database Driver Class Initialized
+INFO - 2025-11-24 04:09:13 --> Table Class Initialized
+INFO - 2025-11-24 04:09:13 --> Helper loaded: form_helper
+INFO - 2025-11-24 04:09:14 --> Form Validation Class Initialized
+INFO - 2025-11-24 04:09:14 --> Session: Class initialized using 'files' driver.
+DEBUG - 2025-11-24 04:09:14 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-11-24 04:09:14 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-11-24 04:09:14 --> Encryption Class Initialized
+INFO - 2025-11-24 04:09:14 --> Language file loaded: language/english/pagination_lang.php
+INFO - 2025-11-24 04:09:14 --> Pagination Class Initialized
+INFO - 2025-11-24 04:09:14 --> Upload Class Initialized
+INFO - 2025-11-24 04:09:14 --> MY_Model class loaded
+INFO - 2025-11-24 04:09:14 --> Model "M_visitor" initialized
+INFO - 2025-11-24 04:09:14 --> Controller Class Initialized
+INFO - 2025-11-24 04:09:14 --> Model "M_DCAuth" initialized
+DEBUG - 2025-11-24 04:09:14 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2025-11-24 04:09:14 --> Form_validation class already loaded. Second attempt ignored.
+INFO - 2025-11-24 04:09:14 --> File loaded: /var/www/html/src/application/views/V_dclogin.php
+INFO - 2025-11-24 04:09:14 --> Final output sent to browser
+DEBUG - 2025-11-24 04:09:14 --> Total execution time: 0.6072
+INFO - 2025-11-24 04:25:40 --> Config Class Initialized
+INFO - 2025-11-24 04:25:40 --> Hooks Class Initialized
+DEBUG - 2025-11-24 04:25:40 --> UTF-8 Support Enabled
+INFO - 2025-11-24 04:25:40 --> Utf8 Class Initialized
+INFO - 2025-11-24 04:25:40 --> URI Class Initialized
+INFO - 2025-11-24 04:25:40 --> Router Class Initialized
+INFO - 2025-11-24 04:25:40 --> Output Class Initialized
+INFO - 2025-11-24 04:25:40 --> Security Class Initialized
+DEBUG - 2025-11-24 04:25:40 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-11-24 04:25:40 --> Input Class Initialized
+INFO - 2025-11-24 04:25:40 --> Language Class Initialized
+INFO - 2025-11-24 04:25:40 --> Loader Class Initialized
+INFO - 2025-11-24 04:25:40 --> Helper loaded: url_helper
+INFO - 2025-11-24 04:25:40 --> Helper loaded: html_helper
+INFO - 2025-11-24 04:25:40 --> Helper loaded: inflector_helper
+INFO - 2025-11-24 04:25:40 --> Helper loaded: security_helper
+INFO - 2025-11-24 04:25:40 --> Helper loaded: string_helper
+INFO - 2025-11-24 04:25:40 --> Helper loaded: language_helper
+INFO - 2025-11-24 04:25:40 --> Helper loaded: cookie_helper
+INFO - 2025-11-24 04:25:40 --> Helper loaded: text_helper
+INFO - 2025-11-24 04:25:40 --> Helper loaded: curl_helper
+INFO - 2025-11-24 04:25:40 --> Helper loaded: crypto_helper
+INFO - 2025-11-24 04:25:40 --> Helper loaded: app_helper
+INFO - 2025-11-24 04:25:40 --> Database Driver Class Initialized
+INFO - 2025-11-24 04:25:40 --> Table Class Initialized
+INFO - 2025-11-24 04:25:40 --> Helper loaded: form_helper
+INFO - 2025-11-24 04:25:40 --> Form Validation Class Initialized
+INFO - 2025-11-24 04:25:40 --> Session: Class initialized using 'files' driver.
+DEBUG - 2025-11-24 04:25:40 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-11-24 04:25:40 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-11-24 04:25:40 --> Encryption Class Initialized
+INFO - 2025-11-24 04:25:40 --> Language file loaded: language/english/pagination_lang.php
+INFO - 2025-11-24 04:25:40 --> Pagination Class Initialized
+INFO - 2025-11-24 04:25:40 --> Upload Class Initialized
+INFO - 2025-11-24 04:25:40 --> MY_Model class loaded
+INFO - 2025-11-24 04:25:40 --> Model "M_visitor" initialized
+INFO - 2025-11-24 04:25:40 --> Controller Class Initialized
+INFO - 2025-11-24 04:25:40 --> Model "M_DCAuth" initialized
+DEBUG - 2025-11-24 04:25:40 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2025-11-24 04:25:40 --> Form_validation class already loaded. Second attempt ignored.
+INFO - 2025-11-24 04:25:40 --> File loaded: /var/www/html/src/application/views/V_dclogin.php
+INFO - 2025-11-24 04:25:40 --> Final output sent to browser
+DEBUG - 2025-11-24 04:25:40 --> Total execution time: 0.7356
+INFO - 2025-11-24 04:25:41 --> Config Class Initialized
+INFO - 2025-11-24 04:25:41 --> Hooks Class Initialized
+DEBUG - 2025-11-24 04:25:41 --> UTF-8 Support Enabled
+INFO - 2025-11-24 04:25:41 --> Utf8 Class Initialized
+INFO - 2025-11-24 04:25:41 --> URI Class Initialized
+INFO - 2025-11-24 04:25:41 --> Router Class Initialized
+INFO - 2025-11-24 04:25:41 --> Output Class Initialized
+INFO - 2025-11-24 04:25:41 --> Security Class Initialized
+DEBUG - 2025-11-24 04:25:41 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-11-24 04:25:41 --> Input Class Initialized
+INFO - 2025-11-24 04:25:41 --> Language Class Initialized
+INFO - 2025-11-24 04:25:41 --> Loader Class Initialized
+INFO - 2025-11-24 04:25:41 --> Helper loaded: url_helper
+INFO - 2025-11-24 04:25:41 --> Helper loaded: html_helper
+INFO - 2025-11-24 04:25:41 --> Helper loaded: inflector_helper
+INFO - 2025-11-24 04:25:41 --> Helper loaded: security_helper
+INFO - 2025-11-24 04:25:41 --> Helper loaded: string_helper
+INFO - 2025-11-24 04:25:41 --> Helper loaded: language_helper
+INFO - 2025-11-24 04:25:41 --> Helper loaded: cookie_helper
+INFO - 2025-11-24 04:25:41 --> Helper loaded: text_helper
+INFO - 2025-11-24 04:25:41 --> Helper loaded: curl_helper
+INFO - 2025-11-24 04:25:41 --> Helper loaded: crypto_helper
+INFO - 2025-11-24 04:25:41 --> Helper loaded: app_helper
+INFO - 2025-11-24 04:25:41 --> Database Driver Class Initialized
+INFO - 2025-11-24 04:25:41 --> Table Class Initialized
+INFO - 2025-11-24 04:25:41 --> Helper loaded: form_helper
+INFO - 2025-11-24 04:25:41 --> Form Validation Class Initialized
+INFO - 2025-11-24 04:25:41 --> Session: Class initialized using 'files' driver.
+DEBUG - 2025-11-24 04:25:41 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-11-24 04:25:41 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-11-24 04:25:41 --> Encryption Class Initialized
+INFO - 2025-11-24 04:25:41 --> Language file loaded: language/english/pagination_lang.php
+INFO - 2025-11-24 04:25:41 --> Pagination Class Initialized
+INFO - 2025-11-24 04:25:41 --> Upload Class Initialized
+INFO - 2025-11-24 04:25:41 --> MY_Model class loaded
+INFO - 2025-11-24 04:25:41 --> Model "M_visitor" initialized
+INFO - 2025-11-24 04:25:41 --> Controller Class Initialized
+INFO - 2025-11-24 04:25:41 --> Model "M_DCAuth" initialized
+DEBUG - 2025-11-24 04:25:41 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2025-11-24 04:25:41 --> Form_validation class already loaded. Second attempt ignored.
+INFO - 2025-11-24 04:25:41 --> File loaded: /var/www/html/src/application/views/V_dclogin.php
+INFO - 2025-11-24 04:25:41 --> Final output sent to browser
+DEBUG - 2025-11-24 04:25:41 --> Total execution time: 0.4983
+INFO - 2025-11-24 04:26:00 --> Config Class Initialized
+INFO - 2025-11-24 04:26:00 --> Hooks Class Initialized
+DEBUG - 2025-11-24 04:26:00 --> UTF-8 Support Enabled
+INFO - 2025-11-24 04:26:00 --> Utf8 Class Initialized
+INFO - 2025-11-24 04:26:00 --> URI Class Initialized
+DEBUG - 2025-11-24 04:26:00 --> No URI present. Default controller set.
+INFO - 2025-11-24 04:26:00 --> Router Class Initialized
+INFO - 2025-11-24 04:26:00 --> Output Class Initialized
+INFO - 2025-11-24 04:26:00 --> Security Class Initialized
+DEBUG - 2025-11-24 04:26:00 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-11-24 04:26:00 --> Input Class Initialized
+INFO - 2025-11-24 04:26:00 --> Language Class Initialized
+INFO - 2025-11-24 04:26:00 --> Loader Class Initialized
+INFO - 2025-11-24 04:26:00 --> Helper loaded: url_helper
+INFO - 2025-11-24 04:26:00 --> Helper loaded: html_helper
+INFO - 2025-11-24 04:26:00 --> Helper loaded: inflector_helper
+INFO - 2025-11-24 04:26:00 --> Helper loaded: security_helper
+INFO - 2025-11-24 04:26:00 --> Helper loaded: string_helper
+INFO - 2025-11-24 04:26:00 --> Helper loaded: language_helper
+INFO - 2025-11-24 04:26:00 --> Helper loaded: cookie_helper
+INFO - 2025-11-24 04:26:00 --> Helper loaded: text_helper
+INFO - 2025-11-24 04:26:00 --> Helper loaded: curl_helper
+INFO - 2025-11-24 04:26:00 --> Helper loaded: crypto_helper
+INFO - 2025-11-24 04:26:00 --> Helper loaded: app_helper
+INFO - 2025-11-24 04:26:00 --> Database Driver Class Initialized
+INFO - 2025-11-24 04:26:00 --> Table Class Initialized
+INFO - 2025-11-24 04:26:00 --> Helper loaded: form_helper
+INFO - 2025-11-24 04:26:00 --> Form Validation Class Initialized
+INFO - 2025-11-24 04:26:00 --> Session: Class initialized using 'files' driver.
+DEBUG - 2025-11-24 04:26:00 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-11-24 04:26:00 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-11-24 04:26:00 --> Encryption Class Initialized
+INFO - 2025-11-24 04:26:01 --> Language file loaded: language/english/pagination_lang.php
+INFO - 2025-11-24 04:26:01 --> Pagination Class Initialized
+INFO - 2025-11-24 04:26:01 --> Upload Class Initialized
+INFO - 2025-11-24 04:26:01 --> MY_Model class loaded
+INFO - 2025-11-24 04:26:01 --> Model "M_visitor" initialized
+INFO - 2025-11-24 04:26:01 --> Controller Class Initialized
+ERROR - 2025-11-24 04:32:44 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-24 04:57:29 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-24 04:57:35 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-24 06:26:41 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-24 06:26:45 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-24 07:18:45 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-24 07:18:50 --> 404 Page Not Found: Well-known/appspecific

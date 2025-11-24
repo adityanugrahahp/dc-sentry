@@ -1,0 +1,114 @@
+ERROR - 2025-11-12 09:40:14 --> Severity: Warning --> pg_query(): Query failed: ERROR:  column &quot;1970-01-01&quot; does not exist
+LINE 2: ...                       COALESCE(f.tanggal_ajukan, &quot;1970-01-0...
+                                                             ^ /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 234
+ERROR - 2025-11-12 09:40:14 --> Query error: ERROR:  column "1970-01-01" does not exist
+LINE 2: ...                       COALESCE(f.tanggal_ajukan, "1970-01-0...
+                                                             ^ - Invalid query: SELECT "f".*, "s"."nama_staff_it", "s"."file_ttd_staff", "s"."tanggal_ttd" as "tanggal_ajukan_staff", GREATEST(
+                          COALESCE(f.tanggal_ajukan, "1970-01-01"), COALESCE(f.tanggal_revisi, "1970-01-01"), COALESCE(s.tanggal_ttd, "1970-01-01")
+                      ) as last_activity_date
+FROM "dc_form" "f"
+LEFT JOIN "dc_staff" "s" ON "s"."dc_form_id" = "f"."id"
+WHERE "f"."status" IN('Diteruskan ke Manager', 'Disetujui', 'Revisi Diperlukan')
+ORDER BY "last_activity_date" DESC, "f"."id" DESC
+ LIMIT 10
+ERROR - 2025-11-12 09:40:31 --> Severity: Warning --> pg_query(): Query failed: ERROR:  column &quot;1970-01-01&quot; does not exist
+LINE 2: ...                       COALESCE(f.tanggal_ajukan, &quot;1970-01-0...
+                                                             ^ /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 234
+ERROR - 2025-11-12 09:40:31 --> Query error: ERROR:  column "1970-01-01" does not exist
+LINE 2: ...                       COALESCE(f.tanggal_ajukan, "1970-01-0...
+                                                             ^ - Invalid query: SELECT "f".*, "s"."nama_staff_it", "s"."file_ttd_staff", "s"."tanggal_ttd" as "tanggal_ajukan_staff", GREATEST(
+                          COALESCE(f.tanggal_ajukan, "1970-01-01"), COALESCE(f.tanggal_revisi, "1970-01-01"), COALESCE(s.tanggal_ttd, "1970-01-01")
+                      ) as last_activity_date
+FROM "dc_form" "f"
+LEFT JOIN "dc_staff" "s" ON "s"."dc_form_id" = "f"."id"
+WHERE "f"."status" IN('Diteruskan ke Manager', 'Disetujui', 'Revisi Diperlukan')
+ORDER BY "last_activity_date" DESC, "f"."id" DESC
+ LIMIT 10
+ERROR - 2025-11-12 09:51:20 --> Severity: Warning --> pg_query(): Query failed: ERROR:  syntax error at or near &quot;DESC&quot;
+LINE 5: ORDER BY COALESCE(f.tanggal_revisi DESC, f.tanggal_ajukan) D...
+                                           ^ /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 234
+ERROR - 2025-11-12 09:51:20 --> Query error: ERROR:  syntax error at or near "DESC"
+LINE 5: ORDER BY COALESCE(f.tanggal_revisi DESC, f.tanggal_ajukan) D...
+                                           ^ - Invalid query: SELECT "f".*, "s"."nama_staff_it", "s"."file_ttd_staff", "s"."tanggal_ttd"
+FROM "dc_form" "f"
+LEFT JOIN "dc_staff" "s" ON "s"."dc_form_id" = "f"."id"
+WHERE "f"."status" IN('Diteruskan ke Manager', 'Disetujui', 'Revisi Diperlukan')
+ORDER BY COALESCE(f.tanggal_revisi DESC, f.tanggal_ajukan) DESC, "f"."id" DESC
+ LIMIT 10
+ERROR - 2025-11-12 09:54:32 --> Severity: Warning --> pg_query(): Query failed: ERROR:  syntax error at or near &quot;DESC&quot;
+LINE 5: ORDER BY COALESCE(f.tanggal_revisi DESC, f.tanggal_ajukan) D...
+                                           ^ /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 234
+ERROR - 2025-11-12 09:54:32 --> Query error: ERROR:  syntax error at or near "DESC"
+LINE 5: ORDER BY COALESCE(f.tanggal_revisi DESC, f.tanggal_ajukan) D...
+                                           ^ - Invalid query: SELECT "f".*, "s"."nama_staff_it", "s"."file_ttd_staff", "s"."tanggal_ttd"
+FROM "dc_form" "f"
+LEFT JOIN "dc_staff" "s" ON "s"."dc_form_id" = "f"."id"
+WHERE "f"."status" IN('Diteruskan ke Manager', 'Disetujui', 'Revisi Diperlukan')
+ORDER BY COALESCE(f.tanggal_revisi DESC, f.tanggal_ajukan) DESC, "f"."id" DESC
+ LIMIT 10 OFFSET 20
+ERROR - 2025-11-12 09:55:00 --> Severity: Warning --> pg_query(): Query failed: ERROR:  syntax error at or near &quot;DESC&quot;
+LINE 6:             COALESCE(f.tanggal_revisi DESC, '2000-01-01') DE...
+                                              ^ /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 234
+ERROR - 2025-11-12 09:55:00 --> Query error: ERROR:  syntax error at or near "DESC"
+LINE 6:             COALESCE(f.tanggal_revisi DESC, '2000-01-01') DE...
+                                              ^ - Invalid query: SELECT "f".*, "s"."nama_staff_it", "s"."file_ttd_staff", "s"."tanggal_ttd"
+FROM "dc_form" "f"
+LEFT JOIN "dc_staff" "s" ON "s"."dc_form_id" = "f"."id"
+WHERE "f"."status" IN('Diteruskan ke Manager', 'Disetujui', 'Revisi Diperlukan')
+ORDER BY GREATEST(
+            COALESCE(f.tanggal_revisi DESC, '2000-01-01') DESC, COALESCE(f.tanggal_ajukan DESC, '2000-01-01') DESC, COALESCE(s.tanggal_ttd DESC, '2000-01-01')
+        ) DESC, "f"."id" DESC
+ LIMIT 10 OFFSET 20
+ERROR - 2025-11-12 10:08:47 --> Severity: Warning --> pg_query(): Query failed: ERROR:  syntax error at or near &quot;DESC&quot;
+LINE 5: ORDER BY COALESCE(f.tanggal_revisi DESC, f.tanggal_ajukan) D...
+                                           ^ /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 234
+ERROR - 2025-11-12 10:08:47 --> Query error: ERROR:  syntax error at or near "DESC"
+LINE 5: ORDER BY COALESCE(f.tanggal_revisi DESC, f.tanggal_ajukan) D...
+                                           ^ - Invalid query: SELECT "f".*, "s"."nama_staff_it", "s"."file_ttd_staff", "s"."tanggal_ttd", "f"."file_pdf_final"
+FROM "dc_form" "f"
+LEFT JOIN "dc_staff" "s" ON "s"."dc_form_id" = "f"."id"
+WHERE "f"."status" IN('Menunggu Approval', 'Diteruskan ke Manager', 'Revisi Diperlukan', 'Disetujui')
+ORDER BY COALESCE(f.tanggal_revisi DESC, f.tanggal_ajukan) DESC, "f"."id" DESC
+ LIMIT 10
+ERROR - 2025-11-12 00:14:18 --> Severity: Compile Error --> Cannot redeclare Data_center::get_last_activity_timestamp() /var/www/html/src/application/controllers/Data_center.php 805
+ERROR - 2025-11-12 00:14:56 --> Severity: Compile Error --> Cannot redeclare Data_center::get_last_activity_timestamp() /var/www/html/src/application/controllers/Data_center.php 805
+ERROR - 2025-11-12 00:14:59 --> Severity: Compile Error --> Cannot redeclare Data_center::get_last_activity_timestamp() /var/www/html/src/application/controllers/Data_center.php 805
+ERROR - 2025-11-12 00:15:09 --> Severity: Compile Error --> Cannot redeclare Data_center::get_last_activity_timestamp() /var/www/html/src/application/controllers/Data_center.php 805
+ERROR - 2025-11-12 00:15:11 --> Severity: Compile Error --> Cannot redeclare Data_center::get_last_activity_timestamp() /var/www/html/src/application/controllers/Data_center.php 805
+ERROR - 2025-11-12 10:54:13 --> Severity: Warning --> pg_query(): Query failed: ERROR:  relation &quot;permohonan_akses&quot; does not exist
+LINE 2: FROM &quot;permohonan_akses&quot;
+             ^ /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 234
+ERROR - 2025-11-12 10:54:13 --> Query error: ERROR:  relation "permohonan_akses" does not exist
+LINE 2: FROM "permohonan_akses"
+             ^ - Invalid query: SELECT COUNT(*) AS "numrows"
+FROM "permohonan_akses"
+ERROR - 2025-11-12 05:34:20 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;172.16.101.97&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2025-11-12 05:34:20 --> Unable to connect to the database
+ERROR - 2025-11-12 05:34:24 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;172.16.101.97&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2025-11-12 05:34:24 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;172.16.101.97&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2025-11-12 05:34:25 --> Unable to connect to the database
+ERROR - 2025-11-12 05:34:25 --> Unable to connect to the database
+ERROR - 2025-11-12 06:04:44 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-12 06:10:38 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-12 16:13:59 --> Severity: Warning --> pg_query(): Query failed: ERROR:  lastval is not yet defined in this session /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 234
+ERROR - 2025-11-12 16:13:59 --> Query error: ERROR:  lastval is not yet defined in this session - Invalid query: SELECT LASTVAL() AS ins_id
+ERROR - 2025-11-12 06:14:24 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-12 06:18:44 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-12 21:34:29 --> Severity: Warning --> pg_query(): Query failed: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request. /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 234
+ERROR - 2025-11-12 21:34:29 --> Severity: Warning --> session_start(): Failed to read session data: user (path: ) /var/www/html/src/vendor/codeigniter/framework/system/libraries/Session/Session.php 137
+ERROR - 2025-11-12 21:34:32 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;172.16.101.97&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2025-11-12 21:34:32 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;172.16.101.97&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2025-11-12 21:34:32 --> Unable to connect to the database
+ERROR - 2025-11-12 21:34:32 --> Unable to connect to the database

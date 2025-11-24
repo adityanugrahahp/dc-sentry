@@ -13,20 +13,20 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars fa-fw"></i> Main Menu</a>
                         <ul class="dropdown-menu" role="menu">
-                            <? 
-                                $menu = [];
-                                if(isset($_SESSION['access'])){
-                                    // load menu id
-                                    $menu = app_generate_menu(explode(', ', $_SESSION['access']));
-                                }
+                            <?
+                            $menu = [];
+                            if (isset($_SESSION['access'])) {
+                                // load menu id
+                                $menu = app_generate_menu(explode(', ', $_SESSION['access']));
+                            }
                             ?>
-                            <?  foreach($menu as $v){ 
-                                    $ex = explode('|', $v);
+                            <? foreach ($menu as $v) {
+                                $ex = explode('|', $v);
 
-                                    if($ex){
-                                        echo '<li><a href="'.$ex[1].'"><i class="fa '.$ex[2].'"></i> '.$ex[0].'</a></li>';
-                                    }
+                                if ($ex) {
+                                    echo '<li><a href="' . $ex[1] . '"><i class="fa ' . $ex[2] . '"></i> ' . $ex[0] . '</a></li>';
                                 }
+                            }
                             ?>
                         </ul>
                     </li>

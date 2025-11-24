@@ -1,0 +1,153 @@
+ERROR - 2025-11-09 00:43:25 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;172.16.101.97&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2025-11-09 00:43:25 --> Unable to connect to the database
+ERROR - 2025-11-09 04:47:26 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-11-09 04:47:29 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-11-09 04:47:30 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-11-09 04:49:29 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-09 14:50:02 --> Severity: Warning --> pg_query(): Query failed: ERROR:  lastval is not yet defined in this session /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 234
+ERROR - 2025-11-09 14:50:02 --> Query error: ERROR:  lastval is not yet defined in this session - Invalid query: SELECT LASTVAL() AS ins_id
+ERROR - 2025-11-09 14:50:06 --> Severity: error --> Exception: Call to undefined function send_email_notification() /var/www/html/src/application/controllers/Data_center.php 144
+ERROR - 2025-11-09 14:50:15 --> Severity: error --> Exception: Call to undefined function send_email_notification() /var/www/html/src/application/controllers/Data_center.php 144
+ERROR - 2025-11-09 14:51:14 --> Severity: error --> Exception: Call to undefined function send_email_notification() /var/www/html/src/application/controllers/Data_center.php 144
+ERROR - 2025-11-09 04:51:19 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-09 14:51:26 --> Severity: error --> Exception: Call to undefined function send_email_notification() /var/www/html/src/application/controllers/Data_center.php 144
+ERROR - 2025-11-09 14:51:48 --> Severity: error --> Exception: Call to undefined function send_email_notification() /var/www/html/src/application/controllers/Data_center.php 144
+ERROR - 2025-11-09 05:08:22 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;172.16.101.97&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2025-11-09 05:08:22 --> Unable to connect to the database
+ERROR - 2025-11-09 05:13:10 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;172.16.101.97&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2025-11-09 05:13:10 --> Unable to connect to the database
+ERROR - 2025-11-09 05:13:11 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-09 05:13:12 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;172.16.101.97&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2025-11-09 05:13:12 --> Unable to connect to the database
+ERROR - 2025-11-09 05:13:14 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;172.16.101.97&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2025-11-09 05:13:14 --> Unable to connect to the database
+ERROR - 2025-11-09 05:16:30 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;172.16.101.97&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2025-11-09 05:16:30 --> Unable to connect to the database
+ERROR - 2025-11-09 05:16:31 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-09 05:16:32 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-09 15:17:20 --> Function send_email_notification tidak ditemukan
+ERROR - 2025-11-09 05:24:52 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-09 05:25:58 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-09 15:26:51 --> Function send_email_notification tidak ditemukan
+ERROR - 2025-11-09 08:07:11 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;172.16.101.97&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2025-11-09 08:07:11 --> Unable to connect to the database
+ERROR - 2025-11-09 08:07:16 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;172.16.101.97&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2025-11-09 08:07:16 --> Unable to connect to the database
+ERROR - 2025-11-09 08:07:16 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;172.16.101.97&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2025-11-09 08:07:16 --> Unable to connect to the database
+ERROR - 2025-11-09 08:07:17 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;172.16.101.97&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2025-11-09 08:07:17 --> Unable to connect to the database
+ERROR - 2025-11-09 08:07:21 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;172.16.101.97&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2025-11-09 08:07:21 --> Unable to connect to the database
+ERROR - 2025-11-09 08:10:20 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-09 08:16:45 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-09 08:17:02 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-09 08:22:56 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-09 08:23:09 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-09 08:24:02 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-09 18:24:27 --> Function send_email_notification tidak ditemukan
+ERROR - 2025-11-09 18:25:16 --> Function send_email_notification tidak ditemukan
+ERROR - 2025-11-09 08:27:27 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-09 18:28:07 --> Function send_email_notification tidak ditemukan
+ERROR - 2025-11-09 08:28:17 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-09 18:28:45 --> Function send_email_notification tidak ditemukan
+ERROR - 2025-11-09 08:30:44 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-09 18:31:13 --> Function send_email_notification tidak ditemukan
+ERROR - 2025-11-09 08:55:16 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-09 09:12:34 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-09 09:12:37 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;172.16.101.97&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2025-11-09 09:12:37 --> Unable to connect to the database
+ERROR - 2025-11-09 09:12:37 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;172.16.101.97&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2025-11-09 09:12:37 --> Unable to connect to the database
+ERROR - 2025-11-09 09:12:37 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;172.16.101.97&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2025-11-09 09:12:37 --> Unable to connect to the database
+ERROR - 2025-11-09 19:13:35 --> Unable to load the requested class: Ciqrcode
+ERROR - 2025-11-09 09:13:38 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-09 19:13:40 --> Unable to load the requested class: Ciqrcode
+ERROR - 2025-11-09 09:22:36 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-09 09:23:23 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-09 19:23:33 --> Unable to load the requested class: Ciqrcode
+ERROR - 2025-11-09 19:24:10 --> Unable to load the requested class: Ciqrcode
+ERROR - 2025-11-09 09:56:39 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;172.16.101.97&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2025-11-09 09:56:39 --> Unable to connect to the database
+ERROR - 2025-11-09 10:00:07 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-09 20:01:58 --> Severity: Warning --> Undefined property: stdClass::$id /var/www/html/src/application/controllers/Data_center.php 1025
+ERROR - 2025-11-09 20:01:58 --> Severity: Warning --> Undefined property: stdClass::$id /var/www/html/src/application/controllers/Data_center.php 1034
+ERROR - 2025-11-09 20:01:58 --> Unable to load the requested class: Ciqrcode
+ERROR - 2025-11-09 20:02:11 --> Severity: Warning --> Undefined property: stdClass::$id /var/www/html/src/application/controllers/Data_center.php 1025
+ERROR - 2025-11-09 20:02:11 --> Severity: Warning --> Undefined property: stdClass::$id /var/www/html/src/application/controllers/Data_center.php 1034
+ERROR - 2025-11-09 20:02:11 --> Unable to load the requested class: Ciqrcode
+ERROR - 2025-11-09 20:06:43 --> Unable to load the requested class: Ciqrcode
+ERROR - 2025-11-09 10:32:55 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;172.16.101.97&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2025-11-09 10:32:55 --> Unable to connect to the database
+ERROR - 2025-11-09 10:32:55 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;172.16.101.97&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2025-11-09 10:32:55 --> Unable to connect to the database
+ERROR - 2025-11-09 10:32:55 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;172.16.101.97&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2025-11-09 10:32:55 --> Unable to connect to the database
+ERROR - 2025-11-09 10:32:56 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-09 10:32:58 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-09 10:34:17 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-09 10:35:29 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-09 20:36:31 --> Unable to load the requested class: Pdf
+ERROR - 2025-11-09 20:36:33 --> Unable to load the requested class: Pdf
+ERROR - 2025-11-09 20:36:36 --> Unable to load the requested class: Pdf
+ERROR - 2025-11-09 10:36:38 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-09 20:36:39 --> Unable to load the requested class: Pdf
+ERROR - 2025-11-09 10:41:13 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-09 10:42:48 --> 404 Page Not Found: Uploads/pdf_final
+ERROR - 2025-11-09 10:42:51 --> 404 Page Not Found: Uploads/pdf_final
+ERROR - 2025-11-09 10:42:53 --> 404 Page Not Found: Uploads/pdf_final
+ERROR - 2025-11-09 10:43:12 --> 404 Page Not Found: Uploads/pdf_final
+ERROR - 2025-11-09 10:43:21 --> 404 Page Not Found: Uploads/pdf_final
+ERROR - 2025-11-09 10:43:29 --> 404 Page Not Found: Uploads/pdf_final
+ERROR - 2025-11-09 10:48:12 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-09 10:49:00 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-09 20:49:49 --> Severity: error --> Exception: Call to undefined method Data_center::generate_pdf_final() /var/www/html/src/application/controllers/Data_center.php 516
+ERROR - 2025-11-09 10:51:01 --> 404 Page Not Found: Uploads/pdf_final
+ERROR - 2025-11-09 10:51:04 --> 404 Page Not Found: Uploads/pdf_final
+ERROR - 2025-11-09 20:52:49 --> Severity: error --> Exception: Call to undefined method Data_center::generate_pdf_final() /var/www/html/src/application/controllers/Data_center.php 516
+ERROR - 2025-11-09 11:08:27 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-09 11:27:24 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;172.16.101.97&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2025-11-09 11:27:24 --> Unable to connect to the database
+ERROR - 2025-11-09 18:59:05 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-11-09 19:23:23 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-11-09 23:26:29 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-11-09 23:26:30 --> 404 Page Not Found: Faviconico/index

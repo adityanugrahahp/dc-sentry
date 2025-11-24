@@ -1,0 +1,42 @@
+ERROR - 2025-11-10 14:37:16 --> Severity: error --> Exception: Call to undefined method CI_Loader::_has_dc_access() /var/www/html/src/application/views/layouts/_topbar.php 32
+ERROR - 2025-11-10 14:37:21 --> Severity: error --> Exception: Call to undefined method CI_Loader::_has_dc_access() /var/www/html/src/application/views/layouts/_topbar.php 32
+ERROR - 2025-11-10 14:37:53 --> Severity: error --> Exception: Call to undefined method CI_Loader::_has_dc_access() /var/www/html/src/application/views/layouts/_topbar.php 32
+ERROR - 2025-11-10 14:37:58 --> Severity: error --> Exception: Call to undefined method CI_Loader::_has_dc_access() /var/www/html/src/application/views/layouts/_topbar.php 32
+ERROR - 2025-11-10 05:38:09 --> 404 Page Not Found: Indexdacen/index
+ERROR - 2025-11-10 05:38:11 --> 404 Page Not Found: Indexdacen/index
+ERROR - 2025-11-10 05:38:27 --> 404 Page Not Found: Indexdacen/index
+ERROR - 2025-11-10 05:38:48 --> 404 Page Not Found: Indexdacen/index
+ERROR - 2025-11-10 05:38:53 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-10 05:38:55 --> 404 Page Not Found: Indexdacen/index
+ERROR - 2025-11-10 05:38:55 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-10 05:39:11 --> 404 Page Not Found: Indexdacen/index
+ERROR - 2025-11-10 05:39:11 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-10 05:39:24 --> 404 Page Not Found: Indexdacen/index
+ERROR - 2025-11-10 05:39:24 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-10 05:39:44 --> 404 Page Not Found: Indexdacen/index
+ERROR - 2025-11-10 05:39:45 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-10 05:40:10 --> 404 Page Not Found: Indexdacen/index
+ERROR - 2025-11-10 05:40:10 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-10 05:40:20 --> 404 Page Not Found: Data_Center/indexdacen
+ERROR - 2025-11-10 05:40:20 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-10 05:40:28 --> 404 Page Not Found: Data_center/index_form
+ERROR - 2025-11-10 05:40:28 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-10 05:40:49 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-10 16:16:04 --> Severity: error --> Exception: Call to undefined method CI_Upload::do_upload_multiple() /var/www/html/src/application/controllers/Data_center.php 165
+ERROR - 2025-11-10 16:22:19 --> Severity: error --> Exception: Call to undefined method CI_Upload::do_upload_multiple() /var/www/html/src/application/controllers/Data_center.php 165
+ERROR - 2025-11-10 06:22:23 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-10 16:22:25 --> Severity: error --> Exception: Call to undefined method CI_Upload::do_upload_multiple() /var/www/html/src/application/controllers/Data_center.php 165
+ERROR - 2025-11-10 16:22:28 --> Severity: error --> Exception: Call to undefined method CI_Upload::do_upload_multiple() /var/www/html/src/application/controllers/Data_center.php 165
+ERROR - 2025-11-10 06:26:08 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-10 16:26:43 --> The upload path does not appear to be valid.
+ERROR - 2025-11-10 16:26:48 --> The upload path does not appear to be valid.
+ERROR - 2025-11-10 06:49:05 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-10 07:05:26 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-10 22:50:40 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;172.16.101.97&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2025-11-10 22:50:40 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;172.16.101.97&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2025-11-10 22:50:40 --> Unable to connect to the database
+ERROR - 2025-11-10 22:50:40 --> Unable to connect to the database

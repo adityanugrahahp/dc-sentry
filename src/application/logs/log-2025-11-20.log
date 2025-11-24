@@ -1,0 +1,41 @@
+ERROR - 2025-11-20 03:56:00 --> Severity: Compile Error --> Cannot redeclare Data_center::send_email_rejected() /var/www/html/src/application/controllers/Data_center.php 1526
+ERROR - 2025-11-20 03:56:04 --> Severity: Compile Error --> Cannot redeclare Data_center::send_email_rejected() /var/www/html/src/application/controllers/Data_center.php 1526
+ERROR - 2025-11-20 03:56:07 --> Severity: Compile Error --> Cannot redeclare Data_center::send_email_rejected() /var/www/html/src/application/controllers/Data_center.php 1526
+ERROR - 2025-11-20 03:56:08 --> Severity: Compile Error --> Cannot redeclare Data_center::send_email_rejected() /var/www/html/src/application/controllers/Data_center.php 1526
+ERROR - 2025-11-20 03:56:08 --> Severity: Compile Error --> Cannot redeclare Data_center::send_email_rejected() /var/www/html/src/application/controllers/Data_center.php 1526
+ERROR - 2025-11-20 03:56:09 --> Severity: Compile Error --> Cannot redeclare Data_center::send_email_rejected() /var/www/html/src/application/controllers/Data_center.php 1526
+ERROR - 2025-11-20 03:56:09 --> Severity: Compile Error --> Cannot redeclare Data_center::send_email_rejected() /var/www/html/src/application/controllers/Data_center.php 1526
+ERROR - 2025-11-20 03:56:09 --> Severity: Compile Error --> Cannot redeclare Data_center::send_email_rejected() /var/www/html/src/application/controllers/Data_center.php 1526
+ERROR - 2025-11-20 03:56:09 --> Severity: Compile Error --> Cannot redeclare Data_center::send_email_rejected() /var/www/html/src/application/controllers/Data_center.php 1526
+ERROR - 2025-11-20 03:56:10 --> Severity: Compile Error --> Cannot redeclare Data_center::send_email_rejected() /var/www/html/src/application/controllers/Data_center.php 1526
+ERROR - 2025-11-20 03:56:10 --> Severity: Compile Error --> Cannot redeclare Data_center::send_email_rejected() /var/www/html/src/application/controllers/Data_center.php 1526
+ERROR - 2025-11-20 03:56:10 --> Severity: Compile Error --> Cannot redeclare Data_center::send_email_rejected() /var/www/html/src/application/controllers/Data_center.php 1526
+ERROR - 2025-11-20 03:56:10 --> Severity: Compile Error --> Cannot redeclare Data_center::send_email_rejected() /var/www/html/src/application/controllers/Data_center.php 1526
+ERROR - 2025-11-20 03:56:11 --> Severity: Compile Error --> Cannot redeclare Data_center::send_email_rejected() /var/www/html/src/application/controllers/Data_center.php 1526
+ERROR - 2025-11-20 03:56:11 --> Severity: Compile Error --> Cannot redeclare Data_center::send_email_rejected() /var/www/html/src/application/controllers/Data_center.php 1526
+ERROR - 2025-11-20 03:56:11 --> Severity: Compile Error --> Cannot redeclare Data_center::send_email_rejected() /var/www/html/src/application/controllers/Data_center.php 1526
+ERROR - 2025-11-20 03:56:11 --> Severity: Compile Error --> Cannot redeclare Data_center::send_email_rejected() /var/www/html/src/application/controllers/Data_center.php 1526
+ERROR - 2025-11-20 03:56:11 --> Severity: Compile Error --> Cannot redeclare Data_center::send_email_rejected() /var/www/html/src/application/controllers/Data_center.php 1526
+ERROR - 2025-11-20 04:00:41 --> 404 Page Not Found: Well-known/appspecific
+ERROR - 2025-11-20 05:38:50 --> Unable to set database connection charset: utf8
+ERROR - 2025-11-20 05:38:50 --> Unable to set database connection charset: utf8
+ERROR - 2025-11-20 07:22:50 --> 404 Page Not Found: Dc/index
+ERROR - 2025-11-20 07:22:51 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-11-20 22:24:24 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;172.16.101.97&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2025-11-20 22:24:24 --> Unable to connect to the database
+ERROR - 2025-11-20 22:24:32 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;172.16.101.97&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2025-11-20 22:24:32 --> Unable to connect to the database
+ERROR - 2025-11-20 22:25:27 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;172.16.101.97&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2025-11-20 22:25:27 --> Unable to connect to the database
+ERROR - 2025-11-20 22:25:27 --> Severity: Warning --> pg_connect(): Unable to connect to PostgreSQL server: could not connect to server: Connection refused
+	Is the server running on host &quot;172.16.101.97&quot; and accepting
+	TCP/IP connections on port 5432? /var/www/html/src/vendor/codeigniter/framework/system/database/drivers/postgre/postgre_driver.php 146
+ERROR - 2025-11-20 22:25:27 --> Unable to connect to the database
+ERROR - 2025-11-20 22:38:03 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-11-20 22:38:08 --> 404 Page Not Found: Faviconico/index
