@@ -18,6 +18,30 @@ spec:
         app.gitlab.com/app: {{ .Values.projectPathSlug }}
         app.gitlab.com/env: {{ .Values.envSlug }}
     spec:
+      # TAMBAHKAN SECURITY CONTEXT DI SINI:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+      
+      # TAMBAHKAN INIT CONTAINER DI SINI:
+      initContainers:
+        - name: create-upload-dirs
+          image: busybox
+          command: 
+            - 'sh'
+            - '-c'
+            - |
+              mkdir -p /var/www/html/uploads/ktp
+              mkdir -p /var/www/html/uploads/ttd_pemohon  
+              mkdir -p /var/www/html/uploads/tanda_tangan
+              mkdir -p /var/www/html/uploads/dokumen_tambahan
+              mkdir -p /var/www/html/uploads/pdf_final
+              chmod -R 755 /var/www/html/uploads/
+          volumeMounts:
+            - name: data
+              mountPath: /var/www/html/uploads
+
       imagePullSecrets:
         - name: registry-auth
       containers:
@@ -33,8 +57,25 @@ spec:
             - name: http
               containerPort: {{ .Values.service.containerPort }}
               protocol: TCP
+          
+          # TAMBAHKAN VOLUME MOUNT DI CONTAINER:
+          volumeMounts:
+            - name: data
+              mountPath: /var/www/html/uploads
+              subPath: ""
+          
           livenessProbe:
             tcpSocket:
               port: {{ .Values.service.containerPort }}
             failureThreshold: 1
             periodSeconds: 45
+      
+      # TAMBAHKAN VOLUMES DI SINI:
+      volumes:
+        - name: data
+          {{- if .Values.persistence.enabled }}
+          persistentVolumeClaim:
+            claimName: {{ .Values.application.name }}-pvc
+          {{- else }}
+          emptyDir: {}
+          {{- end }}

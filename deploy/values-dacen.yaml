@@ -23,6 +23,41 @@ livenessProbe:
   failureThreshold: 10
 
 readinessProbe:
-  path: /login
+  path: dc-auth/login
   periodSeconds: 30
   failureThreshold: 10
+
+  # TAMBAHKAN BAGIAN INI:
+
+# Persistent Volume untuk uploads
+persistence:
+  enabled: true
+  storageClass: "" # kosongkan untuk default storage class
+  accessMode: ReadWriteOnce
+  size: 5Gi
+  mountPath: "/var/www/html/uploads"
+  existingClaim: "" # kosongkan untuk buat PVC baru
+
+# Init container untuk buat folder structure
+extraInitContainers:
+  - name: create-upload-dirs
+    image: busybox
+    command:
+      - "sh"
+      - "-c"
+      - |
+        mkdir -p /var/www/html/uploads/ktp
+        mkdir -p /var/www/html/uploads/ttd_pemohon  
+        mkdir -p /var/www/html/uploads/tanda_tangan
+        mkdir -p /var/www/html/uploads/dokumen_tambahan
+        mkdir -p /var/www/html/uploads/pdf_final
+        chmod -R 755 /var/www/html/uploads/
+    volumeMounts:
+      - name: data
+        mountPath: /var/www/html/uploads
+
+# Pastikan securityContext ada
+securityContext:
+  runAsUser: 1000
+  runAsGroup: 1000
+  fsGroup: 1000
