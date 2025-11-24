@@ -105,7 +105,7 @@ class Data_center extends CI_Controller
         // $this->mark_token_as_used($token);
 
         $data['token'] = $token;
-        $this->load->view('v_indexdacen', $data);
+        $this->load->view('V_indexdacen', $data);
     }
 
     /**
