@@ -68,19 +68,15 @@
             }
         }
 
-        /* FLOATING DATA PARTICLES – HALUS BANGET */
-        /* FLOATING DATA PARTICLES – LEBIH TERLIHAT */
+        /* FLOATING DATA PARTICLES */
         .particle {
             position: absolute;
             color: rgba(6, 182, 212, 0.25);
-            /* DARI 0.1 JADI 0.25 */
             font-size: 1.5rem;
-            /* DARI 1.2rem JADI 1.5rem */
             pointer-events: none;
             animation: floatUp 15s linear infinite;
             opacity: 0;
             text-shadow: 0 0 10px rgba(6, 182, 212, 0.3);
-            /* TAMBAH SHADOW */
         }
 
         @keyframes floatUp {
@@ -91,12 +87,10 @@
 
             10% {
                 opacity: 0.8;
-                /* DARI 0.6 JADI 0.8 */
             }
 
             90% {
                 opacity: 0.8;
-                /* DARI 0.6 JADI 0.8 */
             }
 
             100% {
@@ -224,7 +218,6 @@
             gap: 8px;
         }
 
-        /* PERBAIKAN: INPUT GROUP YANG SAMA PANJANG */
         .input-group {
             margin-bottom: 1.5rem;
             position: relative;
@@ -364,6 +357,47 @@
             border-left: 4px solid #3b82f6;
         }
 
+        .alert-warning {
+            background: rgba(245, 158, 11, 0.15);
+            color: #fde68a;
+            border-left: 4px solid #f59e0b;
+        }
+
+        /* CUSTOM SWEETALERT2 STYLES */
+        .swal2-popup {
+            background: var(--card-bg) !important;
+            backdrop-filter: blur(20px) !important;
+            border: 1px solid var(--card-border) !important;
+            border-radius: 20px !important;
+            color: var(--text) !important;
+        }
+
+        .swal2-title {
+            color: white !important;
+            font-weight: 700 !important;
+        }
+
+        .swal2-html-container {
+            color: var(--text-muted) !important;
+        }
+
+        .swal2-confirm {
+            background: linear-gradient(135deg, var(--cyan), var(--cyan-glow)) !important;
+            border: none !important;
+            border-radius: 12px !important;
+            font-weight: 600 !important;
+            padding: 0.75rem 2rem !important;
+        }
+
+        .swal2-error {
+            border-color: #ef4444 !important;
+        }
+
+        .swal2-warning {
+            border-color: #f59e0b !important;
+            color: #f59e0b !important;
+        }
+
         .login-footer {
             text-align: center;
             padding: 1.5rem 2rem 2rem;
@@ -395,6 +429,30 @@
             .card-header h1 {
                 font-size: 1.7rem;
             }
+        }
+
+        .watermark {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            opacity: 0.25;
+            z-index: 9999;
+            pointer-events: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            color: #ffffffff;
+            text-align: right;
+            line-height: 1.4;
+        }
+
+        .watermark-main {
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .watermark-sub {
+            font-weight: 500;
+            opacity: 0.8;
         }
     </style>
 
@@ -479,7 +537,10 @@
         </div>
     </div>
 
+    <!-- SWEETALERT2 LIBRARY -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
     <script>
         // Password toggle
         document.getElementById('passwordToggle').addEventListener('click', function() {
@@ -494,24 +555,59 @@
             }
         });
 
-        // Form submit animation
+        // Form submit - hanya tampilkan loading
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             const btn = document.getElementById('loginBtn');
             const spinner = btn.querySelector('.spinner');
             const text = btn.querySelector('.text');
+
             btn.disabled = true;
             spinner.style.display = 'inline-block';
             text.textContent = 'Authenticating...';
 
-            // Reset after 5s (demo)
-            setTimeout(() => {
-                spinner.style.display = 'none';
-                text.textContent = 'Access System';
-                btn.disabled = false;
-            }, 5000);
+            // Biarkan form submit ke server
         });
 
-        // Auto hide alerts
+        // TAMPILKAN SWEETALERT JIKA ADA FLASHDATA ERROR
+        <?php if ($this->session->flashdata('error')): ?>
+            document.addEventListener('DOMContentLoaded', function() {
+                setTimeout(() => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Login Gagal',
+                        text: '<?= $this->session->flashdata('error') ?>',
+                        confirmButtonText: 'Coba Lagi',
+                        customClass: {
+                            popup: 'swal2-popup',
+                            title: 'swal2-title',
+                            htmlContainer: 'swal2-html-container',
+                            confirmButton: 'swal2-confirm'
+                        }
+                    });
+                }, 100);
+            });
+        <?php endif; ?>
+
+        <?php if ($this->session->flashdata('success')): ?>
+            document.addEventListener('DOMContentLoaded', function() {
+                setTimeout(() => {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil',
+                        text: '<?= $this->session->flashdata('success') ?>',
+                        confirmButtonText: 'OK',
+                        customClass: {
+                            popup: 'swal2-popup',
+                            title: 'swal2-title',
+                            htmlContainer: 'swal2-html-container',
+                            confirmButton: 'swal2-confirm'
+                        }
+                    });
+                }, 100);
+            });
+        <?php endif; ?>
+
+        // Auto hide bootstrap alerts (jika masih ada)
         setTimeout(() => {
             document.querySelectorAll('.alert').forEach(alert => {
                 alert.style.transition = 'opacity 0.5s';
@@ -539,32 +635,10 @@
 
             container.appendChild(el);
         }
+
+        // Watermark timestamp
+        document.getElementById('watermarkTimestamp').textContent = new Date().toLocaleString('id-ID');
     </script>
-    <style>
-        .watermark {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            opacity: 0.25;
-            z-index: 9999;
-            pointer-events: none;
-            font-family: 'Inter', sans-serif;
-            font-size: 12px;
-            color: #ffffffff;
-            text-align: right;
-            line-height: 1.4;
-        }
-
-        .watermark-main {
-            font-weight: 700;
-            font-size: 13px;
-        }
-
-        .watermark-sub {
-            font-weight: 500;
-            opacity: 0.8;
-        }
-    </style>
 
     <div class="watermark">
         <div class="watermark-main">Made With Anger 🤬 - DIV TI</div>

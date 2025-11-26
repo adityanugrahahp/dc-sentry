@@ -37,8 +37,8 @@ class DCAuth extends CI_Controller
         $this->form_validation->set_rules('password', 'Password', 'required|trim');
 
         if ($this->form_validation->run() == FALSE) {
-            $data['error'] = 'Username dan password wajib diisi';
-            $this->load->view('V_dclogin', $data);
+            $this->session->set_flashdata('error', 'Username dan password wajib diisi');
+            redirect('dc-auth');
             return;
         }
 
@@ -66,8 +66,8 @@ class DCAuth extends CI_Controller
             // Redirect berdasarkan role
             $this->redirect_by_role();
         } else {
-            $data['error'] = 'Username atau password salah';
-            $this->load->view('V_dclogin', $data);
+            $this->session->set_flashdata('error', 'Username atau password salah');
+            redirect('dc-auth');
         }
     }
 
