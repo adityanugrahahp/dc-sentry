@@ -474,7 +474,7 @@
             </div>
 
             <div class="login-footer">
-                <small>© <?= date('Y') ?> PT PELNI • Data Center System v4.0</small>
+                <small>© <?= date('Y') ?> PT PELNI • Data Center System v.1</small>
             </div>
         </div>
     </div>
