@@ -323,7 +323,7 @@ class Data_center extends CI_Controller
             $required = ['nama_pemohon', 'id_karyawan', 'jabatan', 'unit_kerja', 'telepon', 'status_pegawai', 'nama_proyek', 'waktu_proyek', 'email'];
             foreach ($required as $field) {
                 if (!$this->input->post($field)) {
-                    echo json_encode(['status' => 'error', 'message' => "$field wajib diisi"]);
+                    echo json_encode(['status' => 'error', 'message' => "$field ini wajib diisi"]);
                     return;
                 }
             }
