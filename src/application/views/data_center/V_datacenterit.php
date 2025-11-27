@@ -1453,7 +1453,7 @@
         function validateStaffSignature(file) {
             if (!file) return false;
 
-            // Daftar format yang diizinkan - SAMA DENGAN FORM
+            // Daftar format yang diizinkan - SAMA DENGAN FOR
             const allowedTypes = [
                 'image/jpeg', 'image/jpg', 'image/png', 'application/pdf',
                 'application/pkcs7-signature', 'application/pkcs7-mime',
