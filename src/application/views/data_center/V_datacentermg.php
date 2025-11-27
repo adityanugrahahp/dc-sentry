@@ -998,14 +998,22 @@
                             ?>
                                     <tr>
                                         <td class="text-center fw-bold"><?= $start + $i + 1 ?></td>
-                                        <td><strong><?= htmlspecialchars($p->nama_pemohon ?? 'N/A') ?></strong></td>
+                                        <td>
+                                            <strong title="<?= htmlspecialchars($p->nama_pemohon ?? 'N/A') ?>">
+                                                <?= strlen($p->nama_pemohon ?? '') > 25 ? htmlspecialchars(substr($p->nama_pemohon, 0, 25)) . '...' : htmlspecialchars($p->nama_pemohon ?? 'N/A') ?>
+                                            </strong>
+                                        </td>
                                         <td>
                                             <?= htmlspecialchars($p->unit_kerja ?? 'N/A') ?>
                                             <?php if (!empty($p->nama_staff_it)): ?>
                                                 <br><small class="text-success"><strong>Staff: <?= htmlspecialchars($p->nama_staff_it) ?></strong></small>
                                             <?php endif; ?>
                                         </td>
-                                        <td><?= htmlspecialchars($p->nama_proyek ?? 'N/A') ?></td>
+                                        <td>
+                                            <strong title="<?= htmlspecialchars($p->nama_proyek) ?>">
+                                                <?= strlen($p->nama_proyek) > 25 ? htmlspecialchars(substr($p->nama_proyek, 0, 25)) . '...' : htmlspecialchars($p->nama_proyek) ?>
+                                            </strong>
+                                        </td>
                                         <td class="text-center">
                                             <?= !empty($p->tanggal_ajukan) ? date('d/m/Y', strtotime($p->tanggal_ajukan)) : (isset($p->tanggal_permohonan) ? date('d/m/Y', strtotime($p->tanggal_permohonan)) : 'N/A') ?>
 

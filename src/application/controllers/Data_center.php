@@ -186,18 +186,9 @@ class Data_center extends CI_Controller
             show_404();
         }
 
-        // **DEBUG: Lihat semua post data**
-        log_message('debug', 'POST Data: ' . print_r($this->input->post(), true));
-        log_message('debug', 'Files Data: ' . print_r($_FILES, true));
-
         // Cek token dari form
         $token = $this->input->post('form_token');
-        log_message('debug', 'Token received: ' . $token);
-
         if (!$this->validate_form_token($token)) {
-            $form_tokens = $this->session->userdata('form_tokens');
-            log_message('debug', 'Form tokens in session: ' . print_r($form_tokens, true));
-
             echo json_encode([
                 'status' => 'error',
                 'message' => 'Session form tidak valid. Silakan buka form baru.'
@@ -209,6 +200,91 @@ class Data_center extends CI_Controller
         $this->mark_token_as_used($token);
 
         try {
+            // **VALIDASI FILE UPLOAD DI SERVER-SIDE**
+
+            // Validasi file KTP
+            if (!isset($_FILES['ktp']) || $_FILES['ktp']['error'] != 0) {
+                echo json_encode(['status' => 'error', 'message' => 'File KTP wajib diupload']);
+                return;
+            }
+
+            $ktp_file = $_FILES['ktp'];
+            $ktp_max_size = 2 * 1024 * 1024; // 2MB
+            $ktp_allowed_types = ['image/jpeg', 'image/jpg', 'image/png', 'application/pdf'];
+
+            if ($ktp_file['size'] > $ktp_max_size) {
+                echo json_encode(['status' => 'error', 'message' => 'Ukuran file KTP terlalu besar. Maksimal 2MB.']);
+                return;
+            }
+
+            $ktp_file_type = mime_content_type($ktp_file['tmp_name']);
+            if (!in_array($ktp_file_type, $ktp_allowed_types)) {
+                echo json_encode(['status' => 'error', 'message' => 'Format file KTP tidak didukung. Gunakan JPG, PNG, atau PDF.']);
+                return;
+            }
+
+            // Validasi file TTD
+            if (!isset($_FILES['ttd_pemohon']) || $_FILES['ttd_pemohon']['error'] != 0) {
+                echo json_encode(['status' => 'error', 'message' => 'File tanda tangan wajib diupload']);
+                return;
+            }
+
+            $ttd_file = $_FILES['ttd_pemohon'];
+            $ttd_max_size = 2 * 1024 * 1024; // 2MB
+            $ttd_allowed_types = [
+                'image/jpeg',
+                'image/jpg',
+                'image/png',
+                'application/pdf',
+                'application/pkcs7-signature',
+                'application/pkcs7-mime',
+                'application/pgp-signature',
+                'application/pgp-keys'
+            ];
+
+            if ($ttd_file['size'] > $ttd_max_size) {
+                echo json_encode(['status' => 'error', 'message' => 'Ukuran file tanda tangan terlalu besar. Maksimal 2MB.']);
+                return;
+            }
+
+            $ttd_file_type = mime_content_type($ttd_file['tmp_name']);
+            if (!in_array($ttd_file_type, $ttd_allowed_types)) {
+                // Cek extension untuk format tanda tangan digital
+                $ttd_extension = strtolower(pathinfo($ttd_file['name'], PATHINFO_EXTENSION));
+                $digital_signature_extensions = ['p7s', 'p7m', 'sig', 'asc', 'gpg', 'xades', 'cades', 'pades'];
+
+                if (!in_array($ttd_extension, $digital_signature_extensions)) {
+                    echo json_encode(['status' => 'error', 'message' => 'Format file tanda tangan tidak didukung. Gunakan JPG, PNG, PDF, atau format tanda tangan digital.']);
+                    return;
+                }
+            }
+
+            // Validasi dokumen tambahan (jika ada)
+            if (isset($_FILES['dokumen_tambahan']) && !empty($_FILES['dokumen_tambahan']['name'][0])) {
+                $dokumen_files = $_FILES['dokumen_tambahan'];
+                $dokumen_max_size = 2 * 1024 * 1024; // 2MB
+                $dokumen_allowed_types = ['image/jpeg', 'image/jpg', 'image/png', 'application/pdf'];
+
+                for ($i = 0; $i < count($dokumen_files['name']); $i++) {
+                    if ($dokumen_files['error'][$i] == 0) {
+                        if ($dokumen_files['size'][$i] > $dokumen_max_size) {
+                            echo json_encode(['status' => 'error', 'message' => 'File dokumen tambahan "' . $dokumen_files['name'][$i] . '" terlalu besar. Maksimal 2MB.']);
+                            return;
+                        }
+
+                        $dokumen_file_type = mime_content_type($dokumen_files['tmp_name'][$i]);
+                        if (!in_array($dokumen_file_type, $dokumen_allowed_types)) {
+                            echo json_encode(['status' => 'error', 'message' => 'Format file dokumen tambahan "' . $dokumen_files['name'][$i] . '" tidak didukung. Gunakan JPG, PNG, atau PDF.']);
+                            return;
+                        }
+                    }
+                }
+            }
+
+            // **DEBUG: Lihat semua post data**
+            log_message('debug', 'POST Data: ' . print_r($this->input->post(), true));
+            log_message('debug', 'Files Data: ' . print_r($_FILES, true));
+
             // **PROTECTION: Cek timestamp untuk prevent double submission**
             $submit_timestamp = $this->input->post('submit_timestamp');
             $current_time = time();
@@ -496,6 +572,7 @@ class Data_center extends CI_Controller
             ]);
         }
     }
+
 
     // ======================
     // === STAFF IT ===

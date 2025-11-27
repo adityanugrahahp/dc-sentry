@@ -1049,9 +1049,17 @@
                             ?>
                                     <tr>
                                         <td class="text-center fw-bold"><?= $start + $i + 1 ?></td>
-                                        <td><strong><?= htmlspecialchars($p->nama_pemohon) ?></strong></td>
+                                        <td>
+                                            <strong title="<?= htmlspecialchars($p->nama_pemohon) ?>">
+                                                <?= strlen($p->nama_pemohon) > 25 ? htmlspecialchars(substr($p->nama_pemohon, 0, 25)) . '...' : htmlspecialchars($p->nama_pemohon) ?>
+                                            </strong>
+                                        </td>
                                         <td><?= htmlspecialchars($p->unit_kerja) ?></td>
-                                        <td><?= htmlspecialchars($p->nama_proyek) ?></td>
+                                        <td>
+                                            <strong title="<?= htmlspecialchars($p->nama_proyek) ?>">
+                                                <?= strlen($p->nama_proyek) > 25 ? htmlspecialchars(substr($p->nama_proyek, 0, 25)) . '...' : htmlspecialchars($p->nama_proyek) ?>
+                                            </strong>
+                                        </td>
                                         <td class="text-center">
                                             <?= date('d/m/Y', strtotime($p->tanggal_permohonan)) ?>
                                         </td>
